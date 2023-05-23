@@ -9,6 +9,9 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
+
+
+
 	<!-- 자바버전, 스프링 버전 변경 -->
 	<properties>
 		<java-version>11</java-version>
