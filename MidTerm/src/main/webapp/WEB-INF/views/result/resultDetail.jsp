@@ -41,16 +41,16 @@ body {
 	height: 90vh;
 	border: 1px solid green;
 	overflow: auto;
-	display: flex;
-	justify-content: space-evenly;
+
 	flex-wrap: wrap;
 	padding-top: 10px;
 }
 
 .wrapper .resultWrapper .result {
 	box-sizing: border-box;
-	width: 30%;
-	height: 500px;
+	margin : 10px auto;
+	width: 90%;
+	height: 100px;
 	border: 1px solid blue;
 	margin-bottom: 20px;
 }
@@ -68,6 +68,7 @@ aside {
 	height: 20vh;
 	border: 1px solid green;
 }
+
 a {
 	text-decoration: none;
 	cursor: pointer;
@@ -76,23 +77,21 @@ a {
 <body>
 
 	<div class="wrapper">
-		<div class="header">
+		<div class="header"></div>
+		<div class="resultWrapper">
+			<div class="result" id="mainImg">이미지</div>
+			<div class="result" id="title">제목</div>
+			<div class="result" id="ingrdient">재료</div>
+			
+			<div class="result" id="cooking">조리법</div>
 		</div>
 	</div>
-	<div class="resultWrapper">
-        <div id="mainImg">이미지</div>
-        <div id="title">제목</div>
-        <div id="ingrdient">재료</div>
-        <div id="ingrdient">재료</div>
-        <div id="cooking">조리법</div>
-	</div>
-	</div>
+
 	<aside>
 		<div id="logo">
 			로고 <img src="" alt="">
 		</div>
-		<div id="menu">
-		</div>
+		<div id="menu"></div>
 	</aside>
 </body>
 </html>

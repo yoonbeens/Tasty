@@ -173,8 +173,8 @@ a {
 
 	</div>
 	<div class="resultWrapper">
-		<a href="${pageContext.request.contextPath}/result/resultDetail" valueclass ="result">test</a>
-		<div class="result"></div>
+		
+		<div class="result"><a href="${pageContext.request.contextPath}/result/resultDetail" class ="result">test</a></div>
 		<div class="result"></div>
 		<div class="result"></div>
 		<div class="result"></div>

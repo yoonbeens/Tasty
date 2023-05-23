@@ -56,7 +56,8 @@
 	<mybatis-spring:scan base-package="com.midterm.foodSNS.reply.mapper"/>
 	
 	 -->
-		
+	<mybatis-spring:scan base-package="com.midterm.foodSNS.user.mapper"/>
+	
 </beans>
 
 
