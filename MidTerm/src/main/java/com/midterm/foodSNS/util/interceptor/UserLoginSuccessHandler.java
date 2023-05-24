@@ -8,15 +8,20 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class UserLoginSuccessHandler implements HandlerInterceptor{
 
-//	@Override
-//	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-//			throws Exception {
-//		System.out.println("preHandle이 발동됨");
-////		return HandlerInterceptor.super.preHandle(request, response, handler);
-//	}
-//	
+
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		log.info("preHandle이 발동됨");
+		return HandlerInterceptor.super.preHandle(request, response, handler);
+	}
+	
+
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
