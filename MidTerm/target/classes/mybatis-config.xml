@@ -20,13 +20,15 @@
 		
 	</settings>
 
-	
+
+
 	<typeAliases>
-		<!-- <typeAlias type="com.spring.myweb.command.FreeBoardVO" alias="board" /> -->
-		<!-- <typeAlias type="com.midterm.foodSNS.command.MuserVO" alias="user" /> -->
+		<typeAlias type="com.midterm.foodSNS.command.MfreeboardVO" alias="board" />
+		<typeAlias type="com.midterm.foodSNS.command.MusersVO" alias="user" />
 		<!-- <typeAlias type="com.spring.myweb.command.ReplyVO" alias="reply" /> -->
 	</typeAliases>
-	
+
+
 	
 	<!-- 
 		인터페이스 mapper 구현체 xml 파일의 경로를 표시하는 태그.
