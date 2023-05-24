@@ -21,6 +21,7 @@
 	</settings>
 
 
+
 	<typeAliases>
 		<typeAlias type="com.midterm.foodSNS.command.MfreeboardVO" alias="board" />
 		<typeAlias type="com.midterm.foodSNS.command.MusersVO" alias="user" />
@@ -33,12 +34,11 @@
 		우리는 SqlSessionFactoryBean을 등록할 때 이미 지정했기 때문에
 		추가로 작성할 필요는 없습니다.
 	 
-	
 	<mappers>
 		<mapper resource="classpath:/mappers/*Mapper.xml" />
 	</mappers>
 	
-	-->
+	--> 
 
 </configuration>
 

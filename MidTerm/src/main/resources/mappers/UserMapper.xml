@@ -27,7 +27,7 @@
         INSERT INTO Musers
         (user_id, user_pw, user_phone1, user_phone2, user_email1,
         user_email2, addr_basic, addr_detail, addr_zip_num)
-        VALUES(#{userId}, #{userPw}, #{userName}, #{userPhone1}, #{userPhone2}, #{userEmail1},
+        VALUES(#{userId}, #{userPw}, #{userPhone1}, #{userPhone2}, #{userEmail1},
         #{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum})
 	</insert>
 
