@@ -2,12 +2,10 @@ package com.midterm.foodSNS.user.service;
 
 import org.springframework.stereotype.Service;
 
-import com.midterm.foodSNS.command.MusersVO;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Service
 @Slf4j
+@Service
 public class UserService implements IUserService {
 	
 	@Override

@@ -5,6 +5,7 @@
 <mapper namespace="com.midterm.foodSNS.user.mapper.IUserMapper">
 
 
+
 <insert id="join">
 		INSERT INTO Musers
 		(user_id, user_pw, user_phone1, user_phone2, user_email1,
@@ -18,19 +19,5 @@
 		SELECT count(*) FROM Musers
 		WHERE user_id = #{id}
 </select>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </mapper>
