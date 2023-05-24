@@ -16,7 +16,7 @@ public interface IUserMapper {
 	int idCheck(String id); //SQL문 -> SELECT count(*) FROM users WHERE user_id = ?
 	
 	//로그인
-	String login(@Param("id") String id, @Param("pw") String pw);
+	String login(@Param("id") String id);
 	
 	//회원 정보 얻어오기
 	MusersVO getInfo(MusersVO vo);

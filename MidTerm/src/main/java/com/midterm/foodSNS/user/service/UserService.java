@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.mapper.IUserMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 
 @Slf4j
@@ -31,12 +33,17 @@ public class UserService implements IUserService {
 
 	@Override
 	public String login(String id, String pw) {
+		String dbPw = mapper.login(id);
+		
+		if(dbPw != null) {
+			if(encoder.matches(pw, dbPw)) return id;
+		}		
 		return null;
 	}
 
 	@Override
 	public MusersVO getInfo(MusersVO vo) {
-		return null;
+		return mapper.getInfo(vo);
 	}
 
 	@Override

@@ -25,7 +25,8 @@
                             <input type="password" name="userPw" class="form-control" id="pw" placeholder="비밀번호">
                          </div>
                          <div class="form-group">
-                            <button type="button" id="loginBtn" class="btn btn-info btn-block">로그인</button>
+                            <!-- <button type="button" id="loginBtn" class="btn btn-info btn-block">로그인</button> -->
+                            <a href="${pageContext.request.contextPath}/user/login">로그인</a>
                             <button type="button" id="joinBtn" class="btn btn-primary btn-block">회원가입</button>
                          </div>
                     </form>                
