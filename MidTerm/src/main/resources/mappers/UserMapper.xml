@@ -3,6 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.midterm.foodSNS.user.mapper.IUserMapper">
+
 	
 	<insert id="join">
         INSERT INTO Musers
@@ -18,4 +19,5 @@
         WHERE user_id = #{id}
 	</select>
 	
+
 </mapper>

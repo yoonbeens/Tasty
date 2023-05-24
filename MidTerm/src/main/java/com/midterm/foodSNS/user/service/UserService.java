@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.mapper.IUserMapper;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Service
+
 @Slf4j
+@Service
 public class UserService implements IUserService {
 	
 	@Autowired

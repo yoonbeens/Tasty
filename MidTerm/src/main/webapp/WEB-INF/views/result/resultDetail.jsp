@@ -41,16 +41,16 @@ body {
 	height: 90vh;
 	border: 1px solid green;
 	overflow: auto;
-	display: flex;
-	justify-content: space-evenly;
+
 	flex-wrap: wrap;
 	padding-top: 10px;
 }
 
 .wrapper .resultWrapper .result {
 	box-sizing: border-box;
-	width: 30%;
-	height: 500px;
+	margin : 10px auto;
+	width: 90%;
+	height: 100px;
 	border: 1px solid blue;
 	margin-bottom: 20px;
 }
@@ -65,34 +65,76 @@ aside {
 #logo {
 	box-sizing: border-box;
 	width: 100%;
-	height: 20vh;
+	height: 10vh;
 	border: 1px solid green;
 }
+
 a {
 	text-decoration: none;
 	cursor: pointer;
 }
+.articleWrapper{
+
+	box-sizing: border-box;
+	width: 100%;
+	height: 60vh;
+	border: 1px solid red;
+	overflow: auto;
+}
+
+.article{
+	box-sizing: border-box;
+	width: 100%;
+	height: 20vh;
+	border: 1px solid blue;
+	margin-bottom: 10px;
+}
+.title{
+	box-sizing: border-box;
+	width: 70%;
+	height: 10vh;
+	border: 1px solid blue;
+	line-height: 10vh;
+
+}
+#count{
+	width: 100%;
+	height: 20vh;
+	border: 1px solid red;
+	line-height: 20vh;
+}
+
+
 </style>
 <body>
 
 	<div class="wrapper">
 		<div class="header">
+		<div class="title">요리제목</div>
+		</div>
+		<div class="resultWrapper">
+			<div class="result" id="mainImg">이미지</div>			
+			<div class="result" id="ingrdient">재료</div>			
+			<div class="result" id="cooking">조리법</div>
 		</div>
 	</div>
-	<div class="resultWrapper">
-        <div id="mainImg">이미지</div>
-        <div id="title">제목</div>
-        <div id="ingrdient">재료</div>
-        <div id="ingrdient">재료</div>
-        <div id="cooking">조리법</div>
-	</div>
-	</div>
+
 	<aside>
 		<div id="logo">
 			로고 <img src="" alt="">
 		</div>
-		<div id="menu">
+		<div id="count">
+			__명의 친구가 요리했어요
 		</div>
+		<div class ="articleWrapper">
+			<div class="article"> 후기1</div>
+			<div class="article"> 후기2</div>
+			<div class="article"> 후기3</div>
+			<div class="article"> 후기4</div>
+			<div class="article"> 후기5</div>
+
+		</div>
+		<div id="menu"></div>
 	</aside>
 </body>
 </html>
