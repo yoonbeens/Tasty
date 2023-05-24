@@ -65,7 +65,7 @@ aside {
 #logo {
 	box-sizing: border-box;
 	width: 100%;
-	height: 20vh;
+	height: 10vh;
 	border: 1px solid green;
 }
 
@@ -73,16 +73,48 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
+.articleWrapper{
+
+	box-sizing: border-box;
+	width: 100%;
+	height: 60vh;
+	border: 1px solid red;
+	overflow: auto;
+}
+
+.article{
+	box-sizing: border-box;
+	width: 100%;
+	height: 20vh;
+	border: 1px solid blue;
+	margin-bottom: 10px;
+}
+.title{
+	box-sizing: border-box;
+	width: 70%;
+	height: 10vh;
+	border: 1px solid blue;
+	line-height: 10vh;
+
+}
+#count{
+	width: 100%;
+	height: 20vh;
+	border: 1px solid red;
+	line-height: 20vh;
+}
+
+
 </style>
 <body>
 
 	<div class="wrapper">
-		<div class="header"></div>
+		<div class="header">
+		<div class="title">요리제목</div>
+		</div>
 		<div class="resultWrapper">
-			<div class="result" id="mainImg">이미지</div>
-			<div class="result" id="title">제목</div>
-			<div class="result" id="ingrdient">재료</div>
-			
+			<div class="result" id="mainImg">이미지</div>			
+			<div class="result" id="ingrdient">재료</div>			
 			<div class="result" id="cooking">조리법</div>
 		</div>
 	</div>
@@ -90,6 +122,17 @@ a {
 	<aside>
 		<div id="logo">
 			로고 <img src="" alt="">
+		</div>
+		<div id="count">
+			__명의 친구가 요리했어요
+		</div>
+		<div class ="articleWrapper">
+			<div class="article"> 후기1</div>
+			<div class="article"> 후기2</div>
+			<div class="article"> 후기3</div>
+			<div class="article"> 후기4</div>
+			<div class="article"> 후기5</div>
+
 		</div>
 		<div id="menu"></div>
 	</aside>
