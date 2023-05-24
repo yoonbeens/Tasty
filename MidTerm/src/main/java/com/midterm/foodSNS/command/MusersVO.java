@@ -17,8 +17,8 @@ public class MusersVO {
 	private String userPw;
 	private String userPhone1;
 	private String userPhone2;
-	private String uesrEmail1;
-	private String uesrEmail2;
+	private String userEmail1;
+	private String userEmail2;
 	private String addrBasic;
 	private String addrDetail;
 	private String addrZipNum;

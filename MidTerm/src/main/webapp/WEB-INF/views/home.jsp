@@ -105,7 +105,7 @@
 <body>
     <header>
         <div>login</div>
-        <div>Join</div>
+        <div><a href="${pageContext.request.contextPath}/user/userJoin">Join</a></div>
     </header>
     <div class="wrapper">
         <div class="title">Tasty Friends</div>
