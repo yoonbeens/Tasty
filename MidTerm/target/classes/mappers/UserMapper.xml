@@ -2,3 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
+<mapper namespace="com.midterm.foodSNS.user.mapper.IUserMapper">
+	
+	<insert id="join">
+        INSERT INTO Musers
+        (user_id, user_pw, user_phone1, user_phone2, user_email1,
+        user_email2, addr_basic, addr_detail, addr_zip_num)
+        VALUES(#{userId}, #{userPw}, #{userName}, #{userPhone1}, #{userPhone2}, #{userEmail1},
+        #{userEmail2}, #{addrBasic}, #{addrDetail}, #{addrZipNum})
+	</insert>
+
+
+	<select id="idCheck" resultType="int">
+        SELECT count(*) FROM Musers
+        WHERE user_id = #{id}
+	</select>
+	
+</mapper>

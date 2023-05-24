@@ -1,8 +1,11 @@
 package com.midterm.foodSNS.user.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.midterm.foodSNS.command.MusersVO;
+import com.midterm.foodSNS.user.mapper.IUserMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -10,13 +13,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserService implements IUserService {
 	
+	@Autowired
+	private IUserMapper mapper;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	@Override
 	public void join(MusersVO vo) {
+		mapper.join(vo);
 	}
 
 	@Override
 	public int idCheck(String id) {
-		return 0;
+		return mapper.idCheck(id); //없으면 0 있으면 1을 리턴
 	}
 
 	@Override
