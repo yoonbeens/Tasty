@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.service.IUserService;
+import com.midterm.foodSNS.util.interceptor.MailSenderService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,8 +22,8 @@ public class UserController {
 	
 	@Autowired
 	private IUserService service;
-//	@Autowired
-//	private MailSenderService mailService;
+	@Autowired
+	private MailSenderService mailService;
 	
 	//회원가입 페이지로 이동
 	@GetMapping("/userJoin")
@@ -50,8 +51,8 @@ public class UserController {
 	@GetMapping("/mailCheck")
 	public String mailCheck(String email) {
 		log.info("메일 인증: " + email);
-//		return mailService.joinEmail(email);
-		return null;
+		mailService.joinEmail(email);
+		return mailService.joinEmail(email);
 	}
 	
 	//로그인 페이지로 이동 요청
