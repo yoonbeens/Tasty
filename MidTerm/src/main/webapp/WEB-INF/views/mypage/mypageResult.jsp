@@ -3,11 +3,22 @@
 <!DOCTYPE html>
 <html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+	crossorigin="anonymous"></script>
+<script src="${pageContext.request.contextPath }/js/bootstrap.js"></script>
 <!-- reset.css -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
@@ -48,7 +59,7 @@ body {
 }
 
 .result {
-		box-sizing: border-box;
+	box-sizing: border-box;
 	display: block;
 	width: 30%;
 	height: 500px;
@@ -106,14 +117,17 @@ a {
 	line-height: 20vh;
 }
 </style>
-<body>
 
+
+<body>
 	<div class="wrapper">
 		<div class="header">
 			<div class="title">요리제목</div>
 		</div>
-		<div class="resultWrapper">
-			<div class="result"></div>
+		<div id="modalWrapper" class="resultWrapper">
+			<div class="result">
+				<a>ddddd</a>
+			</div>
 			<div class="result"></div>
 			<div class="result"></div>
 			<div class="result"></div>
@@ -133,46 +147,52 @@ a {
 			<img src="" alt="">
 		</div>
 		<div id="count"></div>
-		<div class="articleWrapper">
-	
-		</div>
+		<div class="articleWrapper"></div>
 		<div id="menu"></div>
 	</aside>
 
-	<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-	Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-		<div class="modal-body">
-		  ...
-		</div>
-		<div class="modal-footer">
-		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
-		</div>
-	  </div>
-	</div>
-  </div>
+
 </body>
+
+
+<!-- Modal -->
+<div class="modal fade" id="replyModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+			</div>
+			<div class="modal-body">
+				...fhsdhdshdshdsh<br> ...fhsdhdshdshdsh<br>
+				...fhsdhdshdshdsh<br> ...fhsdhdshdshdsh<br>
+				...fhsdhdshdshdsh<br> ...fhsdhdshdshdsh<br>
+				...fhsdhdshdshdsh<br> ...fhsdhdshdshdsh<br>
+				...fhsdhdshdshdsh<br> ...fhsdhdshdshdsh<br>
+				...fhsdhdshdshdsh<br> ...fhsdhdshdshdsh<br>
+				...fhsdhdshdshdsh<br>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 </html>
 
 <script>
-
-	document.getElementById('resultWrapper').addEventListener('click', e=>{
+	document.getElementById('modalWrapper').addEventListener('click', e => {
 		e.preventDefault();
-		if(!e.target.matches('a')) return;
-		$('#replyModal').modal('show');
+		if (!e.target.matches('a')){
+			console.log("nono");return;
+		}
+		else{
+			console.log("yes");
+			$('#replyModal').modal('show');
+		}
 	});
-
 </script>

@@ -10,7 +10,7 @@ import com.midterm.foodSNS.user.mapper.IUserMapper;
 
 
 
-@Slf4j
+
 @Service
 public class UserService implements IUserService {
 	
