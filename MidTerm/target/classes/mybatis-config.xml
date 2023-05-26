@@ -25,9 +25,9 @@
 	<typeAliases>
 		<typeAlias type="com.midterm.foodSNS.command.MfreeboardVO" alias="board" />
 		<typeAlias type="com.midterm.foodSNS.command.MusersVO" alias="user" />
+		<typeAlias type="com.midterm.foodSNS.command.MSnsBoardVO" alias="sns" />
 		<!-- <typeAlias type="com.spring.myweb.command.ReplyVO" alias="reply" /> -->
 	</typeAliases>
-
 
 	
 	<!-- 

@@ -10,7 +10,7 @@ import com.midterm.foodSNS.user.mapper.IUserMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Service
 public class UserService implements IUserService {
 	
