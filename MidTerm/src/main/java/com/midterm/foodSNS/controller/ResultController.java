@@ -40,7 +40,6 @@ public class ResultController {
 	public String resultDetail() {
 		
 		return "result/resultDetail";		
-	}
-	
+	}	
 	
 }

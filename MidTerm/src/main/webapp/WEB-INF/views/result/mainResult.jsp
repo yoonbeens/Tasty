@@ -173,7 +173,7 @@ a {
 
 	</div>
 	<div class="resultWrapper">
-		<a href="${pageContext.request.contextPath}/result/resultDetail" valueclass ="result">test</a>
+		<a href="${pageContext.request.contextPath}/result/resultDetail" class ="result">test</a>
 		<div class="result"></div>
 		<div class="result"></div>
 		<div class="result"></div>
@@ -194,8 +194,8 @@ a {
 		</div>
 		<div id="menu">
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-				<li>MyPage</li>
+				<li><a href="${pageContext.request.contextPath}/midterm">Home</a></li>
+				<li><a href="${pageContext.request.contextPath}/mypage/mypageResult" >MyPage</a></li>
 				<li>Following</li>
 				<li>LogOut</li>
 			</ul>
@@ -205,3 +205,12 @@ a {
 	</aside>
 </body>
 </html>
+
+<script>
+
+function searchRecipe(){
+	
+}
+
+
+</script>
