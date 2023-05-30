@@ -30,7 +30,7 @@
 		</c:if>
 		<c:if test="${login != null}">
 			${login.userId}님 환영합니다!
-			<div><a href="${pageContext.request.contextPath}/user/userMypage">MyPage</a></div>
+			<div><a href="">MyPage</a></div>
 			<div><a href="${pageContext.request.contextPath}/user/userLogout">Logout</a></div>
 			
 		</c:if>
