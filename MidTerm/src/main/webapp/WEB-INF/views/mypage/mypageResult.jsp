@@ -29,7 +29,6 @@
 
 		<div id="main">
 
-
 			<%
 			ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
 			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");

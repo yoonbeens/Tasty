@@ -22,5 +22,7 @@ public class MyPageService implements IMyPageService {
 		return mapper.getArticleList(userId);
 		
 	}
+	
+	
 
 }

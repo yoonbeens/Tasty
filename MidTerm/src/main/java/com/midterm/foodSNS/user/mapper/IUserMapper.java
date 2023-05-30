@@ -3,6 +3,8 @@ package com.midterm.foodSNS.user.mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.midterm.foodSNS.command.MusersVO;
+import com.midterm.foodSNS.util.MDBVO;
+import com.midterm.foodSNS.util.MDBVOList;
 
 public interface IUserMapper {
 
@@ -29,4 +31,6 @@ public interface IUserMapper {
 	void profilemodify(MusersVO vo);
 
 	MusersVO userInfo(String id);
+
+	void dbRegist(MDBVOList responseData);
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.midterm.foodSNS.command.MSearchConditionVO;
 import com.midterm.foodSNS.result.service.IResultService;
+import com.midterm.foodSNS.util.DBservice;
+import com.midterm.foodSNS.util.MDBVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +22,9 @@ public class ResultController {
 	@Autowired
 	private IResultService service;
 	
+	@Autowired
+	private DBservice DBservice;
+	
 	//home으로
 	
 	
@@ -30,9 +35,10 @@ public class ResultController {
 		MSearchConditionVO vo = new MSearchConditionVO();
 		vo.setWeather(weather);
 		vo.setCondition(condition);
-		vo.setFeeling(feeling);
-		
+		vo.setFeeling(feeling);		
 		model.addAttribute("searchCondition",vo);
+		
+		
 		return "result/mainResult";		
 	}
 	
@@ -40,6 +46,13 @@ public class ResultController {
 	public String resultDetail() {
 		
 		return "result/resultDetail";		
-	}	
+	}
+	
+	@GetMapping("/getDB")
+	public String getDB() {		
+		DBservice.getDB();
+		return"/home";
+		
+	}
 	
 }
