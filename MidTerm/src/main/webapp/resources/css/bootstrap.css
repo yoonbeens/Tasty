@@ -1089,6 +1089,9 @@ textarea {
   line-height: inherit;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 a {
   color: #337ab7;
   text-decoration: none;
@@ -2469,6 +2472,7 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+<<<<<<< HEAD
 =======
 
 button,
@@ -2514,6 +2518,8 @@ textarea {
 }
 
 >>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 fieldset {
   min-width: 0;
   padding: 0;
@@ -2521,6 +2527,9 @@ fieldset {
   border: 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 legend {
   display: block;
   width: 100%;
@@ -3583,6 +3592,7 @@ tbody.collapse.in {
 .btn-group-vertical {
   position: relative;
   display: inline-block;
+<<<<<<< HEAD
 =======
 
 legend {
@@ -6727,12 +6737,17 @@ textarea.form-control-lg {
   position: relative;
   display: inline-flex;
 >>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
   vertical-align: middle;
 }
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
   float: left;
 }
 .btn-group > .btn:hover,
@@ -7047,6 +7062,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: -1px;
 }
 .nav {
+<<<<<<< HEAD
 =======
   flex: 1 1 auto;
 }
@@ -7149,11 +7165,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: flex;
   flex-wrap: wrap;
 >>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 .nav > li {
   position: relative;
   display: block;
@@ -8100,6 +8121,7 @@ a.label:focus {
   vertical-align: baseline;
   background-color: #777;
   border-radius: 10px;
+<<<<<<< HEAD
 =======
 
 .nav-link {
@@ -9093,19 +9115,27 @@ a.label:focus {
   vertical-align: baseline;
   border-radius: var(--bs-badge-border-radius);
 >>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 }
 .badge:empty {
   display: none;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 .btn .badge {
   position: relative;
   top: -1px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 .btn-xs .badge {
   top: 0;
   padding: 1px 5px;
@@ -10342,6 +10372,7 @@ button.close {
 .carousel {
   position: relative;
 }
+<<<<<<< HEAD
 =======
 
 .alert {
@@ -11519,12 +11550,17 @@ button.close {
 }
 
 >>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 .carousel-inner {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 .carousel-inner > .item {
   position: relative;
   display: none;
@@ -12035,6 +12071,7 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+<<<<<<< HEAD
 =======
 .carousel-inner::after {
   display: block;
@@ -17080,3 +17117,5 @@ button.close {
 
 /*# sourceMappingURL=bootstrap.css.map */
 >>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80

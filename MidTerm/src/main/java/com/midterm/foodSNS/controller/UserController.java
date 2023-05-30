@@ -1,6 +1,10 @@
 package com.midterm.foodSNS.controller;
 import java.io.File;
 
+<<<<<<< HEAD
+=======
+import java.io.File;
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 import java.io.IOException;
 import java.nio.file.Files;
 
@@ -24,17 +28,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+<<<<<<< HEAD
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
+=======
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.service.IUserService;
 import com.midterm.foodSNS.util.interceptor.MailSenderService;
 
 import lombok.extern.slf4j.Slf4j;
 
+
 @Controller
 @RequestMapping("/user")
 @Slf4j
 public class UserController {
+
+	@Autowired
+	private IUserService service;
+	@Autowired
+	private MailSenderService mailService;
+
+	// 회원가입 페이지로 이동
+	@GetMapping("/userJoin")
+	public void userJoin() {
+
+	}
+
 	
 	@Autowired
 	private IUserService service;
@@ -55,6 +75,83 @@ public class UserController {
 	}
 	
 	//회원 가입 처리
+	
+	
+	// 개인정보 페이지 이동
+	@GetMapping("/userMypage")
+	public void userMypage(HttpSession session, Model model) {
+		MusersVO vo = (MusersVO) session.getAttribute("login");
+		log.info(vo.toString());
+		model.addAttribute("userInfo", service.userInfo(vo.getUserId()));
+	}
+
+
+	// 탈퇴 페이지로 이동
+	@PostMapping("/userDelete")
+	public void userDelete(MusersVO vo) {
+		log.info(vo.toString());
+		service.userDelete(vo);
+	}
+
+	// 회원 탈퇴 요청
+	@GetMapping("/userDelete")
+	public void delete(HttpSession session, Model model) {
+		MusersVO vo = (MusersVO) session.getAttribute("login");
+		model.addAttribute("userInfo", service.userInfo(vo.getUserId()));
+	}
+
+	// 탈퇴를 위한 비밀번호 체크
+	@PostMapping("/passChk")
+	@ResponseBody
+	public String delPasschk(@RequestBody String pwInput, HttpSession session) throws Exception {
+		log.info("패치오냐" + pwInput);
+		MusersVO vo = (MusersVO) session.getAttribute("login");
+		log.info("비법너너너: "+vo.getUserPw());
+		
+		int result = service.passChk(pwInput,vo);
+		log.info("리턴오냐" + result);	
+		
+		if(result==1) {
+			return "1";
+		}
+		else if(result==0){
+			return "0";
+		}
+		return null;
+		
+		
+	}
+
+	
+	// 개인정보 변경 페이지 이동
+	@GetMapping("/userUpdate")
+	public void userUpdate(HttpSession session, Model model) {
+		MusersVO vo = (MusersVO) session.getAttribute("login");
+		model.addAttribute("userInfo", service.userInfo(vo.getUserId()));
+	}
+
+	
+	// 개인정보 변경 요청
+	@PostMapping("/userUpdate")
+	public String userUpdate(MusersVO vo) {
+		service.updateMusers(vo);
+		return "redirect:/user/userMypage";
+	}
+
+	
+	// 아이디 중복 확인
+	@ResponseBody // 비동기
+	@PostMapping("/idCheck")
+	public String idCheck(@RequestBody String userId) {
+		log.info("아이디 중복체크: " + userId);
+		if (service.idCheck(userId) == 1)
+			return "duplicated"; // 중복일 경우 "duplicated"를 전달
+		else
+			return "ok"; // 중복이 아닐경우 "ok"를 전달
+	}
+
+	
+	// 회원 가입 처리
 	@PostMapping("/userJoin")
 	public String userJoin(MusersVO vo, RedirectAttributes ra) {
 		service.join(vo);

@@ -6,10 +6,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+=======
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+>>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.mapper.IUserMapper;
@@ -58,8 +65,35 @@ public class UserService implements IUserService {
 	}
 
 	@Override
+	public MusersVO userInfo(String id) {
+		return mapper.userInfo(id);
+
+	}
+
+	@Override
 	public MusersVO getInfo(MusersVO vo) {
 		return mapper.getInfo(vo);
+	}
+
+	// 회원 탈퇴
+	@Override
+	public void userDelete(MusersVO vo) {
+		mapper.userDelete(vo);
+	}
+
+	// 회원 탈퇴
+
+	@Override
+	public int passChk(String pwinput,MusersVO vo) throws Exception {
+		
+		if(encoder.matches(pwinput,vo.getUserPw())) {
+			log.info("비번맞음");
+			return 1;
+			
+		} else {
+			log.info("비번틀림");
+			return 0;
+		}		
 	}
 	
 	
