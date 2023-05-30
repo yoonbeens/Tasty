@@ -1,22 +1,18 @@
 package com.midterm.foodSNS.user.service;
 
 import java.io.File;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-=======
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
->>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
+
 
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.mapper.IUserMapper;
@@ -64,11 +60,7 @@ public class UserService implements IUserService {
 		
 	}
 
-	@Override
-	public MusersVO userInfo(String id) {
-		return mapper.userInfo(id);
 
-	}
 
 	@Override
 	public MusersVO getInfo(MusersVO vo) {
@@ -99,10 +91,14 @@ public class UserService implements IUserService {
 	
 	
 	
-
+	
+	
 	@Override
-	public void updateMusers(MusersVO vo) {
-	}
+    public void updateMusers(MusersVO vo) {
+        String securePw = encoder.encode(vo.getUserPw());             
+        vo.setUserPw(securePw); 
+        mapper.updateMusers(vo);
+    }
 	
 	@Override
 	public void profilemodify(MusersVO vo, MultipartFile file) {

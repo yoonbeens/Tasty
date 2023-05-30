@@ -1,10 +1,10 @@
 package com.midterm.foodSNS.controller;
 import java.io.File;
 
-<<<<<<< HEAD
-=======
+
+
 import java.io.File;
->>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
+
 import java.io.IOException;
 import java.nio.file.Files;
 
@@ -28,10 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-<<<<<<< HEAD
+
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
-=======
->>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.service.IUserService;
 import com.midterm.foodSNS.util.interceptor.MailSenderService;
@@ -55,27 +53,6 @@ public class UserController {
 
 	}
 
-	
-	@Autowired
-	private IUserService service;
-	@Autowired
-	private MailSenderService mailService;
-	
-	//회원가입 페이지로 이동
-	@GetMapping("/userJoin")
-	public void userJoin() {}
-	
-	//아이디 중복 확인
-	@ResponseBody //비동기
-	@PostMapping("/idCheck")
-	public String idCheck(@RequestBody String userId) {
-		log.info("아이디 중복체크: "+ userId);
-		if(service.idCheck(userId) == 1) return "duplicated"; //중복일 경우 "duplicated"를 전달
-		else return "ok"; //중복이 아닐경우 "ok"를 전달
-	}
-	
-	//회원 가입 처리
-	
 	
 	// 개인정보 페이지 이동
 	@GetMapping("/userMypage")
