@@ -110,7 +110,7 @@ h2 {
     accent-color: #22df64;
 }
 
-button {
+#loginBtn {
     position: relative;
     width: 100%;
     height: 40px;
@@ -118,9 +118,40 @@ button {
     font-size: 16px;
     color: #000;
     cursor: pointer;
-    border-radius: 30px;
+    /* border-radius: 30px; */
     border-color: rgb(208, 208, 208)
     /* outline: none; */
+}
+
+#loginBtn:hover {
+    background: #40fa81;
+    transition: 0.5s;
+    color: #fff;
+}
+
+#joinBtn {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: white;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    /* border-radius: 30px; */
+    border-color: rgb(208, 208, 208)
+    /* outline: none; */
+}
+
+#joinBtn:hover {
+    background: #40fa81;
+    transition: 0.5s;
+    color: #fff;
+}
+
+#kakaoBtn {
+    border: none;
+    /* outline: none; */
+    /* box-shadow: none; */
 }
 
 .signUp-link {
@@ -175,64 +206,49 @@ button {
 .social-icons a:hover i {
     color: rgb(255, 255, 255);
 }
+
+
 	
 	</style>
 
 
 </head>
 <body>
+ 
 
-<<<<<<< HEAD
-<section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-7 col-xs-10 login-form">
-                    <div class="titlebox">
-                        로그인
-                    </div>
-                   <form method="post" name="loginForm">
-                        <div class="form-group"><!--사용자클래스선언-->
-                            <label for="id">아이디</label>
-                            <input type="text" name="userId" class="form-control" id="id" placeholder="아이디">
-                         </div>
-                         <div class="form-group"><!--사용자클래스선언-->
-                            <label for="id">비밀번호</label>
-                            <input type="password" name="userPw" class="form-control" id="pw" placeholder="비밀번호">
-                         </div>
-                         <div class="form-group">
-                            <button type="button" id="loginBtn" class="btn btn-info btn-block">로그인</button>
-                            <button type="button" id="joinBtn" class="btn btn-primary btn-block">회원가입</button>
-                         </div>                                  
-                    </form>                
-=======
     <div class="wrapper">
         <div class="form-wrapper sign-in">
-            <form action="${pageContext.request.contextPath}/user/login">
+            <form name="loginForm" method="post">
                 <h2>Sign In</h2>
                 <div class="input-group">
-                    <input type="text" required>
+                    <input type="text" id="email" name="userId" required>
                     <label for="">UserName</label>
->>>>>>> ee21e0a0e1331383d73a1f7667cf40f259e5f41c
                 </div>
                 <div class="input-group">
-                    <input type="text" required>
+                    <input type="password" name="userPw" required>
                     <label for="">Password</label>
                 </div>
                 <div class="remember">
-                    <label><input type="checkbox"> Remember me</label>
+                    <label><input type="checkbox" id="remember"> Remember me</label>
                 </div>
-                <button type="submit">Sign In</button>
+                <button type="submit" id="loginBtn">Sign In</button>
                 <div class="signUp-link">
+ 				<div class="col-lg-12 text-center mt-3">
+                    <button type="button" id="kakaoBtn" onclick="location.href='${urlKakao}'">
+                    <img alt="카카오로그인" src="${pageContext.request.contextPath}/img/kakao_login_medium_wide.png">	
+                    </button>
+                    <br>
+                </div>
                     <p>Don't have an account? <a href="#" class="signUpBtn-link">Sign Up</a></p>
                 </div>
-                <div class="social-platform">
+                <!-- <div class="social-platform">
                     <p>Or sign in with</p>
                     <div class="social-icons">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#"><i class="fa-brands fa-google"></i></a>
                         <a href="#"><i class="fa-brands fa-twitter"></i></a>
                     </div>
-                </div>
+                </div> -->
             </form>
         </div>
 
@@ -251,10 +267,11 @@ button {
                     <input type="text" required>
                     <label for="">Password</label>
                 </div>
-                <div class="remember">
-                    <label><input type="checkbox"> I agree to the terms & conditions</label>
+                <div class="input-group">
+                    <input type="text" required>
+                    <label for="">Password</label>
                 </div>
-                <button type="submit">Sign Up</button>
+                <button type="submit" id="joinBtn">Sign Up</button>
                 <div class="signUp-link">
                     <p>Already have an account? <a href="#" class="signInBtn-link">Sign In</a></p>
                 </div>
@@ -278,34 +295,20 @@ button {
 		    wrapper.classList.toggle('active');
 		});	
 	
-	
     	
     	//회원 가입 완료 후 addFlashAttribute로 msg 데이터가 전달 되는 지 확인
     	const msg = '${msg}';
     	if(msg === 'joinSuccess') {
     		alert('회원 가입 정상 처리되었습니다.');
-    	} else if(msg === 'loginFail') {
+    	} 
+    	
+    	if(msg === 'loginFail') {
     		alert('로그인에 실패했습니다. 아이디와 비밀번호를 확인하세요.');
     	}
     	
-    	//id, pw 입력란이 공백인 지 아닌지 확인한 후, 공백이 아니라면 submit을 진행하세요.
-    	//요청 url은 /user/userLogin -> post로 갑니다. (비동기 아니에요!)
-    	document.getElementById('loginBtn').onclick = () => {
-            if(document.getElementById('id').value === '') {
-                alert('아이디를 적어야 로그인을 하죠!');
-                return;
-            }
-            if(document.getElementById('pw').value === '') {
-                alert('비밀번호를 작성하세요!');
-                return;
-            }
-
-            document.loginForm.submit();
-        }
-
-        document.getElementById('joinBtn').onclick = () => {
-            location.href='${pageContext.request.contextPath}/user/join';
-        }
+    	document.getElementById('loginBtn').onclick = () => {document.loginForm.submit();}
+    	
+        document.getElementById('joinBtn').onclick = () => {location.href='${pageContext.request.contextPath}/user/join';}
     	
     
     </script>
