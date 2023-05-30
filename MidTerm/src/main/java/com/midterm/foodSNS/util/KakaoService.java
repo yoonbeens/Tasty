@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,12 +17,14 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.midterm.foodSNS.command.MKakaoUserVO;
+import com.midterm.foodSNS.command.MusersVO;
+import com.midterm.foodSNS.user.mapper.IUserMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Component @Slf4j
 public class KakaoService {
-
+	
 	@Value("${kakao.clientId}")
 	private String kakaoClientId;
 	@Value("${kakao.clientSecret}")
@@ -119,9 +122,9 @@ public class KakaoService {
 		log.info("user profile: {}", responseData);
 
 		
-		return responseData;
-		
+		return responseData;		
 		
 	}
+	
 	
 }
