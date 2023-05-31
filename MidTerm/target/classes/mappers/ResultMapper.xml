@@ -9,9 +9,26 @@
 	SELECT * FROM cookDB WHERE weather= #{weather} and condition2 = #{condition2} and feeling = #{feeling}	
 	</select>
 
-
-
-
+	<select id="recipeDetail" resultType="recipe">
+		SELECT * FROM cookDB
+		WHERE cooknum = #{cooknum}
+	</select>
+	
+	<select id="getLike" resultType="like">
+		SELECT * FROM likeDB
+		WHERE cooknum = #{cooknum}
+	</select>
+	
+	<select id="chkLike" resultType="like">
+		SELECT COUNT(*) FROM likeDB
+		WHERE cooknum = #{cooknum} AND JSON_SEARCH(user_ids, 'one', #{userIds}) IS NOT NULL;
+	</select>
+	
+	<update id="updateLike">
+		UPDATE likeDB
+		SET likenum = #{likenum}, user_ids = JSON_ARRAY_APPEND(user_ids, '$', #{userIds})
+		WHERE cooknum = #{cooknum}
+	</update>
 
 
 
