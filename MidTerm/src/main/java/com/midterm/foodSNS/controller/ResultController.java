@@ -31,14 +31,13 @@ public class ResultController {
 	//메인 추천 결과 이동
 	@PostMapping("/mainResult")
 	public String resultMain (String weather, String condition, String feeling, Model model) {
-		log.info("resultMain operate");
+		
 		MSearchConditionVO vo = new MSearchConditionVO();
 		vo.setWeather(weather);
-		vo.setCondition(condition);
+		vo.setCondition2(condition);
 		vo.setFeeling(feeling);		
-		model.addAttribute("searchCondition",vo);
-		
-		
+		model.addAttribute("searchCondition",vo);		
+		model.addAttribute("recipe",service.recommand(vo));		
 		return "result/mainResult";		
 	}
 	

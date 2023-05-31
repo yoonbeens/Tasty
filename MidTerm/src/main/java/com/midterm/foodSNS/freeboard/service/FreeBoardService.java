@@ -102,6 +102,7 @@ public class FreeBoardService implements IFreeBoardService {
 	@Override
 
 	public MfreeboardArticleVO getContent(int bno) {
+
 		// TODO Auto-generated method stub
 		return null;
 	}

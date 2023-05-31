@@ -1,11 +1,14 @@
 package com.midterm.foodSNS.user.service;
 
 import java.io.File;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,18 +60,45 @@ public class UserService implements IUserService {
 		
 	}
 
+
+
 	@Override
 	public MusersVO getInfo(MusersVO vo) {
 		return mapper.getInfo(vo);
 	}
-	
-	
-	
-	
+
+	// 회원 탈퇴
+	@Override
+	public void userDelete(MusersVO vo) {
+		mapper.userDelete(vo);
+	}
+
+	// 회원 탈퇴
 
 	@Override
-	public void updateMusers(MusersVO vo) {
+	public int passChk(String pwinput,MusersVO vo) throws Exception {
+		
+		if(encoder.matches(pwinput,vo.getUserPw())) {
+			log.info("비번맞음");
+			return 1;
+			
+		} else {
+			log.info("비번틀림");
+			return 0;
+		}		
 	}
+	
+	
+	
+	
+	
+	
+	@Override
+    public void updateMusers(MusersVO vo) {
+        String securePw = encoder.encode(vo.getUserPw());             
+        vo.setUserPw(securePw); 
+        mapper.updateMusers(vo);
+    }
 	
 	@Override
 	public void profilemodify(MusersVO vo, MultipartFile file) {
