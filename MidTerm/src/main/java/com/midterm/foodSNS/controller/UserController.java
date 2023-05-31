@@ -7,6 +7,7 @@ import java.io.File;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,9 +30,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.midterm.foodSNS.command.MKakaoUserVO;
+
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.user.service.IUserService;
+import com.midterm.foodSNS.util.KakaoService;
 import com.midterm.foodSNS.util.interceptor.MailSenderService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -46,8 +51,10 @@ public class UserController {
 	private IUserService service;
 	@Autowired
 	private MailSenderService mailService;
+	@Autowired
+	private KakaoService kakaoService;
+	
 
-	// 회원가입 페이지로 이동
 	@GetMapping("/userJoin")
 	public void userJoin() {
 
@@ -147,7 +154,32 @@ public class UserController {
 	
 	//로그인 페이지로 이동 요청
 	@GetMapping("/userLogin")
-	public void userLogin() {}
+	public void login(Model model, HttpSession session) {
+		/* 카카오 URL을 만들어서 userLogin.jsp로 보내야 합니다. */
+		String kakaoAuthUrl = kakaoService.getAuthorizationUrl(session);
+		log.info("카카오 로그인 url: {}", kakaoAuthUrl);
+		model.addAttribute("urlKakao", kakaoAuthUrl);
+	}
+	
+	//로그인 성공시 콜백
+	@GetMapping("/kakao_callback")	
+	public String callbackKakao(String code, String state, HttpSession session, Model model) {
+		log.info("로그인 성공! callbackKakao 호출!");
+		log.info("인가 코드: {}", code);
+		String accessToken = kakaoService.getAccessToken(session, code, state);
+		log.info("access 토큰값: {}", accessToken);
+		
+		//accessToken을 이용하여 로그인 사용자 정보를 읽어오자.
+		MKakaoUserVO vo = kakaoService.getUserProfile(accessToken);
+		
+		return "redirect:/";
+		
+		//여기까지가 카카오 로그인 api가 제공하는 기능의 끝.
+		//추가 입력 정보가 필요하다면 추가 입력할 수 있는 페이지로 보내셔서 입력을 더 받아서
+		//데이터베이스에 데이터를 집어넣으시면 됩니다.
+		
+		
+	}
 	
 	
 	//로그인 요청
@@ -156,6 +188,14 @@ public class UserController {
 		log.info("UserController의 로그인 요청!");
 		model.addAttribute("user", service.userInfo(userId));
 	}
+	
+	//로그아웃 요청
+	@PostMapping("/userLogout")
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/";
+	}
+	
 	
 	//프로필수정페이지이동
 	@GetMapping("/userProfileModify")

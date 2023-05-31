@@ -32,6 +32,7 @@
 	<div id="main-con">
 		<div id="main-left">ddd</div>
 		<div id="main">
+
 			<%
 			ArrayList<MRecipeVO> recipes = new ArrayList<>();
 			recipes = (ArrayList<MRecipeVO>) request.getAttribute("recipe");
@@ -47,6 +48,7 @@
 			<%
 		}
 		%>
+
 		</div>
 
 		<div id="main-right">ddd</div>
