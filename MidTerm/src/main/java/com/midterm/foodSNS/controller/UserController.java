@@ -168,7 +168,7 @@ public class UserController {
 	public String profile(@RequestParam("file")MultipartFile file, MusersVO vo, Model model,HttpServletRequest request) { 
 		service.profilemodify(vo, file);		
 		HttpSession session = request.getSession();
-		session.setAttribute("login", vo);
+		session.setAttribute("login", vo);	
 		model.addAttribute("user", service.userInfo(vo.getUserId()));		
 		return "redirect:/mypage/mypageResult";
 	}
@@ -202,6 +202,20 @@ public class UserController {
 	public MusersVO getArticle(@PathVariable String userId){
 		return service.userInfo(userId);		
 	}
+	
+	@GetMapping("/test")
+	public void move(){	
+		
+		
+	}
+	@PostMapping("/test")
+	public void move(String content){
+		
+		log.info(content);
+		
+		
+	}
+	
 	
 	
 }

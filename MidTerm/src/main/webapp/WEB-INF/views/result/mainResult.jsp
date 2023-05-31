@@ -137,7 +137,11 @@
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
-			<div class="modal-body"></div>
+			<div class="modal-body">
+			
+			요리명 : <%=recipes.get(0).getFoodname()%>
+			
+			</div>
 		</div>
 </html>
 
