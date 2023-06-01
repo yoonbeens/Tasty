@@ -26,7 +26,10 @@
 
 	</script>
 	<div id="main-con">
-		<div id="main-left">ddd</div>
+			<div id="main-left">
+				<div class="left" id ="mystory">My Story</div>
+				<div class="left" id ="myrecipe">My Recipe</div>
+			</div>
 
 
 

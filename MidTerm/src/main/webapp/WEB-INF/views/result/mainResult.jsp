@@ -34,9 +34,9 @@
 				
 			
 			%>
-			<div class="boxbox" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img class="titleimg" alt="결과이미지" data-userid="${login.userId}"
-					data-cooknum=<%=recipes.get(i).getCooknum()%> src="<%=recipes.get(i).getTitleimg()%>">
+			<div class="boxbox scale" data-bs-toggle="modal" data-bs-target="#myModal">
+				<img class="titleimg " alt="결과이미지" data-userid="${login.userId}"
+					data-cooknum=<%=recipes.get(i).getCooknum()%> src="<%=recipes.get(i).getTitleimg()%>" alt="default">
 			</div>
 			<%
 		}

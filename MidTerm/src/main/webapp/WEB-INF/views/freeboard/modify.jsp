@@ -69,11 +69,11 @@
 			const iNum=e.target.dataset.inum;
 			console.log(iNum);
 
-			fetch('${pageContext.request.contextPath}/freeboard/modifyImgDelete/'+ iNum,{
-						method : 'delete'
-						}).then(res => {
-							location.reload();
-						});
+			// fetch('${pageContext.request.contextPath}/freeboard/modifyImgDelete/'+ iNum,{
+			// 			method : 'delete'
+			// 			}).then(res => {
+			// 				location.reload();
+			// 			});
 						
 
 		}else{
