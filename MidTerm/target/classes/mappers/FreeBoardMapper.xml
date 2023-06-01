@@ -20,6 +20,20 @@
 	<select id="getArticle" resultType="article">
 	select * from FreeboardArticle where freeboard_article_number =#{faNum}
 		</select>
+		
+	<select id="getCarousel" resultType="articleImg">
+	select * from FreeboardImg where freeboard_article_number =#{faNum}
+	</select>
+	
+	<delete id="delete">
+		delete from FreeboardArticle where freeboard_article_number =#{faNum}
+	</delete>
+	
+	<delete id="deleteimg">
+		delete from FreeboardImg where freeboard_img_number =#{imgNum}
+	</delete>
+	
+	
 
 </mapper>
 		

@@ -9,6 +9,7 @@
 	SELECT * FROM cookDB WHERE weather= #{weather} and condition2 = #{condition2} and feeling = #{feeling}	
 	</select>
 
+
 	<select id="recipeDetail" resultType="recipe">
 		SELECT * FROM cookDB
 		WHERE cooknum = #{cooknum}
@@ -34,13 +35,6 @@
 		DELETE FROM likeDB
 		WHERE cooknum = #{cooknum} AND user_id = #{userId}
 	</delete>
-
-
-
-
-
-
-
 
 
 

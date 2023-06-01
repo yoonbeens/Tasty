@@ -26,6 +26,7 @@
 	<div id="main-con">
 		<div id="main-left">ddd</div>
 		<div id="main">
+
 			<%
 			ArrayList<MRecipeVO> recipes = new ArrayList<>();
 			recipes = (ArrayList<MRecipeVO>) request.getAttribute("recipe");
@@ -40,6 +41,7 @@
 			<%
 		}
 		%>
+
 		</div>
 
 		<div id="main-right">ddd</div>
@@ -126,6 +128,7 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
+
 				<div id="foodname"></div>
 				<div class="modal-img">
 					<img alt="" src="" id="titleimg">
@@ -152,6 +155,7 @@
 			<div class="modal-like">
 				<div id="likenum"></div>
 				<button type="button" id="likeBtn">좋아요</button>
+
 			</div>
 		</div>
 
