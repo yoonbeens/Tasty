@@ -9,18 +9,4 @@
 	SELECT * FROM cookDB WHERE weather= #{weather} and condition2 = #{condition2} and feeling = #{feeling}	
 	</select>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </mapper>

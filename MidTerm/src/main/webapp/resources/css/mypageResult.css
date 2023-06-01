@@ -168,7 +168,7 @@ h5{
 	height: 80px;
 	border-radius: 50%;
 	margin-top :10px;
-	margin-left :10px;
+	margin-left :20px;
 	
 	padding: 10px;
 	
@@ -183,18 +183,29 @@ h5{
 
 #freeuserid{
 	padding-top: 35px;
+	width: 55%;
 	font-size: 30px;	
 }
 
 #freecontent{
-	padding: 10px;
-	
+	width: 100%;
+	box-sizing: border-box;
+	width: 100%;
+	height: 500px;
+	padding: 20px;	
+	border: 1px solid green;
 }
 
 .simg{
-	height: 200px;
+	height: 800px;
+	
 }
 
 
+#dbtn{
+	width: 20%;
+	padding-top : 38px;
+
+}
 
 
