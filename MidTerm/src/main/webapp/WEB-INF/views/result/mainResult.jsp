@@ -210,10 +210,10 @@
 					if (recipe.img4 !== '') {
 						document.getElementById(`img4`).setAttribute('src', recipe.img4);
 					}
-					document.getElementById('likenum').dataset.cooknum = recipe.cooknum; //like에 레시피 번호 저장
 				});
 			//좋아요
-			// getlike(cooknum);
+			getlike(cooknum);
+			document.getElementById('likenum').dataset.cooknum = recipe.cooknum; //like에 레시피 번호 저장
 				
 
 		} else {
@@ -223,14 +223,14 @@
 		}
 
 	});
-	/*
+	
 	//좋아요 개수 불러오기
 	function getlike(cooknum) {
 		fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
 				.then(res => res.json())
 				.then(like => {
 					console.log(like);
-					document.getElementById('likenum').textContent = like.likenum;
+					document.getElementById('likenum').textContent = like;
 				});
 	}
 	//좋아요 버튼 클릭
@@ -256,5 +256,5 @@
 				getlike(cooknum);
 			});
 	});
-	*/
+	
 </Script>

@@ -15,7 +15,7 @@ public interface IResultService {
 	MRecipeVO recipeDetail(int cooknum);
 
 	//좋아요 수 가져오기
-	LikeVO getLike(int cooknum);
+	int getLike(int cooknum);
 
 	//좋아요 수 업데이트
 	LikeVO updateLike(int cooknum, LikeVO vo);

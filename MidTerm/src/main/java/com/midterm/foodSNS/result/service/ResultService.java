@@ -31,18 +31,16 @@ public class ResultService implements IResultService {
 	}
 	
 	@Override
-	public LikeVO getLike(int cooknum) {
+	public int getLike(int cooknum) {
 		return mapper.getLike(cooknum);
 	}
 	
 	@Override
 	public LikeVO updateLike(int cooknum, LikeVO vo) {
 		if(mapper.chkLike(vo) == 1) {
-			vo.setLikenum(vo.getLikenum() -1); //좋아요를 누른 상태라면 취소
-			mapper.updateLike(vo); 
+			mapper.insertLike(vo); 
 		} else {
-			vo.setLikenum(vo.getLikenum() +1); //좋아요를 누르지 않은 상태면 좋아요+1
-			mapper.updateLike(vo); 
+			mapper.deleteLike(vo); 
 		}
 		return null;
 	}
