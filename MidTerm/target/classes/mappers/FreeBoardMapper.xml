@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.midterm.foodSNS.freeboard.mapper.IFreeBoardMapper">
+
+
+	<insert id="registArticle">
+		INSERT INTO FreeboardArticle
+		(content,user_id)
+		VALUES(#{content}, #{userId})
+	</insert>	
+	
+	<insert id="registImg">
+	INSERT INTO FreeboardImg
+	(upload_path,file_loca,file_name,file_real_name,freeboard_article_number)
+	VALUES(#{uploadPath},#{fileLoca},#{fileName},#{fileRealName},(select max(freeboard_article_number) from FreeboardArticle))
+	</insert>
+	
+	<select id="getArticle" resultType="article">
+	select * from FreeboardArticle where freeboard_article_number =#{faNum}
+		</select>
+		
+	<select id="getCarousel" resultType="articleImg">
+	select * from FreeboardImg where freeboard_article_number =#{faNum}
+	</select>
+	
+	<delete id="delete">
+		delete from FreeboardArticle where freeboard_article_number =#{faNum}
+	</delete>
+	
+	<delete id="deleteimg">
+		delete from FreeboardImg where freeboard_img_number =#{imgNum}
+	</delete>
+	
+	
+
+</mapper>
+		
+		

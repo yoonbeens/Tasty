@@ -16,8 +16,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<link href="${pageContext.request.contextPath}/css/mainResult.css" rel="stylesheet">
-<<<<<<< HEAD
-=======
 	
 	<style type="text/css">
 		@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
@@ -36,7 +34,8 @@ input {
 }
 
 #mainDiv {
-	display: block;
+	display: none;
+	z-index: -10000;
 }
 
 main {
@@ -251,6 +250,7 @@ main.sign-up-mode .carousel {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
+  width: 300px;
 }
 
 .image {
@@ -540,6 +540,7 @@ body {
   border: 1.5px solid rgba(255, 255, 255, 0.18);
 }
 
+
 #timer {
   background: -webkit-linear-gradient(left, var(--clockColor) var(--grPercent), #eee 50%);
   /* Foreground color, Background colour */
@@ -556,6 +557,12 @@ body {
   animation-iteration-count: infinite;
   animation-fill-mode: forwards; 
   cursor: pointer;
+}
+
+#timer:hover {
+	width: 110px;
+	height: 110px;
+	transition: 0.3s;
 }
 
 #mask {
@@ -1017,7 +1024,6 @@ button {
 		
 	</style>
 	
->>>>>>> yb
 </head>
 
 <body>
@@ -1035,15 +1041,9 @@ button {
 				
 			
 			%>
-<<<<<<< HEAD
-			<div class="boxbox scale" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img class="titleimg " alt="결과이미지" data-userid="${login.userId}"
-					data-cooknum=<%=recipes.get(i).getCooknum()%> src="<%=recipes.get(i).getTitleimg()%>" alt="default">
-=======
-			<div class="boxbox" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="boxbox" >
 				<img class="titleimg" alt="결과이미지" data-userid="${login.userId}"
 					data-cooknum=<%=recipes.get(i).getCooknum()%> src="<%=recipes.get(i).getTitleimg()%>">
->>>>>>> yb
 			</div>
 			<%
 		}
@@ -1125,23 +1125,13 @@ button {
 			</div>
 		</div>
 	</nav>
-
-</body>
-
-
+	
+	
 <!-- Modal -->
-<<<<<<< HEAD
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-xl">
-		<div class="modal-content">
-			<div class="modal-body">
-
-=======
 <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
->>>>>>> yb
 				<div id="foodname"></div>
 				<div class="modal-img">
 					<img alt="" src="" id="titleimg">
@@ -1164,20 +1154,8 @@ button {
 					<img id="img4">
 				</div>
 				<div id="text1"></div>
-<<<<<<< HEAD
 			</div>
-			<div class="modal-like">
-				<div id="likenum"></div>
-				<button type="button" id="likeBtn">좋아요</button>
 
-			</div>
-		</div>
-=======
-			</div>
-			<div class="modal-like">
-				<div id="likenum"></div>
-				<button type="button" id="likeBtn">좋아요</button>
-			</div>
 		</div> -->
 		
 <div id="mainDiv">
@@ -1317,7 +1295,7 @@ button {
                 <!--end content-->
                 <!--<button id="fullButton">전체화면</button>-->
                 <div class="toast">Error</div>
-                <script src="script.js"></script>
+
                 <!-- toastr js 라이브러리 -->
                 <script
                   type="text/javascript"
@@ -1331,7 +1309,10 @@ button {
             <form action="index.html" autocomplete="off" class="sign-up-form">
               <div class="logo">
                 <!-- <img src="./img/logo.png" alt="easyclass" /> -->
-                <h4>좋아요</h4>
+            <div class="modal-like">
+				<div id="likenum"></div>
+				<button type="button" id="likeBtn">좋아요</button>
+			</div>
                 <h4>즐겨찾기</h4>
               </div>
 
@@ -1384,10 +1365,10 @@ button {
           <div class="carousel">
             <div class="images-wrapper">
               <img src="" class="image img-1 show" alt="" id="titleimg"/>
-              <img src="" class="image img-2" alt="img1" />
-              <img src="" class="image img-3" alt="img2" />
-              <img src="" class="image img-3" alt="img3" />
-              <img src="" class="image img-3" alt="img4" />
+              <img src="" class="image img-2" alt="img1" id="img1" />
+              <img src="" class="image img-3" alt="img2" id="img2" />
+              <img src="" class="image img-4" alt="img3" id="img3" />
+              <img src="" class="image img-5" alt="img4" id="img4" />	
             </div>
 
             <div class="text-slider">
@@ -1405,6 +1386,8 @@ button {
                 <span class="active" data-value="1"></span>
                 <span data-value="2"></span>
                 <span data-value="3"></span>
+                <span data-value="4"></span>
+                <span data-value="5"></span>
               </div>
             </div>
           </div>
@@ -1413,37 +1396,21 @@ button {
     </main>
 </div>	
 		
-		
-		
-		
-		
->>>>>>> yb
-
-</html>
-
+	
+	
 <Script>
 	document.getElementById('main').addEventListener('click', e => {
-<<<<<<< HEAD
-
-=======
-		console.log('클릭 됐니?')
->>>>>>> yb
+		console.log('클릭됐니?')
 		if (e.target.matches('.boxbox img')) {
-			const faNum = e.target.dataset.fanum;
+			/* const faNum = e.target.dataset.fanum; */
 			const userId = e.target.dataset.userid;
 			const cooknum = e.target.dataset.cooknum;
 
-			console.log(faNum);
+			/* console.log(faNum); */
 			console.log(userId);
 			console.log(cooknum);
 
-			fetch('${pageContext.request.contextPath}/freeboard/getArticle/' + faNum)
-				.then(res => res.json())
-				.then(data => {
-					console.log(data);
-					document.getElementById('freeuserid').textContent = data.userId;
-					document.getElementById('freecontent').textContent = data.content;
-				});
+
 
 			//레시피 상세정보 불러오기
 			fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
@@ -1478,43 +1445,34 @@ button {
 					if (recipe.img4 !== '') {
 						document.getElementById(`img4`).setAttribute('src', recipe.img4);
 					}
-<<<<<<< HEAD
+					document.getElementById('likenum').dataset.cooknum = recipe.cooknum; // like에 레시피 번호 저장
 				});
-			//좋아요
-			getlike(cooknum);
-			document.getElementById('likenum').dataset.cooknum = recipe.cooknum; //like에 레시피 번호 저장
-				
-=======
-					document.getElementById('likenum').dataset.cooknum = recipe.cooknum; //like에 레시피 번호 저장
-				});
-			//좋아요
-			// getlike(cooknum);
-				doucument.getElimentById('mainDiv').style.display = 'block';
->>>>>>> yb
 
+				document.getElementById('mainDiv').style.display = 'block';
+				document.getElementById('mainDiv').style.zIndex = '10000';
+				document.getElementById('main-con').style.display = 'none';
+				document.getElementById('main-con').style.zIndex = '-10000';
+				console.log('Div보여줘');
 		} else {
 			console.log('여기는 이벤트 대상이 아님');
-				doucument.getElimentById('mainDiv').style.display = 'none';
+				document.getElementById('mainDiv').style.display = 'none';
+				document.getElementById('mainDiv').style.zIndex = '-10000';
+				document.getElementById('main-con').style.display = 'block';
+				document.getElementById('main-con').style.zIndex = '10000';
 			return;
 		}
 
 	});
-<<<<<<< HEAD
 	
-=======
+	
 	/*
->>>>>>> yb
 	//좋아요 개수 불러오기
 	function getlike(cooknum) {
 		fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
 				.then(res => res.json())
 				.then(like => {
 					console.log(like);
-<<<<<<< HEAD
-					document.getElementById('likenum').textContent = like;
-=======
 					document.getElementById('likenum').textContent = like.likenum;
->>>>>>> yb
 				});
 	}
 	//좋아요 버튼 클릭
@@ -1540,9 +1498,215 @@ button {
 				getlike(cooknum);
 			});
 	});
-<<<<<<< HEAD
-	
-=======
 	*/
->>>>>>> yb
+	
+	const inputs = document.querySelectorAll(".input-field");
+	const toggle_btn = document.querySelectorAll(".toggle");
+	const main = document.querySelector("main");
+	const bullets = document.querySelectorAll(".bullets span");
+	const images = document.querySelectorAll(".image");
+
+	inputs.forEach((inp) => {
+	  inp.addEventListener("focus", () => {
+	    inp.classList.add("active");
+	  });
+	  inp.addEventListener("blur", () => {
+	    if (inp.value != "") return;
+	    inp.classList.remove("active");
+	  });
+	});
+
+	toggle_btn.forEach((btn) => {
+	  btn.addEventListener("click", () => {
+	    main.classList.toggle("sign-up-mode");
+	  });
+	});
+
+	function moveSlider() {
+	  let index = this.dataset.value;
+	  console.log('bullet index: ' + index);
+	  const imgClassName = '.img-' + index;
+	  
+	  let currentImage = document.querySelector(imgClassName);
+	  images.forEach((img) => img.classList.remove("show"));
+	  currentImage.classList.add("show");
+
+	  const textSlider = document.querySelector(".text-group");
+	  const textSliderSolution = 'translateY' + (-(index - 1)*2.2) + 'rem';
+/* 	  textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+
+	  
+	  bullets.forEach((bull) => bull.classList.remove("active"));
+	  this.classList.add("active");
+
+	}
+	  
+		bullets.forEach((bullet) => {
+		  bullet.addEventListener("click", moveSlider);
+		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	function toast(msg) {
+	  document.querySelector(".toast").innerHTML = msg;
+	  document.querySelector(".toast").style.animationPlayState = "running";
+	}
+
+	//modal function
+
+	function show() {
+	  document.querySelector(".background").className = "background show";
+	}
+
+	function close() {
+	  document.querySelector(".background").className = "background";
+	}
+
+	document.querySelector("#f5Text").addEventListener("click", show);
+	document.querySelector("#close").addEventListener("click", close);
+	//end modal function
+
+	var total;
+	var forCount;
+
+	function setTime() {
+	  var hour = document.getElementById("hour").value;
+	  var min = document.getElementById("min").value;
+	  var sec = document.getElementById("sec").value;
+
+	  total = hour * 3600 + min * 60 + sec * 1;
+	  forCount = total;
+	  total = total + "s";
+	  var realMin = hour * 60 + min * 1;
+
+	  if (total !== "0s") {
+	    document.getElementById("minutes").innerHTML = realMin;
+	    document.body.style.setProperty("--timerTime", total);
+	  } else {
+	    toast("시간을 설정하세요");
+	  }
+
+	  if (realMin === 1) {
+	    document.getElementById("title").innerHTML = "1 minute";
+	  } else {
+	    document.getElementById("title").innerHTML = realMin + " minutes";
+	  }
+	}
+
+	document.getElementById("submit").addEventListener("click", close);
+
+	// function setColor() {
+	//   var clColor = document.getElementById("clockColor").value;
+	//   var bgColor = document.getElementById("backColor").value;
+
+	//   document.body.style.setProperty("--bgColor", bgColor);
+	//   document.body.style.setProperty("--clockColor", clColor);
+	// }
+
+	function hide() {
+	  document.getElementById("speech").style.visibility = "hidden";
+	}
+
+	document.getElementById("f5Text").addEventListener("click", hide);
+	document.getElementById("submit").addEventListener("click", setTime);
+	// document.getElementById("submit").addEventListener("click", setColor);
+
+	var condition = "paused";
+
+	function start() {
+	  if (condition === "paused") {
+	    startTimer();
+	  } else {
+	    stopTimer();
+	  }
+	}
+
+	//[f5] div 만 새로고침 fn
+	function f5() {
+	    stopTimer();
+	    document.getElementById("f5").innerHTML = document.getElementById(
+	      "f5"
+	    ).innerHTML;
+	}
+
+
+	function f5Text() {
+	    document.getElementById("f5Text").innerHTML = document.getElementById(
+	    "f5Text"
+	    ).innerHTML;
+	}
+
+	document.querySelector("#reset").addEventListener("click", f5);
+	document.querySelector("#reset").addEventListener("click", f5Text);
+
+	document.querySelector("#timer").addEventListener("click", start);
+
+	document.querySelector("#text").addEventListener("animationiteration", function() {
+	    Swal.fire({
+	        title: '시간 초과',
+	        showDenyButton: false,
+	        showCancelButton: false,
+	        confirmButtonText: '확인',
+	        icon: "warning"
+	      }).then((result) => {
+	        /* Read more about isConfirmed, isDenied below */
+	        if (result.isConfirmed) {
+	          reset();
+	        } 
+	      });
+
+	    f5();
+	    f5Text();
+	});
+
+
+	function reset() {
+	  window.location.reload();
+	}
+
+	function startTimer() {
+
+	  document.getElementById("timer").className = "stop";
+	  // document.getElementById("timerButton").innerHTML = "정지";
+	  document.getElementById("timer").style.animationPlayState = "running";
+	  document.getElementById("mask").style.animationPlayState = "running";
+	  document.getElementById("text").style.animationPlayState = "running";
+	  condition = "running";
+
+	  document.body.style.setProperty("--grPercent", "50%");
+	}
+
+	function stopTimer() {
+
+	  document.getElementById("timer").className = "start";
+	  // document.getElementById("timerButton").innerHTML = "시작";
+	  document.getElementById("timer").style.animationPlayState = "paused";
+	  document.getElementById("mask").style.animationPlayState = "paused";
+	  document.getElementById("text").style.animationPlayState = "paused";
+	  condition = "paused";
+
+	  document.body.style.setProperty("--grPercent", "50%");
+	}
+	
+	
 </Script>
+		
+	
+	
+
+</body>
+		
+
+</html>
