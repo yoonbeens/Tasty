@@ -53,7 +53,7 @@ public class MyPageController {
 		
 		List<MusersVO> countFollower = service.countFollower(vo.getUserId());
 		
-					
+
 		
 		model.addAttribute("article",articleList);
 		model.addAttribute("img",imgList);

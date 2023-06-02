@@ -25,7 +25,6 @@
 	display : flex;
 	flex-wrap: wrap;
 	overflow: scroll;
-	justify-content: space-evenly;
 		
 }
 #main::-webkit-scrollbar {
@@ -44,10 +43,12 @@
 .boxbox{
 	box-sizing: border-box;
 	color : red;
-	width : 32%;
+	width : 33.3%;
 	height: 300px;	
+
 	margin-top : 10px;
 	margin-bottom : 10px;	
+
 	border-radius :30px;
 	
 }
@@ -56,24 +57,6 @@
 	width:100%;
 	border-radius :30px;
 	
-}
-
-.scale {
-  transform: scale(1);
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transition: all 0.3s ease-in-out; /* 부드러운 모션을 위해 추가*/
-}
-.scale:hover {
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -o-transform: scale(1.1);
-   z-index: 999;
-  
 }
 
 aside {
@@ -92,6 +75,7 @@ aside {
 #logo {
 	box-sizing: border-box;
 	width: 100%;
+
 	height: 10vh;
 	/* border: 1px solid green; */
 }
@@ -212,6 +196,12 @@ h5{
 
 
 
+
+=======
+	height: 20vh;
+	border: 1px solid green;
+}
+
 #menu {
 	box-sizing: border-box;
 	width: 100%;
@@ -279,9 +269,3 @@ a {
 	cursor: pointer;
 }
 
-.boxbox img{
-
-	width: 100%;
-	height: 300px;
-
-}

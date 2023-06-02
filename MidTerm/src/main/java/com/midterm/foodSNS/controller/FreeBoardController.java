@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +40,9 @@ public class FreeBoardController {
 	@PostMapping("/regist")
 	public String profile(@RequestParam("file")List<MultipartFile> file,MfreeboardArticleVO avo,MfreeboardImgVO ivo) {	
 		service.registArticle(avo);
-		service.registImg(ivo,file);		
+		service.registImg(ivo,file);
+		
+		
 		return "redirect:/mypage/mypageResult";
 	}
 	
@@ -74,6 +74,7 @@ public class FreeBoardController {
 		model.addAttribute("avo",avo);
 		model.addAttribute("ivo",ivo);		
 		 return "freeboard/modify";
+
 	}
 	
 	@ResponseBody
@@ -91,8 +92,6 @@ public class FreeBoardController {
 		
 		 return "redirect:/mypage/mypageResult";
 	}
-	
-	
 	
 	
 

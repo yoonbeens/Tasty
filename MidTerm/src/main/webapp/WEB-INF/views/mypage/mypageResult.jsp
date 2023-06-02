@@ -22,8 +22,10 @@
 	crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/css/mypageResult.css"
 	rel="stylesheet">
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
 </head>
 
 <body>
@@ -34,6 +36,7 @@
 
 	</script>
 	<div id="main-con">
+
 		<div id="main-left">
 			<div class="left" id="mystory">My Story</div>
 			<div class="left" id="myrecipe">My Recipe</div>
@@ -80,18 +83,22 @@
 			%>
 			
 
+
 			<div class="boxbox scale" data-bs-toggle="modal"
 				data-bs-target="#myModal">
+
 				<img
 					src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
 				/<%=imgcon.get(0).getFileName()%>"
 					alt="default" id="article-img" data-userid="${login.userId}"
+
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
 
 			<%
 			break;
+
 			}
 			}
 			%>
@@ -156,8 +163,10 @@
 
 	<nav class="navbar bg-success fixed-top ">
 		<div class="container-fluid">
+
 			<a class="navbar-brand text-light"
 				href="${pageContext.request.contextPath}/">Tasty Friend</a>
+
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
 				aria-controls="offcanvasNavbar">
@@ -167,7 +176,9 @@
 			<div class="offcanvas offcanvas-end" tabindex="-1"
 				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 				<div class="offcanvas-header">
+
 					<aside></aside>
+
 				</div>
 
 			</div>
@@ -233,13 +244,26 @@
 				<div class="modal-img">
 					<div id="carouselExampleIndicators"
 						class="carousel slide carousel-dark" data-bs-ride="true">
-						<div class="carousel-indicators" id="carouselbtn">
 
-							<!--여기 게시물별 버튼 들어감-->
+						<div class="carousel-indicators" id="carouselbtn">
+							<button type="button" data-bs-target="#carouselExampleIndicators"
+								data-bs-slide-to="0" class="active" aria-current="true"
+								aria-label="Slide 1"></button>
+							<button type="button" data-bs-target="#carouselExampleIndicators"
+								data-bs-slide-to="1" aria-label="Slide 2"></button>
+							<button type="button" data-bs-target="#carouselExampleIndicators"
+								data-bs-slide-to="2" aria-label="Slide 3"></button>
 						</div>
 
-						<div class="carousel-inner" id="carouselinput">
-							<!--여기 게시물별 이미지 들어감-->
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="${pageContext.request.contextPath}/img/test.png"
+									class="d-block w-100 simg" alt="..xxxe.">
+							</div>
+							<div class="carousel-item">
+								<img src="${pageContext.request.contextPath}/img/test.png"
+									class="d-block w-100 simg" alt=".xxx..">
+							</div>						
 						</div>
 
 						<button class="carousel-control-prev" type="button"
@@ -261,6 +285,7 @@
 						<img
 							src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
 							alt="default" id="profile-img2">
+
 
 						<div id="freeuserid"></div>
 						<div class="dropdown" id="dbtn">
@@ -350,9 +375,11 @@
 
 					</div>
 
+
 				</div>
 			</div>
 		</div>
+
 
 		<Script>
 			let strimg = '';
@@ -484,6 +511,7 @@
 					myModal.addEventListener('hidden.bs.modal', () => {
 						console.log("모달닫힘");
 
+
 						location.reload();
 					})
 
@@ -502,14 +530,17 @@
 								}
 							});
 
+
 						} else {
 							return;
 						}
 
 					});
 
-				} else {
-					console.log('여기는 이벤트 대상이 아님');
+
+			return;
+		}
+
 
 					return;
 				}
@@ -517,6 +548,7 @@
 
 
 
+	});
 
-			});
-		</Script>
+	
+</Script>

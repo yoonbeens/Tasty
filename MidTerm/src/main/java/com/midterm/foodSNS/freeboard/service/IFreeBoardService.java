@@ -23,17 +23,17 @@ public interface IFreeBoardService {
 	MfreeboardArticleVO getArticle(int faNum);
 	
 
+
 	void update(Map<String, Object> map);
+
 	
 	//삭제
-	void delete(int fanNum);
+	void delete(int bno);
 
 	List<MfreeboardImgVO> getCarousel(int faNum );
 
 
 	
-	
-	
-	
+
 	
 }
