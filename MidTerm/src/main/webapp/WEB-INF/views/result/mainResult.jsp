@@ -5,6 +5,7 @@
 <%@page import="com.midterm.foodSNS.command.MfreeboardArticleVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +20,13 @@
 	
 	<style type="text/css">
 		@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+    @font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 
 *,
 *::before,
@@ -33,9 +41,18 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+#superCon {
+  position: relative;
+}
+
 #mainDiv {
+  width: 50%;
 	display: none;
-	z-index: -10000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* z-index: 9999; */
 }
 
 main {
@@ -48,6 +65,25 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+
+#ingredient {
+  /* font-family: 'LINESeedKR-Bd'; */
+  font-weight: 100;
+  font-size: 14px;
+  color: rgb(135, 135, 135);
+  /* letter-spacing: 10px; */
+  line-height: 2;
+  word-spacing: 5px;
+}
+
+.blank {
+  width: auto;
+  height: 800px;
+  margin: 200px;
+  padding: 300px;
+}
+
 
 
 .box {
@@ -237,20 +273,28 @@ main.sign-up-mode .carousel {
   width: 55%;
   left: 45%;
   top: 0;
-  background-color: #ffe0d2;
+  background-color: #F2F1F6;
   border-radius: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
   padding-bottom: 2rem;
   overflow: hidden;
   transition: 0.8s ease-in-out;
+
 }
 
 .images-wrapper {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  width: 300px;
+  /* width: auto;
+  height: 400px; */
+  /* width: auto; */
+  /* height: 300px; */
+}
+
+.images-wrapper img {
+  height: 300px;
 }
 
 .image {
@@ -262,7 +306,8 @@ main.sign-up-mode .carousel {
 }
 
 .img-1 {
-  transform: translate(0, -50px);
+  /* transform: translate(0, -50px); */
+  transform: scale(0.4, 0.5);
 }
 
 .img-2 {
@@ -270,7 +315,12 @@ main.sign-up-mode .carousel {
 }
 
 .img-3 {
-  transform: scale(0.3) rotate(-20deg);
+  /* transform: scale(0.3) rotate(-20deg); */
+  transform: scale(0.4, 0.5);
+}
+
+.img-4 {
+  transform: scale(0.4, 0.5);
 }
 
 .image.show {
@@ -283,10 +333,11 @@ main.sign-up-mode .carousel {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6); */
 }
 
 .text-wrap {
-  max-height: 2.2rem;
+  max-height: 6.6rem;
   overflow: hidden;
   margin-bottom: 2.5rem;
 }
@@ -297,18 +348,26 @@ main.sign-up-mode .carousel {
   text-align: center;
   transform: translateY(0);
   transition: 0.5s;
+  text-indent: 30px;
+  padding: 50px;
+  font-family: 'LINESeedKR-Bd';
+/*   position:  absolute;
+  top: 20%;
+  left: 30%; */
+  
 }
 
 .text-group h2 {
   line-height: 2.2rem;
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 1rem; 
 }
 
 .bullets {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10000;
 }
 
 .bullets span {
@@ -377,6 +436,7 @@ main.sign-up-mode .carousel {
     width: 100%;
     padding: 3rem 2rem;
     display: flex;
+    position: relative;
   }
 
   .images-wrapper {
@@ -437,7 +497,7 @@ main.sign-up-mode .carousel {
 #content {
   display: flex;
   align-items: center;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
 }
 
 /*폰트 인클루드*/
@@ -489,7 +549,7 @@ body {
   font-family: "ROKAFSlabSerifBold";
   font-size: 20pt;
   color: darkgrey;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 
   animation-name: text;
   animation-duration: var(--timerTime);
@@ -519,7 +579,7 @@ body {
   }
 }
 
-.clockBox {
+/* .clockBox {
   margin-top: 10px;
   margin-bottom: 50px;
   margin-left: 0px;
@@ -533,12 +593,12 @@ body {
   justify-content: center;
 
   background: rgba(255, 255, 255, 0.15);
-  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border-radius: 40px;
   border: 1.5px solid rgba(255, 255, 255, 0.18);
-}
+} */
 
 
 #timer {
@@ -629,7 +689,7 @@ body {
 
 .show {
   opacity: 1;
-  z-index: 1000;
+  /* z-index: 1000; */
   transition: all 0.5s;
 }
 
@@ -1027,6 +1087,9 @@ button {
 </head>
 
 <body>
+
+  <div id="superCon">
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 
@@ -1185,10 +1248,14 @@ button {
                     required
                   /> -->
                   <label>재료 소개</label>
+                  <br> <br>
                   <div id="ingredient"></div>
+
+
                 </div>
 
                 <div class="input-wrap">
+                  <div class="blank"></div>
                   <!-- <input
                     type="password"
                     minlength="4"
@@ -1196,7 +1263,7 @@ button {
                     autocomplete="off"
                     required
                   /> -->
-                  <label>예상 조리 시간</label>
+                  <!-- <label>예상 조리 시간</label> -->
                   <!-- <div>예상 조리 시간</div> -->
                 </div>
 
@@ -1216,6 +1283,51 @@ button {
                 
 
                 
+                
+
+
+              </div>
+            </form>
+
+            <form action="index.html" autocomplete="off" class="sign-up-form">
+              <div class="logo">
+                <!-- <img src="./img/logo.png" alt="easyclass" /> -->
+            <div class="modal-like">
+				<div id="likenum"></div>
+				<button type="button" id="likeBtn">좋아요</button>
+			</div>
+                <h4>즐겨찾기</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Get Started</h2>
+                <h6>요리 시간 재기</h6>
+                <a href="#" class="toggle">Timer</a>
+              </div>
+
+              <div class="actual-form">
+                <!-- <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Name</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="email"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Email</label>
+                </div> -->
+
+
                 <div id="content">
                   <div id="f5Text">
                     <div id="text" style="margin-bottom: -25px;">
@@ -1303,46 +1415,6 @@ button {
                 ></script>
 
 
-              </div>
-            </form>
-
-            <form action="index.html" autocomplete="off" class="sign-up-form">
-              <div class="logo">
-                <!-- <img src="./img/logo.png" alt="easyclass" /> -->
-            <div class="modal-like">
-				<div id="likenum"></div>
-				<button type="button" id="likeBtn">좋아요</button>
-			</div>
-                <h4>즐겨찾기</h4>
-              </div>
-
-              <div class="heading">
-                <h2>Get Started</h2>
-                <h6>요리 시간 재기</h6>
-                <a href="#" class="toggle">Timer</a>
-              </div>
-
-              <div class="actual-form">
-                <div class="input-wrap">
-                  <input
-                    type="text"
-                    minlength="4"
-                    class="input-field"
-                    autocomplete="off"
-                    required
-                  />
-                  <label>Name</label>
-                </div>
-
-                <div class="input-wrap">
-                  <input
-                    type="email"
-                    class="input-field"
-                    autocomplete="off"
-                    required
-                  />
-                  <label>Email</label>
-                </div>
 
                 <div class="input-wrap">
                   <input
@@ -1381,16 +1453,17 @@ button {
                   <h2 id="text4"></h2>
                 </div>
               </div>
-
+              
               <div class="bullets">
                 <span class="active" data-value="1"></span>
                 <span data-value="2"></span>
                 <span data-value="3"></span>
                 <span data-value="4"></span>
                 <span data-value="5"></span>
-              </div>
-            </div>
-          </div>
+              </div>              
+              
+            </div> <!-- end text-slider -->
+          </div><!-- end carousel -->
         </div>
       </div>
     </main>
@@ -1399,7 +1472,7 @@ button {
 	
 	
 <Script>
-	document.getElementById('main').addEventListener('click', e => {
+	document.getElementById('superCon').addEventListener('click', e => {
 		console.log('클릭됐니?')
 		if (e.target.matches('.boxbox img')) {
 			/* const faNum = e.target.dataset.fanum; */
@@ -1449,16 +1522,16 @@ button {
 				});
 
 				document.getElementById('mainDiv').style.display = 'block';
-				document.getElementById('mainDiv').style.zIndex = '10000';
-				document.getElementById('main-con').style.display = 'none';
-				document.getElementById('main-con').style.zIndex = '-10000';
+
+/* 				document.getElementById('main-con').style.display = 'none'; */
+
 				console.log('Div보여줘');
-		} else {
+		} else { //!e.target.matches('#mainDiv')
 			console.log('여기는 이벤트 대상이 아님');
 				document.getElementById('mainDiv').style.display = 'none';
-				document.getElementById('mainDiv').style.zIndex = '-10000';
-				document.getElementById('main-con').style.display = 'block';
-				document.getElementById('main-con').style.zIndex = '10000';
+				console.log('없어졌니');
+/* 				document.getElementById('main-con').style.display = 'block'; */
+
 			return;
 		}
 
@@ -1532,8 +1605,10 @@ button {
 	  currentImage.classList.add("show");
 
 	  const textSlider = document.querySelector(".text-group");
-	  const textSliderSolution = 'translateY' + (-(index - 1)*2.2) + 'rem';
- 	  textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+/* 	  const textSliderSolution = 'translateY' + (-(index - 1)*2.2) + 'rem';
+	  textSlider.style.transform = textSliderSolution; */
+	  
+ 	  textSlider.style.transform = `translateY(` + (-(index - 1) * 6.6) + `rem)`;
 
 	  
 	  bullets.forEach((bull) => bull.classList.remove("active"));
@@ -1704,8 +1779,8 @@ button {
 </Script>
 		
 	
-	
-
+	<!-- superCon end-->
+</div> 
 </body>
 		
 
