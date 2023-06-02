@@ -42,6 +42,8 @@
 			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
 			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
 			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
+			
+			int followCheck = (int)request.getAttribute("followCheck");
 
 			for (int i = 0; i < articles.size(); i++) {
 				ArrayList<MfreeboardImgVO> imgcon = new ArrayList<>();
@@ -80,8 +82,22 @@
 
 				<div id="simpleProfile">
 					<h1><%=user.getUserId()%></h1>
-					<a href="" id="follow" data-followerid="${login.userId}"
-						data-targetid="<%=user.getUserId()%>">Follow</a>
+					
+					<%if(followCheck==0) {%>
+					<button id="follow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>">Follow</button>
+
+						<button id="unfollow"  data-followerid="${login.userId}"
+					data-targetid="<%=user.getUserId()%>" style="display: none;">UnFollow</button>
+						<%}else if(followCheck==1){ %>
+
+							<button id="follow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>" style="display: none;">Follow</button>
+						
+					<button id="unfollow"  data-followerid="${login.userId}"
+					data-targetid="<%=user.getUserId()%>">UnFollow</button>
+					<%} %>
+					
 					<h3><%=user.getUserNick()%></h3>
 					<h5><%=user.getMessage()%></h5>
 				</div>
@@ -89,8 +105,9 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Follower
-							Chief</a></li>
+					<li class="nav-item">
+						<div class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#followModal">FollowerChief</div>
+					</li>
 					<li class="nav-item"><a class="nav-link" href="#">Following
 							Chief</a></li>
 
@@ -127,6 +144,24 @@
 	</nav>
 
 </body>
+
+
+<!-- follow Modal -->
+  <div class="modal fade" id="followModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">Follow</h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			
+		 
+		</div>
+		
+	  </div>
+	</div>
+  </div>
 
 
 <!-- Modal -->
@@ -261,14 +296,29 @@
 				console.log("follow 시작됨");
 				const followerId = e.target.dataset.followerid;
 				const targetId = e.target.dataset.targetid;
-				console.log(followerId);
-				console.log(targetId);
-
+				
 
 				fetch('${pageContext.request.contextPath}/mypage/addFollow/'+targetId, {
 					method: 'post'					
 				}).then(res => {
-							console.log("follow성공함");							
+							console.log("follow성공함");
+							document.getElementById('follow').style.display = "none";	
+							document.getElementById('unfollow').style.display = "block";				
+						});
+			});
+
+			document.getElementById('unfollow').addEventListener('click', e => {
+				console.log("unfollow 시작됨");
+				const followerId = e.target.dataset.followerid;
+				const targetId = e.target.dataset.targetid;
+				
+
+				fetch('${pageContext.request.contextPath}/mypage/deleteFollow/'+targetId, {
+					method: 'delete'					
+				}).then(res => {
+							console.log("unfollow성공함");
+							document.getElementById('follow').style.display = "block";	
+							document.getElementById('unfollow').style.display = "none";				
 						});
 			});
 

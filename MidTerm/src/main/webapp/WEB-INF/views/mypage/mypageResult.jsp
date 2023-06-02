@@ -37,17 +37,39 @@
 		<div id="main-left">
 			<div class="left" id="mystory">My Story</div>
 			<div class="left" id="myrecipe">My Recipe</div>
+			countFollowing: ${countFollowing} <br>
+			countFollower : ${countFollower}
 		</div>
 
 
 
 		<div id="main">
 			<%
-			
 			ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
 			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
 			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
 			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
+			
+			ArrayList<MusersVO> followers = (ArrayList<MusersVO>)request.getAttribute("countFollower");
+			
+
+		
+			
+			//System.out.println("cf: " + request.getAttribute("countFollowing"));
+			
+			
+			/* if ((int) request.getAttribute("countFollowing") == 0) {
+				countFollowing = 0;
+			} else {
+				countFollowing = (int) request.getAttribute("countFollowing");
+
+			}
+			if ((int) request.getAttribute("countFollower") == 0) {
+				countFollowing = 0;
+			} else {
+				countFollowing = (int) request.getAttribute("countFollower");
+
+			} */
 
 			for (int i = 0; i < articles.size(); i++) {
 				ArrayList<MfreeboardImgVO> imgcon = new ArrayList<>();
@@ -56,6 +78,7 @@
 					if (articles.get(i).getFreeboardArticleNumber() == imgs.get(j).getFreeboardArticleNumber()) {
 				imgcon.add(imgs.get(j));
 			%>
+			
 
 			<div class="boxbox scale" data-bs-toggle="modal"
 				data-bs-target="#myModal">
@@ -69,7 +92,7 @@
 
 			<%
 			break;
-					}
+			}
 			}
 			%>
 
@@ -79,7 +102,8 @@
 
 
 		</div>
-		<div id="main-right">
+		<div id="main-right"> 			
+		
 			<div id="profile-img-con">
 				<img
 					src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
@@ -97,10 +121,10 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Follower
-							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Following
-							Chief</a></li>
+					<li class="nav-item"><div class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#followerModal">Follower Chief</div></li>
+
+					<li class="nav-item"><div class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#followingModal">Following Chief</div></li>
+
 					<li class="nav-item"><a class="nav-link" href="#">Add My
 							Recipe</a></li>
 					<li class="nav-item"><a class="nav-link"
@@ -151,6 +175,53 @@
 	</nav>
 
 </body>
+
+<!-- follow Modal -->
+<div class="modal fade" id="followerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		
+		<%for(int i =0 ;i<followers.size();i++){
+			%>
+			
+			<%-- <div><img src="${pageContext.request.contextPath}/user/display/<%=followers.get(i).getFileLoca()%>/<%=followers.get(i).getFileName()%>"
+					alt="default" id="fprofile-img"> ${countFollower.userId}
+			</div>
+			 --%>
+			
+			
+			<%} %>
+		
+			
+		 
+		</div>
+		
+	  </div>
+	</div>
+  </div>
+
+<!-- follow Modal -->
+<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			
+		 
+		</div>
+		
+	  </div>
+	</div>
+  </div>
+
 
 
 <!-- Modal -->
@@ -287,6 +358,8 @@
 			let strimg = '';
 			let strbtn = '';
 			let strmodi = '';
+
+			document.getElementById('main').addEventListener('click', e => {
 
 			document.getElementById('main').addEventListener('click', e => {
 
