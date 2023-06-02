@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.midterm.foodSNS.command.MSearchConditionVO;
+import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.result.service.IResultService;
 import com.midterm.foodSNS.util.DBservice;
 import com.midterm.foodSNS.util.MDBVO;
@@ -41,6 +42,8 @@ public class ResultController {
 		return "result/mainResult";		
 	}
 	
+
+	
 	@GetMapping("/resultDetail")
 	public String resultDetail() {
 		
@@ -53,5 +56,34 @@ public class ResultController {
 		return"/home";
 		
 	}
+	@GetMapping("/getWeather")
+	public String  getWeather(Model model) {
+		model.addAttribute("weather",DBservice.getWeather()); 
+		log.info("온도" +DBservice.getWeather().get("weather") );
+		return"result/weather";
+		
+	}
 	
+
+	@GetMapping("/recipe/{cooknum}")
+	@ResponseBody
+	public MRecipeVO detail(@PathVariable int cooknum) {
+		return service.recipeDetail(cooknum);
+	}
+	
+	@GetMapping("/recipe/like/{cooknum}")
+	@ResponseBody
+	public int getLike(@PathVariable int cooknum) {
+		log.info("레시피 번호: "+cooknum);
+		log.info("좋아요 수" + service.getLike(cooknum));
+		return service.getLike(cooknum);
+	}
+	
+	@PutMapping("/recipe/like/{cooknum}")
+	@ResponseBody
+	public LikeVO updateLike(@PathVariable int cooknum, @RequestBody LikeVO vo) {
+		return service.updateLike(cooknum, vo);
+	}
+	
+
 }

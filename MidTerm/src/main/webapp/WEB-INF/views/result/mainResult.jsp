@@ -157,13 +157,7 @@
 			console.log(faNum);
 			console.log(userId);
 
-			fetch('${pageContext.request.contextPath}/freeboard/getArticle/' + faNum)
-				.then(res => res.json())
-				.then(data => {
-					console.log(data);
-					document.getElementById('freeuserid').textContent = data.userId;
-					document.getElementById('freecontent').textContent = data.content;
-				});
+		
 
 			
 

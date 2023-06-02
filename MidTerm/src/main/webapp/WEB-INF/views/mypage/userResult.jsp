@@ -11,68 +11,39 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<title>Bootstrap demo</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-<link href="${pageContext.request.contextPath}/css/mypageResult.css"
-	rel="stylesheet">
-
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<title>Bootstrap demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link href="${pageContext.request.contextPath}/css/mypageResult.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 
 	</script>
 	<div id="main-con">
-
 		<div id="main-left">
-			<div class="left" id="mystory">My Story</div>
-			<div class="left" id="myrecipe">My Recipe</div>
-			countFollowing: ${countFollowing} <br>
-			countFollower : ${countFollower}
+			<div class="left" id="mystory"> Story</div>
+			<div class="left" id="myrecipe">Recipe</div>
 		</div>
 
 
 
 		<div id="main">
 			<%
+			MusersVO user = new MusersVO();
+			user = (MusersVO)request.getAttribute("user");			
 			ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
 			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
 			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
 			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
 			
-			ArrayList<MusersVO> followers = (ArrayList<MusersVO>)request.getAttribute("countFollower");
-			
-
-		
-			
-			//System.out.println("cf: " + request.getAttribute("countFollowing"));
-			
-			
-			/* if ((int) request.getAttribute("countFollowing") == 0) {
-				countFollowing = 0;
-			} else {
-				countFollowing = (int) request.getAttribute("countFollowing");
-
-			}
-			if ((int) request.getAttribute("countFollower") == 0) {
-				countFollowing = 0;
-			} else {
-				countFollowing = (int) request.getAttribute("countFollower");
-
-			} */
+			int followCheck = (int)request.getAttribute("followCheck");
 
 			for (int i = 0; i < articles.size(); i++) {
 				ArrayList<MfreeboardImgVO> imgcon = new ArrayList<>();
@@ -81,25 +52,17 @@
 					if (articles.get(i).getFreeboardArticleNumber() == imgs.get(j).getFreeboardArticleNumber()) {
 				imgcon.add(imgs.get(j));
 			%>
-			
 
-
-			<div class="boxbox scale" data-bs-toggle="modal"
-				data-bs-target="#myModal">
-
-				<img
-					src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
-				/<%=imgcon.get(0).getFileName()%>"
-					alt="default" id="article-img" data-userid="${login.userId}"
-
+			<div class="boxbox scale" data-bs-toggle="modal" data-bs-target="#myModal">
+				<img src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
+				/<%=imgcon.get(0).getFileName()%>" alt="default" id="article-img" data-userid="<%=user.getUserId()%>"
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
 
 			<%
 			break;
-
-			}
+					}
 			}
 			%>
 
@@ -109,46 +72,47 @@
 
 
 		</div>
-		<div id="main-right"> 			
-		
+		<div id="main-right">
+
 			<div id="profile-img-con">
-				<img
-					src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+				<img src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
 					alt="default" id="profile-img">
 			</div>
 			<div class="profileWrapper">
+
 				<div id="simpleProfile">
-					<h1>${login.userId}</h1>
-					<a href="${pageContext.request.contextPath}/user/userProfileModify"
-						id="promodify">프로필수정</a>
-					<h3>${login.userNick}</h3>
-					<h5>${login.message}</h5>
+					<h1><%=user.getUserId()%></h1>
+					
+					<%if(followCheck==0) {%>
+					<button id="follow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>">Follow</button>
+
+						<button id="unfollow"  data-followerid="${login.userId}"
+					data-targetid="<%=user.getUserId()%>" style="display: none;">UnFollow</button>
+						<%}else if(followCheck==1){ %>
+
+							<button id="follow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>" style="display: none;">Follow</button>
+						
+					<button id="unfollow"  data-followerid="${login.userId}"
+					data-targetid="<%=user.getUserId()%>">UnFollow</button>
+					<%} %>
+					
+					<h3><%=user.getUserNick()%></h3>
+					<h5><%=user.getMessage()%></h5>
 				</div>
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
+					<li class="nav-item"><a class="nav-link active" aria-current="page"
+							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><div class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#followerModal">Follower Chief</div></li>
+					<li class="nav-item">
+						<div class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#followModal">FollowerChief</div>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Following
+							Chief</a></li>
 
-					<li class="nav-item"><div class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#followingModal">Following Chief</div></li>
 
-					<li class="nav-item"><a class="nav-link" href="#">Add My
-							Recipe</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/freeboard/regist">Add
-							My Story</a></li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">회원정보수정</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li><a class="dropdown-item" href="#" style="color: red">Logout</a></li>
-						</ul>
 				</ul>
 
 			</div>
@@ -163,22 +127,16 @@
 
 	<nav class="navbar bg-success fixed-top ">
 		<div class="container-fluid">
-
-			<a class="navbar-brand text-light"
-				href="${pageContext.request.contextPath}/">Tasty Friend</a>
-
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+			<a class="navbar-brand text-light" href="${pageContext.request.contextPath}/">Tasty Friend</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
 				aria-controls="offcanvasNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="offcanvas offcanvas-end" tabindex="-1"
-				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
 				<div class="offcanvas-header">
-
 					<aside></aside>
-
 				</div>
 
 			</div>
@@ -187,41 +145,13 @@
 
 </body>
 
-<!-- follow Modal -->
-<div class="modal fade" id="followerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<div class="modal-body">
-		
-		<%for(int i =0 ;i<followers.size();i++){
-			%>
-			
-			<%-- <div><img src="${pageContext.request.contextPath}/user/display/<%=followers.get(i).getFileLoca()%>/<%=followers.get(i).getFileName()%>"
-					alt="default" id="fprofile-img"> ${countFollower.userId}
-			</div>
-			 --%>
-			
-			
-			<%} %>
-		
-			
-		 
-		</div>
-		
-	  </div>
-	</div>
-  </div>
 
 <!-- follow Modal -->
-<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="followModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content">
 		<div class="modal-header">
-		  <h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
+		  <h1 class="modal-title fs-5" id="exampleModalLabel">Follow</h1>
 		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
@@ -232,47 +162,31 @@
 	  </div>
 	</div>
   </div>
-
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="modal-img">
-					<div id="carouselExampleIndicators"
-						class="carousel slide carousel-dark" data-bs-ride="true">
-
+					<div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="true">
 						<div class="carousel-indicators" id="carouselbtn">
-							<button type="button" data-bs-target="#carouselExampleIndicators"
-								data-bs-slide-to="0" class="active" aria-current="true"
-								aria-label="Slide 1"></button>
-							<button type="button" data-bs-target="#carouselExampleIndicators"
-								data-bs-slide-to="1" aria-label="Slide 2"></button>
-							<button type="button" data-bs-target="#carouselExampleIndicators"
-								data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+							<!--여기 게시물별 버튼 들어감-->
 						</div>
 
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img src="${pageContext.request.contextPath}/img/test.png"
-									class="d-block w-100 simg" alt="..xxxe.">
-							</div>
-							<div class="carousel-item">
-								<img src="${pageContext.request.contextPath}/img/test.png"
-									class="d-block w-100 simg" alt=".xxx..">
-							</div>						
+						<div class="carousel-inner" id="carouselinput">
+							<!--여기 게시물별 이미지 들어감-->
 						</div>
 
-						<button class="carousel-control-prev" type="button"
-							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Previous</span>
 						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide="next">
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
@@ -282,14 +196,12 @@
 				</div>
 				<div class="modal-text">
 					<div id="freeuserimg">
-						<img
-							src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+						<img src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
 							alt="default" id="profile-img2">
-
 
 						<div id="freeuserid"></div>
 						<div class="dropdown" id="dbtn">
-
+							<!-- 
 							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
 								type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
 							<ul class="dropdown-menu">
@@ -299,7 +211,7 @@
 								<hr>
 								<li><a class=" dropdown-item" id="delete" href="#"
 									style="color: red">Delete</a></li>
-							</ul>
+							</ul> -->
 						</div>
 
 
@@ -375,20 +287,47 @@
 
 					</div>
 
-
 				</div>
 			</div>
 		</div>
 
-
 		<Script>
+			document.getElementById('follow').addEventListener('click', e => {
+				console.log("follow 시작됨");
+				const followerId = e.target.dataset.followerid;
+				const targetId = e.target.dataset.targetid;
+				
+
+				fetch('${pageContext.request.contextPath}/mypage/addFollow/'+targetId, {
+					method: 'post'					
+				}).then(res => {
+							console.log("follow성공함");
+							document.getElementById('follow').style.display = "none";	
+							document.getElementById('unfollow').style.display = "block";				
+						});
+			});
+
+			document.getElementById('unfollow').addEventListener('click', e => {
+				console.log("unfollow 시작됨");
+				const followerId = e.target.dataset.followerid;
+				const targetId = e.target.dataset.targetid;
+				
+
+				fetch('${pageContext.request.contextPath}/mypage/deleteFollow/'+targetId, {
+					method: 'delete'					
+				}).then(res => {
+							console.log("unfollow성공함");
+							document.getElementById('follow').style.display = "block";	
+							document.getElementById('unfollow').style.display = "none";				
+						});
+			});
+
 			let strimg = '';
 			let strbtn = '';
 			let strmodi = '';
 
 			document.getElementById('main').addEventListener('click', e => {
 
-			document.getElementById('main').addEventListener('click', e => {
 
 				if (e.target.matches('.boxbox img')) {
 
@@ -511,7 +450,6 @@
 					myModal.addEventListener('hidden.bs.modal', () => {
 						console.log("모달닫힘");
 
-
 						location.reload();
 					})
 
@@ -530,17 +468,14 @@
 								}
 							});
 
-
 						} else {
 							return;
 						}
 
 					});
 
-
-			return;
-		}
-
+				} else {
+					console.log('여기는 이벤트 대상이 아님');
 
 					return;
 				}
@@ -548,7 +483,6 @@
 
 
 
-	});
 
-	
-</Script>
+			});
+		</Script>

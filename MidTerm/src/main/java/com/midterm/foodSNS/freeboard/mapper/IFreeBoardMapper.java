@@ -1,6 +1,7 @@
 package com.midterm.foodSNS.freeboard.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
@@ -19,6 +20,13 @@ public interface IFreeBoardMapper {
 	
 
 	List<MfreeboardImgVO> getCarousel(int faNum);
-	
+
+
+	void delete(int faNum);
+
+	void deleteimg(int iNum);
+
+	void update(Map<String, Object> map);
+
 
 }

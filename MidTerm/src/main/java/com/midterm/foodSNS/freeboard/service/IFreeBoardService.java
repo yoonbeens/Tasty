@@ -1,6 +1,7 @@
 package com.midterm.foodSNS.freeboard.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,19 +22,18 @@ public interface IFreeBoardService {
 	
 	MfreeboardArticleVO getArticle(int faNum);
 	
-	//총 게시물 수 구하기
-	int getTotal(PageVO vo);
-	
-	//상세보기
-	MfreeboardArticleVO getContent(int bno);	
-	
-	//수정
-	void update(MfreeboardArticleVO vo);
+
+
+	void update(Map<String, Object> map);
+
 	
 	//삭제
 	void delete(int bno);
 
-	List<MfreeboardImgVO> getCarousel(int faNum);
+	List<MfreeboardImgVO> getCarousel(int faNum );
+
+
 	
+
 	
 }

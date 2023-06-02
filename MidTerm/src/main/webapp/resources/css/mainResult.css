@@ -45,13 +45,15 @@
 	color : red;
 	width : 33.3%;
 	height: 300px;	
-	border: 1px solid red;
+
+	margin-top : 10px;
+	margin-bottom : 10px;	
+
 	border-radius :30px;
 	
 }
 
-.boxbox img{
-	
+.boxbox img{	
 	width:100%;
 	border-radius :30px;
 	
@@ -73,7 +75,7 @@ aside {
 #logo {
 	box-sizing: border-box;
 	width: 100%;
-<<<<<<< HEAD
+
 	height: 10vh;
 	/* border: 1px solid green; */
 }
@@ -266,4 +268,4 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
->>>>>>> 8869fd4b10ba24e003ead15fee66d851a332df80
+
