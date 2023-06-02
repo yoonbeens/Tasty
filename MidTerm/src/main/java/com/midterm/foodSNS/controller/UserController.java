@@ -87,14 +87,14 @@ public class UserController {
 
 	}
 
-	// 개인정보 변경 페이지 이동
+	// 개인정보 변경 페이지 이동.
 	@GetMapping("/userUpdate")
 	public void userUpdate(HttpSession session, Model model) {
 		MusersVO vo = (MusersVO) session.getAttribute("login");
 		model.addAttribute("userInfo", service.userInfo(vo.getUserId()));
 	}
 
-	// 개인정보 변경 요청
+	// 개인정보 변경 요청(이게 원본임)
 	@PostMapping("/userUpdate")
 	public String userUpdate(MusersVO vo) {
 		service.updateMusers(vo);
@@ -178,7 +178,6 @@ public class UserController {
 	 */
 
 	// 로그아웃 (필수, 두번째방법)
-
 	@PostMapping("/userLogout")
 	public String userLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);

@@ -40,7 +40,7 @@ body {
 
 .wrapper {
 	position: relative;
-	width: 800px;
+	width: 750px;
 	height: 550px;
 	background: rgba(255, 255, 255, .2);
 	border-radius: 20px;
@@ -280,16 +280,19 @@ div.regionon {
 
 div.region {
 	float: left;
+	clean: both;
 }
 
 div.region2 {
 	float: right;
 	position: absolute;
 	left: 350px;
+	clean: both;
 }
 
 .commit {
 	text-align: center;
+	position: relative;
 }
 
 .btn-success {
@@ -301,8 +304,8 @@ div.region2 {
 }
 
 h2 {
-	color: blue;
-	margin-left: 230px;
+	color: black;
+	margin-left: 220px;
 }
 
 .commit {
@@ -320,6 +323,34 @@ h2 {
 	 margin-left: 150px;
 	
 }   */
+#qweqwe { /*주소찾기버튼*/
+	height: 30px;
+	width: 150px;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
+
+#asdasd { /*취소버튼*/
+	width: 100px;
+	height: 30px;
+	position: absolute;
+	left: 180px;
+}
+
+#submit { /*수정버튼*/
+	height: 30px;
+	width: 100px;
+	position: absolute;
+	right: 70px;
+}
+
+
+#input-over{
+	color: #606060;
+}
+
+
 </style>
 
 
@@ -345,6 +376,7 @@ h2 {
 
 					<div class="regionon">
 						<div class="region">
+						
 							<div class="input-group">
 								<div class="form-group has-feedback">
 									<input class="form-control" type="text" id="userId"
@@ -355,10 +387,19 @@ h2 {
 
 
 
+							<div class="input-group">
+								<div class="form-group has-feedback">
+									<label class="control-label" id="input-over" for="userName">이름</label> <input
+										class="form-control" type="text" id="userName" name="userName"
+										value="${userInfo.userName}" />
+								</div>
+							</div>
+
+
 
 							<div class="input-group">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userPass">패스워드</label> <input
+									<label class="control-label" for="userPass" id="input-over">패스워드</label> <input
 										class="form-control" type="password" id="userPass"
 										name="userPw" /> <span id="msgPw"></span>
 								</div>
@@ -368,27 +409,26 @@ h2 {
 
 							<div class="input-group">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userPass">패스워드확인</label> <input
+									<label class="control-label" for="userPass" id="input-over">패스워드확인</label> <input
 										class="form-control" type="password" id="pwConfirm" /> <span
 										id="msgPw-c"></span>
 								</div>
 							</div>
 
 
-							<div class="input-group">
-								<div class="form-group has-feedback">
-									<label class="control-label" for="userName">이름</label> <input
-										class="form-control" type="text" id="userName" name="userName"
-										value="${userInfo.userName}" />
-								</div>
-							</div>
+
 						</div>
+
+
+
+
+
 
 
 						<div class="region2">
 							<div class="input-group">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userName">휴대폰</label> <input
+									<label class="control-label" for="userName" id="input-over">휴대폰</label> <input
 										class="form-control input-sm sel" type="text"
 										name="userPhone1"
 										<%-- <option ${userInfo.userPhone1=='010' ? 'selected' : '' }>010</option>
@@ -405,14 +445,14 @@ h2 {
 
 							<div class="overrap">
 								<div class="input-group">
-									<label class="form-group has-feedback">우편번호</label> <input
+									<label class="form-group has-feedback" id="input-over">우편번호</label> <input
 										class="form-control input-sm" name="addrZipNum"
 										id="addrZipNum" value="${userInfo.addrZipNum}" readonly>
 								</div>
 
 
 								<div class="input-group">
-									<label class="form-group has-feedback">주소</label> <input
+									<label class="form-group has-feedback" id="input-over">주소</label> <input
 										class="form-control input-sm add" name="addrBasic"
 										id="addrBasic" value="${userInfo.addrBasic}">
 								</div>
@@ -421,7 +461,7 @@ h2 {
 
 
 								<div class="input-group">
-									<label class="form-group has-feedback">상세주소</label> <input
+									<label class="form-group has-feedback" id="input-over">상세주소</label> <input
 										class="form-control input-sm add" name="addrDetail"
 										id="addrDetail" value="${userInfo.addrDetail}">
 								</div>
@@ -443,10 +483,15 @@ h2 {
 					<div class="input-group-addon">
 						<div class="commit">
 							<div class="form-group has-feedback">
-								<button class="btn btn-success" type="submit" id="submit" class="w-btn-outline w-btn-indigo-outline">수정</button>
+								<!-- 	<button class="btn btn-success" type="submit" id="submit" class="w-btn-outline w-btn-indigo-outline">수정</button>
 								<button type="button" class="btn btn-primary"
-									onclick="searchAddress()">주소찾기</button>
-								<button class="cencle btn btn-danger" type="button">취소</button>
+									onclick="searchAddress()">주소찾기</button> -->
+								<button class="w-btn-outline w-btn-indigo-outline" type="submit"
+									id="submit">수정</button>
+								<button class="w-btn-outline w-btn-indigo-outline" id="qweqwe"
+									type="button" onclick="searchAddress()">주소찾기</button>
+								<button class="w-btn-outline w-btn-indigo-outline" id="asdasd"
+									type="button">취소</button>
 							</div>
 						</div>
 					</div>

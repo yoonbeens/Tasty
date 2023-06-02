@@ -33,7 +33,7 @@ body {
 .wrapper {
 	position: relative;
 	width: 400px;
-	height: 650px;
+	height: 750px;
 	background: rgba(255, 255, 255, .2);
 	border-radius: 20px;
 	box-shadow: 0 0 50px rgba(0, 0, 0, .1);
@@ -78,10 +78,10 @@ h2 {
 	position: absolute;
 	top: 50%;
 	left: 5px;
-	transform: translateY(-150%); 
+	transform: translateY(-150%);
 	font-size: 16px;
-	color: lightgray;
-	pointer-events: none; 
+	color: /* #a2a2a2 */ lightgray;
+	pointer-events: none;
 	transition: .5s;
 }
 
@@ -99,7 +99,6 @@ h2 {
 /* .input-group input:focus ~label, .input-group input:valid ~label {
 	top: -5px;
 } */
-
 .remember {
 	margin: -5px 0 15px 5px;
 }
@@ -207,6 +206,108 @@ h2 {
 .social-icons a:hover i {
 	color: rgb(255, 255, 255);
 }
+
+.w-btn {
+	position: relative;
+	/* border: none; */
+	display: inline-block;
+	padding: 15px 30px;
+	border-radius: 15px;
+	font-family: "paybooc-Light", sans-serif;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	font-weight: 600;
+	transition: 0.25s;
+}
+
+.w-btn-outline {
+	position: relative;
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	/*  padding: 15px 30px; */
+	border-radius: 15px;
+	font-family: "paybooc-Light", sans-serif;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	font-weight: 600;
+	transition: 0.25s;
+}
+
+.w-btn-indigo {
+	background-color: aliceblue;
+	color: #1e6b7b;
+}
+
+.w-btn-indigo-outline {
+	border: 3px solid aliceblue;
+	color: #1e6b7b;
+}
+
+.w-btn-indigo-outline:hover {
+	color: #1e6b7b;
+	background: aliceblue;
+}
+
+.w-btn-outline.w-btn-indigo-outline {
+	margin: 0 -40px;
+	float: right;
+	bottom: 70px;
+}
+
+.input-over {
+	color: #606060;
+}
+
+.commit {
+	position: relative;
+}
+
+.commit2 {
+	block: inline-block;
+	position: absolute;
+	left: 10px;
+	width: 10px;
+	height: 50px;
+}
+
+.commit3 {
+	position: absoulte;
+}
+
+.commit4 {
+	position: absoulte;
+}
+
+
+.commit2 .class-over{
+	position: absolute;
+	left: 50px;
+	top: -5px;
+	width: 80px;
+	height: 30px;
+}
+
+.commit3 .class-over{ /*삭제버튼*/
+	position: absolute;
+	left: 155px;
+	top: -5px;
+	width: 80px;
+	height: 30px;
+}
+
+.commit4 .class-over{
+	position: absolute;
+	left: 250px;
+	top: -5px;
+	width: 80px;
+	height: 30px;
+}
+
+
+
+
+
 </style>
 </head>
 
@@ -221,60 +322,83 @@ h2 {
 		<div class="form-wrapper sign-in">
 			<section id="container">
 				<form action="/user/userDelete" method="post">
-				<h2>edit profile</h2>
+					<h2>edit profile</h2>
 					<div class="input-group">
 						<div class="form-group has-feedback">
 							<input class="form-control" type="text" id="userId" name="userId"
 								value="${userInfo.userId}" readonly="readonly" /> <label
-								class="control-label" for="userId">* 아이디</label>
+								class="control-label" for="userId">아이디</label>
 						</div>
 					</div>
 
 					<div class="input-group">
-						<div class="form-group has-feedback">
-							<!-- <label class="control-label" for="userName">* 이름</label>  -->
-							<div class="form-group has-feedback"> * 이름 </div>
-							<input class="form-control" type="text" id="userName" name="userName"
-								value="${userInfo.userName}" />
+						<!-- <label class="control-label" for="userName">* 이름</label>  -->
+						<div class="input-over">
+							<div class="form-group has-feedback">이름</div>
+							<input class="form-control" type="text" id="userName"
+								name="userName" value="${userInfo.userName}" />
 						</div>
+
 					</div>
 
 					<div class="input-group">
-						<div class="form-group has-feedback"> * 번호</div>
-							<input class="form-control" type="text" id="userPhone1"
-								name="userPone1"
-								<%-- value="${userInfo.userPhone1}${userInfo.userPhone2}" --%>
-								value="${userInfo.userPhone1}"
-								>
+						<div class="input-over">
+							<div class="form-group has-feedback">번호</div>
+						</div>
+						<input class="form-control" type="text" id="userPhone1"
+							name="userPone1"
+							<%-- value="${userInfo.userPhone1}${userInfo.userPhone2}" --%>
+								value="${userInfo.userPhone1}">
 					</div>
 
 					<div class="input-group">
-						<div class="form-group has-feedback"> * 우편번호 </div>
+						<div class="input-over">
+							<div class="form-group has-feedback">우편번호</div>
+						</div>
 						<input class="form-control input-sm" name="addrZipNum"
-							id="addrZipNum" value="${userInfo.addrZipNum}"
-							>
+							id="addrZipNum" value="${userInfo.addrZipNum}">
 					</div>
 
 
 					<div class="input-group">
-						<div class="form-group has-feedback">* 주소</div>
+						<div class="input-over">
+							<div class="form-group has-feedback">주소</div>
+						</div>
 						<input class="form-control input-sm add" name="addrBasic"
-							id="addrBasic" value="${userInfo.addrBasic}" >
+							id="addrBasic" value="${userInfo.addrBasic}">
 					</div>
 
 
 					<div class="input-group">
-						<div class="form-group has-feedback">* 상세주소</div>
+						<div class="input-over">
+							<div class="form-group has-feedback">상세주소</div>
+						</div>
 						<input class="form-control input-sm add" name="addrDetail"
-							id="addrDetail" value="${userInfo.addrDetail}"
-							>
+							id="addrDetail" value="${userInfo.addrDetail}">
 					</div>
 
 
-					<div class="form-group has-feedback">
-						<button class="btn btn-success" type="button" id="updateBtn">수정</button>
-						<button class="btn btn-success" type="button" id="deleteBtn">삭제</button>
-						<button class="cencle btn btn-danger" type="button">취소</button>
+
+					<div class="input-group-addon">
+						<div class="form-group has-feedback">
+							<div class="commit">
+
+								<div class="commit2">
+									<button class="w-btn-outline w-btn-indigo-outline class-over"
+										type="button" id="updateBtn">수정</button>
+								</div>
+
+								<div class="commit3">
+									<button class="w-btn-outline w-btn-indigo-outline class-over"
+										type="button" id="deleteBtn">삭제</button>
+								</div>
+
+								<div class="commit4">
+									<button class="w-btn-outline w-btn-indigo-outline class-over"
+										type="button">취소</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</form>
 			</section>
