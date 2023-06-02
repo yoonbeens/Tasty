@@ -3,6 +3,8 @@ package com.midterm.foodSNS.user.mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.midterm.foodSNS.command.MusersVO;
+import com.midterm.foodSNS.util.MDBVO;
+import com.midterm.foodSNS.util.MDBVOList;
 
 public interface IUserMapper {
 
@@ -16,14 +18,30 @@ public interface IUserMapper {
 	int idCheck(String id); //SQL문 -> SELECT count(*) FROM users WHERE user_id = ?
 	
 	//로그인
-	String login(@Param("id") String id, @Param("pw") String pw);
+	String login(@Param("id") String id);
 	
 	//회원 정보 얻어오기
 	MusersVO getInfo(MusersVO vo);
 	
 	
+	
+	
+	//회원 정보 탈퇴
+	void userDelete(MusersVO vo);
+	
+	//회원 정보 탈퇴를 위한 비밀번호 비교
+	int passChk(String pwinput) throws Exception;
+	
+	
+	
+	
 	//회원 정보 수정
 	void updateMusers(MusersVO vo);
 	
-	
+	//간단 프로필 수정
+	void profilemodify(MusersVO vo);
+
+	MusersVO userInfo(String id);
+
+	void dbRegist(MDBVOList responseData);
 }
