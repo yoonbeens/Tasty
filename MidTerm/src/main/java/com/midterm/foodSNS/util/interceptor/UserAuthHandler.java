@@ -6,9 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 public class UserAuthHandler implements HandlerInterceptor {
 
 	@Override //HandlerInterceptor에서 오버라이드

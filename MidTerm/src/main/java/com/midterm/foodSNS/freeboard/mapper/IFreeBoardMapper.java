@@ -21,7 +21,6 @@ public interface IFreeBoardMapper {
 
 	List<MfreeboardImgVO> getCarousel(int faNum);
 
-
 	void delete(int faNum);
 
 	void deleteimg(int iNum);

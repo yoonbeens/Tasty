@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
 
+<head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link href="${pageContext.request.contextPath}/css/regist.css" rel="stylesheet">
@@ -160,4 +160,3 @@
         }
     )();
 </script>
-

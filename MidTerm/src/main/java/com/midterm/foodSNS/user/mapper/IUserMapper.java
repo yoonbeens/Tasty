@@ -1,7 +1,5 @@
 package com.midterm.foodSNS.user.mapper;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.annotations.Param;
 
 import com.midterm.foodSNS.command.MusersVO;
@@ -25,11 +23,17 @@ public interface IUserMapper {
 	//회원 정보 얻어오기
 	MusersVO getInfo(MusersVO vo);
 	
+	
+	
+	
 	//회원 정보 탈퇴
 	void userDelete(MusersVO vo);
 	
 	//회원 정보 탈퇴를 위한 비밀번호 비교
 	int passChk(String pwinput) throws Exception;
+	
+	
+	
 	
 	//회원 정보 수정
 	void updateMusers(MusersVO vo);
@@ -40,13 +44,4 @@ public interface IUserMapper {
 	MusersVO userInfo(String id);
 
 	void dbRegist(MDBVOList responseData);
-	
-	//로그아웃
-	void userLogout(HttpSession session);
-	
-	
-	
-	
-	
-	
 }

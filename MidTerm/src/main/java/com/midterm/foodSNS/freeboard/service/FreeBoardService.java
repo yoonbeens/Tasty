@@ -89,6 +89,21 @@ public class FreeBoardService implements IFreeBoardService {
 		return mapper.getArticle(faNum);
 	}
 	
+	@Override
+	public void delete(int faNum) {
+		log.info("dddddff"+faNum);
+		mapper.delete(faNum);
+		
+	}
+	
+
+
+	@Override
+	public List<MfreeboardImgVO> getCarousel(int faNum) {
+		
+		return mapper.getCarousel(faNum);
+	}
+	
 
 
 	@Override
@@ -98,15 +113,6 @@ public class FreeBoardService implements IFreeBoardService {
 	}
 
 
-	@Override
-
-	public MfreeboardArticleVO getContent(int bno) {
-
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 
 	public void update(Map<String, Object> map) {
 	
@@ -114,18 +120,6 @@ public class FreeBoardService implements IFreeBoardService {
 		
 	}
 
-	@Override
-	public void delete(int bno) {
-		// TODO Auto-generated method stub
-		
-	}
 
-
-
-	@Override
-	public List<MfreeboardImgVO> getCarousel(int faNum) {
-		
-		return mapper.getCarousel(faNum);
-	}
 
 }

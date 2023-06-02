@@ -23,7 +23,6 @@
 		
 	<select id="getCarousel" resultType="articleImg">
 	select * from FreeboardImg where freeboard_article_number =#{faNum}
-
 	</select>
 	
 	<delete id="delete">
@@ -37,7 +36,6 @@
 	</update>
 	
 	
-
 
 </mapper>
 		

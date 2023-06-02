@@ -8,7 +8,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
 import com.midterm.foodSNS.user.mapper.IUserMapper;
 import com.midterm.foodSNS.util.MDBVO.COOKRCP01.Row;
 
@@ -21,7 +20,7 @@ public class DBservice {
 	@Autowired
 	private IUserMapper mapper;	
 	
-	private String requestUri = "http://openapi.foodsafetykorea.go.kr/api/ff44efcb27354095b86b/COOKRCP01/json/1/100";
+	private String requestUri = "http://openapi.foodsafetykorea.go.kr/api/ff44efcb27354095b86b/COOKRCP01/json/1/500";
 	
 	private String requestUriWeather ="https://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=df4d5c8673ea4b02bae03b075c3c269f";
 	
