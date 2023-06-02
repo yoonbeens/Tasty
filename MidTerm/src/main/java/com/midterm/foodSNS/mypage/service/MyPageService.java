@@ -31,6 +31,10 @@ public class MyPageService implements IMyPageService {
 		return mapper.getImgList(userId);
 	}
 	
+	@Override
+	public void addFollow(String targetId) {
+		
+	}
 	
 
 }

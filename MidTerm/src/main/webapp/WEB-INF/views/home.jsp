@@ -27,6 +27,7 @@
 				<a href="${pageContext.request.contextPath}/user/userJoin">Join</a>
 			</div>
 			<div><a href="${pageContext.request.contextPath}/result/getDB">DB가져오기</a></div>
+			<div><a href="${pageContext.request.contextPath}/result/getWeather">날씨가져오기</a></div>
 		</c:if>
 		<c:if test="${login != null}">
 			${login.userId}님 환영합니다!

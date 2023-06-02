@@ -11,4 +11,6 @@ public interface IMyPageService {
 
 	List<MfreeboardImgVO> getImgList(String userId);
 
+	void addFollow(String targetId);
+
 }

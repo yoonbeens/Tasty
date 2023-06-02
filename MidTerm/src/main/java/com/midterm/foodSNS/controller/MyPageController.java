@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,6 +19,7 @@ import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.mypage.service.IMyPageService;
+import com.midterm.foodSNS.user.service.IUserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,6 +30,9 @@ public class MyPageController {
 
 	@Autowired
 	private IMyPageService service;
+	
+	@Autowired
+	private IUserService userService;
 
 	@GetMapping("/mypageResult")
 	public String mypageResult(HttpServletRequest request, Model model) {
@@ -39,14 +44,49 @@ public class MyPageController {
 		articleList = service.getArticleList(vo.getUserId());
 		
 		List<MfreeboardImgVO> imgList = new ArrayList<>();		
-	imgList = service.getImgList(vo.getUserId());
+		imgList = service.getImgList(vo.getUserId());
 		
-		log.info("eeeee"+imgList.toString());				
+					
 		
 		model.addAttribute("article",articleList);
 		model.addAttribute("img",imgList);
 		return "mypage/mypageResult";	
 	}
+	
+	@GetMapping("/userResult/{userId}")
+	public String userResult(@PathVariable String userId, Model model) {
+		log.info("유저아이디 : "+userId);
+		
+		MusersVO user = new MusersVO();
+		user=userService.userInfo(userId);
+		
+		List<MfreeboardArticleVO> articleList = new ArrayList<>();		
+		articleList = service.getArticleList(userId);
+		
+		List<MfreeboardImgVO> imgList = new ArrayList<>();		
+		imgList = service.getImgList(userId);
+		
+		log.info("회원정보:"+user.toString());	
+		log.info("회원게시물:"+articleList.toString());	
+		log.info("회원게시물 이미지:"+imgList.toString());	
+		
+		model.addAttribute("user",user);		
+		model.addAttribute("article",articleList);
+		model.addAttribute("img",imgList);
+		
+		return "mypage/userResult";
+		
+	}
+	
+	@ResponseBody
+	@PostMapping("/addFollow/'{targetId}")
+	public void addFollow(@PathVariable String targetId) {
+		log.info("타겟아이디 : "+targetId);
+		service.addFollow(targetId);
+		
+	}
+	
+	
 	
 
 	

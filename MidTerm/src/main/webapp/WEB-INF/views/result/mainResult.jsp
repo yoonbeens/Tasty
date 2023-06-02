@@ -173,13 +173,7 @@
 			console.log(userId);
 			console.log(cooknum);
 
-			fetch('${pageContext.request.contextPath}/freeboard/getArticle/' + faNum)
-				.then(res => res.json())
-				.then(data => {
-					console.log(data);
-					document.getElementById('freeuserid').textContent = data.userId;
-					document.getElementById('freecontent').textContent = data.content;
-				});
+		
 
 			//레시피 상세정보 불러오기
 			fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
