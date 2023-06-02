@@ -1533,7 +1533,7 @@ button {
 
 	  const textSlider = document.querySelector(".text-group");
 	  const textSliderSolution = 'translateY' + (-(index - 1)*2.2) + 'rem';
-/* 	  textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
+ 	  textSlider.style.transform = `translateY(${-(index - 1) * 2.2}rem)`;
 
 	  
 	  bullets.forEach((bull) => bull.classList.remove("active"));
