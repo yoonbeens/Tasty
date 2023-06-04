@@ -259,26 +259,7 @@
 				<div class="modal-img">
 					<div id="carouselExampleIndicators"
 						class="carousel slide carousel-dark" data-bs-ride="true">
-						<div class="carousel-indicators" id="carouselbtn">
-
-							<!--여기 게시물별 버튼 들어감-->
-						</div>
-
-						<div class="carousel-inner" id="carouselinput">
-							<!--여기 게시물별 이미지 들어감-->
-						</div>
-
-						<button class="carousel-control-prev" type="button"
-							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-
+					<div id="carouselContent"></div>
 					</div>
 
 				</div>
@@ -406,7 +387,7 @@
 						.then(data => {
 							console.log(data);
 							document.getElementById('freeuserid').textContent = data.userId;
-							document.getElementById('freecontent').textContent = data.content;
+							document.getElementById('carouselContent').textContent = data.content;
 						});
 
 					const $carousel = document.getElementById('carouselExampleIndicators');
