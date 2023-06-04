@@ -46,7 +46,7 @@ input {
 }
 
 #mainDiv {
-  width: 50%;
+  width: 100%;
 	display: none;
   position: fixed;
   top: 50%;
@@ -59,7 +59,7 @@ main {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #ff8c6b;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@ main {
   /* font-family: 'LINESeedKR-Bd'; */
   font-weight: 100;
   font-size: 14px;
-  color: rgb(135, 135, 135);
+  color: rgb(62, 62, 62);
   /* letter-spacing: 10px; */
   line-height: 2;
   word-spacing: 5px;
@@ -159,16 +159,16 @@ form.sign-up-form {
 }
 
 .heading h6 {
-  color: #bababa;
+  color: #9f9f9f;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 1rem;
   display: inline;
 }
 
 .toggle {
   color: #151111;
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 500;
   transition: 0.3s;
 }
@@ -273,7 +273,7 @@ main.sign-up-mode .carousel {
   width: 55%;
   left: 45%;
   top: 0;
-  background-color: #F2F1F6;
+  background-color: #ffe0d2;
   border-radius: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -1222,8 +1222,8 @@ button {
 		</div> -->
 		
 <div id="mainDiv">
-	<main>
-      <div class="box">
+	<main id="mainClose">
+      <div class="box" id="modalBox">
         <div class="inner-box">
           <div class="forms-wrap">
             <form action="index.html" autocomplete="off" class="sign-in-form">
@@ -1234,8 +1234,8 @@ button {
 
               <div class="heading">
                 <h2 id="foodname"></h2>
-                <h6>댓글 쓰러 가기</h6>
-                <a href="#" class="toggle">comment</a>
+                <h6>요리 시간 재기</h6>
+                <a href="#" class="toggle">Timer</a>
               </div>
 
               <div class="actual-form">
@@ -1300,9 +1300,9 @@ button {
               </div>
 
               <div class="heading">
-                <h2>Get Started</h2>
-                <h6>요리 시간 재기</h6>
-                <a href="#" class="toggle">Timer</a>
+                <h2>맛있게 드세요</h2>
+                <h6>재료 보러 가기</h6>
+                <a href="#" class="toggle">Detail</a>
               </div>
 
               <div class="actual-form">
@@ -1331,13 +1331,16 @@ button {
                 <div id="content">
                   <div id="f5Text">
                     <div id="text" style="margin-bottom: -25px;">
-                      <span id="minutes">3</span> <span> minutes</span>
+                      <span id="minutes"></span> <span> minutes</span>
                     </div>
                     <!--end text-->
                   </div>
                   <!--end f5Text-->
              
-                  <!--modal pop-up-->
+
+                  
+
+                  <!-- modal pop-up-->
                   <div class="background">
                     <div class="window">
                       <div class="popup">
@@ -1382,8 +1385,8 @@ button {
                     </div>
                     <!--end window-->
                   </div>
-                  <!--end background-->
-                  
+                  <!--end background -->
+                
                   
                   <div class="zoomContents">
                     <div id="buttons">
@@ -1417,17 +1420,17 @@ button {
 
 
                 <div class="input-wrap">
-                  <input
+                  <!-- <input
                     type="password"
                     minlength="4"
                     class="input-field"
                     autocomplete="off"
-                    required
-                  />
-                  <label>Password</label>
+                    
+                  /> -->
+                  <!-- <label>Password</label> -->
                 </div>
 
-                <input type="submit" value="Sign Up" class="sign-btn" />
+                <input type="submit" value="후기 쓰러 가기" class="sign-btn" />
 
 
               </div>
@@ -1472,7 +1475,7 @@ button {
 	
 	
 <Script>
-	document.getElementById('superCon').addEventListener('click', e => {
+	document.getElementById('main-con').addEventListener('click', e => {
 		console.log('클릭됐니?')
 		if (e.target.matches('.boxbox img')) {
 			/* const faNum = e.target.dataset.fanum; */
@@ -1494,6 +1497,8 @@ button {
 					document.getElementById('ingredient').textContent = recipe.ingredient;
 					document.getElementById('tip').textContent = recipe.tip;
 					document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
+					document.getElementById('minutes').textContent = recipe.cookTime;
+					
 					if (recipe.text1 !== '') {
 						document.getElementById(`text1`).textContent = recipe.text1;
 					}
@@ -1522,56 +1527,75 @@ button {
 				});
 
 				document.getElementById('mainDiv').style.display = 'block';
+        		getlike(cooknum);
+
 
 /* 				document.getElementById('main-con').style.display = 'none'; */
 
 				console.log('Div보여줘');
-		} else { //!e.target.matches('#mainDiv')
+		} 
+
+	});
+
+
+  document.getElementById('mainDiv').addEventListener('click', e => {
+    if(e.target.matches('#mainClose')) { //!e.target.matches('#mainDiv')
 			console.log('여기는 이벤트 대상이 아님');
-				document.getElementById('mainDiv').style.display = 'none';
+				// document.getElementById('mainDiv').style.display = 'none';
+				// console.log('없어졌니');
+        document.getElementById('mainDiv').style.display = 'none';
 				console.log('없어졌니');
-/* 				document.getElementById('main-con').style.display = 'block'; */
+/* 			document.getElementById('main-con').style.display = 'block'; */
 
-			return;
 		}
+  });
 
-	});
+  // if(!e.target.matches('.boxbox img') || !e.target.matches('#modalBox')) {
+  //         document.getElementById('mainDiv').style.display = 'none';
+	// 			  console.log('없어졌니');
+  // }
+  
 	
 	
-	/*
-	//좋아요 개수 불러오기
-	function getlike(cooknum) {
-		fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
-				.then(res => res.json())
-				.then(like => {
-					console.log(like);
-					document.getElementById('likenum').textContent = like.likenum;
-				});
-	}
-	//좋아요 버튼 클릭
-	document.getElementById('likeBtn').addEventListener('click', e => {
-		e.preventDefault();
-		const cooknum = document.getElementById('likenum').dataset.cooknum;
-		const userId = '${login.userId}'
-		console.log(userId);
-		const reqObj = {
-			method: 'put',
-			headers: {
-				'Content-Type' : 'application/json'
-			},
-			body: JSON.stringify({
-				'userId' : userId
-			})
-		}
-		fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum, reqObj)
-			.then(res => res.text())
-			.then(data => {
-				console.log(data);
-				document.getElementById('likenum').textContent = data.likenum;
-				getlike(cooknum);
-			});
-	});
-	*/
+		//좋아요 개수 불러오기
+            function getlike(cooknum) {
+                fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
+                    .then(res => res.json())
+                    .then(like => {
+                        console.log(like);
+                        document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다';
+                    });
+            }
+            //좋아요 버튼 클릭
+            document.getElementById('likeBtn').addEventListener('click', e => {
+                e.preventDefault();
+                const cooknum = document.getElementById('likenum').dataset.cooknum;
+                console.log(cooknum);
+
+                const reqObj = {
+                    method: 'put',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'userId': '${login.userId}'
+                    })
+                }
+                fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum, reqObj)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        console.log(data.likenum);
+                        document.getElementById('likenum').textContent = data.likenum;
+                        console.log(data.userId);
+                        if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
+                            document.getElementById('likeBtn').style.backgroundColor = 'blue';
+                        } else {
+                            document.getElementById('likeBtn').style.backgroundColor = '#fff';
+                        }
+                        getlike(cooknum);
+                    });
+            });
 	
 	const inputs = document.querySelectorAll(".input-field");
 	const toggle_btn = document.querySelectorAll(".toggle");
@@ -1631,7 +1655,7 @@ button {
 
 
 
-
+  //타이머
 
 
 	function toast(msg) {
@@ -1640,7 +1664,6 @@ button {
 	}
 
 	//modal function
-
 	function show() {
 	  document.querySelector(".background").className = "background show";
 	}
