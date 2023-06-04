@@ -50,5 +50,8 @@ public class MRecipeVO {
 	private String condition2;
 	private String feeling;
 	
+	//요리 시간
+	private int cookTime;
+	
 
 }
