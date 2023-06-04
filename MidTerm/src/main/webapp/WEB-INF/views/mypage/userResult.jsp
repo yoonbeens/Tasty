@@ -7,9 +7,6 @@
 <%@page import="com.midterm.foodSNS.command.MfreeboardArticleVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,25 +27,25 @@
 
 	</script>
 	<div id="main-con">
-		<%
-		
-		ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
-			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
-
-			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
-			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
-		%>
 		<div id="main-left">
-			<div class="left" id="mystory" data-alength="<%=articles.size()%>" data-rlength="<%=articles.size()%>">My Story</div>
-			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>" data-rlength="<%=articles.size()%>">My Recipe</div>
-
-
+			<div class="left" id="mystory"> Story</div>
+			<div class="left" id="myrecipe">Recipe</div>
 		</div>
 
 
 
 		<div id="main">
-			<%			for (int i = 0; i < articles.size(); i++) {
+			<%
+			MusersVO user = new MusersVO();
+			user = (MusersVO)request.getAttribute("user");			
+			ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
+			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
+			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
+			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
+			
+			int followCheck = (int)request.getAttribute("followCheck");
+
+			for (int i = 0; i < articles.size(); i++) {
 				ArrayList<MfreeboardImgVO> imgcon = new ArrayList<>();
 				for (int j = 0; j < imgs.size(); j++) {
 
@@ -56,23 +53,16 @@
 				imgcon.add(imgs.get(j));
 			%>
 
-			<div class="boxbox scale mystorybox" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="boxbox scale" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
-				/<%=imgcon.get(0).getFileName()%>" alt="default" id="article-img" data-userid="${login.userId}"
+				/<%=imgcon.get(0).getFileName()%>" alt="default" id="article-img" data-userid="<%=user.getUserId()%>"
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
 
-			<div class="boxbox scale myrecipebox" data-bs-toggle="modal" data-bs-target="#myModal"
-				>
-
-				dddd
-			
-			</div>
-
 			<%
 			break;
-			}
+					}
 			}
 			%>
 
@@ -83,43 +73,47 @@
 
 		</div>
 		<div id="main-right">
+
 			<div id="profile-img-con">
-				<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+				<img src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
 					alt="default" id="profile-img">
 			</div>
 			<div class="profileWrapper">
+
 				<div id="simpleProfile">
-					<h1>${login.userId}</h1>
-					<a href="${pageContext.request.contextPath}/user/userProfileModify" id="promodify">프로필수정</a>
-					<h3>${login.userNick}</h3>
-					<h5>${login.message}</h5>
+					<h1><%=user.getUserId()%></h1>
+					
+					<%if(followCheck==0) {%>
+					<button id="follow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>">Follow</button>
+
+						<button id="unfollow"  data-followerid="${login.userId}"
+					data-targetid="<%=user.getUserId()%>" style="display: none;">UnFollow</button>
+						<%}else if(followCheck==1){ %>
+
+							<button id="follow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>" style="display: none;">Follow</button>
+						
+					<button id="unfollow"  data-followerid="${login.userId}"
+					data-targetid="<%=user.getUserId()%>">UnFollow</button>
+					<%} %>
+					
+					<h3><%=user.getUserNick()%></h3>
+					<h5><%=user.getMessage()%></h5>
 				</div>
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
-							data-bs-target="#FollowerModal">Follower
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
-							data-bs-target="#FollowingModal">Following
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Add My
-							Recipe</a></li>
-					<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/freeboard/regist">Add
-							My Story</a></li>
 
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
-							<hr class="dropdown-divider">
-					</li>
-					<li><a class="dropdown-item" href="${pageContext.request.contextPath}/user/userLogout"
-							style="color: red">Logout</a></li>
-				</ul>
+
+
 				</ul>
 
 			</div>
@@ -153,21 +147,23 @@
 </body>
 
 
-
 <!-- Follower Modal -->
-<div class="modal fade" id="FollowerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowerModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followerM">
 
 				<c:forEach var="follower" items="${countFollower}">
 
 					<div id="followerdiv">
-						<img src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+						<img
+							src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
 					</div>
@@ -184,19 +180,22 @@
 
 
 <!-- Following Modal -->
-<div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowingModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followingM">
 
 				<c:forEach var="following" items="${countFollowing}">
 
 					<div id="followerdiv">
-						<img src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+						<img
+							src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
 					</div>
@@ -208,6 +207,9 @@
 		</div>
 	</div>
 </div>
+
+
+
 
 
 
@@ -245,21 +247,22 @@
 				</div>
 				<div class="modal-text">
 					<div id="freeuserimg">
-						<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+						<img src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
 							alt="default" id="profile-img2">
 
 						<div id="freeuserid"></div>
 						<div class="dropdown" id="dbtn">
-
-							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem" type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"></i>
+							<!-- 
+							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
+								type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
 							<ul class="dropdown-menu">
 
 
 								<li><a class="dropdown-item" id="modify" href="#"">Modify</a></li>
 								<hr>
-								<li><a class=" dropdown-item" id="delete" href="#" style="color: red">Delete</a></li>
-							</ul>
+								<li><a class=" dropdown-item" id="delete" href="#"
+									style="color: red">Delete</a></li>
+							</ul> -->
 						</div>
 
 
@@ -340,70 +343,44 @@
 		</div>
 
 		<Script>
-			( function recipbox(){
-				const recipebox = document.querySelectorAll('.myrecipebox');
-				console.log(recipebox.length);
-				for (var i = 0; i < recipebox.length; i++) {						
-						const recipebox = document.querySelectorAll('.myrecipebox');
-						recipebox[i].style.display = "none";
-					}
-			})();
+			document.getElementById('follow').addEventListener('click', e => {
+				console.log("follow 시작됨");
+				const followerId = e.target.dataset.followerid;
+				const targetId = e.target.dataset.targetid;
+				
+
+				fetch('${pageContext.request.contextPath}/mypage/addFollow/'+targetId, {
+					method: 'post'					
+				}).then(res => {
+							console.log("follow성공함");
+							document.getElementById('follow').style.display = "none";	
+							document.getElementById('unfollow').style.display = "block";
+							location.reload();				
+						});
+			});
+
+			document.getElementById('unfollow').addEventListener('click', e => {
+				console.log("unfollow 시작됨");
+				const followerId = e.target.dataset.followerid;
+				const targetId = e.target.dataset.targetid;
+				
+
+				fetch('${pageContext.request.contextPath}/mypage/deleteFollow/'+targetId, {
+					method: 'delete'					
+				}).then(res => {
+							console.log("unfollow성공함");
+							document.getElementById('follow').style.display = "block";	
+							document.getElementById('unfollow').style.display = "none";	
+							location.reload();		
+						});
+			});
+
 			let strimg = '';
 			let strbtn = '';
 			let strmodi = '';
 
-			document.getElementById('main-left').addEventListener('click', e => {
-				console.log("left click");
-
-				if (e.target.matches('#mystory')) {
-					const alength = e.target.dataset.alength;
-					const rlength = e.target.dataset.rlength;
-					
-
-					console.log("story 클릭");
-					
-
-					for (var i = 0; i < alength; i++) {
-						const storybox = document.querySelectorAll('.mystorybox');
-						storybox[i].style.display = "block";						
-					}
-					for (var i = 0; i < rlength; i++) {						
-						const recipebox = document.querySelectorAll('.myrecipebox');
-						console.log(recipebox);
-						recipebox[i].style.display = "none";
-					}
-
-				}
-
-
-				if (e.target.matches('#myrecipe')) {
-					const alength = e.target.dataset.alength;
-					const rlength = e.target.dataset.rlength;
-
-					console.log("recipe 클릭");
-				
-				
-
-					for (var i = 0; i < alength; i++) {
-						const storybox = document.querySelectorAll('.mystorybox');
-						storybox[i].style.display = "none";						
-					}
-
-
-					
-					for (var i = 0; i <rlength; i++) {						
-						const recipebox = document.querySelectorAll('.myrecipebox');
-						console.log(recipebox);
-						recipebox[i].style.display = "block";
-					}
-				}
-
-
-
-			});
-
-
 			document.getElementById('main').addEventListener('click', e => {
+
 
 				if (e.target.matches('.boxbox img')) {
 

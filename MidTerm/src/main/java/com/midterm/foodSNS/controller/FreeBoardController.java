@@ -1,8 +1,9 @@
 package com.midterm.foodSNS.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,11 +65,6 @@ public class FreeBoardController {
 		 service.delete(faNum);		 
 	}
 	
-	@ResponseBody
-	@DeleteMapping("/modifyImgDelete/{iNum}")
-	public void deleteimg(@PathVariable int iNum){
-		 service.deleteimg(iNum);		 
-	}
 	
 
 	@GetMapping("/modify/{faNum}")
@@ -74,9 +72,24 @@ public class FreeBoardController {
 		MfreeboardArticleVO avo = service.getArticle(faNum);
 		List<MfreeboardImgVO> ivo = service.getCarousel(faNum);
 		model.addAttribute("avo",avo);
-		model.addAttribute("ivo",ivo);
-		
+		model.addAttribute("ivo",ivo);		
 		 return "freeboard/modify";
+	}
+	
+	@ResponseBody
+	@PutMapping("/modify/{faNum}")
+	public String modify(@PathVariable int faNum, @RequestBody Map<String,String> map2){
+		log.info("번호 : "+ faNum);
+//		log.info("글내용 : "+moditext.toString());
+		log.info("글내용 : "+map2.get("moditext"));
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("faNum", faNum); 
+		map.put("content", map2.get("moditext")); 
+		
+		service.update(map);
+		
+		 return "redirect:/mypage/mypageResult";
 	}
 	
 	
