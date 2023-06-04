@@ -24,4 +24,8 @@ public interface IMyPageMapper {
 	List<MusersVO> countFollower(String userId);
 
 	void addFollower(Map<String, String> map);
+
+	int checkFollower(Map<String, String> map);
+
+	void deleteFollower(Map<String, String> map);
 }

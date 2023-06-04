@@ -37,14 +37,40 @@ public class MyPageService implements IMyPageService {
 	public void addFollowing(Map<String, String> map) {
 		mapper.addFollowing(map);
 	}
+	@Override
+	public void addFollower(Map<String, String> map) {
+		mapper.addFollower(map);
+		
+	}
+
 	
+	
+	
+
 	@Override
 	public int checkFollowing(Map<String, String> map) {		
 		return mapper.checkFollowing(map);
 	}
+	
+	
+	@Override
+	public int checkFollower(Map<String, String> map) {
+		
+		return mapper.checkFollower(map);
+	}
+	
+	
+	
+	
 	@Override
 	public void deleteFollowing(Map<String, String> map) {
 		 mapper.deleteFollowing(map);
+		
+	}
+	
+	@Override
+	public void deleteFollower(Map<String, String> map) {
+		mapper.deleteFollower(map);
 		
 	}
 
@@ -53,10 +79,11 @@ public class MyPageService implements IMyPageService {
 		return mapper.countFollower(userId);
 	}
 	@Override
-	public void addFollower(Map<String, String> map) {
-		mapper.addFollower(map);
-		
+	public List<MusersVO> countFollowing(String userId) {
+		return mapper.countFollowing(userId);
 	}
+
+	
 	
 
 }

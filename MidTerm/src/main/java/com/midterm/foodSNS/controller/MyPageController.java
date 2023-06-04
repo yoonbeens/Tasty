@@ -51,15 +51,30 @@ public class MyPageController {
 		List<MfreeboardImgVO> imgList = new ArrayList<>();		
 		imgList = service.getImgList(vo.getUserId());
 		
-		List<MusersVO> countFollower = service.countFollower(vo.getUserId());
+		List<MusersVO> countFollower =new ArrayList<>();
+		countFollower =service.countFollower(vo.getUserId());
 		
-					
+		List<MusersVO> countFollowing =new ArrayList<>();
+		countFollowing =service.countFollowing(vo.getUserId());
 		
+		for(int i=0; i<countFollower.size();i++) {
+			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
+			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
+			countFollower.get(i).setMessage(userService.userInfo(countFollower.get(i).getUserId()).getMessage());	
+		}
+		
+		for(int i=0; i<countFollowing.size();i++) {
+			countFollowing.get(i).setFileLoca(userService.userInfo(countFollowing.get(i).getUserId()).getFileLoca());
+			countFollowing.get(i).setFileName(userService.userInfo(countFollowing.get(i).getUserId()).getFileName());
+			countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
+		}
+		
+				
 		model.addAttribute("article",articleList);
 		model.addAttribute("img",imgList);
-		model.addAttribute("countFollower",countFollower);
-		
-		
+		model.addAttribute("countFollower", countFollower);
+		model.addAttribute("countFollowing", countFollowing);
+				
 		log.info("follower : " +countFollower.toString());
 		
 		
@@ -90,10 +105,31 @@ public class MyPageController {
 		log.info("회원게시물 이미지:"+imgList.toString());
 		log.info("팔로우 여부:"+service.checkFollowing(map));
 		
+		List<MusersVO> countFollower =new ArrayList<>();
+		countFollower =service.countFollower(userId);
+		
+		List<MusersVO> countFollowing =new ArrayList<>();
+		countFollowing =service.countFollowing(userId);
+		
+		for(int i=0; i<countFollower.size();i++) {
+			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
+			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
+			countFollower.get(i).setMessage(userService.userInfo(countFollower.get(i).getUserId()).getMessage());	
+		}
+		
+		for(int i=0; i<countFollowing.size();i++) {
+			countFollowing.get(i).setFileLoca(userService.userInfo(countFollowing.get(i).getUserId()).getFileLoca());
+			countFollowing.get(i).setFileName(userService.userInfo(countFollowing.get(i).getUserId()).getFileName());
+			countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
+		}
+		
 		model.addAttribute("user",user);		
 		model.addAttribute("article",articleList);
 		model.addAttribute("img",imgList);
+		model.addAttribute("countFollower", countFollower);
+		model.addAttribute("countFollowing", countFollowing);
 		model.addAttribute("followCheck",service.checkFollowing(map));
+		
 		
 		return "mypage/userResult";
 		
@@ -108,7 +144,7 @@ public class MyPageController {
 		vo = (MusersVO) session.getAttribute("login");		
 		vo.getUserId();		
 		map.put("userId", vo.getUserId()); 
-		map.put("targetId", targetId);		
+		map.put("targetId", targetId);	
 		log.info("타겟아이디 : "+targetId);
 		log.info("유저아이디 : "+vo.getUserId());
 		if(service.checkFollowing(map)==0) {
@@ -116,7 +152,12 @@ public class MyPageController {
 		}else {
 			log.info("이미 팔로잉중");
 		}
-		service.addFollower(map);
+		if(service.checkFollower(map)==0) {
+			service.addFollower(map);
+		}else {
+				log.info("이미 팔로잉중");
+		}
+		
 		
 	}
 	
@@ -134,8 +175,10 @@ public class MyPageController {
 		log.info("유저아이디 : "+vo.getUserId());
 		if(service.checkFollowing(map)==1) {
 		service.deleteFollowing(map);
-		}else {
-			log.info("이미 팔로잉중");
+		}
+		
+		if(service.checkFollower(map)==1) {
+			service.deleteFollower(map);
 		}
 		
 	}

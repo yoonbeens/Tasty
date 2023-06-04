@@ -31,8 +31,6 @@
 				<a href="${pageContext.request.contextPath}/user/userJoin">Join</a>
 			</div>
 
-			<div><a href="${pageContext.request.contextPath}/result/getDB">DB가져오기</a></div>
-			<div><a href="${pageContext.request.contextPath}/result/getWeather">날씨가져오기</a></div>
 
 		</c:if>
 		<c:if test="${login != null}">
@@ -70,7 +68,7 @@
 					<option value="맑음">맑음</option>
 					<option value="흐림">흐림</option>
 					<option value="비">비</option>
-					<option value="오늘의날씨">오늘의날씨</option>
+					<option value="오늘의날씨" id="todayWeather">오늘의 날씨</option>
 				</select> <select name="condition">
 					<option value="상태" selected>상태</option>
 					<option value="보통">보통</option>
@@ -92,12 +90,34 @@
 </body>
 
 <script type="text/javascript">
+	
+
+	(
+      function weather() {
+    	  console.log("날씨시도");
+    	  
+			fetch('${pageContext.request.contextPath}/result/getWeather')
+			.then(res => res.json())
+						.then(data => {
+								console.log("날씨성공");
+								console.log(data.weather);								
+								const ctemp = data.temp-273.15;
+								console.log(ctemp.toFixed(2));				
+
+							})
+
+	})();
+	
 	document.getElementById('logoutBtn').onclick = () => {
 		alert('LOGOUT');
 	}
+
+
 </script>
 
 </html>
+
+
 
 
 

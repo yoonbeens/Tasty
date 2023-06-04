@@ -1,5 +1,7 @@
 package com.midterm.foodSNS.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,11 +63,12 @@ public class ResultController {
 		return"/home";
 		
 	}
+	@ResponseBody
 	@GetMapping("/getWeather")
-	public String  getWeather(Model model) {
+	public Map<String, Object> getWeather(Model model) {
 		model.addAttribute("weather",DBservice.getWeather()); 
-		log.info("온도" +DBservice.getWeather().get("weather") );
-		return"result/weather";
+		log.info("온도" +DBservice.getWeather().get("weather") );		
+		return DBservice.getWeather();
 		
 	}
 	

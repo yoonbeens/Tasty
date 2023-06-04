@@ -7,6 +7,9 @@
 <%@page import="com.midterm.foodSNS.command.MfreeboardArticleVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,15 +40,41 @@
 		<div id="main-left">
 			<div class="left" id="mystory">My Story</div>
 			<div class="left" id="myrecipe">My Recipe</div>
+
+			<div id="searchAgain">
+
+	
+
+				<select class="form-select" aria-label="Default select example" name="weather">
+					<option value="날씨" selected>날씨</option>
+					<option value="맑음">맑음</option>
+					<option value="흐림">흐림</option>
+					<option value="비">비</option>
+					<option value="오늘의날씨" id="todayWeather">오늘의 날씨</option>
+				</select> <select class="form-select" aria-label="Default select example" name="condition">
+					<option value="상태" selected>상태</option>
+					<option value="보통">보통</option>
+					<option value="다이어트중">다이어트중</option>
+					<option value="술마시고싶어요">술마시고싶어요</option>
+
+				</select> <select class="form-select" aria-label="Default select example" name="feeling">
+					<option value="기분" selected>기분</option>
+					<option value="신나요">신나요</option>
+					<option value="우울해요">우울해요</option>
+					<option value="피곤해요">피곤해요</option>
+					<option value="특별한날">특별한날</option>
+				</select>
+
+			</div>
 		</div>
 
 
 
 		<div id="main">
 			<%
-			
 			ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
 			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
+
 			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
 			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
 
@@ -69,7 +98,7 @@
 
 			<%
 			break;
-					}
+			}
 			}
 			%>
 
@@ -97,9 +126,11 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Follower
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Following
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
 							Chief</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Add My
 							Recipe</a></li>
@@ -111,13 +142,13 @@
 						class="nav-link dropdown-toggle" href="#" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">회원정보수정</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li><a class="dropdown-item" href="#" style="color: red">Logout</a></li>
-						</ul>
+							<li><a class="dropdown-item"
+								href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
+							<hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item"
+						href="${pageContext.request.contextPath}/user/userLogout"
+						style="color: red">Logout</a></li>
+				</ul>
 				</ul>
 
 			</div>
@@ -151,6 +182,72 @@
 	</nav>
 
 </body>
+
+
+
+<!-- Follower Modal -->
+<div class="modal fade" id="FollowerModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="fmodal-body" id="followerM">
+
+				<c:forEach var="follower" items="${countFollower}">
+
+					<div id="followerdiv">
+						<img
+							src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+							alt="default" id="fprofile-img"> <a
+							href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
+					</div>
+
+				</c:forEach>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Following Modal -->
+<div class="modal fade" id="FollowingModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="fmodal-body" id="followingM">
+
+				<c:forEach var="following" items="${countFollowing}">
+
+					<div id="followerdiv">
+						<img
+							src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+							alt="default" id="fprofile-img"> <a
+							href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
+					</div>
+
+				</c:forEach>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 
 
 <!-- Modal -->

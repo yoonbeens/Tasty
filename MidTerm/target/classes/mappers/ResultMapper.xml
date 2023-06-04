@@ -35,5 +35,7 @@
 		DELETE FROM likeDB
 		WHERE cooknum = #{cooknum} AND user_id = #{userId}
 	</delete>
+	
+	
 
 </mapper>

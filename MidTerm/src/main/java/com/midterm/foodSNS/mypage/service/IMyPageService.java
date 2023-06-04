@@ -15,14 +15,25 @@ public interface IMyPageService {
 
 	void addFollowing(Map<String, String> map);	
 
-	int checkFollowing(Map<String, String> map);
-
-	void deleteFollowing(Map<String, String> map);
-
 	
 
+	void deleteFollowing(Map<String, String> map);
+	
+	void deleteFollower(Map<String, String> map);
+
+	
+	List<MusersVO> countFollowing(String userId);
 	List<MusersVO> countFollower(String userId);
 
 	void addFollower(Map<String, String> map);
+	
+	int checkFollowing(Map<String, String> map);
+
+	int checkFollower(Map<String, String> map);
+
+	
+
+
+	
 
 }

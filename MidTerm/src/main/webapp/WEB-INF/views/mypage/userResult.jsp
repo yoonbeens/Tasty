@@ -105,10 +105,11 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item">
-						<div class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#followModal">FollowerChief</div>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Following
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
+							Chief</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
 							Chief</a></li>
 
 
@@ -146,22 +147,72 @@
 </body>
 
 
-<!-- follow Modal -->
-  <div class="modal fade" id="followModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <h1 class="modal-title fs-5" id="exampleModalLabel">Follow</h1>
-		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- Follower Modal -->
+<div class="modal fade" id="FollowerModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="fmodal-body" id="followerM">
+
+				<c:forEach var="follower" items="${countFollower}">
+
+					<div id="followerdiv">
+						<img
+							src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+							alt="default" id="fprofile-img"> <a
+							href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
+					</div>
+
+				</c:forEach>
+
+
+
+			</div>
 		</div>
-		<div class="modal-body">
-			
-		 
-		</div>
-		
-	  </div>
 	</div>
-  </div>
+</div>
+
+
+
+<!-- Following Modal -->
+<div class="modal fade" id="FollowingModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="fmodal-body" id="followingM">
+
+				<c:forEach var="following" items="${countFollowing}">
+
+					<div id="followerdiv">
+						<img
+							src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+							alt="default" id="fprofile-img"> <a
+							href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
+					</div>
+
+				</c:forEach>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
 
 
 <!-- Modal -->
@@ -303,7 +354,8 @@
 				}).then(res => {
 							console.log("follow성공함");
 							document.getElementById('follow').style.display = "none";	
-							document.getElementById('unfollow').style.display = "block";				
+							document.getElementById('unfollow').style.display = "block";
+							location.reload();				
 						});
 			});
 
@@ -318,7 +370,8 @@
 				}).then(res => {
 							console.log("unfollow성공함");
 							document.getElementById('follow').style.display = "block";	
-							document.getElementById('unfollow').style.display = "none";				
+							document.getElementById('unfollow').style.display = "none";	
+							location.reload();		
 						});
 			});
 
