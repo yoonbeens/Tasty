@@ -1,5 +1,7 @@
 package com.midterm.foodSNS.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.midterm.foodSNS.command.LikeVO;
 import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MSearchConditionVO;
+import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.result.service.IResultService;
 import com.midterm.foodSNS.util.DBservice;
 
@@ -38,13 +41,31 @@ public class ResultController {
 	public String resultMain (String weather, String condition, String feeling, Model model) {
 		
 		MSearchConditionVO vo = new MSearchConditionVO();
+		if(weather.equals("Clear")) {
+			weather = "맑음";
+		}
+		else if(weather.equals("Rain")) {
+			weather = "비";
+		}
+		else if(weather.equals("Clouds")) {
+			weather = "흐림";
+		}
+		else {
+			weather = "흐림";
+		} 
+		
 		vo.setWeather(weather);
+		log.info(vo.getWeather());
 		vo.setCondition2(condition);
-		vo.setFeeling(feeling);		
+		vo.setFeeling(feeling);	
+		
+	
 		model.addAttribute("searchCondition",vo);		
 		model.addAttribute("recipe",service.recommand(vo));		
 		return "result/mainResult";		
 	}
+	
+
 	
 	@GetMapping("/resultDetail")
 	public String resultDetail() {
@@ -56,6 +77,32 @@ public class ResultController {
 	public String getDB() {		
 		DBservice.getDB();
 		return"/home";
+		
+	}
+	@ResponseBody
+	@GetMapping("/getWeather")
+	public Map<String, Object> getWeather(Model model) {
+	 
+		model.addAttribute("weather",DBservice.getWeather()); 
+	
+		
+//		String weather = (String) DBservice.getWeather().get("weather");
+//		
+//		log.info("33333"+weather);
+//		
+//		if(weather.equals("Clear")) {
+//			weather = "맑음";
+//		}
+//		else if(weather.equals("Rain")) {
+//			weather = "비";
+//		}
+//		else if(weather.equals("Clouds")) {
+//			weather = "흐림";
+//		}
+//		else {
+//			weather = "흐림";
+//		}
+		return DBservice.getWeather();
 		
 	}
 	
@@ -78,4 +125,6 @@ public class ResultController {
 	public LikeVO updateLike(@PathVariable int cooknum, @RequestBody LikeVO vo) {
 		return service.updateLike(cooknum, vo);
 	}
+	
+	
 }

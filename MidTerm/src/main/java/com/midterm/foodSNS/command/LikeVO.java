@@ -1,6 +1,7 @@
 package com.midterm.foodSNS.command;
 /*
 CREATE TABLE likeDB (
+
 	likenum INT PRIMARY KEY AUTO_INCREMENT,
     cooknum INT, 
     FOREIGN KEY (cooknum) REFERENCES cookDB (cooknum) ON DELETE CASCADE,
