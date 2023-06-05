@@ -1,12 +1,14 @@
 package com.midterm.foodSNS.mypage.service;
 
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
+import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.mypage.mapper.IMyPageMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,57 @@ public class MyPageService implements IMyPageService {
 		log.info(userId);
 		return mapper.getImgList(userId);
 	}
+	
+	@Override
+	public void addFollowing(Map<String, String> map) {
+		mapper.addFollowing(map);
+	}
+	@Override
+	public void addFollower(Map<String, String> map) {
+		mapper.addFollower(map);
+		
+	}
+
+	
+	
+	
+
+	@Override
+	public int checkFollowing(Map<String, String> map) {		
+		return mapper.checkFollowing(map);
+	}
+	
+	
+	@Override
+	public int checkFollower(Map<String, String> map) {
+		
+		return mapper.checkFollower(map);
+	}
+	
+	
+	
+	
+	@Override
+	public void deleteFollowing(Map<String, String> map) {
+		 mapper.deleteFollowing(map);
+		
+	}
+	
+	@Override
+	public void deleteFollower(Map<String, String> map) {
+		mapper.deleteFollower(map);
+		
+	}
+
+	@Override
+	public List<MusersVO> countFollower(String userId) {
+		return mapper.countFollower(userId);
+	}
+	@Override
+	public List<MusersVO> countFollowing(String userId) {
+		return mapper.countFollowing(userId);
+	}
+
 	
 	
 

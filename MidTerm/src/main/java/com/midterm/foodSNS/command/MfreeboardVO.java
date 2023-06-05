@@ -29,5 +29,7 @@ public class MfreeboardVO {
 	private String content;
 	private LocalDateTime regDate;
 	private int likeNum;
+	
+	
 
 }

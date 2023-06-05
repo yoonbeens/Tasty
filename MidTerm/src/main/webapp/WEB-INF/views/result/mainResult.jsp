@@ -10,6 +10,7 @@
 <html lang="en">
 
 <head>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -46,7 +47,7 @@ input {
 }
 
 #mainDiv {
-  width: 50%;
+  width: 100%;
 	display: none;
   position: fixed;
   top: 50%;
@@ -59,7 +60,7 @@ main {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #ff8c6b;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -71,7 +72,7 @@ main {
   /* font-family: 'LINESeedKR-Bd'; */
   font-weight: 100;
   font-size: 14px;
-  color: rgb(135, 135, 135);
+  color: rgb(62, 62, 62);
   /* letter-spacing: 10px; */
   line-height: 2;
   word-spacing: 5px;
@@ -159,16 +160,16 @@ form.sign-up-form {
 }
 
 .heading h6 {
-  color: #bababa;
+  color: #9f9f9f;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 1rem;
   display: inline;
 }
 
 .toggle {
   color: #151111;
   text-decoration: none;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 500;
   transition: 0.3s;
 }
@@ -273,7 +274,7 @@ main.sign-up-mode .carousel {
   width: 55%;
   left: 45%;
   top: 0;
-  background-color: #F2F1F6;
+  background-color: #ffe0d2;
   border-radius: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -1093,24 +1094,66 @@ button {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 
+
 	</script>
 	<div id="main-con">
-		<div id="main-left">ddd</div>
+		<div id="main-left">
+
+			<div id="searchAgain">
+
+
+
+				<form action="${pageContext.request.contextPath}/result/mainResult"
+					method="POST">
+					<div class="selectWrapper">
+						<select class="form-select" aria-label="Default select example"
+							name="weather">
+							<option value="날씨" disabled selected>${searchCondition.weather}</option>
+							<option value="맑음">맑음</option>
+							<option value="흐림">흐림</option>
+							<option value="비">비</option>
+							<option id="todayWeather"></option>
+						</select> <select class="form-select" aria-label="Default select example"
+							name="condition">
+							<option value="상태" disabled selected>${searchCondition.condition2}</option>
+							<option value="보통">보통</option>
+							<option value="다이어트중">다이어트중</option>
+							<option value="술마시고싶어요">술마시고싶어요</option>
+
+						</select> <select class="form-select" aria-label="Default select example"
+							name="feeling">
+							<option value="기분" disabled selected>${searchCondition.feeling}</option>
+							<option value="신나요">신나요</option>
+							<option value="우울해요">우울해요</option>
+							<option value="피곤해요">피곤해요</option>
+							<option value="특별한날">특별한날</option>
+						</select>
+					</div>
+					<button type="submit">레시피 다시 추천!</button>
+				</form>
+
+
+
+			</div>
+
+		</div>
 		<div id="main">
 			<%
 			ArrayList<MRecipeVO> recipes = new ArrayList<>();
 			recipes = (ArrayList<MRecipeVO>) request.getAttribute("recipe");
 			for (int i = 0; i < recipes.size(); i++) {
-				
-			
 			%>
-			<div class="boxbox" >
+
+			<div class="boxbox" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img class="titleimg" alt="결과이미지" data-userid="${login.userId}"
-					data-cooknum=<%=recipes.get(i).getCooknum()%> src="<%=recipes.get(i).getTitleimg()%>">
+					data-cooknum=<%=recipes.get(i).getCooknum()%>
+					src="<%=recipes.get(i).getTitleimg()%>">
 			</div>
 			<%
-		}
-		%>
+			}
+			%>
+
+
 		</div>
 
 		<div id="main-right">ddd</div>
@@ -1126,48 +1169,53 @@ button {
 	<nav class="navbar bg-success fixed-top ">
 		<div class="container-fluid">
 			<a class="navbar-brand text-light" href="#">Tasty Friend</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
 				aria-controls="offcanvasNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-				aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas offcanvas-end" tabindex="-1"
+				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 				<div class="offcanvas-header">
 					<aside>
 						<div id="logo">
 							<img src="" alt="">
 						</div>
 						<div id="profile-img-con">
-							<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+							<img
+								src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
 								alt="default" id="profile-img">
 						</div>
 						<div class="profileWrapper">
 							<div id="simpleProfile">
 								<h1>${login.userId}</h1>
-								<a href="${pageContext.request.contextPath}/user/userProfileModify"
+								<a
+									href="${pageContext.request.contextPath}/user/userProfileModify"
 									id="promodify">프로필수정</a>
 								<h3>${login.userNick}</h3>
 								<h5>${login.message}</h5>
 							</div>
 							<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-								<li class="nav-item"><a class="nav-link active" aria-current="page"
-										href="${pageContext.request.contextPath}/">Home</a>
+								<li class="nav-item"><a class="nav-link active"
+									aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#">Follow
 										Chief</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Add
+								<li class="nav-item"><a class="nav-link"
+									href="${pageContext.request.contextPath}/freeboard/uploadRecipe">Add
 										My Recipe</a></li>
 								<li class="nav-item"><a class="nav-link"
-										href="${pageContext.request.contextPath}/freeboard/regist">Add
+									href="${pageContext.request.contextPath}/freeboard/regist">Add
 										My Story</a></li>
 
 
 								<li class="nav-item"><a class="nav-link"
-										href="${pageContext.request.contextPath}/mypage/mypageResult">마이페이지(임시)</a></li>
+									href="${pageContext.request.contextPath}/mypage/mypageResult">마이페이지(임시)</a></li>
 
-								<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
 									<ul class="dropdown-menu">
 										<li><a class="dropdown-item" href="#">회원정보수정</a></li>
 										<li><a class="dropdown-item" href="#">Another action</a></li>
@@ -1191,7 +1239,10 @@ button {
 	
 	
 <!-- Modal -->
-<!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="myModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
@@ -1222,8 +1273,8 @@ button {
 		</div> -->
 		
 <div id="mainDiv">
-	<main>
-      <div class="box">
+	<main id="mainClose">
+      <div class="box" id="modalBox">
         <div class="inner-box">
           <div class="forms-wrap">
             <form action="index.html" autocomplete="off" class="sign-in-form">
@@ -1234,8 +1285,8 @@ button {
 
               <div class="heading">
                 <h2 id="foodname"></h2>
-                <h6>댓글 쓰러 가기</h6>
-                <a href="#" class="toggle">comment</a>
+                <h6>요리 시간 재기</h6>
+                <a href="#" class="toggle">Timer</a>
               </div>
 
               <div class="actual-form">
@@ -1296,13 +1347,14 @@ button {
 				<div id="likenum"></div>
 				<button type="button" id="likeBtn">좋아요</button>
 			</div>
+
                 <h4>즐겨찾기</h4>
               </div>
 
               <div class="heading">
-                <h2>Get Started</h2>
-                <h6>요리 시간 재기</h6>
-                <a href="#" class="toggle">Timer</a>
+                <h2>맛있게 드세요</h2>
+                <h6>재료 보러 가기</h6>
+                <a href="#" class="toggle">Detail</a>
               </div>
 
               <div class="actual-form">
@@ -1331,13 +1383,16 @@ button {
                 <div id="content">
                   <div id="f5Text">
                     <div id="text" style="margin-bottom: -25px;">
-                      <span id="minutes">3</span> <span> minutes</span>
+                      <span id="minutes"></span> <span> minutes</span>
                     </div>
                     <!--end text-->
                   </div>
                   <!--end f5Text-->
              
-                  <!--modal pop-up-->
+
+                  
+
+                  <!-- modal pop-up-->
                   <div class="background">
                     <div class="window">
                       <div class="popup">
@@ -1382,8 +1437,8 @@ button {
                     </div>
                     <!--end window-->
                   </div>
-                  <!--end background-->
-                  
+                  <!--end background -->
+                
                   
                   <div class="zoomContents">
                     <div id="buttons">
@@ -1417,17 +1472,17 @@ button {
 
 
                 <div class="input-wrap">
-                  <input
+                  <!-- <input
                     type="password"
                     minlength="4"
                     class="input-field"
                     autocomplete="off"
-                    required
-                  />
-                  <label>Password</label>
+                    
+                  /> -->
+                  <!-- <label>Password</label> -->
                 </div>
 
-                <input type="submit" value="Sign Up" class="sign-btn" />
+                <input type="submit" value="후기 쓰러 가기" class="sign-btn" />
 
 
               </div>
@@ -1472,7 +1527,7 @@ button {
 	
 	
 <Script>
-	document.getElementById('superCon').addEventListener('click', e => {
+	document.getElementById('main-con').addEventListener('click', e => {
 		console.log('클릭됐니?')
 		if (e.target.matches('.boxbox img')) {
 			/* const faNum = e.target.dataset.fanum; */
@@ -1494,6 +1549,8 @@ button {
 					document.getElementById('ingredient').textContent = recipe.ingredient;
 					document.getElementById('tip').textContent = recipe.tip;
 					document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
+					document.getElementById('minutes').textContent = recipe.cookTime;
+					
 					if (recipe.text1 !== '') {
 						document.getElementById(`text1`).textContent = recipe.text1;
 					}
@@ -1502,76 +1559,209 @@ button {
 					}
 					if (recipe.text2 !== '') {
 						document.getElementById(`text2`).textContent = recipe.text2;
-					}
-					if (recipe.img2 !== '') {
-						document.getElementById(`img2`).setAttribute('src', recipe.img2);
-					}
-					if (recipe.text3 !== '') {
-						document.getElementById(`text3`).textContent = recipe.text3;
-					}
-					if (recipe.img3 !== '') {
-						document.getElementById(`img3`).setAttribute('src', recipe.img3);
-					}
-					if (recipe.text4 !== '') {
-						document.getElementById(`text4`).textContent = recipe.text4;
-					}
-					if (recipe.img4 !== '') {
-						document.getElementById(`img4`).setAttribute('src', recipe.img4);
-					}
-					document.getElementById('likenum').dataset.cooknum = recipe.cooknum; // like에 레시피 번호 저장
+
+
+		<Script>
+			document.getElementById('main').addEventListener('click', e => {
+
+				if (e.target.matches('.boxbox img')) {
+					const userId = e.target.dataset.userid;
+					const cooknum = e.target.dataset.cooknum;
+
+					console.log(userId);
+					console.log(cooknum);
+
+
+					//레시피 상세정보 불러오기
+					fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
+						.then(res => res.json())
+						.then(recipe => {
+							console.log(recipe);
+							document.getElementById('foodname').textContent = recipe.foodname;
+							document.getElementById('ingredient').textContent = recipe.ingredient;
+							document.getElementById('tip').textContent = recipe.tip;
+							document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
+							if (recipe.text1 !== '') {
+								document.getElementById(`text1`).textContent = recipe.text1;
+							}
+							if (recipe.img1 !== '') {
+								document.getElementById(`img1`).setAttribute('src', recipe.img1);
+							}
+							if (recipe.text2 !== '') {
+								document.getElementById(`text2`).textContent = recipe.text2;
+							}
+							if (recipe.img2 !== '') {
+								document.getElementById(`img2`).setAttribute('src', recipe.img2);
+							}
+							if (recipe.text3 !== '') {
+								document.getElementById(`text3`).textContent = recipe.text3;
+							}
+							if (recipe.img3 !== '') {
+								document.getElementById(`img3`).setAttribute('src', recipe.img3);
+							}
+							if (recipe.text4 !== ''||recipe.text4 !== null) {
+								//document.getElementById(`text4`).textContent = recipe.text4;
+							}
+							if (recipe.img4 !== ''||recipe.img4 !== null) {
+								document.getElementById(`img4`).setAttribute('src', recipe.img4);
+							}
+
+							getlike(cooknum); //좋아요 불러오기
+							document.getElementById('likenum').dataset.cooknum = recipe.cooknum; //like에 레시피 번호 저장
+							document.getElementById('replyRegist').dataset.cooknum = recipe
 				});
 
 				document.getElementById('mainDiv').style.display = 'block';
+        		getlike(cooknum);
+
 
 /* 				document.getElementById('main-con').style.display = 'none'; */
 
 				console.log('Div보여줘');
-		} else { //!e.target.matches('#mainDiv')
+		} 
+
+	});
+
+
+  document.getElementById('mainDiv').addEventListener('click', e => {
+    if(e.target.matches('#mainClose')) { //!e.target.matches('#mainDiv')
 			console.log('여기는 이벤트 대상이 아님');
-				document.getElementById('mainDiv').style.display = 'none';
+				// document.getElementById('mainDiv').style.display = 'none';
+				// console.log('없어졌니');
+        document.getElementById('mainDiv').style.display = 'none';
 				console.log('없어졌니');
-/* 				document.getElementById('main-con').style.display = 'block'; */
+/* 			document.getElementById('main-con').style.display = 'block'; */
+            
 
-			return;
 		}
+  });
+            
 
-	});
-	
-	
-	/*
-	//좋아요 개수 불러오기
-	function getlike(cooknum) {
-		fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
-				.then(res => res.json())
-				.then(like => {
-					console.log(like);
-					document.getElementById('likenum').textContent = like.likenum;
-				});
-	}
-	//좋아요 버튼 클릭
-	document.getElementById('likeBtn').addEventListener('click', e => {
-		e.preventDefault();
-		const cooknum = document.getElementById('likenum').dataset.cooknum;
-		const userId = '${login.userId}'
-		console.log(userId);
-		const reqObj = {
-			method: 'put',
-			headers: {
-				'Content-Type' : 'application/json'
-			},
-			body: JSON.stringify({
-				'userId' : userId
-			})
-		}
-		fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum, reqObj)
-			.then(res => res.text())
-			.then(data => {
-				console.log(data);
-				document.getElementById('likenum').textContent = data.likenum;
-				getlike(cooknum);
+  // if(!e.target.matches('.boxbox img') || !e.target.matches('#modalBox')) {
+  //         document.getElementById('mainDiv').style.display = 'none';
+	// 			  console.log('없어졌니');
+  // }
+            
+            
+
+			//좋아요 개수 불러오기
+			function getlike(cooknum) {
+				fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
+					.then(res => res.json())
+					.then(like => {
+						console.log(like);
+						document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다';
+					});
+			}
+			//좋아요 버튼 클릭
+			document.getElementById('likeBtn').addEventListener('click', e => {
+				e.preventDefault();
+				const cooknum = document.getElementById('likenum').dataset.cooknum;
+				console.log(cooknum);
+
+				const reqObj = {
+					method: 'put',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'userId': '${login.userId}'
+					})
+				}
+				fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum, reqObj)
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						console.log(data.likenum);
+						document.getElementById('likenum').textContent = data.likenum;
+						console.log(data.userId);
+						if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
+							document.getElementById('likeBtn').style.backgroundColor = 'blue';
+						} else {
+							document.getElementById('likeBtn').style.backgroundColor = '#fff';
+						}
+						getlike(cooknum);
+					});
 			});
-	});
-	*/
+
+
+
+		(function weather() {
+			console.log("날씨시도");
+
+			fetch('${pageContext.request.contextPath}/result/getWeather')
+				.then(res => res.json())
+				.then(data => {
+					console.log("날씨성공");
+					console.log(data.weather);
+					let ctemp = data.temp - 273.15;
+					console.log(ctemp.toFixed(2));
+					let weather1='';
+
+					if (data.weather==="Clear") {
+						 weather1 = '맑음';
+					} else if (data.weather==="Rain") {
+						 weather1 = '비';
+					} else if (data.weather==="Clouds") {
+						 weather1 = '흐림';
+					} else {
+						 weather1 = '흐림';
+					}
+
+					document.getElementById('todayWeather').setAttribute("value", data.weather);
+					document.getElementById('todayWeather').textContent = "오늘의 날씨 : " +weather1 + "/" + ctemp.toFixed(2) + "°C";
+
+
+				})
+
+		})();
+
+
+
+
+
+  
+	
+	
+		//좋아요 개수 불러오기
+            function getlike(cooknum) {
+                fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
+                    .then(res => res.json())
+                    .then(like => {
+                        console.log(like);
+                        document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다';
+                    });
+            }
+            //좋아요 버튼 클릭
+            document.getElementById('likeBtn').addEventListener('click', e => {
+                e.preventDefault();
+                const cooknum = document.getElementById('likenum').dataset.cooknum;
+                console.log(cooknum);
+
+                const reqObj = {
+                    method: 'put',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'userId': '${login.userId}'
+                    })
+                }
+                fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum, reqObj)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        console.log(data.likenum);
+                        document.getElementById('likenum').textContent = data.likenum;
+                        console.log(data.userId);
+                        if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
+                            document.getElementById('likeBtn').style.backgroundColor = 'blue';
+                        } else {
+                            document.getElementById('likeBtn').style.backgroundColor = '#fff';
+                        }
+                        getlike(cooknum);
+                    });
+            });
 	
 	const inputs = document.querySelectorAll(".input-field");
 	const toggle_btn = document.querySelectorAll(".toggle");
@@ -1631,7 +1821,7 @@ button {
 
 
 
-
+  //타이머
 
 
 	function toast(msg) {
@@ -1640,7 +1830,6 @@ button {
 	}
 
 	//modal function
-
 	function show() {
 	  document.querySelector(".background").className = "background show";
 	}
