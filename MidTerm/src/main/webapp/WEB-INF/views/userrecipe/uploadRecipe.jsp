@@ -31,7 +31,7 @@
         <textarea class="form-control" rows="5" id="summernote" id="imageBoard" name="content"></textarea>
       </div>
 
-      <button id="submitBtn" type="button">글 작성</button>
+      <button id="submitBtn" type="submit">글 작성</button>
     </form>
   </div>
   
@@ -48,7 +48,7 @@
 
 <script type="text/javascript">
 
-	document.getElementById('submitBtn').addEventListener('click' , () => {
+/* 	document.getElementById('submitBtn').addEventListener('click' , () => {
     if(document.getElementById('title').value === '') {
       alert('제목을 입력해 주세요!');
       return;
@@ -56,5 +56,5 @@
     alert('레시피가 등록되었습니다.');
     document.uploadForm.submit();
   });
-
+ */
 </script>

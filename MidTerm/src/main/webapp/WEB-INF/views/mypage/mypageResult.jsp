@@ -63,13 +63,8 @@
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
-
-			<div class="boxbox scale myrecipebox" data-bs-toggle="modal" data-bs-target="#myModal"
-				>
-
-				dddd
 			
-			</div>
+			
 
 			<%
 			break;
@@ -80,6 +75,16 @@
 			<%
 			}
 			%>
+			<c:forEach var="recipe" items="${recipe}">
+				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal" data-bs-target="#recipe"
+				>
+					<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
+						alt="default" id="article-img" data-reuserid="${recipe.writer}"
+						data-rebno="${recipe.bno}" />
+					<div id="title" name="title">${recipe.title}</div>
+				</div>
+			</c:forEach>  
+			
 
 
 		</div>
@@ -105,7 +110,7 @@
 					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
 							data-bs-target="#FollowingModal">Following
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Add My
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add My
 							Recipe</a></li>
 					<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/freeboard/regist">Add
@@ -184,6 +189,8 @@
 
 
 
+
+
 <!-- Following Modal -->
 <div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
@@ -205,6 +212,25 @@
 				</c:forEach>
 
 
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal uesrRecipe-->
+<div class="modal fade" id="recipe" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-body" id="userRecipe">
+			<div id="urTitle">
+				<!--유저레시피 제목오는곳-->
+			</div>
+			<hr>
+			<div id="content">
+			<!--유저레시피 내용오는곳-->
+			</div>		
+			
 			</div>
 		</div>
 	</div>
@@ -407,6 +433,16 @@
 
 
 			document.getElementById('main').addEventListener('click', e => {
+				if (e.target.matches('.boxbox2 img')) {
+					
+					const rebno = e.target.dataset.rebno;
+					const urcontent='';
+					console.log(urcontent);
+					// document.getElementById('content').insertAdjacentHTML('afterbegin', urcontent );
+
+
+				}
+	
 
 				if (e.target.matches('.boxbox img')) {
 
