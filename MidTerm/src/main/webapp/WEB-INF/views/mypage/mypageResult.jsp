@@ -227,7 +227,7 @@
 				<!--유저레시피 제목오는곳-->
 			</div>
 			<hr>
-			<div id="content">
+			<div id="urContent">
 			<!--유저레시피 내용오는곳-->
 			</div>		
 			
@@ -437,14 +437,14 @@
 
 			document.getElementById('main').addEventListener('click', e => {
 				if (e.target.matches('.boxbox2 img')) {
+					// const rebno = e.target.dataset.rebno;
+					// //const urTitle = `${recipe[` + rebno + `].title}`;					
+					// console.log('urTitle ');
+					// document.getElementById('urTitle').insertAdjacentHTML('afterbegin', urTitle);
+					// document.getElementById('urContent').insertAdjacentHTML('afterbegin', urContent);
 					
-					const rebno = e.target.dataset.rebno;
-					const urcontent='';
-					console.log(urcontent);
-					// document.getElementById('content').insertAdjacentHTML('afterbegin', urcontent );
-
-
 				}
+				
 	
 
 				if (e.target.matches('.boxbox img')) {
