@@ -64,7 +64,8 @@ body {
 
 h2 {
 	font-size: 30px;
-	color: #000;
+	/* color: #000; */
+	color: skyblue;
 	text-align: center;
 }
 
@@ -228,7 +229,7 @@ h2 {
 	/*  padding: 15px 30px; */
 	border-radius: 15px;
 	font-family: "paybooc-Light", sans-serif;
-	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
@@ -256,7 +257,7 @@ h2 {
 }
 
 .input-over {
-	color: #606060;
+	color: lightgray;
 }
 
 .commit {
@@ -395,7 +396,7 @@ h2 {
 
 								<div class="commit4">
 									<button class="w-btn-outline w-btn-indigo-outline class-over"
-										type="button">취소</button>
+										type="button" id="cancelBtn">취소</button>
 								</div>
 							</div>
 						</div>
@@ -421,6 +422,9 @@ h2 {
 		});
 		
 		
+		document.getElementById('cancelBtn').addEventListener('click', e => {
+			location.href = "${pageContext.request.contextPath}/";
+		});
 		
 		
 		

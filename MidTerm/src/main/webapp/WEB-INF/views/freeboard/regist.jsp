@@ -1,49 +1,128 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <link href="${pageContext.request.contextPath}/css/regist.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="${pageContext.request.contextPath}/css/regist.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+<style>
+/* input[type=file]::file-selector-button {
+	width: 150px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid rgb(77, 77, 77);
+	border-radius: 10px;
+	cursor: pointer; &: hover { background : rgb( 77, 77, 77);
+	color: #fff;
+} */
+</style>
+
+
 </head>
 
 
 
+
+
+
+
+
+
+
+
+
+
 <body>
-    <div class="container">
+	<div class="container">
 
-        <form action="${pageContext.request.contextPath}/freeboard/regist" method="post" id="form"
-            enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/freeboard/regist"
+			method="post" id="form" enctype="multipart/form-data">
 
-            <div id="attr_area" data-placeholder="ddddd"></div>
-            <label for="file">이미지업로드</label>
-            <input multiple="multiple" type="file" name="file" id="file">
-            <input type="hidden" name="userId" value="${login.userId}">
-            <table class="table">
-                <tbody class="t-control">
-                    <tr>
-                        <td><textarea class="form-control" rows="7" name="content"></textarea>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
 
-            <div class="titlefoot">
-                <button class="btn" type="button">등록</button>
-            </div>
-        </form>
-    </div>
+
+			<div class="overing">
+				<div id="attr_area" style="display: inline-block" class="image-upload"
+					data-placeholder="이미지 업로드"></div>
+				<label for="file"></label>
+			</div>
+
+
+
+
+
+		   <!--  <div class="filebox">
+				<input multiple="multiple" name="file" class="upload-name"
+					value="첨부파일" placeholder="첨부파일" style="display: inline-block">
+				<label for="file">파일찾기</label> <input type="file" id="file">
+			</div>  -->
+			<div class="filebox">
+	<input multiple="multiple" name="file" class="upload-name" placeholder="첨부파일" style="display: inline-block" readonly>
+	<label for="file">파일찾기</label>
+	<input type="file" id="file">
+</div>
+
+
+
+
+
+
+
+
+
+			<input type="hidden" name="userId" value="${login.userId}"> <label
+				for="file" style="display: inline-block"></label>
+
+
+
+
+
+
+			<table class="table">
+				<tbody class="t-control">
+					<tr>
+						<td><textarea class="form-control" rows="7" name="content"
+								placeholder="입력해주세요">
+								</textarea></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+			<div class="titlefoot">
+				<button class="w-btn w-btn-indigo" style="display: inline-block"
+					type="button">등록</button>
+			</div>
+		</form>
+	</div>
+
 </body>
 
-</html>
 
 <script>
-    //즉시 실행 함수를 이용해서 페이지 들어오면 바로 로딩 될 수 있도록 구성
-    (
-        imageView = function imageView() {
 
+
+	$("#file").on('change', function() {
+	    var fileName = $(this).val().split("\\").pop();
+	    $(".upload-name").val(fileName);
+	});
+	
+	
+	
+	 document.addEventListener('DOMContentLoaded', function() {
+	        imageView();
+	    });
+	 
+	 
+    //즉시 실행 함수를 이용해서 페이지 들어오면 바로 로딩 될 수 있도록 구성
+        imageView = function imageView() {
             //미리보기 영역
             const $area = document.getElementById('attr_area');
             //파일 선택 버튼
@@ -58,8 +137,8 @@
             // 미리보기 이미지 속성 (원하는 대로 고쳐 쓰세여)
             let imgStyle = 'width:100%;height:100%;z-index:none';
             // 이미지안에 표시되는 체크박스의 속성 (원하는 대로 고쳐 쓰세여)
-            let chkStyle = 'width:30px;height:30px;position:absolute;font-size:24px;' +
-                'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:#f00';
+            let chkStyle = 'width:30px;height:30px;position:absolute;font-size:17px;' +
+                'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);border:red;border-radius:10px';
 
             //파일선택 버튼을 누르면
             $btnAttr.onchange = function (e) {
@@ -72,7 +151,11 @@
 
                 //반복문 이용해서 파일 정보 불러와서 배열에 담는 함수 호출.
                 for (let f of fileArr) {
-                    imageLoader(f);
+                	if (f.type === 'text/plain' || f.type === 'application/zip') {  //txt랑 zip파일은 불가.
+                        alert('txt 또는 zip 파일은 업로드할 수 없습니다.');
+                        continue; 
+                    }
+                	imageLoader(f);
                 }
             } //첨부된 이미지들을 배열에 넣고 미리보기 구현
             function imageLoader(file) {
@@ -141,8 +224,12 @@
                 $div.appendChild($btn);
                 return $div;
             }
-            document.querySelector('.btn').addEventListener('click', e => {
-                console.log(document.getElementById('attr_area').childElementCount);
+            
+            
+            
+            document.querySelector('.w-btn-indigo').addEventListener('click', e => {
+               console.log('잡혀?');
+            	console.log(document.getElementById('attr_area').childElementCount);
                 if (confirm("게시물을 게시하시겠습니까?")) {
 
                     if (document.getElementById('attr_area').childElementCount == 0) {
@@ -155,8 +242,7 @@
                 } else {
                     return;
                 }
-
             });
-        }
-    )();
+        };
 </script>
+</html>
