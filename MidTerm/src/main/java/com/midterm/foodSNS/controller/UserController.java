@@ -190,7 +190,7 @@ public class UserController {
 	}
 	
 	//로그아웃 요청
-	@PostMapping("/userLogout")
+	@GetMapping("/userLogout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "redirect:/";

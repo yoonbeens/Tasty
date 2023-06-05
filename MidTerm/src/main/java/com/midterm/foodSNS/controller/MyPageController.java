@@ -1,14 +1,12 @@
 package com.midterm.foodSNS.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
+import com.midterm.foodSNS.command.MfreeboardVO;
 import com.midterm.foodSNS.command.MusersVO;
+import com.midterm.foodSNS.freerecipe.service.IFreeRecipeService;
 import com.midterm.foodSNS.mypage.service.IMyPageService;
 import com.midterm.foodSNS.user.service.IUserService;
 
@@ -37,6 +37,10 @@ public class MyPageController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IFreeRecipeService recipeService;
+	
 
 	@GetMapping("/mypageResult")
 	public String mypageResult(HttpServletRequest request, Model model) {
@@ -57,6 +61,11 @@ public class MyPageController {
 		List<MusersVO> countFollowing =new ArrayList<>();
 		countFollowing =service.countFollowing(vo.getUserId());
 		
+		List<MfreeboardVO> recipeList = new ArrayList<>();		
+		recipeList = recipeService.getRecipeList(vo.getUserId());
+		
+		
+		
 		for(int i=0; i<countFollower.size();i++) {
 			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
 			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
@@ -69,7 +78,7 @@ public class MyPageController {
 			countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
 		}
 		
-				
+		model.addAttribute("recipe",recipeList);
 		model.addAttribute("article",articleList);
 		model.addAttribute("img",imgList);
 		model.addAttribute("countFollower", countFollower);
