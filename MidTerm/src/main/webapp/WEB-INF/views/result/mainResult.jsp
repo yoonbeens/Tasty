@@ -70,7 +70,7 @@ main {
 #ingredient {
   /* font-family: 'LINESeedKR-Bd'; */
   font-weight: 100;
-  font-size: 14px;
+  font-size: 16px;
   color: rgb(62, 62, 62);
   /* letter-spacing: 10px; */
   line-height: 2;
@@ -180,7 +180,7 @@ form.sign-up-form {
 .input-wrap {
   position: relative;
   height: 37px;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
 .input-field {
@@ -351,23 +351,25 @@ main.sign-up-mode .carousel {
   text-indent: 30px;
   padding: 50px;
   font-family: 'LINESeedKR-Bd';
+  color: #4a4a4a;
   position:  absolute;
   top: 20%;
   left: 30%;
+  letter-spacing: 0.2rem;
   
 }
 
 .text-group h2 {
   line-height: 2.2rem;
-  font-weight: 600;
-  font-size: 1rem; 
+  font-weight: normal;
+  font-size: 1.5rem; 
 }
 
 .bullets {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
+  z-index: 100;
 }
 
 .bullets span {
@@ -689,7 +691,7 @@ body {
 
 .show {
   opacity: 1;
-  z-index: 10000;
+  /* z-index: 10; */
   transition: all 0.5s;
 }
 
@@ -697,6 +699,8 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  /* z-index: 1000; */
+  opacity: 0;
 }
 
 .popup {
@@ -716,11 +720,16 @@ body {
   height: 500px;
 
   transform: translate(-50%, -40%);
+
+  /* z-index: 1000; */
+  opacity: 0;
 }
 
 .show .popup {
   transform: translate(-50%, -50%);
   transition: all 0.5s;
+  /* z-index: 1000; */
+  opacity: 0;
 }
 
 input[type="color"] {
@@ -730,6 +739,7 @@ input[type="color"] {
   margin: -25%;
 
   cursor: pointer;
+  opacity: 0;
 }
 
 .cp_wrapper {
@@ -1662,7 +1672,7 @@ button {
 
 	//modal function
 	function show() {
-	  document.querySelector(".background").className = "background show";
+	  document.querySelector(".background").className = "background backShow";
 	}
 
 	function close() {

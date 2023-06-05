@@ -59,10 +59,12 @@ public class ResultController {
 		vo.setCondition2(condition);
 		vo.setFeeling(feeling);	
 		
-	
+
+		
 		model.addAttribute("searchCondition",vo);		
 		model.addAttribute("recipe",service.recommand(vo));		
-		return "result/mainResult";		
+		return "result/mainResult";	
+		
 	}
 	
 
