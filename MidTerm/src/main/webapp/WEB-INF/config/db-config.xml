@@ -58,6 +58,7 @@
 	<mybatis-spring:scan base-package="com.midterm.foodSNS.result.mapper"/>
 	<mybatis-spring:scan base-package="com.midterm.foodSNS.reply.mapper"/>
 	<mybatis-spring:scan base-package="com.midterm.foodSNS.freerecipe.mapper"/>
+	<mybatis-spring:scan base-package="com.midterm.foodSNS.like.mapper"/>
 
 
 	<!--  <mybatis-spring:scan base-package="com.midterm.foodSNS.reply.mapper"/> -->
