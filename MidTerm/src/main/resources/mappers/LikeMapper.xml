@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.midterm.foodSNS.like.mapper.ILikeMapper">
+
+	
+	<sql id="num">
+		<if test="bno != 0">
+			WHERE bno = #{bno}
+		</if>
+		<if test="faNum != 0">
+			WHERE faNum = #{faNum}
+		</if>
+		<if test="cooknum != 0">
+			WHERE cooknum = #{cooknum}
+		</if>
+	</sql>
+
+
+	<select id="getLike" resultType="int">
+		SELECT COUNT(*) FROM likeDB
+		WHERE cooknum = #{cooknum}
+	</select>
+	
+	<select id="chkLike" resultType="int">
+		SELECT COUNT(*) FROM likeDB
+		<include refid="num" /> AND user_id = #{userId}
+	</select>
+	
+	<insert id="insertLike">
+		INSERT INTO likeDB
+		(cooknum, user_id)
+		VALUES (#{cooknum}, #{userId})
+	</insert>
+	
+	<delete id="deleteLike">
+		DELETE FROM likeDB
+		<include refid="num" /> AND user_id = #{userId}
+	</delete>
+	
+	<select id="faLike" resultType="int">
+		SELECT COUNT(*) FROM likeDB
+		WHERE faNum = #{faNum}
+	</select>
+	
+	<select id="urLike" resultType="int">
+		SELECT COUNT(*) FROM likeDB
+		WHERE bno = #{bno}
+	</select>
+	
+	<insert id="insertFaLike">
+		INSERT INTO likeDB
+		(faNum, user_id)
+		VALUES (#{faNum}, #{userId})
+	</insert>
+	
+	<insert id="insertUrLike">
+		INSERT INTO likeDB
+		(bno, user_id)
+		VALUES (#{bno}, #{userId})
+	</insert>
+
+</mapper>
