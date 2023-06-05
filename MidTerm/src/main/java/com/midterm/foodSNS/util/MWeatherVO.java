@@ -21,9 +21,7 @@ public class MWeatherVO {
 	
 	
 	@JsonProperty("weather")
-	private List<weather> weather;
-	
-	
+	private List<weather> weather;	
 
 
 
