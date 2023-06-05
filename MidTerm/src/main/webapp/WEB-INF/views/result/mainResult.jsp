@@ -351,9 +351,9 @@ main.sign-up-mode .carousel {
   text-indent: 30px;
   padding: 50px;
   font-family: 'LINESeedKR-Bd';
-/*   position:  absolute;
+  position:  absolute;
   top: 20%;
-  left: 30%; */
+  left: 30%;
   
 }
 
@@ -678,9 +678,9 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
+  /* width: 100%; */
+  /* height: 100vh; */
+  /* background-color: rgba(0, 0, 0, 0.3); */
 
   /* 숨기기 */
   z-index: -1;
@@ -689,7 +689,7 @@ body {
 
 .show {
   opacity: 1;
-  /* z-index: 1000; */
+  z-index: 10000;
   transition: all 0.5s;
 }
 
@@ -1628,11 +1628,10 @@ button {
 	  images.forEach((img) => img.classList.remove("show"));
 	  currentImage.classList.add("show");
 
-	  const textSlider = document.querySelector(".text-group");
-/* 	  const textSliderSolution = 'translateY' + (-(index - 1)*2.2) + 'rem';
-	  textSlider.style.transform = textSliderSolution; */
-	  
- 	  textSlider.style.transform = `translateY(` + (-(index - 1) * 6.6) + `rem)`;
+	  // const textSlider = document.querySelector(".text-group");
+ 	  // textSlider.style.transform = `translateY(` + (-(index - 1) * 6.6) + `rem)`;
+
+
 
 	  
 	  bullets.forEach((bull) => bull.classList.remove("active"));
