@@ -63,13 +63,8 @@
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
-
-			<div class="boxbox scale myrecipebox" data-bs-toggle="modal" data-bs-target="#myModal"
-				>
-
-				dddd
 			
-			</div>
+			
 
 			<%
 			break;
@@ -80,6 +75,16 @@
 			<%
 			}
 			%>
+			<c:forEach var="recipe" items="${recipe}">
+				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal" data-bs-target="#recipe"
+				>
+					<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
+						alt="default" id="article-img" data-reuserid="${recipe.writer}"
+						data-rebno="${recipe.bno}" />
+					<div id="title" name="title">${recipe.title}</div>
+				</div>
+			</c:forEach>  
+			
 
 
 		</div>
@@ -105,7 +110,7 @@
 					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
 							data-bs-target="#FollowingModal">Following
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Add My
+					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add My
 							Recipe</a></li>
 					<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/freeboard/regist">Add
@@ -184,6 +189,8 @@
 
 
 
+
+
 <!-- Following Modal -->
 <div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
@@ -205,6 +212,25 @@
 				</c:forEach>
 
 
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal uesrRecipe-->
+<div class="modal fade" id="recipe" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-body" id="userRecipe">
+			<div id="urTitle">
+				<!--유저레시피 제목오는곳-->
+			</div>
+			<hr>
+			<div id="urContent">
+			<!--유저레시피 내용오는곳-->
+			</div>		
+			
 			</div>
 		</div>
 	</div>
@@ -275,7 +301,10 @@
 					</textarea>
 						<button id="modifyTextbtn" type="button" class="btn btn-success">Modify</button>
 					</div>
-					<div class="likeBox">like박스</div>
+					<div class="likeBox">
+						<div id="likenum"></div>
+						<button type="button" id="likeBtn">좋아요</button>
+					</div>
 
 					<div class="replyBox">
 
@@ -407,6 +436,16 @@
 
 
 			document.getElementById('main').addEventListener('click', e => {
+				if (e.target.matches('.boxbox2 img')) {
+					// const rebno = e.target.dataset.rebno;
+					// //const urTitle = `${recipe[` + rebno + `].title}`;					
+					// console.log('urTitle ');
+					// document.getElementById('urTitle').insertAdjacentHTML('afterbegin', urTitle);
+					// document.getElementById('urContent').insertAdjacentHTML('afterbegin', urContent);
+					
+				}
+				
+	
 
 				if (e.target.matches('.boxbox img')) {
 
@@ -414,7 +453,12 @@
 					const content = e.target.dataset.content;
 					const faNum = e.target.dataset.fanum;
 
-
+					getlike(faNum); //좋아요 불러오기
+					document.getElementById('likenum').dataset.faNum = faNum; //like에 게시글 번호 저장
+					document.getElementById('replyRegist').dataset.faNum = faNum; //댓글등록에 게시글 번호 저장
+					getList(1, true); //댓글 불러오기
+					
+					
 					strbtn = '';
 					strimg = '';
 					strmodi = '';
@@ -559,9 +603,45 @@
 					return;
 				}
 
+			});
+			
+			//좋아요 개수 불러오기
+			function getlike(faNum) {
+				fetch('${pageContext.request.contextPath}/like/faNum/' + faNum)
+					.then(res => res.json())
+					.then(like => {
+						console.log(like);
+						document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다';
+					});
+			}
+			//좋아요 버튼 클릭
+			document.getElementById('likeBtn').addEventListener('click', e => {
+				e.preventDefault();
+				const faNum = document.getElementById('likenum').dataset.faNum;
+				console.log(faNum);
 
-
-
-
+				const reqObj = {
+					method: 'put',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'userId': '${login.userId}'
+					})
+				}
+				fetch('${pageContext.request.contextPath}/like/faNum/' + faNum, reqObj)
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						console.log(data.likenum);
+						document.getElementById('likenum').textContent = data.likenum;
+						console.log(data.userId);
+						if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
+							document.getElementById('likeBtn').style.backgroundColor = 'blue';
+						} else {
+							document.getElementById('likeBtn').style.backgroundColor = '#fff';
+						}
+						getlike(faNum);
+					});
 			});
 		</Script>

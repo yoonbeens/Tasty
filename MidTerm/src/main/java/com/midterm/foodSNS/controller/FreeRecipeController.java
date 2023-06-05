@@ -55,8 +55,8 @@ public class FreeRecipeController {
 
 		log.info("articleList: " + articleList);			
 
-		model.addAttribute("article",articleList);
-		return "/userrecipe/recipeList";	
+		model.addAttribute("recipe",articleList);
+		return "/mypage/mypageResult";	
 	}
 	
 	//레세피 글 상세보기

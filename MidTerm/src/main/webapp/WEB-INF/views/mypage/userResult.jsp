@@ -82,22 +82,22 @@
 
 				<div id="simpleProfile">
 					<h1><%=user.getUserId()%></h1>
-					
+
 					<%if(followCheck==0) {%>
 					<button id="follow" data-followerid="${login.userId}"
 						data-targetid="<%=user.getUserId()%>">Follow</button>
 
-						<button id="unfollow"  data-followerid="${login.userId}"
-					data-targetid="<%=user.getUserId()%>" style="display: none;">UnFollow</button>
-						<%}else if(followCheck==1){ %>
+					<button id="unfollow" data-followerid="${login.userId}" data-targetid="<%=user.getUserId()%>"
+						style="display: none;">UnFollow</button>
+					<%}else if(followCheck==1){ %>
 
-							<button id="follow" data-followerid="${login.userId}"
-						data-targetid="<%=user.getUserId()%>" style="display: none;">Follow</button>
-						
-					<button id="unfollow"  data-followerid="${login.userId}"
-					data-targetid="<%=user.getUserId()%>">UnFollow</button>
+					<button id="follow" data-followerid="${login.userId}" data-targetid="<%=user.getUserId()%>"
+						style="display: none;">Follow</button>
+
+					<button id="unfollow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>">UnFollow</button>
 					<%} %>
-					
+
 					<h3><%=user.getUserNick()%></h3>
 					<h5><%=user.getMessage()%></h5>
 				</div>
@@ -105,11 +105,11 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#"
-						data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
+					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+							data-bs-target="#FollowerModal">Follower
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"
-						data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
+					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+							data-bs-target="#FollowingModal">Following
 							Chief</a></li>
 
 
@@ -148,22 +148,19 @@
 
 
 <!-- Follower Modal -->
-<div class="modal fade" id="FollowerModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followerM">
 
 				<c:forEach var="follower" items="${countFollower}">
 
 					<div id="followerdiv">
-						<img
-							src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+						<img src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
 					</div>
@@ -180,22 +177,19 @@
 
 
 <!-- Following Modal -->
-<div class="modal fade" id="FollowingModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followingM">
 
 				<c:forEach var="following" items="${countFollowing}">
 
 					<div id="followerdiv">
-						<img
-							src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+						<img src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
 					</div>
@@ -275,8 +269,9 @@
 					</textarea>
 						<button id="modifyTextbtn" type="button" class="btn btn-success">Modify</button>
 					</div>
-					<div class="likeBox">like박스</div>
-
+					<div class="likeBox"></div>
+					<div id="likenum"></div>
+					<button type="button" id="likeBtn">좋아요</button>
 					<div class="replyBox">
 
 
@@ -347,32 +342,32 @@
 				console.log("follow 시작됨");
 				const followerId = e.target.dataset.followerid;
 				const targetId = e.target.dataset.targetid;
-				
 
-				fetch('${pageContext.request.contextPath}/mypage/addFollow/'+targetId, {
-					method: 'post'					
+
+				fetch('${pageContext.request.contextPath}/mypage/addFollow/' + targetId, {
+					method: 'post'
 				}).then(res => {
-							console.log("follow성공함");
-							document.getElementById('follow').style.display = "none";	
-							document.getElementById('unfollow').style.display = "block";
-							location.reload();				
-						});
+					console.log("follow성공함");
+					document.getElementById('follow').style.display = "none";
+					document.getElementById('unfollow').style.display = "block";
+					location.reload();
+				});
 			});
 
 			document.getElementById('unfollow').addEventListener('click', e => {
 				console.log("unfollow 시작됨");
 				const followerId = e.target.dataset.followerid;
 				const targetId = e.target.dataset.targetid;
-				
 
-				fetch('${pageContext.request.contextPath}/mypage/deleteFollow/'+targetId, {
-					method: 'delete'					
+
+				fetch('${pageContext.request.contextPath}/mypage/deleteFollow/' + targetId, {
+					method: 'delete'
 				}).then(res => {
-							console.log("unfollow성공함");
-							document.getElementById('follow').style.display = "block";	
-							document.getElementById('unfollow').style.display = "none";	
-							location.reload();		
-						});
+					console.log("unfollow성공함");
+					document.getElementById('follow').style.display = "block";
+					document.getElementById('unfollow').style.display = "none";
+					location.reload();
+				});
 			});
 
 			let strimg = '';
@@ -388,6 +383,10 @@
 					const content = e.target.dataset.content;
 					const faNum = e.target.dataset.fanum;
 
+					getlike(faNum); //좋아요 불러오기
+					document.getElementById('likenum').dataset.faNum = faNum; //like에 게시글 번호 저장
+					document.getElementById('replyRegist').dataset.faNum = faNum; //댓글등록에 게시글 번호 저장
+					getList(1, true); //댓글 불러오기
 
 					strbtn = '';
 					strimg = '';
@@ -533,9 +532,45 @@
 					return;
 				}
 
+			});
 
+			//좋아요 개수 불러오기
+			function getlike(faNum) {
+				fetch('${pageContext.request.contextPath}/like/faNum/' + faNum)
+					.then(res => res.json())
+					.then(like => {
+						console.log(like);
+						document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다';
+					});
+			}
+			//좋아요 버튼 클릭
+			document.getElementById('likeBtn').addEventListener('click', e => {
+				e.preventDefault();
+				const faNum = document.getElementById('likenum').dataset.faNum;
+				console.log(faNum);
 
-
-
+				const reqObj = {
+					method: 'put',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						'userId': '${login.userId}'
+					})
+				}
+				fetch('${pageContext.request.contextPath}/like/faNum/' + faNum, reqObj)
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						console.log(data.likenum);
+						document.getElementById('likenum').textContent = data.likenum;
+						console.log(data.userId);
+						if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
+							document.getElementById('likeBtn').style.backgroundColor = 'blue';
+						} else {
+							document.getElementById('likeBtn').style.backgroundColor = '#fff';
+						}
+						getlike(faNum);
+					});
 			});
 		</Script>

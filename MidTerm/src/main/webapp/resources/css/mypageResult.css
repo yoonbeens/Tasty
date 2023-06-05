@@ -82,8 +82,26 @@
 	border-radius :30px;
 	
 }
+.boxbox2{
+	box-sizing: border-box;
+	color : red;
+	width : 32%;
+	height: 300px;	
+	margin-top : 10px;
+	margin-bottom : 10px;	
+	border-radius :30px;
+	
+}
 
 .boxbox img{
+	
+	width:100%;
+	border-radius :30px;
+	height: 25vh;
+	
+}
+
+.boxbox2 img{
 	
 	width:100%;
 	border-radius :30px;
@@ -201,7 +219,7 @@ h5 {
 	box-sizing: border-box;
 	width: 100%;
 	height: 900px;
-	border: 1px solid red;
+
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
@@ -360,4 +378,11 @@ h5 {
 #followerdiv span{
 	color : gainsboro;
 	
+}
+
+#urTitle{
+	width: 100%;
+	height: 10vh;
+	border-bottom: gainsboro;
+	font-size: 30px;
 }
