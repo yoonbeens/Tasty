@@ -22,6 +22,13 @@
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap')
 	;
 
+
+#container{
+	position: relative;
+}
+
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -247,7 +254,7 @@ h2 {
 	/*  padding: 15px 30px; */
 	border-radius: 15px;
 	font-family: "paybooc-Light", sans-serif;
-	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
@@ -304,8 +311,9 @@ div.region2 {
 }
 
 h2 {
-	color: black;
+	color: skyblue;
 	margin-left: 220px;
+	margin-top: -50px;
 }
 
 .commit {
@@ -323,7 +331,7 @@ h2 {
 	 margin-left: 150px;
 	
 }   */
-#qweqwe { /*주소찾기버튼*/
+#regior { /*주소찾기버튼*/
 	height: 30px;
 	width: 150px;
 	position: absolute;
@@ -331,7 +339,7 @@ h2 {
 	left: 20px;
 }
 
-#asdasd { /*취소버튼*/
+#cancleBtn { /*취소버튼*/
 	width: 100px;
 	height: 30px;
 	position: absolute;
@@ -345,12 +353,9 @@ h2 {
 	right: 70px;
 }
 
-
-#input-over{
+#input-over {
 	color: #606060;
 }
-
-
 </style>
 
 
@@ -376,7 +381,6 @@ h2 {
 
 					<div class="regionon">
 						<div class="region">
-						
 							<div class="input-group">
 								<div class="form-group has-feedback">
 									<input class="form-control" type="text" id="userId"
@@ -389,9 +393,9 @@ h2 {
 
 							<div class="input-group">
 								<div class="form-group has-feedback">
-									<label class="control-label" id="input-over" for="userName">이름</label> <input
-										class="form-control" type="text" id="userName" name="userName"
-										value="${userInfo.userName}" />
+									<label class="control-label" id="input-over" for="userName">이름</label>
+									<input class="form-control" type="text" id="userName"
+										name="userName" value="${userInfo.userName}" />
 								</div>
 							</div>
 
@@ -399,8 +403,8 @@ h2 {
 
 							<div class="input-group">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userPass" id="input-over">패스워드</label> <input
-										class="form-control" type="password" id="userPass"
+									<label class="control-label" for="userPass" id="input-over">패스워드</label>
+									<input class="form-control" type="password" id="userPass"
 										name="userPw" /> <span id="msgPw"></span>
 								</div>
 							</div>
@@ -409,9 +413,9 @@ h2 {
 
 							<div class="input-group">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userPass" id="input-over">패스워드확인</label> <input
-										class="form-control" type="password" id="pwConfirm" /> <span
-										id="msgPw-c"></span>
+									<label class="control-label" for="userPass" id="input-over">패스워드확인</label>
+									<input class="form-control" type="password" id="pwConfirm" />
+									<span id="msgPw-c"></span>
 								</div>
 							</div>
 
@@ -428,8 +432,8 @@ h2 {
 						<div class="region2">
 							<div class="input-group">
 								<div class="form-group has-feedback">
-									<label class="control-label" for="userName" id="input-over">휴대폰</label> <input
-										class="form-control input-sm sel" type="text"
+									<label class="control-label" for="userName" id="input-over">휴대폰</label>
+									<input class="form-control input-sm sel" type="text"
 										name="userPhone1"
 										<%-- <option ${userInfo.userPhone1=='010' ? 'selected' : '' }>010</option>
 								<option ${userInfo.userPhone1=='011' ? 'selected' : '' }>011</option>
@@ -445,15 +449,15 @@ h2 {
 
 							<div class="overrap">
 								<div class="input-group">
-									<label class="form-group has-feedback" id="input-over">우편번호</label> <input
-										class="form-control input-sm" name="addrZipNum"
+									<label class="form-group has-feedback" id="input-over">우편번호</label>
+									<input class="form-control input-sm" name="addrZipNum"
 										id="addrZipNum" value="${userInfo.addrZipNum}" readonly>
 								</div>
 
 
 								<div class="input-group">
-									<label class="form-group has-feedback" id="input-over">주소</label> <input
-										class="form-control input-sm add" name="addrBasic"
+									<label class="form-group has-feedback" id="input-over">주소</label>
+									<input class="form-control input-sm add" name="addrBasic"
 										id="addrBasic" value="${userInfo.addrBasic}">
 								</div>
 
@@ -461,8 +465,8 @@ h2 {
 
 
 								<div class="input-group">
-									<label class="form-group has-feedback" id="input-over">상세주소</label> <input
-										class="form-control input-sm add" name="addrDetail"
+									<label class="form-group has-feedback" id="input-over">상세주소</label>
+									<input class="form-control input-sm add" name="addrDetail"
 										id="addrDetail" value="${userInfo.addrDetail}">
 								</div>
 
@@ -488,10 +492,10 @@ h2 {
 									onclick="searchAddress()">주소찾기</button> -->
 								<button class="w-btn-outline w-btn-indigo-outline" type="submit"
 									id="submit">수정</button>
-								<button class="w-btn-outline w-btn-indigo-outline" id="qweqwe"
+								<button class="w-btn-outline w-btn-indigo-outline" id="regior"
 									type="button" onclick="searchAddress()">주소찾기</button>
-								<button class="w-btn-outline w-btn-indigo-outline" id="asdasd"
-									type="button">취소</button>
+								<button class="w-btn-outline w-btn-indigo-outline"
+									id="cancleBtn" type="button">취소</button>
 							</div>
 						</div>
 					</div>
@@ -513,14 +517,18 @@ h2 {
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script type="text/javascript">
+
+
+document.getElementById('cancleBtn').addEventListener('click', e => {
+	location.href = "${pageContext.request.contextPath}/user/userMypage";
+});
+
+
 		$(document).ready(function(){
 			// 취소
 			$(".cencle").on("click", function(){
-				
 				location.href = "/";
-						    
 			})
-		
 			$("#submit").on("click", function(){
 				if($("#userPass").val()==""){
 					alert("비밀번호를 입력해주세요.");

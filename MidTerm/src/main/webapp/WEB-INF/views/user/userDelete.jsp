@@ -73,7 +73,7 @@ body {
 
 h2 {
 	font-size: 30px;
-	color: #000;
+	color: skyblue;
 	text-align: center;
 	margin-left: 30px;
 	padding-top: 80px;
@@ -259,7 +259,7 @@ h2 {
 	/*  padding: 15px 30px; */
 	border-radius: 15px;
 	font-family: "paybooc-Light", sans-serif;
-	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
@@ -389,7 +389,7 @@ h2 {
 
 							<div class="commit3">
 								<button class="w-btn-outline w-btn-indigo-outline class-over"
-									type="button">취소</button>
+									type="button" id="cancleBtn">취소</button>
 							</div>
 						</div>
 					</div>
@@ -414,6 +414,13 @@ h2 {
 <script type="text/javascript">
 
 	
+
+document.getElementById('cancleBtn').addEventListener('click', e => {
+	location.href = "${pageContext.request.contextPath}/user/userMypage";
+});
+
+
+
 
 	document.getElementById('deleteBtn').addEventListener('click', e=>{
 		const pwinput = document.getElementById("userPass").value;
