@@ -280,56 +280,47 @@
 							<div class="container">
 								<div class="row">
 									<div class="col-xs-12 col-md-9 write-wrap">
-										<form class="reply-wrap">
-											<div class="reply-image"></div>
-											<!--form-control은 부트스트랩의 클래스입니다-->
-											<div class="reply-content">
-												<textarea class="form-control" rows="3" id="reply"></textarea>
-												<div class="reply-group">
-													<div class="reply-input">
-														<input type="text" class="form-control" id="replyId"
-															placeholder="이름"> <input type="password"
-															class="form-control" id="replyPw" placeholder="비밀번호">
-													</div>
+										<!-- 댓글 영역 -->
+			<form class="reply-wrap" action="${pageContext.request.contextPath}">
+				<div class="reply-image">
+					<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
+				</div>
 
-													<button type="button" id="replyRegist"
-														class="right btn btn-info">등록하기</button>
-												</div>
+				<div class="reply-content">
+					<textarea class="form-control" rows="3" id="reply" name="reply"></textarea>
+					<div class="reply-group">
+						<div class="reply-input">
+							<div class="reply-nick">${login.userNick}</div>
+							<input type="hidden" class="form-control" id="replyId" placeholder="${login.userId}">
+						</div>
 
-											</div>
-										</form>
-
-										<!--여기에 접근 반복-->
-										<div id="replyList">
-
-											<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.
-                    <div class='reply-wrap'>
-                        <div class='reply-image'>
-                            <img src='../resources/img/profile.png'>
-                        </div>
-                        <div class='reply-content'>
-                            <div class='reply-group'>
-                                <strong class='left'>honggildong</strong>
-                                <small class='left'>2019/12/10</small>
-                                <a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a>
-                                <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
-                            </div>
-                            <p class='clearfix'>여기는 댓글영역</p>
-                        </div>
-                    </div>
-                    -->
-
-										</div>
-										<button type="button" class="form-control" id="moreList"
-											style="display: none;">더보기(페이징)</button>
+						<button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
+					</div>
+				</div>
+			</form>
+			<div id="replyList">
+				<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.
+				<div class='reply-wrap'>
+					<div class='reply-image'>
+						<img src='../resources/img/profile.png'>
+					</div>
+					<div class='reply-content'>
+						<div class='reply-group'>
+							<strong class='left'>honggildong</strong>
+							<small class='left'>2019/12/10</small>
+							<a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a>
+							<a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
+						</div>
+						<p class='clearfix'>여기는 댓글영역</p>
+					</div>
+				</div>
+				 -->
+			</div>
+			<button type="button" class="form-control" id="moreList" style="display: none;">더보기</button>
 									</div>
 								</div>
 							</div>
 						</section>
-
-
-
-
 
 					</div>
 
@@ -540,7 +531,7 @@
 					.then(res => res.json())
 					.then(like => {
 						console.log(like);
-						document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다';
+						document.getElementById('likenum').textContent = '이 게시글을 ' + like + '명이 좋아합니다';
 					});
 			}
 			//좋아요 버튼 클릭
@@ -573,4 +564,258 @@
 						getlike(faNum);
 					});
 			});
+			
+			//댓글 등록 이벤트
+			document.getElementById('replyRegist').onclick = function (e) {
+				const reply = document.getElementById('reply').value;
+				const faNum = e.target.dataset.faNum;
+				if (reply === '') {
+					alert('내용을 입력하세요!');
+					return;
+				}
+
+				//요청에 관련된 정보 객체
+				const reqObj = {
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ //제이슨 형태로 변환
+						'faNum': faNum,
+						'reply': reply,
+						'userId': '${login.userId}',
+						'userNick': '${login.userNick}' //작성자를 보여주기 위해 보내줌
+					})
+				};
+
+				fetch('${pageContext.request.contextPath}/reply/regist', reqObj)
+					.then(res => res.text())
+					.then(data => {
+						console.log('통신 성공!: ' + data);
+						if (data === 'ok') {
+							alert('댓글이 등록되었습니다.');
+						} else {
+							alert('댓글등록 실패');
+						}
+						document.getElementById('reply').value = ''; //내용 비우기
+						//등록 완료 후 댓글 목록 함수를 호출해서 비동기식으로 목록 표현.
+						getList(1, true); //재 랜더링 false시 누적해서 가져오기
+					});
+			} // 댓글 등록 이벤트 끝.
+
+			//더보기 버튼 처리(클릭 시 전역 변수 page에 +1 한 값을 요청)
+			document.getElementById('moreList').onclick = () => {
+				getList(++page, false);
+			}
+
+
+			let page = 1; //첫 페이지 번호
+			let strAdd = ''; //댓글리스트에서 추가될 요소
+			const $replyList = document.getElementById('replyList');
+
+			//댓글 목록을 가져올 함수
+			function getList(pageNum, reset) {
+				strAdd = '';
+				const faNum = document.getElementById('likenum').dataset.faNum;
+
+				//get방식으로 댓글 목록을 요청(비동기)
+				fetch('${pageContext.request.contextPath}/reply/getList/faNum/' + faNum + '/' + pageNum)
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+
+						let total = data.total; //총 댓글 수
+						let replyList = data.list; //댓글 리스트
+
+						//insert, update, delete 작업 후에는
+						//댓글 내용 태그를 누적하고 있는 strAdd 변수를 초기화해서
+						//마치 화면이 리셋된 것처럼 보여줘야 합니다.
+						if (reset) {
+
+							while ($replyList.firstChild) {
+								$replyList.removeChild($replyList.firstChild);
+							}
+							page = 1;
+						}
+
+						//응답 데이터의 길이가 0과 같거나 더 작으면 함수를 종료.
+						console.log('리스트 길이: ' + replyList.length);
+						if (replyList.length <= 0) return;
+
+						//페이지번호 * 이번 요청으로 받은 댓글 수보다 전체 댓글 개수가 작다면 더보기 버튼은 없어도 된다.
+						console.log('현재 페이지: ' + page);
+						if (total <= page * 5) {
+							document.getElementById('moreList').style.display = 'none';
+						} else {
+							document.getElementById('moreList').style.display = 'block';
+						}
+
+						//replyList의 개수만큼 태그를 문자열 형태로 직접 그림.
+						//중간에 들어갈 글쓴이, 날짜 , 댓글 내용은 목록에서 꺼내서 표현.
+						for (let i = 0; i < replyList.length; i++) {
+							strAdd +=
+								`<div class='reply-wrap'>
+                            <div class='reply-image'>
+                                <img src=''>
+                            </div>
+                            <div class='reply-content'>
+                                <div class='reply-group'>
+                                    <strong class='left'>` + replyList[i].userNick + `</strong> 
+                                    <small class='left'>` + (replyList[i].updateDate != null ? parseTime(replyList[i]
+									.updateDate) + '(수정됨)' : parseTime(replyList[i].replyDate)) + `</small>
+                                    <a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a> &nbsp
+                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
+                                    <div style = 'opacity:0'>` + replyList[i].userId + `</div>
+                                </div>
+                                <p class='clearfix'>` + replyList[i].reply + `</p>
+                                <form class='reply-modify' style='display:none'>
+									<input type="text" class='modtext' '>
+									<a href="" class="right modModBtn">수정하기</a>
+								</form>	
+                            </div>
+                        </div>`;
+						}
+
+						//id가 replyList라는 div 영역에 문자열 형식으로 모든 댓글을 추가.
+						document.getElementById('replyList').insertAdjacentHTML('beforeend', strAdd);
+
+					});
+
+			} // end getList();
+
+			//수정 삭제 이벤트
+			document.getElementById('replyList').addEventListener('click', e => {
+				e.preventDefault(); //테그의 고유 기능을 중지.
+
+				//1. 이벤트가 발생한 target이 a태그가 아니라면 이벤트 종료.
+				if (!e.target.matches('a')) {
+					return;
+				}
+
+
+
+				//2. 모달 창 하나를 이용해서 상황에 따라 수정 / 삭제 모달을 구분하기 위해
+				//조건문을 작성. (모달 하나로 수정, 삭제를 처리. 그러기 위해 디자인 조정.)
+				//3. a태그가 두 개(수정, 삭제)이므로 어떤 링크인지를 확인.
+				//댓글이 여러 개 -> 수정, 삭제가 발생하는 댓글이 몇 번인지도 확인 
+				if (e.target.classList.contains('replyModify')) {
+					const rno = e.target.getAttribute('href');
+					console.log('댓글 번호: ' + rno);
+
+
+					const content = e.target.parentNode.nextElementSibling.textContent;
+					console.log('댓글 내용: ' + content);
+					//수정 버튼을 눌렀을 때
+					const userId = e.target.nextElementSibling.textContent;
+					console.log('userId: ' + userId);
+					if ('${login.userId}' !== userId) {
+						alert('권한이 없습니다.');
+						return;
+					}
+					e.target.parentNode.nextElementSibling.style.display = 'none'; //원래 댓글 내용 안보이게
+					e.target.parentNode.nextElementSibling.nextElementSibling.style.display =
+						'block'; //수정창 hidden을 text로 보이게
+					e.target.parentNode.nextElementSibling.nextElementSibling.dataset.rno = e.target.getAttribute(
+						'href'); //rno값을 form태그에 저장
+				} else if (e.target.classList.contains('replyDelete')) {
+					//삭제버튼 눌렀을 때
+					const userId = e.target.nextElementSibling.nextElementSibling.textContent;
+					console.log('userId: ' + userId);
+					const rno = e.target.getAttribute('href');
+					console.log('댓글 번호: ' + rno);
+
+					if ('${login.userId}' !== userId) {
+						alert('권한이 없습니다.');
+						return;
+					}
+					if (!confirm('정말 삭제하시겠습니까?')) {
+						return;
+					}
+					const reqObj = {
+						method: 'delete',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ //제이슨 형태로 변환
+							'userId': userId
+						})
+					};
+
+					fetch('${pageContext.request.contextPath}/reply/recipe/' + rno, reqObj)
+						.then(res => res.text())
+						.then(data => {
+							console.log('data' + data);
+							getList(1, true);
+						})
+
+				} //end delete event
+
+				//수정 처리 함수. (수정 모달을 열어서 수정 내용을 작성 후 수정 버튼을 클릭했을 때)
+
+				if (e.target.classList.contains('modModBtn')) {
+					console.log(e.target.previousElementSibling);
+					const reply = e.target.previousElementSibling.value;
+					const rno = e.target.parentNode.dataset.rno;
+
+
+					if (reply === '') {
+						alert('내용을 확인하세요!');
+						return;
+					}
+
+					//요청에 관련된 정보 객체
+					const reqObj = {
+						method: 'put',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ //제이슨 형태로 변환
+							'reply': reply
+						})
+					};
+
+					fetch('${pageContext.request.contextPath}/reply/recipe/' + rno, reqObj)
+						.then(res => res.text())
+						.then(data => {
+							alert('정상 수정 되었습니다');
+							getList(1, true);
+						});
+				} //end update event
+
+
+			}); //수정 or 삭제 버튼 클릭 이벤트 끝.
+
+
+
+			//댓글 날짜 변환 함수
+			function parseTime(regDateTime) {
+				let year, month, day, hour, minute, second;
+				if (regDateTime.length === 5) {
+					[year, month, day, hour, minute] = regDateTime;
+					second = 0;
+				} else {
+					[year, month, day, hour, minute, second] = regDateTime;
+				}
+				//원하는 날짜로 객체를 생성
+				const regTime = new Date(year, month - 1, day, hour, minute, second);
+				//console.log(regTime);
+				const date = new Date();
+				//console.log(date);
+				const gap = date.getTime() - regTime.getTime();
+
+				let time;
+				if (gap < 60 * 60 * 24 * 1000) {
+					if (gap < 60 * 60 * 1000) {
+						time = '방금 전';
+					} else {
+						time = parseInt(gap / (1000 * 60 * 60)) + '시간 전';
+					}
+				} else if (gap < 60 * 60 * 24 * 30 * 1000) {
+					time = parseInt(gap / (1000 * 60 * 60 * 24)) + '일 전';
+				} else {
+					time = `${regTime.getFullYear()}년 ${regTime.getMonth()}월 ${regTime.getDate()}일`;
+				}
+
+				return time;
+			}
 		</Script>

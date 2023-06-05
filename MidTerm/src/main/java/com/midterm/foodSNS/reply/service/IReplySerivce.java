@@ -15,4 +15,13 @@ public interface IReplySerivce {
 	void update(ReplyVO vo);//댓글 수정
 	
 	void delete(int rno);//댓글 삭제
+
+	List<ReplyVO> faList(int faNum, int pageNum);//게시글 댓글 목록
+
+	int faTotal(int faNum);//게시글 댓글 개수
+
+	List<ReplyVO> bnoList(int bno, int pageNum); //유저레시피 댓글 목록
+
+	int bnoTotal(int bno);//유저레시피 댓글 개수
+	
 }

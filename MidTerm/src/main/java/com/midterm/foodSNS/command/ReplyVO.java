@@ -13,8 +13,8 @@ CREATE TABLE reply (
     FOREIGN KEY (cooknum)
         REFERENCES cookdb (cooknum)
         ON DELETE CASCADE,
-	freeboard_article_number int,
-    foreign key (freeboard_article_number)
+	faNum int,
+    foreign key (faNum)
 		references freeboardarticle (freeboard_article_number)
         on delete cascade,
 	bno int,
@@ -37,7 +37,7 @@ public class ReplyVO {
 	
 	private int rno;
 	private int cooknum;
-	private int freeboardArticleNumber;
+	private int faNum;
 	private int bno;
 	
 	private String reply;
