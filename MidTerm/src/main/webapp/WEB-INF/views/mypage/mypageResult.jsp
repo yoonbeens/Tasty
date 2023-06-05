@@ -219,6 +219,7 @@
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="modal-img">
+
 					<div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="true">
 						<div class="carousel-indicators" id="carouselbtn">
 
@@ -239,6 +240,7 @@
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
+
 
 					</div>
 
@@ -424,7 +426,7 @@
 						.then(data => {
 							console.log(data);
 							document.getElementById('freeuserid').textContent = data.userId;
-							document.getElementById('freecontent').textContent = data.content;
+							document.getElementById('carouselContent').textContent = data.content;
 						});
 
 					const $carousel = document.getElementById('carouselExampleIndicators');
