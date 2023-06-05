@@ -4,10 +4,25 @@
     
 <mapper namespace="com.midterm.foodSNS.reply.mapper.IReplyMapper">
 
+	<sql id="num">
+		<if test="bno != 0">
+			(bno, reply, user_id, user_nick)
+			VALUES(#{bno}, #{reply}, #{userId}, #{userNick})
+		</if>
+		<if test="faNum != 0">
+			(faNum, reply, user_id, user_nick)
+			VALUES(#{faNum}, #{reply}, #{userId}, #{userNick})
+		</if>
+		<if test="cooknum != 0">
+			(cooknum, reply, user_id, user_nick)
+			VALUES(#{cooknum}, #{reply}, #{userId}, #{userNick})
+		</if>
+	</sql>
+	
+
 	<insert id="replyRegist">
 		INSERT INTO reply
-		(cooknum, reply, user_id, user_nick)
-		VALUES(#{cooknum}, #{reply}, #{userId}, #{userNick})
+		<include refid="num" />
 	</insert>
 	
 	<select id="getList" resultType="reply">
@@ -33,6 +48,31 @@
 		DELETE FROM reply
 		WHERE rno = #{rno}
 	</delete>
+	
+	<select id="faList" resultType="reply">
+		SELECT * FROM reply
+		WHERE faNum = #{faNum}
+		ORDER BY rno DESC
+		LIMIT #{paging.pageStart}, #{paging.cpp}
+	</select>
+	
+	<select id="faTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM reply
+		WHERE faNum = #{faNum}
+	</select>
+	
+	<select id="bnoList" resultType="reply">
+		SELECT * FROM reply
+		WHERE bno = #{bno}
+		ORDER BY rno DESC
+		LIMIT #{paging.pageStart}, #{paging.cpp}
+	</select>
 
+	<select id="bnoTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM reply
+		WHERE bno = #{bno}
+	</select>
 
 </mapper>

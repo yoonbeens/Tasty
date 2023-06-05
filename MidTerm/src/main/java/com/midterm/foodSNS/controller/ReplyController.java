@@ -28,7 +28,7 @@ public class ReplyController {
 	private IReplySerivce service;
 
 	//댓글 작성
-	@PostMapping("/regist/recipe")
+	@PostMapping("/regist")
 	public String regist(@RequestBody ReplyVO vo) {
 		service.replyRegist(vo);
 		return "ok";
@@ -63,4 +63,35 @@ public class ReplyController {
 		log.info("vo" + vo);
 		service.delete(rno);
 	}
+
+	//목록 요청
+	@GetMapping("/getList/faNum/{faNum}/{pageNum}")
+	public Map<String, Object> faList(@PathVariable int faNum, @PathVariable int pageNum) {
+		log.info("faNum" + faNum);
+		List<ReplyVO> list = service.faList(faNum, pageNum);
+		int total = service.faTotal(faNum);
+		log.info("list" + list);
+		log.info("total: " + total);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list); //댓글 목록
+		map.put("total", total); //댓글의 총 개수
+		return map;
+	}
+
+	//목록 요청
+	@GetMapping("/getList/bno/{bno}/{pageNum}")
+	public Map<String, Object> bnoList(@PathVariable int bno, @PathVariable int pageNum) {
+		log.info("bno" + bno);
+		List<ReplyVO> list = service.bnoList(bno, pageNum);
+		int total = service.bnoTotal(bno);
+		log.info("list" + list);
+		log.info("total: " + total);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list); //댓글 목록
+		map.put("total", total); //댓글의 총 개수
+		return map;
+	}
+
 }

@@ -54,4 +54,40 @@ public class ReplyService implements IReplySerivce {
 
 	}
 
+	@Override
+	public List<ReplyVO> faList(int faNum, int pageNum) {
+		PageVO vo = new PageVO();
+		vo.setPageNum(pageNum);
+		vo.setCpp(5);
+		Map<String, Object> data = new HashMap<>();
+		data.put("paging", vo);
+		data.put("faNum", faNum);
+		log.info("data "+data);
+		log.info("getList data: " + mapper.faList(data));
+		return mapper.faList(data);
+	}
+
+	@Override
+	public int faTotal(int faNum) {
+		return mapper.faTotal(faNum);
+	}
+
+	@Override
+	public List<ReplyVO> bnoList(int bno, int pageNum) {
+		PageVO vo = new PageVO();
+		vo.setPageNum(pageNum);
+		vo.setCpp(5);
+		Map<String, Object> data = new HashMap<>();
+		data.put("paging", vo);
+		data.put("bno", bno);
+		log.info("data "+data);
+		log.info("getList data: " + mapper.bnoList(data));
+		return mapper.bnoList(data);
+	}
+
+	@Override
+	public int bnoTotal(int bno) {
+		return mapper.bnoTotal(bno);
+	}
+
 }
