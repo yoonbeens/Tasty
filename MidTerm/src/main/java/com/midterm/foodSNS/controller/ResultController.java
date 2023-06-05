@@ -41,18 +41,18 @@ public class ResultController {
 	public String resultMain (String weather, String condition, String feeling, Model model) {
 		
 		MSearchConditionVO vo = new MSearchConditionVO();
-		if(weather.equals("Clear")) {
-			weather = "맑음";
-		}
-		else if(weather.equals("Rain")) {
-			weather = "비";
-		}
-		else if(weather.equals("Clouds")) {
-			weather = "흐림";
-		}
-		else {
-			weather = "흐림";
-		} 
+//		if(weather.equals("Clear")) {
+//			weather = "맑음";
+//		}
+//		else if(weather.equals("Rain")) {
+//			weather = "비";
+//		}
+//		else if(weather.equals("Clouds")) {
+//			weather = "흐림";
+//		}
+//		else {
+//			weather = "흐림";
+//		} 
 		
 		vo.setWeather(weather);
 		log.info(vo.getWeather());

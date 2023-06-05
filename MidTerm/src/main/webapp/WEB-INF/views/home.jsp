@@ -125,7 +125,7 @@
 					<option value="맑음">맑음</option>
 					<option value="흐림">흐림</option>
 					<option value="비">비</option>
-					<option id="todayWeather"></option>
+					<!-- <option id="todayWeather"></option> -->
 				</select> <select name="condition" class="form-select optionbox" aria-label="Default select example">
 					<option value="상태" selected>상태</option>
 					<option value="보통">보통</option>
@@ -168,7 +168,7 @@
 
 
 	});
-	(
+	/* (
 		function weather() {
 			const side =document.getElementById('side');
 		side.style.display = "none";
@@ -199,7 +199,7 @@
 
 				})
 
-		})();
+		})(); */
 
 	document.getElementById('logoutBtn').onclick = () => {
 		alert('로그아웃 되었습니다.');
