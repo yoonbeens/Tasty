@@ -95,7 +95,10 @@
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#">Follow
 										Chief</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Add
+								<li class="nav-item"><a class="nav-link"
+
+									href="${pageContext.request.contextPath}/freeboard/uploadRecipe">Add
+
 										My Recipe</a></li>
 								<li class="nav-item"><a class="nav-link"
 										href="${pageContext.request.contextPath}/freeboard/regist">Add
