@@ -437,11 +437,7 @@
 
 			document.getElementById('main').addEventListener('click', e => {
 				if (e.target.matches('.boxbox2 img')) {
-					// const rebno = e.target.dataset.rebno;
-					// //const urTitle = `${recipe[` + rebno + `].title}`;					
-					// console.log('urTitle ');
-					// document.getElementById('urTitle').insertAdjacentHTML('afterbegin', urTitle);
-					// document.getElementById('urContent').insertAdjacentHTML('afterbegin', urContent);
+				
 					
 				}
 				

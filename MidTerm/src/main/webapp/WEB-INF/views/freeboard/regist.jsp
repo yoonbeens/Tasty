@@ -7,8 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/css/regist.css"
-	rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/regist.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 
@@ -26,16 +25,6 @@
 
 
 </head>
-
-
-
-
-
-
-
-
-
-
 
 
 

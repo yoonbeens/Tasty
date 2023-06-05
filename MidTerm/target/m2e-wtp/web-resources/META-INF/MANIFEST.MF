@@ -1,8 +1,5 @@
-
-
-Built-By: ict03-11
-
-
-Build-Jdk: 11.0.18
+Manifest-Version: 1.0
+Built-By: syou1
+Build-Jdk: 11.0.19
 Created-By: Maven Integration for Eclipse
 
