@@ -26,6 +26,7 @@
 	
 	<update id="modiUploadRecipe">
 		UPDATE Mfreeboard SET
+		title=#{title},
 		content = #{content},
 		weather=#{weather},
 		condition2 =#{condition2},

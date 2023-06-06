@@ -40,7 +40,7 @@ public class FreeRecipeController {
 
 		service.uploadRecipe(vo);
 
-		return "redirect:/userrecipe/recipeList";
+		return "redirect:/mypage/mypageResult";
 	}
 
 	//레시피 수정 페이지로
@@ -52,13 +52,13 @@ public class FreeRecipeController {
 
 	}
 
-	//레시피 글 등록
+	//레시피 수정 처리
 	@PostMapping("/modiUploadRecipe")
 	public String modiUploadRecipe(MfreeboardVO vo) {
 
 		service.modiUploadRecipe(vo);
 
-		return "mypage/mypageResult";
+		return "redirect:/mypage/mypageResult";
 	}
 
 	@DeleteMapping("/deleteR/{bno}")
