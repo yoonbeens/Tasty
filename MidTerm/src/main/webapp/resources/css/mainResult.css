@@ -153,7 +153,6 @@ h5{
 	box-sizing: border-box;
 	width: 100%;
 	height:900px;
-	border: 1px solid red;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
@@ -1730,7 +1729,17 @@ h5 {
 	color : gainsboro;
 	
 }
-
+.boxbox2{
+	box-sizing: border-box;
+	color : black;
+	width : 32%;
+	height: 25vh;	
+	margin-top : 10px;
+	margin-bottom : 10px;	
+	border-radius :30px;
+	border: 1px solid black;
+	
+}
 #urTitle{
 	width: 100%;
 	height: 10vh;
@@ -1739,6 +1748,24 @@ h5 {
 	line-height: 10vh;
 	padding-left: 20px;
 	
+}
+
+#urWeather{
+	width: 100%;
+	height: 5vh;
+	border-bottom: 1px solid gainsboro;
+	font-size: 20px;
+	line-height: 5vh;
+	padding-left: 20px;
+	text-align: left;
+	
+}
+
+#urContent{
+	width: 100%;
+	padding: 30px;
+	font-size : 20px;
+
 }
 
 #rtitle{
@@ -1752,9 +1779,12 @@ h5 {
 	display: none;
 }
 
+
 #userRecipe{
-	position: relative;
+	display: flex;
+	flex-wrap: wrap;
 }
+
 
 #dbtnR{
 	position: absolute;

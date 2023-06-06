@@ -481,7 +481,7 @@
 						document.getElementById('urContent').innerHTML = "";
 						document.getElementById('urWeather').textContent = "";
 
-					})
+					});
 
 
 

@@ -5,6 +5,7 @@ import java.util.List;
 import com.midterm.foodSNS.command.LikeVO;
 import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MSearchConditionVO;
+import com.midterm.foodSNS.command.MfreeboardVO;
 
 public interface IResultService {
 	
@@ -19,5 +20,7 @@ public interface IResultService {
 
 	//좋아요 수 업데이트
 	LikeVO updateLike(int cooknum, LikeVO vo);
+
+	List<MfreeboardVO> getuserRecipe(MSearchConditionVO vo);
 
 }

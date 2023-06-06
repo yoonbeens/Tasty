@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.midterm.foodSNS.command.LikeVO;
 import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MSearchConditionVO;
+import com.midterm.foodSNS.command.MfreeboardVO;
 import com.midterm.foodSNS.result.mapper.IResultMapper;
 
 @Service
@@ -43,6 +44,11 @@ public class ResultService implements IResultService {
 			mapper.deleteLike(vo); 
 		}
 		return null;
+	}
+
+	@Override
+	public List<MfreeboardVO> getuserRecipe(MSearchConditionVO vo) {
+		return mapper.getuserRecipe(vo);
 	}
 
 }

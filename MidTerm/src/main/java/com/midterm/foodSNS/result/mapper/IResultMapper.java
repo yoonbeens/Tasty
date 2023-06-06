@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.midterm.foodSNS.command.LikeVO;
 import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MSearchConditionVO;
+import com.midterm.foodSNS.command.MfreeboardVO;
 
 public interface IResultMapper {
 
@@ -26,4 +27,6 @@ public interface IResultMapper {
 
 	//좋아요 삭제
 	void deleteLike(LikeVO vo);
+
+	List<MfreeboardVO> getuserRecipe(MSearchConditionVO vo);
 }

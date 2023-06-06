@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.midterm.foodSNS.command.LikeVO;
 import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MSearchConditionVO;
+import com.midterm.foodSNS.command.MfreeboardVO;
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.mypage.service.IMyPageService;
 import com.midterm.foodSNS.result.service.IResultService;
@@ -63,6 +64,9 @@ public class ResultController {
 		List<MusersVO> countFollowing =new ArrayList<>();
 		countFollowing =myservice.countFollowing(uvo.getUserId());
 		
+
+		
+		
 		for(int i=0; i<countFollower.size();i++) {
 			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
 			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
@@ -89,14 +93,17 @@ public class ResultController {
 //			weather = "흐림";
 //		} 
 		
+		
 		vo.setWeather(weather);
 		vo.setCondition2(condition);
 		vo.setFeeling(feeling);	
+		List<MfreeboardVO> userRecipe =new ArrayList<>();
+		userRecipe = service.getuserRecipe(vo);
 		
 		
 		model.addAttribute("countFollower", countFollower);
 		model.addAttribute("countFollowing", countFollowing);
-
+		model.addAttribute("userRecipe", userRecipe);
 		
 		model.addAttribute("searchCondition",vo);		
 		model.addAttribute("recipe",service.recommand(vo));		
