@@ -14,6 +14,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	<title>Bootstrap demo</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -28,14 +29,7 @@
 	</script>
 	<div id="main-con">
 		<div id="main-left">
-			<div class="left" id="mystory"> Story</div>
-			<div class="left" id="myrecipe">Recipe</div>
-		</div>
-
-
-
-		<div id="main">
-			<%
+		<%
 			MusersVO user = new MusersVO();
 			user = (MusersVO)request.getAttribute("user");			
 			ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
@@ -43,7 +37,16 @@
 			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
 			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
 			
-			int followCheck = (int)request.getAttribute("followCheck");
+			int followCheck = (int)request.getAttribute("followCheck");%>
+		<div class="left" id="mystory" data-alength="<%=articles.size()%>"
+			data-rlength="${fn:length(recipe)}">My Story</div>
+		<div class="left" id="myrecipe" data-alength="<%=articles.size()%>"
+			data-rlength="${fn:length(recipe)}">My Recipe</div>
+
+
+		</div>
+		<div id="main">
+			<% 
 
 			for (int i = 0; i < articles.size(); i++) {
 				ArrayList<MfreeboardImgVO> imgcon = new ArrayList<>();
@@ -53,7 +56,7 @@
 				imgcon.add(imgs.get(j));
 			%>
 
-			<div class="boxbox scale" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="boxbox scale mystorybox" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
 				/<%=imgcon.get(0).getFileName()%>" alt="default" id="article-img" data-userid="<%=user.getUserId()%>"
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
@@ -69,6 +72,17 @@
 			<%
 			}
 			%>
+
+			<c:forEach var="recipe" items="${recipe}">
+				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal"
+					data-bs-target="#recipe">
+					<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
+						alt="default" id="article-img" data-reuserid="${recipe.writer}"
+						data-rebno="${recipe.bno}" />
+					<div id="rtitle" name="title">${recipe.title}</div>
+					<div id="rcon" name="title">${recipe.content}</div>
+				</div>
+			</c:forEach>
 
 
 		</div>
@@ -202,6 +216,28 @@
 	</div>
 </div>
 
+<!-- Modal uesrRecipe-->
+<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-body" id="userRecipe">
+				<div id="urTitle">
+
+					<!--유저레시피 제목오는곳-->
+				</div>
+				
+				</div>
+
+				<div id="urContent">
+					<!--유저레시피 내용오는곳-->
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 
@@ -281,25 +317,29 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-9 write-wrap">
 										<!-- 댓글 영역 -->
-			<form class="reply-wrap" action="${pageContext.request.contextPath}">
-				<div class="reply-image">
-					<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
-				</div>
+										<form class="reply-wrap" action="${pageContext.request.contextPath}">
+											<div class="reply-image">
+												<img
+													src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
+											</div>
 
-				<div class="reply-content">
-					<textarea class="form-control" rows="3" id="reply" name="reply"></textarea>
-					<div class="reply-group">
-						<div class="reply-input">
-							<div class="reply-nick">${login.userNick}</div>
-							<input type="hidden" class="form-control" id="replyId" placeholder="${login.userId}">
-						</div>
+											<div class="reply-content">
+												<textarea class="form-control" rows="3" id="reply"
+													name="reply"></textarea>
+												<div class="reply-group">
+													<div class="reply-input">
+														<div class="reply-nick">${login.userNick}</div>
+														<input type="hidden" class="form-control" id="replyId"
+															placeholder="${login.userId}">
+													</div>
 
-						<button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
-					</div>
-				</div>
-			</form>
-			<div id="replyList">
-				<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.
+													<button type="button" id="replyRegist"
+														class="right btn btn-info">등록하기</button>
+												</div>
+											</div>
+										</form>
+										<div id="replyList">
+											<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.
 				<div class='reply-wrap'>
 					<div class='reply-image'>
 						<img src='../resources/img/profile.png'>
@@ -315,8 +355,9 @@
 					</div>
 				</div>
 				 -->
-			</div>
-			<button type="button" class="form-control" id="moreList" style="display: none;">더보기</button>
+										</div>
+										<button type="button" class="form-control" id="moreList"
+											style="display: none;">더보기</button>
 									</div>
 								</div>
 							</div>
@@ -329,6 +370,70 @@
 		</div>
 
 		<Script>
+			(function recipbox() {
+				const recipebox = document.querySelectorAll('.myrecipebox');
+
+				for (var i = 0; i < recipebox.length; i++) {
+					const recipebox = document.querySelectorAll('.myrecipebox');
+					recipebox[i].style.display = "none";
+				}
+			})();
+
+			let strimg = '';
+			let strbtn = '';
+			let strmodi = '';
+			let rtitle = '';
+			let rcon = '';
+
+			document.getElementById('main-left').addEventListener('click', e => {
+				console.log("left click");
+
+				if (e.target.matches('#mystory')) {
+					const alength = e.target.dataset.alength;
+					const rlength = e.target.dataset.rlength;
+
+
+					console.log("story 클릭");
+
+
+					for (var i = 0; i < alength; i++) {
+						const storybox = document.querySelectorAll('.mystorybox');
+						storybox[i].style.display = "block";
+					}
+					for (var i = 0; i < rlength; i++) {
+						const recipebox = document.querySelectorAll('.myrecipebox');
+
+						recipebox[i].style.display = "none";
+					}
+
+				}
+
+
+				if (e.target.matches('#myrecipe')) {
+					const alength = e.target.dataset.alength;
+					const rlength = e.target.dataset.rlength;
+
+					console.log("recipe 클릭");
+
+
+
+					for (var i = 0; i < alength; i++) {
+						const storybox = document.querySelectorAll('.mystorybox');
+						storybox[i].style.display = "none";
+					}
+
+
+
+					for (var i = 0; i < rlength; i++) {
+						const recipebox = document.querySelectorAll('.myrecipebox');
+
+						recipebox[i].style.display = "block";
+					}
+				}
+
+
+
+			});
 			document.getElementById('follow').addEventListener('click', e => {
 				console.log("follow 시작됨");
 				const followerId = e.target.dataset.followerid;
@@ -361,11 +466,36 @@
 				});
 			});
 
-			let strimg = '';
-			let strbtn = '';
-			let strmodi = '';
+
 
 			document.getElementById('main').addEventListener('click', e => {
+				if (e.target.matches('.boxbox2 img')) {
+
+
+					const rebno = e.target.dataset.rebno;
+					console.log(rebno);
+					document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
+						.textContent);
+					document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
+						.nextElementSibling.innerHTML);
+
+				
+
+					document.getElementById("recipe").addEventListener('hidden.bs.modal', () => {
+						document.getElementById('urTitle').textContent = "";
+						document.getElementById('urContent').innerHTML = "";
+
+					})
+
+				
+
+
+
+
+
+
+
+				}
 
 
 				if (e.target.matches('.boxbox img')) {
@@ -564,7 +694,7 @@
 						getlike(faNum);
 					});
 			});
-			
+
 			//댓글 등록 이벤트
 			document.getElementById('replyRegist').onclick = function (e) {
 				const reply = document.getElementById('reply').value;

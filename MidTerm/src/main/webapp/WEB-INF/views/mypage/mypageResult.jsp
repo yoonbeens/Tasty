@@ -11,7 +11,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 
@@ -22,41 +22,45 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<title>Bootstrap demo</title>
-	<link href="${pageContext.request.contextPath}/css/mypageResult.css" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>Bootstrap demo</title>
+<link href="${pageContext.request.contextPath}/css/mypageResult.css"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous">
 
 	</script>
 	<div id="main-con">
 		<%
-		
 		ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
-			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
+		articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
 
-			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
-			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
+		ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
+		imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
 
-			ArrayList<MfreeboardVO> recipes = new ArrayList<>();
-		 	recipes = (ArrayList<MfreeboardVO>) request.getAttribute("recipe");
-
-
+		ArrayList<MfreeboardVO> recipes = new ArrayList<>();
+		recipes = (ArrayList<MfreeboardVO>) request.getAttribute("recipe");
 		%>
 		<div id="main-left">
-			<div class="left" id="mystory" data-alength="<%=articles.size()%>" data-rlength="${fn:length(recipe)}">My
-				Story</div>
-			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>" data-rlength="${fn:length(recipe)}">My
-				Recipe</div>
+			<div class="left" id="mystory" data-alength="<%=articles.size()%>"
+				data-rlength="${fn:length(recipe)}">My Story</div>
+			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>"
+				data-rlength="${fn:length(recipe)}">My Recipe</div>
 
 
 		</div>
@@ -64,7 +68,8 @@
 
 
 		<div id="main">
-			<%			for (int i = 0; i < articles.size(); i++) {
+			<%
+			for (int i = 0; i < articles.size(); i++) {
 				ArrayList<MfreeboardImgVO> imgcon = new ArrayList<>();
 				for (int j = 0; j < imgs.size(); j++) {
 
@@ -72,9 +77,12 @@
 				imgcon.add(imgs.get(j));
 			%>
 
-			<div class="boxbox scale mystorybox" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
-				/<%=imgcon.get(0).getFileName()%>" alt="default" id="article-img" data-userid="${login.userId}"
+			<div class="boxbox scale mystorybox" data-bs-toggle="modal"
+				data-bs-target="#myModal">
+				<img
+					src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
+				/<%=imgcon.get(0).getFileName()%>"
+					alt="default" id="article-img" data-userid="${login.userId}"
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
@@ -91,9 +99,11 @@
 			}
 			%>
 			<c:forEach var="recipe" items="${recipe}">
-				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal" data-bs-target="#recipe">
-					<img src="${pageContext.request.contextPath}/css/TastyFriend.png" alt="default" id="article-img"
-						data-reuserid="${recipe.writer}" data-rebno="${recipe.bno}" />
+				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal"
+					data-bs-target="#recipe">
+					<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
+						alt="default" id="article-img" data-reuserid="${recipe.writer}"
+						data-rebno="${recipe.bno}" />
 					<div id="rtitle" name="title">${recipe.title}</div>
 					<div id="rcon" name="title">${recipe.content}</div>
 				</div>
@@ -105,42 +115,45 @@
 		</div>
 		<div id="main-right">
 			<div id="profile-img-con">
-				<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+				<img
+					src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
 					alt="default" id="profile-img">
 			</div>
 			<div class="profileWrapper">
 				<div id="simpleProfile">
 					<h1>${login.userId}</h1>
-					<a href="${pageContext.request.contextPath}/user/userProfileModify" id="promodify">프로필수정</a>
+					<a href="${pageContext.request.contextPath}/user/userProfileModify"
+						id="promodify">프로필수정</a>
 					<h3>${login.userNick}</h3>
 					<h5>${login.message}</h5>
 				</div>
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-					<li class="nav-item"><a class="nav-link active" aria-current="page"
-							href="${pageContext.request.contextPath}/">Home</a>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
-							data-bs-target="#FollowerModal">Follower
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
-							data-bs-target="#FollowingModal">Following
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
 							Chief</a></li>
 					<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add My
-							Recipe</a></li>
+						href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add
+							My Recipe</a></li>
 					<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/freeboard/regist">Add
+						href="${pageContext.request.contextPath}/freeboard/regist">Add
 							My Story</a></li>
 
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
-							<hr class="dropdown-divider">
-					</li>
-					<li><a class="dropdown-item" href="${pageContext.request.contextPath}/user/userLogout"
-							style="color: red">Logout</a></li>
+								href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
+							<hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item"
+						href="${pageContext.request.contextPath}/user/userLogout"
+						style="color: red">Logout</a></li>
 				</ul>
 				</ul>
 
@@ -156,14 +169,16 @@
 
 	<nav class="navbar bg-success fixed-top ">
 		<div class="container-fluid">
-			<a class="navbar-brand text-light" href="${pageContext.request.contextPath}/">Tasty Friend</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+			<a class="navbar-brand text-light"
+				href="${pageContext.request.contextPath}/">Tasty Friend</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
 				aria-controls="offcanvasNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-				aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas offcanvas-end" tabindex="-1"
+				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 				<div class="offcanvas-header">
 					<aside></aside>
 				</div>
@@ -177,19 +192,22 @@
 
 
 <!-- Follower Modal -->
-<div class="modal fade" id="FollowerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowerModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followerM">
 
 				<c:forEach var="follower" items="${countFollower}">
 
 					<div id="followerdiv">
-						<img src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+						<img
+							src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
 					</div>
@@ -208,19 +226,22 @@
 
 
 <!-- Following Modal -->
-<div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowingModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followingM">
 
 				<c:forEach var="following" items="${countFollowing}">
 
 					<div id="followerdiv">
-						<img src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+						<img
+							src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
 					</div>
@@ -234,24 +255,26 @@
 </div>
 
 <!-- Modal uesrRecipe-->
-<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="recipe" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-body" id="userRecipe">
 				<div id="urTitle">
-					
+
 					<!--유저레시피 제목오는곳-->
 				</div>
 				<div class="dropdown" id="dbtnR">
-					<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem" type="button"
-						data-bs-toggle="dropdown" aria-expanded="false"></i>
+					<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
+						type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" id="modifyR" >Modify</a></li>
+						<li><a class="dropdown-item" id="modifyR">Modify</a></li>
 						<hr>
-						<li><a class=" dropdown-item" id="deleteR" href="#" style="color: red">Delete</a></li>
+						<li><a class=" dropdown-item" id="deleteR" href="#"
+							style="color: red">Delete</a></li>
 					</ul>
 				</div>
-				
+
 				<div id="urContent">
 					<!--유저레시피 내용오는곳-->
 
@@ -267,13 +290,15 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="modal-img">
 
-					<div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="true">
+					<div id="carouselExampleIndicators"
+						class="carousel slide carousel-dark" data-bs-ride="true">
 						<div class="carousel-indicators" id="carouselbtn">
 
 							<!--여기 게시물별 버튼 들어감-->
@@ -283,13 +308,13 @@
 							<!--여기 게시물별 이미지 들어감-->
 						</div>
 
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide="prev">
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Previous</span>
 						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide="next">
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
@@ -300,18 +325,20 @@
 				</div>
 				<div class="modal-text">
 					<div id="freeuserimg">
-						<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+						<img
+							src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
 							alt="default" id="profile-img2">
 
 						<div id="freeuserid"></div>
 						<div class="dropdown" id="dbtn">
 
-							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem" type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"></i>
+							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
+								type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" id="modify" href="#"">Modify</a></li>
 								<hr>
-								<li><a class=" dropdown-item" id="delete" href="#" style="color: red">Delete</a></li>
+								<li><a class=" dropdown-item" id="delete" href="#"
+									style="color: red">Delete</a></li>
 							</ul>
 						</div>
 
@@ -337,7 +364,8 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-9 write-wrap">
 										<!-- 댓글 영역 -->
-										<form class="reply-wrap" action="${pageContext.request.contextPath}">
+										<form class="reply-wrap"
+											action="${pageContext.request.contextPath}">
 											<div class="reply-image">
 												<img
 													src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
