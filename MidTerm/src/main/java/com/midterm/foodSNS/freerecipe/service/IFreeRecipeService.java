@@ -21,4 +21,7 @@ public interface IFreeRecipeService {
 
 	//레시피 수정
 	void update(Map<String, Object> map);
+	
+	//레시피 검색
+	List<MfreeboardVO> searchRecipe(String query);
 }

@@ -20,4 +20,12 @@
 		WHERE bno = #{bno}
 	</select>
 
+
+	 <select id="searchRecipe" resultType="recipe">
+        SELECT * FROM cookDB
+        WHERE ingredient LIKE CONCAT('%', #{query}, '%')
+    </select>
+
+ 
+
 </mapper>

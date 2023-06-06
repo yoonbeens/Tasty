@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/css/regist.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/regist.css"
+	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 
@@ -29,33 +30,35 @@
 
 
 <body>
-	<div class="container">
+	<div class="page-wrapper">
+		<div class="container">
 
-		<form action="${pageContext.request.contextPath}/freeboard/regist"
-			method="post" id="form" enctype="multipart/form-data">
-
-
-
-			<div class="overing">
-				<div id="attr_area" style="display: inline-block" class="image-upload"
-					data-placeholder="이미지 업로드"></div>
-				<label for="file"></label>
-			</div>
+			<form action="${pageContext.request.contextPath}/freeboard/regist"
+				method="post" id="form" enctype="multipart/form-data">
 
 
 
+				<div class="overing">
+					<div id="attr_area" style="display: inline-block"
+						class="image-upload" data-placeholder=""></div>
+					<label for="file"></label>
+				</div>
 
 
-		   <!--  <div class="filebox">
+
+
+
+				<!--  <div class="filebox">
 				<input multiple="multiple" name="file" class="upload-name"
 					value="첨부파일" placeholder="첨부파일" style="display: inline-block">
 				<label for="file">파일찾기</label> <input type="file" id="file">
 			</div>  -->
-			<div class="filebox">
-	<input multiple="multiple" name="file" class="upload-name" placeholder="첨부파일" style="display: inline-block" readonly>
-	<label for="file">파일찾기</label>
-	<input type="file" id="file">
-</div>
+				<div class="filebox">
+					<input multiple="multiple" name="file" class="upload-name"
+						placeholder="첨부파일" style="display: inline-block" readonly>
+					<label for="file">파일찾기</label> 
+					<input type="file" id="file" multiple>
+				</div>
 
 
 
@@ -65,43 +68,47 @@
 
 
 
-			<input type="hidden" name="userId" value="${login.userId}"> <label
-				for="file" style="display: inline-block"></label>
+				<input type="hidden" name="userId" value="${login.userId}">
+				<label for="file" style="display: inline-block"></label>
 
 
 
 
 
 
-			<table class="table">
-				<tbody class="t-control">
-					<tr>
-						<td><textarea class="form-control" rows="7" name="content"
-								placeholder="입력해주세요">
+				<table class="table">
+					<tbody class="t-control">
+						<tr>
+							<td><textarea class="form-control" rows="7" name="content"
+									placeholder="입력해주세요">
 								</textarea></td>
-					</tr>
-				</tbody>
-			</table>
+						</tr>
+					</tbody>
+				</table>
 
 
 
-			<div class="titlefoot">
-				<button class="w-btn w-btn-indigo" style="display: inline-block"
-					type="button">등록</button>
-			</div>
-		</form>
+				<div class="titlefoot">
+					<button class="w-btn w-btn-indigo" style="display: inline-block"
+						type="button">등록</button>
+				</div>
+			</form>
+		</div>
 	</div>
-
 </body>
 
 
 <script>
 
 
-	$("#file").on('change', function() {
+	/* $("#file").on('change', function() {
 	    var fileName = $(this).val().split("\\").pop();
 	    $(".upload-name").val(fileName);
-	});
+	}); */
+	
+	
+	
+	
 	
 	
 	
@@ -122,7 +129,7 @@
 
             // 이미지와 체크 박스를 감싸고 있는 div 속성 (원하는 대로 고쳐 쓰세여)
             let divStyle = 'display:inline-block;position:relative;' +
-                'width:150px;height:120px;margin:5px;border:1px solid #00f;z-index:1';
+                'width:150px;height:120px;margin:5px;border:1px solid #fff;z-index:1';
             // 미리보기 이미지 속성 (원하는 대로 고쳐 쓰세여)
             let imgStyle = 'width:100%;height:100%;z-index:none';
             // 이미지안에 표시되는 체크박스의 속성 (원하는 대로 고쳐 쓰세여)
@@ -131,7 +138,10 @@
 
             //파일선택 버튼을 누르면
             $btnAttr.onchange = function (e) {
-                //첨부된 파일 전부 불러오기
+               
+            	selectFiles.length = 0;
+            	
+            	//첨부된 파일 전부 불러오기
                 const files = e.target.files;
                 //여러개의 파일을 나누어서 배열에 담기 
                 const fileArr = Array.prototype.slice.call(files);
@@ -147,8 +157,16 @@
                 	imageLoader(f);
                 }
             } //첨부된 이미지들을 배열에 넣고 미리보기 구현
+          
+            const maxFiles = 4;
             function imageLoader(file) {
-                selectFiles.push(file);
+              
+            	if (selectFiles.length >= maxFiles) {
+            	    alert(`이미지는 최대 4개까지 첨부할 수 있습니다.`);
+            	    return;
+            	  }
+            	
+            	selectFiles.push(file);
 
                 //파일 정보를 읽는 파일리더 객체 생성.
                 const reader = new FileReader();
