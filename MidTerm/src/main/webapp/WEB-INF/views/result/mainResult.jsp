@@ -1409,13 +1409,7 @@ button {
 
 								<div class="actual-form">
 									<div class="input-wrap">
-										<!-- <input
-                    type="text"
-                    minlength="4"
-                    class="input-field"
-                    autocomplete="off"
-                    required
-                  /> -->
+				
 										<label>재료 소개</label> <br> <br>
 										<div id="ingredient"></div>
 
@@ -1647,57 +1641,43 @@ button {
 			</div>
 		</div>
 
-		<!-- Modal uesrRecipe-->
-		<div class="modal fade" id="recipe" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-xl modal-dialog-scrollable">
-				<div class="modal-content">
-					<div class="modal-body" id="userRecipe">
-						<div id="urTitle">
 
-							<!--유저레시피 제목오는곳-->
+<!-- Modal uesrRecipe-->
+<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div id="urTitle">
 
-
-						</div>
-						<div id="urWeather">
-							<!--검색 조건오는곳-->
-						</div>
-						<div id="urContent">
-
-							<!--유저레시피 내용오는곳-->
-
-						</div>
-
-						<div class="dropdown" id="dbtnR">
-							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
-								type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" id="modifyR">Modify</a></li>
-								<hr>
-								<li><a class=" dropdown-item" id="deleteR" href="#"
-									style="color: red">Delete</a></li>
-							</ul>
-						</div>
-
-
-
-
-					</div>
+					<!--유저레시피 제목오는곳-->
 				</div>
+				
+				<div id="urWeather">
+					<!--검색 조건오는곳-->
+				</div>
+				
+				</div>
+
+				<div id="urContent">
+					<!--유저레시피 내용오는곳-->
+
+				</div>
+
 			</div>
 		</div>
-
+	</div>
+</div>
 
 
 		<Script>
-			// (function recipbox() {
-			// 	const recipebox = document.querySelectorAll('.myrecipebox');
+	 (function recipbox() {
+		 	const recipebox = document.querySelectorAll('.myrecipebox');
 
-			// 	for (var i = 0; i < recipebox.length; i++) {
-			// 		const recipebox = document.querySelectorAll('.myrecipebox');
-			// 		recipebox[i].style.display = "none";
-			// 	}
-			// })();
+			 	for (var i = 0; i < recipebox.length; i++) {
+			 		const recipebox = document.querySelectorAll('.myrecipebox');
+			 		recipebox[i].style.display = "none";
+			 	}
+			 })();
 			let strimg = '';
 			let strbtn = '';
 			let strmodi = '';
@@ -1759,8 +1739,7 @@ button {
 				if (e.target.matches('.boxbox2 img')) {
 
 
-					const rebno = e.target.dataset.rebno;
-					console.log(rebno);
+			
 					document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
 						.textContent);
 					document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
@@ -1785,27 +1764,7 @@ button {
 
 
 
-
-					document.getElementById('deleteR').addEventListener('click', e => {
-						if (confirm("정말 삭제하시겠습니까?")) {
-
-							fetch('${pageContext.request.contextPath}/userrecipe/deleteR/' + rebno, {
-								method: 'delete'
-							}).then(res => {
-								if (res.status == 200) {
-									document.getElementById('main').replaceChildren;
-									location.reload();
-								} else {
-									alert(res.status);
-								}
-							});
-
-						} else {
-							return;
-						}
-
-					});
-
+			
 
 
 
@@ -2164,6 +2123,7 @@ button {
 
 		<!-- superCon end-->
 	</div>
+	<footer> copyright © TastyFriends. all rights reserved </footer>
 </body>
 
 </html>

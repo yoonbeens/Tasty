@@ -116,16 +116,7 @@
 	
 	</div>
 	
-		
-	
 
-
-			
-
-
-
-
-	
 	<footer> copyright © TastyFriends. all rights reserved </footer>
 	
 </body>

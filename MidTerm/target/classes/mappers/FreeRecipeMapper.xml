@@ -38,7 +38,7 @@
 
 	 <select id="searchRecipe" resultType="recipe">
         SELECT * FROM cookDB
-        WHERE ingredient LIKE CONCAT('%', #{query}, '%')
+        WHERE foodname LIKE CONCAT('%', #{query}, '%')
     </select>
 
  

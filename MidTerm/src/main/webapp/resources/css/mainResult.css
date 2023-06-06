@@ -1,63 +1,78 @@
 @charset "UTF-8";
 
 #main-con{
-	box-sizing: border-box;
-	width: 100%;
-	height: 85vh;
-	margin-top: 80px;
-	
-	display: flex;	
-	flex-direction: row;
+   box-sizing: border-box;
+   width: 100%;
+   height: 85vh;
+   margin-top: 80px;
+   
+   display: flex;   
+   flex-direction: row;
 
 }
 #main-left{
-	box-sizing: border-box;
-	flex-grow: 1;
-	height: 85vh;
-	border-right: 1px solid gainsboro;
+   box-sizing: border-box;
+   flex-grow: 1;
+   height: 85vh;
+   border-right: 1px solid gainsboro;
 
 }
+
+footer {
+   box-sizing: border-box;
+   width: 100vw;
+   height: 5vh;
+   /* footer의 높이 */
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   text-align: center;
+   line-height: 5vh;
+   background : black;
+   color : white;
+}
+
 #main{
-	box-sizing: border-box;
-	flex-basis: 1200px;
-	height: 85vh;
-	
-	display : flex;
-	flex-wrap: wrap;
-	overflow: scroll;
-	justify-content: space-evenly;
-		
+   box-sizing: border-box;
+   flex-basis: 1200px;
+   height: 85vh;
+   
+   display : flex;
+   flex-wrap: wrap;
+   overflow: scroll;
+   justify-content: space-evenly;
+      
 }
 #main::-webkit-scrollbar {
     display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
 
 #main-right{
-	box-sizing: border-box;
-	flex-grow: 1;
-	height: 85vh;
-	border-left: 1px solid gainsboro;
+   box-sizing: border-box;
+   flex-grow: 1;
+   height: 85vh;
+   border-left: 1px solid gainsboro;
 
 }
 
 
 .boxbox{
-	box-sizing: border-box;
-	color : red;
-	width : 32%;
-	height: 300px;	
-	margin-top : 10px;
-	margin-bottom : 10px;
-	
-	border-radius :30px;
-	
+   box-sizing: border-box;
+   color : red;
+   width : 32%;
+   height: 300px;   
+   margin-top : 10px;
+   margin-bottom : 10px;
+   
+   border-radius :30px;
+   
 }
 
 .boxbox img{
-	
-	width:100%;
-	border-radius :30px;
-	
+   
+   width:100%;
+   border-radius :30px;
+   
 }
 
 .scale {
@@ -79,215 +94,214 @@
 }
 
 aside {
-	
-	width: 100%;
-	height: 93vh;
-	box-sizing: border-box;
-	border-radius: 20px;
-	border: 1px solid green;
+   
+   width: 100%;
+   height: 93vh;
+   box-sizing: border-box;
+   border-radius: 20px;
+   border: 1px solid green;
 }
 
 .offcanvas-header{
-	padding-top: 30px;
+   padding-top: 30px;
 }
 
 #logo {
-	box-sizing: border-box;
-	width: 100%;
-	height: 10vh;
-	/* border: 1px solid green; */
+   box-sizing: border-box;
+   width: 100%;
+   height: 10vh;
+   /* border: 1px solid green; */
 }
 
 #profile-img-con {
-	box-sizing: border-box;
-	width: 100%;
-	height: 20vh;
-	/* border: 1px solid red; */
-	line-height: 20vh;
-	position: relative;
+   box-sizing: border-box;
+   width: 100%;
+   height: 20vh;
+   /* border: 1px solid red; */
+   line-height: 20vh;
+   position: relative;
 }
 
 #profile-img {
-	box-sizing: border-box;
-	width: 190px;
-	height: 190px;
-	border-radius: 50%;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+   box-sizing: border-box;
+   width: 190px;
+   height: 190px;
+   border-radius: 50%;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
 }
 
 .profileWrapper {
-	box-sizing: border-box;
-	width: 100%;
-	height: 60vh;
-	/* border: 1px solid red; */
-	padding: 40px;
-	padding-left: 60px;
-	position: relative;
+   box-sizing: border-box;
+   width: 100%;
+   height: 60vh;
+   /* border: 1px solid red; */
+   padding: 40px;
+   padding-left: 60px;
+   position: relative;
 }
 
-#promodify {	
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	text-align: center;
-	line-height: 30px;
+#promodify {   
+   width: 100px;
+   height: 30px;
+   font-size: 15px;
+   text-align: center;
+   line-height: 30px;
 
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius:5px;
-	background: gainsboro;
-	box-sizing: border-box;
-	position:absolute;
-	top:55px;
-	left: 200px;
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+   border-radius:5px;
+   background: gainsboro;
+   box-sizing: border-box;
+   position:absolute;
+   top:55px;
+   left: 200px;
 }
 
 h5{
-	color: darkgrey;
+   color: darkgrey;
 }
-.modal-body{
-	box-sizing: border-box;
-	width: 100%;
-	height:900px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+.modal-body {
+   box-sizing: border-box;
+   width: 100%;
+   height: 900px;
+   display: flex;
+   flex-wrap: wrap;   
 }
 
 .modal-img{
-	box-sizing: border-box;
-	width: 65%;
-	height: 850px;
-	
-	 display: flex;
+   box-sizing: border-box;
+   width: 65%;
+   height: 850px;
+   
+    display: flex;
   
   /*위에서 아래로 수직 배치*/
   flex-direction: column;
   
   /*중앙정렬*/
   justify-content: center;
-	
+   
 }
 
 .modal-text{
-	box-sizing: border-box;
-	width: 30%;
-	height: 850px;
-	border: 1px solid green;
-	border-radius: 30px;
-	margin-left: 10px;
+   box-sizing: border-box;
+   width: 30%;
+   height: 850px;
+   border: 1px solid green;
+   border-radius: 30px;
+   margin-left: 10px;
 }
 
 #profile-img2{
-	box-sizing: border-box;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	margin-top :10px;
-	margin-left :10px;
-	
-	padding: 10px;
-	
+   box-sizing: border-box;
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
+   margin-top :10px;
+   margin-left :10px;
+   
+   padding: 10px;
+   
 }
 
 #freeuserimg{
-	display :flex;
-	width: 100%;
-	height: 100px;
-	border-bottom: 1px solid gainsboro;
+   display :flex;
+   width: 100%;
+   height: 100px;
+   border-bottom: 1px solid gainsboro;
 }
 
 #freeuserid{
-	padding-top: 35px;
-	font-size: 30px;	
+   padding-top: 35px;
+   font-size: 30px;   
 }
 
 #freecontent{
-	padding: 10px;
-	
+   padding: 10px;
+   
 }
 
 
 
 #menu {
-	box-sizing: border-box;
-	width: 100%;
-	height: 50vh;
-	border: 1px solid green;
-	border-radius: 30px;
-	padding-top: 20px;
+   box-sizing: border-box;
+   width: 100%;
+   height: 50vh;
+   border: 1px solid green;
+   border-radius: 30px;
+   padding-top: 20px;
 }
 
 #menu ul {
-	margin: 20px auto;
-	box-sizing: border-box;
-	width: 70%;
-	border: 1px solid red;
+   margin: 20px auto;
+   box-sizing: border-box;
+   width: 70%;
+   border: 1px solid red;
 }
 
 #menu ul li {
-	box-sizing: border-box;
-	font-size: 30px;
-	border: 1px solid blue;
-	width: 100%;
-	margin-bottom: 20px;
+   box-sizing: border-box;
+   font-size: 30px;
+   border: 1px solid blue;
+   width: 100%;
+   margin-bottom: 20px;
 }
 
 #searchInfo {
-	box-sizing: border-box;
-	width: 35%;
-	height: 60px;
-	border: 1px solid red;
-	position: absolute;
-	top: 50%;
-	margin-top: -30px;
-	border-radius: 30px;
-	display: flex;
-	justify-content: space-evenly;
+   box-sizing: border-box;
+   width: 35%;
+   height: 60px;
+   border: 1px solid red;
+   position: absolute;
+   top: 50%;
+   margin-top: -30px;
+   border-radius: 30px;
+   display: flex;
+   justify-content: space-evenly;
 }
 
 select {
-	width: 25%;
+   width: 25%;
 }
 
 button {
-	/* width: 70px;
-	height: 60px;
-	position: absolute;
-	top: 50%;
-	left: 103%;
-	margin-top: -30px; */
+   /* width: 70px;
+   height: 60px;
+   position: absolute;
+   top: 50%;
+   left: 103%;
+   margin-top: -30px; */
 }
 
 #category {
-	width: 700px;
-	height: 60px;
-	position: absolute;
-	top: 50%;
-	left: 80%;
-	margin-top: -30px;
-	font-size: 20px;
-	line-height: 90px;
+   width: 700px;
+   height: 60px;
+   position: absolute;
+   top: 50%;
+   left: 80%;
+   margin-top: -30px;
+   font-size: 20px;
+   line-height: 90px;
 }
 
 a {
 
-	text-decoration: none;
-	cursor: pointer;
+   text-decoration: none;
+   cursor: pointer;
 }
 
 .boxbox img{
 
-	width: 100%;
-	height: 300px;
+   width: 100%;
+   height: 300px;
 
 }
 
-	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
     @font-face {
     font-family: 'LINESeedKR-Bd';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
@@ -315,7 +329,7 @@ input {
 
 #mainDiv {
   width: 100%;
-	display: none;
+   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -888,9 +902,9 @@ body {
 }
 
 #timer:hover {
-	width: 110px;
-	height: 110px;
-	transition: 0.3s;
+   width: 110px;
+   height: 110px;
+   transition: 0.3s;
 }
 
 #mask {
@@ -1372,424 +1386,424 @@ button {
 }
 
 #main-con {
-	box-sizing: border-box;
-	width: 100%;
-	height: 85vh;
-	margin-top: 80px;
-	display: flex;
-	flex-direction: row;
+   box-sizing: border-box;
+   width: 100%;
+   height: 85vh;
+   margin-top: 80px;
+   display: flex;
+   flex-direction: row;
 }
 
 #main-left {
-	box-sizing: border-box;
-	width: 25%;
-	height: 85vh;
-	border-right: 1px solid gainsboro;
-	padding: 20px;
-	padding-top: 40px;
+   box-sizing: border-box;
+   width: 25%;
+   height: 85vh;
+   border-right: 1px solid gainsboro;
+   padding: 20px;
+   padding-top: 40px;
 }
 
 
 
 .left {
-	width: 100%; box-sizing : border-box;
-	text-align: right;
-	font-size: 40px;
-	margin-bottom: 20px;	
-	box-sizing: border-box;
+   width: 100%; box-sizing : border-box;
+   text-align: right;
+   font-size: 40px;
+   margin-bottom: 20px;   
+   box-sizing: border-box;
 }
 
 #main {
-	box-sizing: border-box;
-	width: 50%;
-	height: 85vh;
-	display: flex;
-	flex-wrap: wrap;
-	overflow: scroll;
-	justify-content: space-evenly;
+   box-sizing: border-box;
+   width: 50%;
+   height: 85vh;
+   display: flex;
+   flex-wrap: wrap;
+   overflow: scroll;
+   justify-content: space-evenly;
 }
 
 #main::-webkit-scrollbar {
-	display: none; /* 크롬, 사파리, 오페라, 엣지 */
+   display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
 
 #main-right {
-	box-sizing: border-box;
-	width: 25%;
-	height: 85vh;
-	border-left: 1px solid gainsboro;
-	
+   box-sizing: border-box;
+   width: 25%;
+   height: 85vh;
+   border-left: 1px solid gainsboro;
+   
 }
 
 .boxbox{
-	box-sizing: border-box;
-	color : red;
-	width : 32%;
-	height: 25vh;	
-	margin-top : 10px;
-	margin-bottom : 10px;	
-	border-radius :30px;
-	
+   box-sizing: border-box;
+   color : red;
+   width : 32%;
+   height: 25vh;   
+   margin-top : 10px;
+   margin-bottom : 10px;   
+   border-radius :30px;
+   
 }
 .boxbox2{
-	box-sizing: border-box;
-	color : black;
-	width : 32%;
-	height: 25vh;	
-	margin-top : 10px;
-	margin-bottom : 10px;	
-	border-radius :30px;
-	border: 1px solid black;
-	
+   box-sizing: border-box;
+   color : black;
+   width : 32%;
+   height: 25vh;   
+   margin-top : 10px;
+   margin-bottom : 10px;   
+   border-radius :30px;
+   border: 1px solid black;
+   
 }
 
 .boxbox img{
-	
-	width:100%;
-	border-radius :30px;	
-	height: 25vh;
-	
+   
+   width:100%;
+   border-radius :30px;   
+   height: 25vh;
+   
 }
 
 .boxbox2 img{
-	
-	width:100%;
-	border-radius :30px;
-	height: 20vh;
-	
+   
+   width:100%;
+   border-radius :30px;
+   height: 20vh;
+   
 }
 
 .scale {
-	transform: scale(1);
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1);
-	-ms-transform: scale(1);
-	-o-transform: scale(1);
-	transition: all 0.3s ease-in-out; /* 부드러운 모션을 위해 추가*/
+   transform: scale(1);
+   -webkit-transform: scale(1);
+   -moz-transform: scale(1);
+   -ms-transform: scale(1);
+   -o-transform: scale(1);
+   transition: all 0.3s ease-in-out; /* 부드러운 모션을 위해 추가*/
   }
   .scale:hover {
-	transform: scale(1.1);
-	-webkit-transform: scale(1.1);
-	-moz-transform: scale(1.1);
-	-ms-transform: scale(1.1);
-	-o-transform: scale(1.1);
-	 z-index: 999;
-	
+   transform: scale(1.1);
+   -webkit-transform: scale(1.1);
+   -moz-transform: scale(1.1);
+   -ms-transform: scale(1.1);
+   -o-transform: scale(1.1);
+    z-index: 999;
+   
   }
 
 aside {
-	width: 100%;
-	height: 93vh;
-	box-sizing: border-box;
-	border-radius: 20px;
-	border: 1px solid green;
+   width: 100%;
+   height: 93vh;
+   box-sizing: border-box;
+   border-radius: 20px;
+   border: 1px solid green;
 }
 
 .offcanvas-header {
-	padding-top: 30px;
+   padding-top: 30px;
 }
 
 #logo {
-	box-sizing: border-box;
-	width: 100%;
-	height: 10vh;
-	/* border: 1px solid green; */
+   box-sizing: border-box;
+   width: 100%;
+   height: 10vh;
+   /* border: 1px solid green; */
 }
 
 #profile-img-con {
-	box-sizing: border-box;
-	width: 100%;
-	height: 20vh;
-	/* border: 1px solid red; */
-	line-height: 20vh;
-	position: relative;
+   box-sizing: border-box;
+   width: 100%;
+   height: 20vh;
+   /* border: 1px solid red; */
+   line-height: 20vh;
+   position: relative;
 }
 
 #profile-img {
-	box-sizing: border-box;
-	width: 190px;
-	height: 190px;
-	border-radius: 50%;
-	position: absolute;
-	top: 60%;
-	left: 60%;
-	transform: translate(-50%, -50%);
+   box-sizing: border-box;
+   width: 190px;
+   height: 190px;
+   border-radius: 50%;
+   position: absolute;
+   top: 60%;
+   left: 60%;
+   transform: translate(-50%, -50%);
 }
 
 .profileWrapper {
-	box-sizing: border-box;
-	width: 100%;
-	height: 60vh;
-	/* border: 1px solid red; */
-	padding: 40px;
-	padding-left: 60px;
-	position: relative;
+   box-sizing: border-box;
+   width: 100%;
+   height: 60vh;
+   /* border: 1px solid red; */
+   padding: 40px;
+   padding-left: 60px;
+   position: relative;
 }
 
 #promodify {
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	text-align: center;
-	line-height: 30px;
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 5px;
-	background: gainsboro;
-	box-sizing: border-box;
-	position: absolute;
-	top: 55px;
-	left: 200px;
+   width: 100px;
+   height: 30px;
+   font-size: 15px;
+   text-align: center;
+   line-height: 30px;
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+   border-radius: 5px;
+   background: gainsboro;
+   box-sizing: border-box;
+   position: absolute;
+   top: 55px;
+   left: 200px;
 }
 
 #follow {
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	text-align: center;
-	line-height: 30px;
-	color: white;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 5px;
-	background: blue;
-	box-sizing: border-box;
-	position: absolute;
-	top: 55px;
-	left: 200px;
-	cursor: pointer;
+   width: 100px;
+   height: 30px;
+   font-size: 15px;
+   text-align: center;
+   line-height: 30px;
+   color: white;
+   text-decoration: none;
+   cursor: pointer;
+   border-radius: 5px;
+   background: blue;
+   box-sizing: border-box;
+   position: absolute;
+   top: 55px;
+   left: 200px;
+   cursor: pointer;
 }
 
 h5 {
-	color: darkgrey;
+   color: darkgrey;
 }
 
 .modal-body {
-	box-sizing: border-box;
-	width: 100%;
-	height: 900px;
+   box-sizing: border-box;
+   width: 100%;
+   height: 900px;
 
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
 }
 
 .modal-img {
-	box-sizing: border-box;
-	width: 65%;
-	height: 850px;
-	display: flex;
-	/*위에서 아래로 수직 배치*/
-	flex-direction: column;
-	/*중앙정렬*/
-	justify-content: center;
+   box-sizing: border-box;
+   width: 65%;
+   height: 850px;
+   display: flex;
+   /*위에서 아래로 수직 배치*/
+   flex-direction: column;
+   /*중앙정렬*/
+   justify-content: center;
 }
 
 .modal-text {
-	box-sizing: border-box;
-	width: 30%;
-	height: 850px;
-	border: 1px solid green;
-	border-radius: 30px;
-	margin-left: 10px;
+   box-sizing: border-box;
+   width: 30%;
+   height: 850px;
+   border: 1px solid green;
+   border-radius: 30px;
+   margin-left: 10px;
 }
 
 #profile-img2 {
-	box-sizing: border-box;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	margin-top: 10px;
-	margin-left: 20px;
-	padding: 10px;
+   box-sizing: border-box;
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
+   margin-top: 10px;
+   margin-left: 20px;
+   padding: 10px;
 }
 
 #freeuserimg {
-	display: flex;
-	width: 100%;
-	height: 100px;
-	border-bottom: 1px solid gainsboro;
+   display: flex;
+   width: 100%;
+   height: 100px;
+   border-bottom: 1px solid gainsboro;
 }
 
 #freeuserid {
-	padding-top: 35px;
-	width: 55%;
-	font-size: 30px;
+   padding-top: 35px;
+   width: 55%;
+   font-size: 30px;
 }
 
 #freecontent {
-	width: 100%;
-	box-sizing: border-box;
-	width: 100%;
-	height: 350px;
-	padding: 20px;
-	border: 1px solid green;
+   width: 100%;
+   box-sizing: border-box;
+   width: 100%;
+   height: 350px;
+   padding: 20px;
+   border: 1px solid green;
 }
 .modibox{
-	display: none;
-	
+   display: none;
+   
 
 }
 
 .modibox textarea{
-	width: 100%;
-	box-sizing: border-box;
-	border-radius :30px;
-	width: 100%;
-	height: 60vh;
-	padding: 20px;	
-	resize: none;
-	margin-bottom: 10px;
+   width: 100%;
+   box-sizing: border-box;
+   border-radius :30px;
+   width: 100%;
+   height: 60vh;
+   padding: 20px;   
+   resize: none;
+   margin-bottom: 10px;
 }
 
 .simg {
-	height: 800px;
+   height: 800px;
 }
 
 #dbtn {
-	width: 20%;
-	padding-top: 38px;
+   width: 20%;
+   padding-top: 38px;
 }
 
 .modibox button{
-	width: 100%;
+   width: 100%;
 
-	
+   
 }
 .likeBox{
-	width: 100%;
-	height: 60px;
-	border: 1px solid blue;
+   width: 100%;
+   height: 60px;
+   border: 1px solid blue;
 }
 
 .replyBox{
-	width: 100%;
-	height: 300px;
-	border: 1px solid red;
+   width: 100%;
+   height: 300px;
+   border: 1px solid red;
 }
 
 #unfollow{
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	text-align: center;
-	line-height: 30px;
-	color: blue;
-	text-decoration: none;
-	cursor: pointer;
-	border-radius: 5px;
-	background: gainsboro;
-	box-sizing: border-box;
-	position: absolute;
-	top: 55px;
-	left: 200px;
-	cursor: pointer;
+   width: 100px;
+   height: 30px;
+   font-size: 15px;
+   text-align: center;
+   line-height: 30px;
+   color: blue;
+   text-decoration: none;
+   cursor: pointer;
+   border-radius: 5px;
+   background: gainsboro;
+   box-sizing: border-box;
+   position: absolute;
+   top: 55px;
+   left: 200px;
+   cursor: pointer;
 }
 
 #followerM{
 
-	box-sizing: border-box;
-	width: 100%;
-	height: 400px;
-	border-top: 1px solid gainsboro;
-	
+   box-sizing: border-box;
+   width: 100%;
+   height: 400px;
+   border-top: 1px solid gainsboro;
+   
 }
 
 #followingM{
 
-	box-sizing: border-box;
-	width: 100%;
-	height: 400px;
-	border-top: 1px solid gainsboro;
-	
+   box-sizing: border-box;
+   width: 100%;
+   height: 400px;
+   border-top: 1px solid gainsboro;
+   
 }
 
 #followerdiv {
-	width: 100%;
-	height: 50px;
-	border-bottom: 1px solid grey;
-	padding-top: 10px;
-	padding-left: 15px;
+   width: 100%;
+   height: 50px;
+   border-bottom: 1px solid grey;
+   padding-top: 10px;
+   padding-left: 15px;
 }
 
 #followerdiv img{
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	margin-right :10px;
-	
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   margin-right :10px;
+   
 }
 #followerdiv a{
-	color : black;
-	
+   color : black;
+   
 }
 
 #followerdiv span{
-	color : gainsboro;
-	
+   color : gainsboro;
+   
 }
 .boxbox2{
-	box-sizing: border-box;
-	color : black;
-	width : 32%;
-	height: 25vh;	
-	margin-top : 10px;
-	margin-bottom : 10px;	
-	border-radius :30px;
-	border: 1px solid black;
-	
+   box-sizing: border-box;
+   color : black;
+   width : 32%;
+   height: 25vh;   
+   margin-top : 10px;
+   margin-bottom : 10px;   
+   border-radius :30px;
+   border: 1px solid black;
+   
 }
 #urTitle{
-	width: 100%;
-	height: 10vh;
-	border-bottom: 1px solid gainsboro;
-	font-size: 30px;
-	line-height: 10vh;
-	padding-left: 20px;
-	
+   width: 100%;
+   height: 10vh;
+   border-bottom: 1px solid gainsboro;
+   font-size: 30px;
+   line-height: 10vh;
+   padding-left: 20px;
+   
 }
-
 #urWeather{
-	width: 100%;
-	height: 5vh;
-	border-bottom: 1px solid gainsboro;
-	font-size: 20px;
-	line-height: 5vh;
-	padding-left: 20px;
-	text-align: left;
-	
+   width: 100%;
+   height: 5vh;
+   border-bottom: 1px solid gainsboro;
+   font-size: 20px;
+   line-height: 5vh;
+   padding-left: 20px;
+   text-align: left;
+   
 }
 
 #urContent{
-	width: 100%;
-	padding: 30px;
-	font-size : 20px;
+   width: 100%;
+   padding: 30px;
+   font-size : 20px;
 
 }
+
 
 #rtitle{
 
-	text-align: center;
-	color: black;
-	
+   text-align: center;
+   color: black;
+   
 }
 
 #rcon{
-	display: none;
+   display: none;
 }
 
 
 #userRecipe{
-	display: flex;
-	flex-wrap: wrap;
+   display: flex;
+   flex-wrap: wrap;
 }
 
 
 #dbtnR{
-	position: absolute;
-	top: 6%;
-	left: 92%;
+   position: absolute;
+   top: 6%;
+   left: 92%;
 }
 
 #reRc{
@@ -1800,14 +1814,14 @@ h5 {
   margin-left: 30%;
   display: block;
  
-	
+   
 }
 
 #reImg{
-	margin-top: 15vh;
-	 margin-left: 5vw;
-	width: 15vw;
-	height :30vh;
+   margin-top: 15vh;
+    margin-left: 5vw;
+   width: 15vw;
+   height :30vh;
 
 
 }

@@ -62,8 +62,10 @@
 			이런 <span class="strong">레시피</span> 는 어떠신가요?
 			</div>
 			
-			
-			<img id="randomImg" class="scale" src="${random.titleimg}" alt="default" id="article-img" href="">
+			<form action="${pageContext.request.contextPath}/userrecipe/search" id="ranform" method="POST"  >
+			<img id="randomImg" class="scale" src="${random.titleimg}" alt="default" id="article-img">
+			<input  type="hidden" name="query" value="${random.foodname}">
+			</form>
 			<div id="ranCondition">
 			${random.weather} /${random.condition2}/${random.feeling} <br>
 			상태일때 <span class="strong">추천</span>드려요!			
@@ -123,7 +125,7 @@
 
 
 
-		</div>f
+		</div>
 		<div id="main-right">
 			<div id="profile-img-con">
 				<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
@@ -141,7 +143,7 @@
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/result/mainresult">Find Recipe</a></li>
+							href="${pageContext.request.contextPath}//result/mainResult">Find Recipe</a></li>
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/mypage/mypageResult">My Page</a>
 					</li>
@@ -196,7 +198,7 @@
 			</div>
 		</div>
 	</nav>
-
+<footer> copyright © TastyFriends. all rights reserved </footer>
 </body>
 
 
@@ -367,22 +369,22 @@
 
 						<!-- 댓글 영역 시작부분 -->
 						<section>
-							<div class="container">
-								<div class="row">
-									<div class="col-xs-12 col-md-9 write-wrap">
-										<!-- 댓글 영역 -->
+							<div class="container" id="aaa">
+								<div class="row" id="rebox">
+									<div class="col-xs-12 col-md-9 write-wrap" id="rrr">
+									<!-- 댓글 영역 -->
 										<form class="reply-wrap" action="${pageContext.request.contextPath}">
-											<div class="reply-image">
-												<img
+											<div class="reply-image" >
+												<img id="replyImg"
 													src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
-											</div>
+											${login.userNick}</div>
 
 											<div class="reply-content">
 												<textarea class="form-control" rows="3" id="reply"
 													name="reply"></textarea>
 												<div class="reply-group">
 													<div class="reply-input">
-														<div class="reply-nick">${login.userNick}</div>
+														<%-- <div class="reply-nick">${login.userNick}</div> --%>
 														<input type="hidden" class="form-control" id="replyId"
 															placeholder="${login.userId}">
 													</div>
@@ -407,6 +409,11 @@
 		</div>
 
 		<Script>
+
+			
+	document.getElementById('randomImg').onclick = () => {
+		document.getElementById('ranform').submit();
+	}
 			(function recipbox() {
 				const recipebox = document.querySelectorAll('.myrecipebox');
 
@@ -554,7 +561,7 @@
 						.then(data => {
 							console.log(data);
 							document.getElementById('freeuserid').textContent = data.userId;
-							document.getElementById('carouselContent').textContent = data.content;
+							document.getElementById('freecontent').textContent = data.content;
 						});
 
 					const $carousel = document.getElementById('carouselExampleIndicators');
@@ -819,19 +826,19 @@
 						for (let i = 0; i < replyList.length; i++) {
 							strAdd +=
 								`<div class='reply-wrap'>
-                            <div class='reply-image'>
-                                <img src=''>
-                            </div>
+                            
                             <div class='reply-content'>
                                 <div class='reply-group'>
+									<img src='${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}'>
                                     <strong class='left'>` + replyList[i].userNick + `</strong> 
                                     <small class='left'>` + (replyList[i].updateDate != null ? parseTime(replyList[i]
 									.updateDate) + '(수정됨)' : parseTime(replyList[i].replyDate)) + `</small>
                                     <a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a> &nbsp
-                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
-                                    <div style = 'opacity:0'>` + replyList[i].userId + `</div>
+                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>   
+									<div id="hiddenMan" style = 'opacity:0'>` + replyList[i].userId + `</div>
+									                                
                                 </div>
-                                <p class='clearfix'>` + replyList[i].reply + `</p>
+								<p class='clearfix'>` + replyList[i].reply + `</p> 
                                 <form class='reply-modify' style='display:none'>
 									<input type="text" class='modtext' '>
 									<a href="" class="right modModBtn">수정하기</a>
