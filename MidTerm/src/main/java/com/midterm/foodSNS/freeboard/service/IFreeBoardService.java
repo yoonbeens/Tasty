@@ -30,6 +30,7 @@ public interface IFreeBoardService {
 
 	List<MfreeboardImgVO> getCarousel(int faNum );
 
+	
 
 	
 	

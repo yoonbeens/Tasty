@@ -19,5 +19,19 @@
 		SELECT * FROM Mfreeboard
 		WHERE bno = #{bno}
 	</select>
+	
+		<delete id="deleteR">
+		delete from Mfreeboard where bno =#{bno}
+	</delete>
+	
+	<update id="modiUploadRecipe">
+		UPDATE Mfreeboard SET
+		content = #{content},
+		weather=#{weather},
+		condition2 =#{condition2},
+		feeling = #{feeling}
+		WHERE bno =#{bno}
+	</update>
+	
 
 </mapper>

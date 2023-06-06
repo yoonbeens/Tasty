@@ -17,8 +17,12 @@ public interface IFreeRecipeMapper {
 	List<MfreeboardVO> getRecipeList(String userId);
 
 	//레시피 삭제
-	void delete(int bno);
+	void deleteR(int rebno);
 
 	//레시피 수정
-	void update(Map<String, Object> map);
+	void modiUploadRecipe(MfreeboardVO vo);
+
+	
+	
+
 }

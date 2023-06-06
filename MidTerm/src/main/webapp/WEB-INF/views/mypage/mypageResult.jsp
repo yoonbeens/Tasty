@@ -1,3 +1,4 @@
+<%@page import="com.midterm.foodSNS.command.MfreeboardVO"%>
 <%@page import="com.midterm.foodSNS.command.MusersVO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.midterm.foodSNS.command.MfreeboardImgVO"%>
@@ -10,6 +11,13 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +26,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<title>Bootstrap demo</title>
-		<link href="${pageContext.request.contextPath}/css/mypageResult.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/mypageResult.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -38,10 +46,17 @@
 
 			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
 			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
+
+			ArrayList<MfreeboardVO> recipes = new ArrayList<>();
+		 	recipes = (ArrayList<MfreeboardVO>) request.getAttribute("recipe");
+
+
 		%>
 		<div id="main-left">
-			<div class="left" id="mystory" data-alength="<%=articles.size()%>" data-rlength="<%=articles.size()%>">My Story</div>
-			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>" data-rlength="<%=articles.size()%>">My Recipe</div>
+			<div class="left" id="mystory" data-alength="<%=articles.size()%>" data-rlength="${fn:length(recipe)}">My
+				Story</div>
+			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>" data-rlength="${fn:length(recipe)}">My
+				Recipe</div>
 
 
 		</div>
@@ -63,8 +78,8 @@
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
-			
-			
+
+
 
 			<%
 			break;
@@ -76,15 +91,15 @@
 			}
 			%>
 			<c:forEach var="recipe" items="${recipe}">
-				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal" data-bs-target="#recipe"
-				>
-					<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
-						alt="default" id="article-img" data-reuserid="${recipe.writer}"
-						data-rebno="${recipe.bno}" />
-					<div id="title" name="title">${recipe.title}</div>
+				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal" data-bs-target="#recipe">
+					<img src="${pageContext.request.contextPath}/css/TastyFriend.png" alt="default" id="article-img"
+						data-reuserid="${recipe.writer}" data-rebno="${recipe.bno}" />
+					<div id="rtitle" name="title">${recipe.title}</div>
+					<div id="rcon" name="title">${recipe.content}</div>
 				</div>
-			</c:forEach>  
-			
+			</c:forEach>
+
+
 
 
 		</div>
@@ -110,7 +125,8 @@
 					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
 							data-bs-target="#FollowingModal">Following
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add My
+					<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add My
 							Recipe</a></li>
 					<li class="nav-item"><a class="nav-link"
 							href="${pageContext.request.contextPath}/freeboard/regist">Add
@@ -218,19 +234,29 @@
 </div>
 
 <!-- Modal uesrRecipe-->
-<div class="modal fade" id="recipe" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-body" id="userRecipe">
-			<div id="urTitle">
-				<!--유저레시피 제목오는곳-->
-			</div>
-			<hr>
-			<div id="urContent">
-			<!--유저레시피 내용오는곳-->
-			</div>		
-			
+				<div id="urTitle">
+					
+					<!--유저레시피 제목오는곳-->
+				</div>
+				<div class="dropdown" id="dbtnR">
+					<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem" type="button"
+						data-bs-toggle="dropdown" aria-expanded="false"></i>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" id="modifyR" >Modify</a></li>
+						<hr>
+						<li><a class=" dropdown-item" id="deleteR" href="#" style="color: red">Delete</a></li>
+					</ul>
+				</div>
+				
+				<div id="urContent">
+					<!--유저레시피 내용오는곳-->
+
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -283,8 +309,6 @@
 							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem" type="button"
 								data-bs-toggle="dropdown" aria-expanded="false"></i>
 							<ul class="dropdown-menu">
-
-
 								<li><a class="dropdown-item" id="modify" href="#"">Modify</a></li>
 								<hr>
 								<li><a class=" dropdown-item" id="delete" href="#" style="color: red">Delete</a></li>
@@ -296,8 +320,6 @@
 					<div id="freecontent"></div>
 					<div class="modibox">
 						<textarea id="modifyTextBox" class="shadow p-3 bg-body rounded">
-
-
 					</textarea>
 						<button id="modifyTextbtn" type="button" class="btn btn-success">Modify</button>
 					</div>
@@ -314,26 +336,30 @@
 							<div class="container">
 								<div class="row">
 									<div class="col-xs-12 col-md-9 write-wrap">
-<!-- 댓글 영역 -->
-			<form class="reply-wrap" action="${pageContext.request.contextPath}">
-				<div class="reply-image">
-					<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
-				</div>
+										<!-- 댓글 영역 -->
+										<form class="reply-wrap" action="${pageContext.request.contextPath}">
+											<div class="reply-image">
+												<img
+													src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
+											</div>
 
-				<div class="reply-content">
-					<textarea class="form-control" rows="3" id="reply" name="reply"></textarea>
-					<div class="reply-group">
-						<div class="reply-input">
-							<div class="reply-nick">${login.userNick}</div>
-							<input type="hidden" class="form-control" id="replyId" placeholder="${login.userId}">
-						</div>
+											<div class="reply-content">
+												<textarea class="form-control" rows="3" id="reply"
+													name="reply"></textarea>
+												<div class="reply-group">
+													<div class="reply-input">
+														<div class="reply-nick">${login.userNick}</div>
+														<input type="hidden" class="form-control" id="replyId"
+															placeholder="${login.userId}">
+													</div>
 
-						<button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
-					</div>
-				</div>
-			</form>
-			<div id="replyList">
-				<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.
+													<button type="button" id="replyRegist"
+														class="right btn btn-info">등록하기</button>
+												</div>
+											</div>
+										</form>
+										<div id="replyList">
+											<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.
 				<div class='reply-wrap'>
 					<div class='reply-image'>
 						<img src='../resources/img/profile.png'>
@@ -349,8 +375,9 @@
 					</div>
 				</div>
 				 -->
-			</div>
-			<button type="button" class="form-control" id="moreList" style="display: none;">더보기</button>
+										</div>
+										<button type="button" class="form-control" id="moreList"
+											style="display: none;">더보기</button>
 									</div>
 								</div>
 							</div>
@@ -363,17 +390,19 @@
 		</div>
 
 		<Script>
-			( function recipbox(){
+			(function recipbox() {
 				const recipebox = document.querySelectorAll('.myrecipebox');
-				console.log(recipebox.length);
-				for (var i = 0; i < recipebox.length; i++) {						
-						const recipebox = document.querySelectorAll('.myrecipebox');
-						recipebox[i].style.display = "none";
-					}
+
+				for (var i = 0; i < recipebox.length; i++) {
+					const recipebox = document.querySelectorAll('.myrecipebox');
+					recipebox[i].style.display = "none";
+				}
 			})();
 			let strimg = '';
 			let strbtn = '';
 			let strmodi = '';
+			let rtitle = '';
+			let rcon = '';
 
 			document.getElementById('main-left').addEventListener('click', e => {
 				console.log("left click");
@@ -381,18 +410,18 @@
 				if (e.target.matches('#mystory')) {
 					const alength = e.target.dataset.alength;
 					const rlength = e.target.dataset.rlength;
-					
+
 
 					console.log("story 클릭");
-					
+
 
 					for (var i = 0; i < alength; i++) {
 						const storybox = document.querySelectorAll('.mystorybox');
-						storybox[i].style.display = "block";						
+						storybox[i].style.display = "block";
 					}
-					for (var i = 0; i < rlength; i++) {						
+					for (var i = 0; i < rlength; i++) {
 						const recipebox = document.querySelectorAll('.myrecipebox');
-						console.log(recipebox);
+
 						recipebox[i].style.display = "none";
 					}
 
@@ -404,19 +433,19 @@
 					const rlength = e.target.dataset.rlength;
 
 					console.log("recipe 클릭");
-				
-				
+
+
 
 					for (var i = 0; i < alength; i++) {
 						const storybox = document.querySelectorAll('.mystorybox');
-						storybox[i].style.display = "none";						
+						storybox[i].style.display = "none";
 					}
 
 
-					
-					for (var i = 0; i <rlength; i++) {						
+
+					for (var i = 0; i < rlength; i++) {
 						const recipebox = document.querySelectorAll('.myrecipebox');
-						console.log(recipebox);
+
 						recipebox[i].style.display = "block";
 					}
 				}
@@ -428,11 +457,52 @@
 
 			document.getElementById('main').addEventListener('click', e => {
 				if (e.target.matches('.boxbox2 img')) {
-				
+
+
+					const rebno = e.target.dataset.rebno;
+					console.log(rebno);
+					document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
+						.textContent);
+					document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
+						.nextElementSibling.innerHTML);
+
+					document.getElementById('modifyR').setAttribute("href",'${pageContext.request.contextPath}/userrecipe/modifyRecipe/'+rebno+'');
+
+					document.getElementById("recipe").addEventListener('hidden.bs.modal', () => {
+						document.getElementById('urTitle').textContent="";
+						document.getElementById('urContent').innerHTML="";
+						
+					})
 					
+					
+						
+
+					document.getElementById('deleteR').addEventListener('click', e => {
+						if (confirm("정말 삭제하시겠습니까?")) {
+							
+							fetch('${pageContext.request.contextPath}/userrecipe/deleteR/' + rebno, {
+								method: 'delete'
+							}).then(res => {
+								if (res.status == 200) {
+									document.getElementById('main').replaceChildren;
+									location.reload();
+								} else {
+									alert(res.status);
+								}
+							});
+
+						} else {
+							return;
+						}
+
+					});
+
+
+
+
 				}
-				
-	
+
+
 
 				if (e.target.matches('.boxbox img')) {
 
@@ -442,7 +512,7 @@
 
 					console.log(faNum);
 					console.log(userId);
-								
+
 					strbtn = '';
 					strimg = '';
 					strmodi = '';
@@ -582,15 +652,16 @@
 						}
 
 					});
+				
 
 				} else {
-					console.log('여기는 이벤트 대상이 아님');
+
 
 					return;
 				}
 
 			});
-			
+
 			//좋아요 개수 불러오기
 			function getlike(faNum) {
 				fetch('${pageContext.request.contextPath}/like/faNum/' + faNum)
@@ -630,7 +701,7 @@
 						getlike(faNum);
 					});
 			});
-			
+
 			//댓글 등록 이벤트
 			document.getElementById('replyRegist').onclick = function (e) {
 				const reply = document.getElementById('reply').value;

@@ -18,17 +18,20 @@
   </head>
   <body>
   <div id="container">
-    <form action="${pageContext.request.contextPath}/userrecipe/uploadRecipe" method="post" name="uploadForm">
+    <form action="${pageContext.request.contextPath}/userrecipe/modiUploadRecipe" method="post" name="uploadForm">
       <input type="hidden" name="writer" value="${login.userId}">
+       <input type="hidden" name="bno" value="${modify.bno}">
 
       <div class="form-group">
         <label for="title">제목</label>
-        <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" name="title">
+        <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요" name="title" value=" ${modify.title}">
       </div>
 
       <div class="form-group">
         <label for="content">내용</label>
-        <textarea class="form-control" rows="5" id="summernote" id="imageBoard" name="content"></textarea>
+        <textarea class="form-control" rows="5" id="summernote" id="imageBoard" name="content" >
+        ${modify.content} 
+        </textarea>
       </div>
 
       <button id="submitBtn" type="button">글 작성</button>

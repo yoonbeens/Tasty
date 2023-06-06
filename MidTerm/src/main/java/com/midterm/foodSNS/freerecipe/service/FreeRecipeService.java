@@ -20,7 +20,7 @@ public class FreeRecipeService implements IFreeRecipeService {
 	
 	@Override
 	public void uploadRecipe(MfreeboardVO vo) {
-		log.info("writer: " + vo.getWriter());
+		
 		mapper.uploadRecipe(vo);
 
 	}
@@ -36,15 +36,22 @@ public class FreeRecipeService implements IFreeRecipeService {
 	}
 
 	@Override
-	public void delete(int bno) {
-		// TODO Auto-generated method stub
-
+	public void deleteR(int rebno) {
+		mapper.deleteR(rebno);		
 	}
+
 
 	@Override
 	public void update(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void modiUploadRecipe(MfreeboardVO vo) {
+		log.info("writer: " + vo);
+		mapper.modiUploadRecipe(vo);
+		
 	}
 
 }
