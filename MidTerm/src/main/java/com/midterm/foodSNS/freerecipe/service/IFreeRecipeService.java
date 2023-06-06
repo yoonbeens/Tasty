@@ -20,8 +20,11 @@ public interface IFreeRecipeService {
 	void deleteR(int rebno);
 
 
-	//레시피 수정
-	void update(Map<String, Object> map);
+
+	
+	//레시피 검색
+	List<MfreeboardVO> searchRecipe(String query);
 
 	void modiUploadRecipe(MfreeboardVO vo);
+
 }

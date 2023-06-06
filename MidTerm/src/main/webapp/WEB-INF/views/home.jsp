@@ -107,15 +107,14 @@
 	
 	</div>
 	<div class="title">
-		<span id="you">당신에게 맞는<span><br>
-		<span id="reco">수백개의 추천 레시피를<span><br>
-		<span id="free">무료로 이용해보세요!<span><br>
+		<span id="you">당신에게 맞는</span><br>
+		<span id="reco">수백개의 추천 레시피를</span><br>
+		<span id="free">무료로 이용해보세요!</span><br>
 		<button type="submit"  id="try" class="btn btn-danger btn-lg">Try Free</button>
 	</div>
 	<div class="aside animadte__animated  animate__fadeIn" id="side">
 	<div id="logo">
 		<img src="${pageContext.request.contextPath}/css/TastyFriend.png" alt="로고">
-	
 	</div>
 	
 		<form action="${pageContext.request.contextPath}/result/mainResult" method="POST">

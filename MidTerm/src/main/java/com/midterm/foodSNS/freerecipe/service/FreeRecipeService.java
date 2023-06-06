@@ -46,6 +46,12 @@ public class FreeRecipeService implements IFreeRecipeService {
 		// TODO Auto-generated method stub
 
 	}
+	
+	//레시피 검색
+	@Override
+	public List<MfreeboardVO> searchRecipe(String query) {
+	    return mapper.searchRecipe(query);
+	}
 
 	@Override
 	public void modiUploadRecipe(MfreeboardVO vo) {

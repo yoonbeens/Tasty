@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.midterm.foodSNS.command.MfreeboardVO;
@@ -92,4 +93,26 @@ public class FreeRecipeController {
 	public MfreeboardVO getRecipe(@PathVariable("bno") int bno) {
 		return service.getRecipe(bno);
 	}
+	
+	@GetMapping("/search")
+	public void search() {}
+	
+	// 레시피 검색
+	@PostMapping("/search")
+	public String searchRecipe(@RequestParam("query") String query, Model model) {
+	    List<MfreeboardVO> recipe = service.searchRecipe(query);
+	    model.addAttribute("query", query);
+	    model.addAttribute("recipe", recipe);
+	    return "/result/mainResult"; // 검색 결과를 보여주는 뷰 페이지로 이동
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
