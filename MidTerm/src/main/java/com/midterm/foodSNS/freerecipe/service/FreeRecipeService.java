@@ -41,11 +41,6 @@ public class FreeRecipeService implements IFreeRecipeService {
 	}
 
 
-	@Override
-	public void update(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-
-	}
 	
 	//레시피 검색
 	@Override
