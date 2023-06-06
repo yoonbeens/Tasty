@@ -79,10 +79,10 @@
 	<div class="title">
 		<span id="you">당신에게 맞는</span><br>
 		<span id="reco">수백개의 추천 레시피를</span><br>
-		<span id="free">무료로 이용해보세요!</span><br>
+		<span id="free">친구들과 나눠보세요!</span><br>
 		<button type="submit"  id="try" class="btn btn-danger btn-lg">Try Free</button>
 	</div>
-	<div class="aside animadte__animated  animate__fadeIn" id="side">
+	<div class="aside animate__animated  animate__fadeIn" id="side">
 	<div id="logo">
 		<img src="${pageContext.request.contextPath}/css/TastyFriend.png" alt="로고">
 	</div>
@@ -94,7 +94,7 @@
 					<option value="맑음">맑음</option>
 					<option value="흐림">흐림</option>
 					<option value="비">비</option>
-					<!-- <option id="todayWeather"></option> -->
+					 <option id="todayWeather"></option> 
 				</select> <select name="condition" class="form-select optionbox" aria-label="Default select example">
 					<option value="상태" selected>상태</option>
 					<option value="보통">보통</option>
@@ -137,7 +137,7 @@
 
 
 	});
-	/* (
+	 (
 		function weather() {
 			const side =document.getElementById('side');
 		side.style.display = "none";
@@ -168,7 +168,7 @@
 
 				})
 
-		})(); */
+		})(); 
 
 	document.getElementById('logoutBtn').onclick = () => {
 		alert('로그아웃 되었습니다.');

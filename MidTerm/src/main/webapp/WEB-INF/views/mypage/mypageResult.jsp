@@ -54,6 +54,21 @@
 				Story</div>
 			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>" data-rlength="${fn:length(recipe)}">My
 				Recipe</div>
+				
+				
+			<div id="random">
+			
+			<div id="ranCom">
+			이런 <span class="strong">레시피</span> 는 어떠신가요?
+			</div>
+			
+			
+			<img id="randomImg" class="scale" src="${random.titleimg}" alt="default" id="article-img" href="">
+			<div id="ranCondition">
+			${random.weather} /${random.condition2}/${random.feeling} <br>
+			상태일때 <span class="strong">추천</span>드려요!			
+			</div>					
+			</div>
 
 
 

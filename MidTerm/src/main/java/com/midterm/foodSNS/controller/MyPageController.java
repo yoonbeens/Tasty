@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
 import com.midterm.foodSNS.command.MfreeboardVO;
@@ -64,6 +65,10 @@ public class MyPageController {
 		List<MfreeboardVO> recipeList = new ArrayList<>();		
 		recipeList = recipeService.getRecipeList(vo.getUserId());
 		
+		int k = (int)((Math.random()*498)+1);
+		
+		MRecipeVO randomRecipe = service.randomRecipe(k);
+		
 		
 		
 		for(int i=0; i<countFollower.size();i++) {
@@ -83,8 +88,9 @@ public class MyPageController {
 		model.addAttribute("img",imgList);
 		model.addAttribute("countFollower", countFollower);
 		model.addAttribute("countFollowing", countFollowing);
+		model.addAttribute("random", randomRecipe);
 				
-	;
+	
 		
 		
 		return "mypage/mypageResult";	

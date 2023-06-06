@@ -427,3 +427,48 @@ h5 {
 	top: 6%;
 	left: 92%;
 }
+#random{
+	width: 20vw;
+	height: 50vh;
+	border: 1px solid green;
+	border-radius: 15px;
+	margin-top: 30%;
+	margin-left: 10%;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	
+}	
+#randomImg{
+	
+	width: 90%;
+	margin-left: 5%;
+	height: 20vh;
+	border-radius: 15px;
+	
+}
+
+#ranCom{
+	width: 20vw;
+	height: 10vh;
+	font-size :20px;
+	text-align: center;
+	font-family: 800;
+	line-height: 10vh;
+	
+	
+	
+}
+
+.strong{
+	font-size :40px;
+	
+}
+
+#ranCondition{
+	margin-top: 20px;
+	font-size :30px;
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	
+
+}

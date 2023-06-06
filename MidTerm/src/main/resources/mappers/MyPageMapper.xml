@@ -52,6 +52,16 @@
 	SELECT *from follower where follower_id=#{userId};
 	</select>
 	
+	<select id="randomRecipe" resultType="recipe">
+	SELECT * FROM cookDB
+		WHERE cooknum = #{k}
+	</select>
+	
+	
+	
+	
+	
+	
 	
 	
 
