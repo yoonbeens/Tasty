@@ -147,12 +147,10 @@ h2 {
 	color: #fff;
 }
 
-#kakaoBtn {
+/* #kakaoBtn {
 	border: none;
-	/* outline: none; */
-	/* box-shadow: none; */
 }
-
+ */
 .signUp-link {
 	font-size: 14px;
 	text-align: center;
@@ -299,14 +297,14 @@ h2 {
 				</div>
 				<button type="submit" id="loginBtn">Sign In</button>
 				<div class="signUp-link">
-					<div class="col-lg-12 text-center mt-3">
+					<%-- <div class="col-lg-12 text-center mt-3">
 						<button type="button" id="kakaoBtn"
 							onclick="location.href='${urlKakao}'">
 							<img alt="카카오로그인"
 								src="${pageContext.request.contextPath}/img/kakao_login_medium_wide.png">
 						</button>
 						<br>
-					</div>
+					</div> --%>
 					<p>
 						Don't have an account? <a href="#" class="signUpBtn-link">Sign
 							Up</a>
