@@ -140,9 +140,12 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
+					<li class="nav-item"><a class="nav-link"
+							href="${pageContext.request.contextPath}/result/mainresult">Find Recipe</a></li>
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/mypage/mypageResult">My Page</a>
 					</li>
+					
 					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
 							data-bs-target="#FollowerModal">Follower
 							Chief</a></li>

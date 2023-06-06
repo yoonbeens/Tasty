@@ -1791,3 +1791,23 @@ h5 {
 	top: 6%;
 	left: 92%;
 }
+
+#reRc{
+
+  justify-content: left;
+  margin-top: 50px;
+  height: 20vh;
+  margin-left: 30%;
+  display: block;
+ 
+	
+}
+
+#reImg{
+	margin-top: 15vh;
+	 margin-left: 5vw;
+	width: 15vw;
+	height :30vh;
+
+
+}
