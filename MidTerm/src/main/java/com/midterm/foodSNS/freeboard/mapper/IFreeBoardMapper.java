@@ -26,6 +26,8 @@ public interface IFreeBoardMapper {
 	void deleteimg(int iNum);
 
 	void update(Map<String, Object> map);
+	
+	
 
 
 }

@@ -91,7 +91,7 @@ public class FreeBoardService implements IFreeBoardService {
 	
 	@Override
 	public void delete(int faNum) {
-		log.info("dddddff"+faNum);
+		
 		mapper.delete(faNum);
 		
 	}
@@ -119,6 +119,8 @@ public class FreeBoardService implements IFreeBoardService {
 		mapper.update(map);
 		
 	}
+
+
 
 
 

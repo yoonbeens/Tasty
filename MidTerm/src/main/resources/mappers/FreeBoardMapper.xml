@@ -31,6 +31,8 @@
 	
 
 	
+
+	
 	<update id="update" parameterType="hashMap">
 		update FreeboardArticle set content=#{content} where freeboard_article_number =#{faNum}
 	</update>

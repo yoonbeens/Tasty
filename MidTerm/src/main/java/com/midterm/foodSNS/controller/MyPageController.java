@@ -120,6 +120,10 @@ public class MyPageController {
 		List<MusersVO> countFollowing =new ArrayList<>();
 		countFollowing =service.countFollowing(userId);
 		
+		List<MfreeboardVO> recipeList = new ArrayList<>();		
+		recipeList = recipeService.getRecipeList(userId);
+		
+		
 		for(int i=0; i<countFollower.size();i++) {
 			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
 			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
@@ -132,6 +136,7 @@ public class MyPageController {
 			countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
 		}
 		
+		model.addAttribute("recipe",recipeList);
 		model.addAttribute("user",user);		
 		model.addAttribute("article",articleList);
 		model.addAttribute("img",imgList);

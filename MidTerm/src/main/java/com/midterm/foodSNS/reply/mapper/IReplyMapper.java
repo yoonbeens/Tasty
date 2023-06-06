@@ -18,4 +18,13 @@ public interface IReplyMapper {
 	void update(ReplyVO vo);//댓글 수정
 	
 	void delete(int rno);//댓글 삭제
+
+	List<ReplyVO> faList(Map<String, Object> data);//게시글 댓글목록
+
+	int faTotal(int faNum); //게시글 댓글 개수
+
+	List<ReplyVO> bnoList(Map<String, Object> data);//유저레시피 댓글 목록
+
+	int bnoTotal(int bno); //유저레시피 댓글 개
+
 }

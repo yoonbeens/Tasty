@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/userrecipe")
 @Slf4j
 public class FreeRecipeController {
-	
+
 	@Autowired
 	private IFreeRecipeService service;
 
@@ -37,11 +38,37 @@ public class FreeRecipeController {
 	//레시피 글 등록
 	@PostMapping("/uploadRecipe")
 	public String uploadRecipe(MfreeboardVO vo) {
-		log.info("vo: " + vo.toString());
+
 		service.uploadRecipe(vo);
-		log.info("sdf: ");
-		return "redirect:/userrecipe/recipeList";
+
+		return "redirect:/mypage/mypageResult";
 	}
+
+	//레시피 수정 페이지로
+	@GetMapping("/modifyRecipe/{bno}")
+	public String modifyRecipeRecipe(@PathVariable("bno") int bno, Model model) {
+		model.addAttribute("modify",service.getRecipe(bno));
+		log.info("제대로 오나: " + service.getRecipe(bno));
+		return "/userrecipe/modifyRecipe";
+
+	}
+
+	//레시피 수정 처리
+	@PostMapping("/modiUploadRecipe")
+	public String modiUploadRecipe(MfreeboardVO vo) {
+
+		service.modiUploadRecipe(vo);
+
+		return "redirect:/mypage/mypageResult";
+	}
+
+	@DeleteMapping("/deleteR/{bno}")
+	@ResponseBody
+	public void deleteR(@PathVariable("bno") int bno) {
+		 service.deleteR(bno);
+	}
+
+
 
 	//레시피 글 목록
 	@GetMapping("/recipeList")
@@ -59,8 +86,7 @@ public class FreeRecipeController {
 		model.addAttribute("recipe",articleList);
 		return "/mypage/mypageResult";	
 	}
-	
-	
+
 	//레세피 글 상세보기
 	@GetMapping("/recipeDetail/{bno}")
 	@ResponseBody
