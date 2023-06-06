@@ -34,37 +34,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 	</script>
-<%-- 	<header>
-		<c:if test="${login == null}">
-			<div>
-				<a href="${pageContext.request.contextPath}/user/userLogin">login</a>
-			</div>
-			<div>
-				<a href="${pageContext.request.contextPath}/user/userJoin">Join</a>
-			</div>
 
-
-		</c:if>
-		<c:if test="${login != null}">
-			${login.userId}님 환영합니다!
-			<div>
-				<a href="${pageContext.request.contextPath}/user/userMypage">MyPage</a>
-			</div>
-
-			 <div>
-			<a href="${pageContext.request.contextPath}/user/userLogout">Logout</a>
-			</div>  
-
-			<form action="${pageContext.request.contextPath}/user/userLogout" method="post">
-				<button type="submit" id="logoutBtn">로그아웃</button>
-			</form>
-
-
-		</c:if>
-
-
-	</header> --%>
-	
 	
 <nav class="navbar navbar-expand-lg bg-success fixed-top text-light">
   <div class="container-fluid">

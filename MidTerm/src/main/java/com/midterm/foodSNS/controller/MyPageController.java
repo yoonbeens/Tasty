@@ -84,7 +84,7 @@ public class MyPageController {
 		model.addAttribute("countFollower", countFollower);
 		model.addAttribute("countFollowing", countFollowing);
 				
-		log.info("follower : " +countFollower.toString());
+	;
 		
 		
 		return "mypage/mypageResult";	
@@ -108,11 +108,6 @@ public class MyPageController {
 		map.put("userId", vo.getUserId()); 
 		map.put("targetId", userId);		
 		
-		
-		log.info("회원정보:"+user.toString());	
-		log.info("회원게시물:"+articleList.toString());	
-		log.info("회원게시물 이미지:"+imgList.toString());
-		log.info("팔로우 여부:"+service.checkFollowing(map));
 		
 		List<MusersVO> countFollower =new ArrayList<>();
 		countFollower =service.countFollower(userId);
@@ -159,8 +154,7 @@ public class MyPageController {
 		vo.getUserId();		
 		map.put("userId", vo.getUserId()); 
 		map.put("targetId", targetId);	
-		log.info("타겟아이디 : "+targetId);
-		log.info("유저아이디 : "+vo.getUserId());
+	
 		if(service.checkFollowing(map)==0) {
 		service.addFollowing(map);
 		}else {
@@ -185,8 +179,7 @@ public class MyPageController {
 		vo.getUserId();		
 		map.put("userId", vo.getUserId()); 
 		map.put("targetId", targetId);		
-		log.info("타겟아이디 : "+targetId);
-		log.info("유저아이디 : "+vo.getUserId());
+
 		if(service.checkFollowing(map)==1) {
 		service.deleteFollowing(map);
 		}

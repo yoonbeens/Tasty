@@ -1,6 +1,11 @@
 package com.midterm.foodSNS.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +22,9 @@ import com.midterm.foodSNS.command.LikeVO;
 import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MSearchConditionVO;
 import com.midterm.foodSNS.command.MusersVO;
+import com.midterm.foodSNS.mypage.service.IMyPageService;
 import com.midterm.foodSNS.result.service.IResultService;
+import com.midterm.foodSNS.user.service.IUserService;
 import com.midterm.foodSNS.util.DBservice;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,12 +40,40 @@ public class ResultController {
 	@Autowired
 	private DBservice DBservice;
 	
+	@Autowired
+	private IMyPageService myservice;
+	
+	@Autowired
+	private IUserService userService;
+	
 	//home으로
 	
 	
 	//메인 추천 결과 이동
 	@PostMapping("/mainResult")
-	public String resultMain (String weather, String condition, String feeling, Model model) {
+	public String resultMain (String weather, String condition, String feeling, Model model,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		MusersVO uvo = new MusersVO();
+		uvo = (MusersVO) session.getAttribute("login");
+		List<MusersVO> countFollower =new ArrayList<>();
+		countFollower =myservice.countFollower(uvo.getUserId());
+		
+		List<MusersVO> countFollowing =new ArrayList<>();
+		countFollowing =myservice.countFollowing(uvo.getUserId());
+		
+		for(int i=0; i<countFollower.size();i++) {
+			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
+			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
+			countFollower.get(i).setMessage(userService.userInfo(countFollower.get(i).getUserId()).getMessage());	
+		}
+		
+		for(int i=0; i<countFollowing.size();i++) {
+			countFollowing.get(i).setFileLoca(userService.userInfo(countFollowing.get(i).getUserId()).getFileLoca());
+			countFollowing.get(i).setFileName(userService.userInfo(countFollowing.get(i).getUserId()).getFileName());
+			countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
+		}
 		
 		MSearchConditionVO vo = new MSearchConditionVO();
 //		if(weather.equals("Clear")) {
@@ -55,10 +90,12 @@ public class ResultController {
 //		} 
 		
 		vo.setWeather(weather);
-		log.info(vo.getWeather());
 		vo.setCondition2(condition);
 		vo.setFeeling(feeling);	
 		
+		
+		model.addAttribute("countFollower", countFollower);
+		model.addAttribute("countFollowing", countFollowing);
 
 		
 		model.addAttribute("searchCondition",vo);		
@@ -117,8 +154,7 @@ public class ResultController {
 	@GetMapping("/recipe/like/{cooknum}")
 	@ResponseBody
 	public int getLike(@PathVariable int cooknum) {
-		log.info("레시피 번호: "+cooknum);
-		log.info("좋아요 수" + service.getLike(cooknum));
+
 		return service.getLike(cooknum);
 	}
 	

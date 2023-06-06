@@ -220,10 +220,8 @@ h5 {
 	box-sizing: border-box;
 	width: 100%;
 	height: 900px;
-
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+	flex-wrap: wrap;	
 }
 
 .modal-img {
@@ -390,6 +388,23 @@ h5 {
 	padding-left: 20px;
 	
 }
+#urWeather{
+	width: 100%;
+	height: 5vh;
+	border-bottom: 1px solid gainsboro;
+	font-size: 20px;
+	line-height: 5vh;
+	padding-left: 20px;
+	text-align: left;
+	
+}
+
+#urContent{
+	width: 100%;
+	padding: 30px;
+	font-size : 20px;
+
+}
 
 #rtitle{
 
@@ -403,7 +418,8 @@ h5 {
 }
 
 #userRecipe{
-	position: relative;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 #dbtnR{
