@@ -87,7 +87,7 @@ h2 {
 	width: 320px;
 	height: 40px;
 	font-size: 16px;
-	color: lightgray;
+	color: black;
 	padding: 0 5px;
 	background: transparent;
 	border: none;
@@ -103,7 +103,7 @@ h2 {
 }
 
 .remember label {
-	color: lightgray;
+	color: black;
 	font-size: 14px;
 }
 

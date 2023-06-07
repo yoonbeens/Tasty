@@ -81,7 +81,9 @@ footer {
 #main::-webkit-scrollbar {
 	display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
-
+.reply-nick{
+	height: 1px;
+}
 #main-right {
 	box-sizing: border-box;
 	width: 25%;
@@ -448,7 +450,7 @@ h5 {
 
 #random {
 	width: 20vw;
-	height: 50vh;
+	height: 45vh;
 	
 	border-radius: 15px;
 
@@ -480,12 +482,12 @@ h5 {
 }
 
 .strong {
-	font-size: 40px;
+	font-size: 30px;
 }
 
 #ranCondition {
 	margin-top: 20px;
-	font-size: 30px;
+	font-size: 15px;
 	text-align: center;
 	width: 100%;
 	padding: 10px;

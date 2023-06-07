@@ -21,8 +21,8 @@
 
 
     <div class="container">
-<%-- <video src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
-					alt="default"></video> --%>
+	<video src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+					alt="default"></video>
        
     </div>
 </body>

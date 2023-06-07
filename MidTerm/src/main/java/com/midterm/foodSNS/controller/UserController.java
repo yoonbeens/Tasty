@@ -184,11 +184,9 @@ public class UserController {
 	//로그인 요청 +비번검증해야함
 	@PostMapping("/userLogin")
 	public  void login(String userId, String userPw, Model model) {
-		log.info("UserController의 로그인 요청!");
-		 
-		MusersVO vo = service.userInfo(service.login(userId,userPw));
-		model.addAttribute("user",vo);
-		
+		MusersVO vo = service.userInfo(userId);
+		model.addAttribute("user", service.login(userId, userPw));	
+		model.addAttribute("vo",vo);
 	}
 	
 	//로그아웃 요청

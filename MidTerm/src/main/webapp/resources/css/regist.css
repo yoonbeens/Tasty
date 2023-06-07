@@ -20,11 +20,14 @@
 }
 
 #attr_area {
-	box-sizing: border-box;
-	width: 50%;
-	min-height: 150px;
+	   box-sizing: border-box;
+    width: 103%;
+    min-height: 150px;
+    height: 568px;
 	padding: 10px;
-	border: 1px dotted #00f;
+	margin-left : -6px;
+	overflow : scroll;
+	/* border: 1px dotted #00f; */
 }
 
 #attr_area:empty::before {
@@ -34,10 +37,22 @@
 
 }
 
+#attr_area::-webkit-scrollbar {
+	display: none; /* 크롬, 사파리, 오페라, 엣지 */
+}
+
 #form{
 	width : 100%;
 }
 
 textarea{
-	width: 50%;
+	width: 100%;
+	position: absolute;
+	top: -140%;
+	
 }
+.input-warp{
+	position: relative;
+
+}
+

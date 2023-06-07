@@ -17,7 +17,6 @@
 	height: 30px;
 	background: #fff;
 	border: 1px solid rgb(77, 77, 77);
-	border-radius: 10px;
 	cursor: pointer; &: hover { background : rgb( 77, 77, 77);
 	color: #fff;
 } */
@@ -64,9 +63,9 @@
                     <input type="file" name="file" id="file" multiple>
               <div class="input-wrap"></div>
               
-              <span>내용</span>
+          
               <div class="input-wrap">
-              <textarea class="textarea-style" cols="35" rows="7" name="content" placeholder="입력해주세요" autocomplete="off" required></textarea>
+              <textarea class="textarea-style" cols="35" rows="7" name="content" placeholder=" 당신의 요리이야기를 들려주세요!" autocomplete="off" required></textarea>
               </div>
               
               <div class="input-wrap"></div>
@@ -126,7 +125,7 @@
         let imgStyle = 'width:100%;height:100%;z-index:none';
         // 이미지안에 표시되는 체크박스의 속성 (원하는 대로 고쳐 쓰세여)
         let chkStyle = 'width:30px;height:30px;position:absolute;font-size:17px;' +
-            'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);border:red;border-radius:10px';
+            'right:0px;bottom:0px;z-index:999;background-color:white;border:red;border-radius:10px';
 
         //파일선택 버튼을 누르면
         $btnAttr.onchange = function (e) {

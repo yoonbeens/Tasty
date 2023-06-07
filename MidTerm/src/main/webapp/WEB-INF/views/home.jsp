@@ -119,13 +119,13 @@
 
 
 
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item text-light"><a class="nav-link active"
 						aria-current="page" href="#">Home</a></li>
 
 
 
 					<c:if test="${login == null}">
-						<li class="nav-item"><a class="nav-link"
+						<li class="nav-item text-light"><a class="nav-link"
 							href="${pageContext.request.contextPath}/user/userLogin">login/join</a>
 						</li>
 					</c:if>
@@ -133,11 +133,11 @@
 
 
 					<c:if test="${login != null}">
-						<li class="nav-item"><a class="nav-link"
+						<li class="nav-item text-light"><a class="nav-link"
 							href="${pageContext.request.contextPath}/user/userMypage">회원정보수정</a>
 
 						</li>
-						<li class="nav-item"><a class="nav-link"
+						<li class="nav-item text-light"><a class="nav-link"
 							href="${pageContext.request.contextPath}/user/userLogout"
 							id="logoutBtn">LogOut</a></li>
 
@@ -169,8 +169,8 @@
 
 	<div class="wrapper"></div>
 	<div class="title">
-		<span id="you">당신에게 맞는</span><br> <span id="reco">수백개의 추천
-			레시피를</span><br> <span id="free">무료로 이용해보세요!</span><br>
+		<span id="you">당신에게 꼭 맞는</span><br> <span id="reco">수백개의 추천
+			레시피를</span><br> <span id="free">친구들과 함께 나눠보세요</span><br>
 		<button type="submit" id="try" class="btn btn-danger btn-lg">Try
 			Free</button>
 	</div>
