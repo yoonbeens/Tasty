@@ -25,7 +25,7 @@
         <form action="${pageContext.request.contextPath}/freeboard/regist" method="post" id="form"
             enctype="multipart/form-data">
 
-            <div id="attr_area" data-placeholder="ddddd"></div>
+            <div id="attr_area" data-placeholder=""></div>
             <label for="file">이미지업로드</label>
             <input multiple="multiple" type="file" name="file" id="file">
             <input type="hidden" name="userId" value="${login.userId}">

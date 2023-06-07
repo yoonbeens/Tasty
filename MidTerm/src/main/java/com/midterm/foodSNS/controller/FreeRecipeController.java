@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.midterm.foodSNS.command.MSearchConditionVO;
 import com.midterm.foodSNS.command.MfreeboardVO;
 import com.midterm.foodSNS.command.MusersVO;
 import com.midterm.foodSNS.freerecipe.service.IFreeRecipeService;
@@ -104,8 +105,20 @@ public class FreeRecipeController {
 	@PostMapping("/search")
 	public String searchRecipe(@RequestParam("query") String query, Model model) {
 	    List<MfreeboardVO> recipe = service.searchRecipe(query);
+	    
+		List<MfreeboardVO> userRecipe =new ArrayList<>();
+		userRecipe = service.searchUserRecipe(query);
+
+	    
+	    MSearchConditionVO vo = new MSearchConditionVO();
+	    vo.setWeather("날씨");
+	    vo.setCondition2("상태");
+	    vo.setFeeling("기분");
+	    
+	    model.addAttribute("searchCondition", vo);
 	    model.addAttribute("query", query);
 	    model.addAttribute("recipe", recipe);
+	    model.addAttribute("userRecipe", userRecipe);
 	    return "/result/mainResult"; // 검색 결과를 보여주는 뷰 페이지로 이동
 	}
 	

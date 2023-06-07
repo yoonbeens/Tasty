@@ -34,195 +34,169 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/result")
 @Slf4j
 public class ResultController {
-	
+
 	@Autowired
 	private IResultService service;
-	
+
 	@Autowired
 	private DBservice DBservice;
-	
+
 	@Autowired
 	private IMyPageService myservice;
-	
+
 	@Autowired
 	private IUserService userService;
-	
-	
+
+
 	@GetMapping("/mainResult")
 	public String resultMainGet (String weather, String condition, String feeling, Model model,
 			HttpServletRequest request) {
-		
+
 		HttpSession session = request.getSession();
 		MusersVO uvo = new MusersVO();
 		uvo = (MusersVO) session.getAttribute("login");
 		List<MusersVO> countFollower =new ArrayList<>();
 		countFollower =myservice.countFollower(uvo.getUserId());
-		
+
 		List<MusersVO> countFollowing =new ArrayList<>();
 		countFollowing =myservice.countFollowing(uvo.getUserId());
-		
 
-		
-		
+
+
+
 		for(int i=0; i<countFollower.size();i++) {
 			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
 			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
 			countFollower.get(i).setMessage(userService.userInfo(countFollower.get(i).getUserId()).getMessage());	
 		}
-		
+
 		for(int i=0; i<countFollowing.size();i++) {
 			countFollowing.get(i).setFileLoca(userService.userInfo(countFollowing.get(i).getUserId()).getFileLoca());
 			countFollowing.get(i).setFileName(userService.userInfo(countFollowing.get(i).getUserId()).getFileName());
 			countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
 		}
-		
+
 		MSearchConditionVO vo = new MSearchConditionVO();
-		/*
-		 * if(weather.equals("Clear")) { weather = "맑음"; } else
-		 * if(weather.equals("Rain")) { weather = "비"; } else
-		 * if(weather.equals("Clouds")) { weather = "흐림"; } else { weather = "흐림"; }
-		 */
-		
-		
+
+		if(weather.equals("Clear")) { weather = "맑음"; } 
+		else if(weather.equals("Rain")) { weather = "비"; } 
+		else if(weather.equals("Clouds")) { weather = "흐림"; }
+
 		vo.setWeather(weather);
 		vo.setCondition2(condition);
 		vo.setFeeling(feeling);	
 		List<MfreeboardVO> userRecipe =new ArrayList<>();
 		userRecipe = service.getuserRecipe(vo);
-		
-		
+
+
 		model.addAttribute("countFollower", countFollower);
 		model.addAttribute("countFollowing", countFollowing);
 		model.addAttribute("userRecipe", userRecipe);
-		
+
 		model.addAttribute("searchCondition",vo);		
 		model.addAttribute("recipe",service.recommand(vo));		
 		return "result/mainResult";	
 	}
-	
-	
-	
+
+
+
 	//메인 추천 결과 이동
 	@PostMapping("/mainResult")
 	public String resultMain (String weather, String condition, String feeling, Model model,
 			HttpServletRequest request) {
-		
+
 		HttpSession session = request.getSession();
 		MusersVO uvo = new MusersVO();
 		uvo = (MusersVO) session.getAttribute("login");
-		
+
 		List<MusersVO> countFollower =new ArrayList<>();
 		countFollower =myservice.countFollower(uvo.getUserId());
-		
+
 		List<MusersVO> countFollowing =new ArrayList<>();
 		countFollowing =myservice.countFollowing(uvo.getUserId());
-		
 
-		
-		
+
+
+
 		for(int i=0; i<countFollower.size();i++) {
 			countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
 			countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
 			countFollower.get(i).setMessage(userService.userInfo(countFollower.get(i).getUserId()).getMessage());	
 		}
-		
+
 		for(int i=0; i<countFollowing.size();i++) {
 			countFollowing.get(i).setFileLoca(userService.userInfo(countFollowing.get(i).getUserId()).getFileLoca());
 			countFollowing.get(i).setFileName(userService.userInfo(countFollowing.get(i).getUserId()).getFileName());
 			countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
 		}
-		
+
 		MSearchConditionVO vo = new MSearchConditionVO();
-//		if(weather.equals("Clear")) {
-//			weather = "맑음";
-//		}
-//		else if(weather.equals("Rain")) {
-//			weather = "비";
-//		}
-//		else if(weather.equals("Clouds")) {
-//			weather = "흐림";
-//		}
-//		else {
-//			weather = "흐림";
-//		} 
-		
-		
+		if(weather.equals("Clear")) { weather = "맑음"; } 
+		else if(weather.equals("Rain")) { weather = "비"; } 
+		else if(weather.equals("Clouds")) { weather = "흐림"; } 
+
+
 		vo.setWeather(weather);
 		vo.setCondition2(condition);
 		vo.setFeeling(feeling);	
 		List<MfreeboardVO> userRecipe =new ArrayList<>();
 		userRecipe = service.getuserRecipe(vo);
-		
-		
+
+
 		model.addAttribute("countFollower", countFollower);
 		model.addAttribute("countFollowing", countFollowing);
 		model.addAttribute("userRecipe", userRecipe);
-		
+
 		model.addAttribute("searchCondition",vo);		
 		model.addAttribute("recipe",service.recommand(vo));		
 		return "result/mainResult";	
-		
-	}
-	
 
-	
+	}
+
+
+
 	@GetMapping("/resultDetail")
 	public String resultDetail() {
-		
+
 		return "result/resultDetail";		
 	}
-	
+
 	@GetMapping("/getDB")
 	public String getDB() {		
 		DBservice.getDB();
 		return"/home";
-		
+
 	}
 	@ResponseBody
 	@GetMapping("/getWeather")
 	public Map<String, Object> getWeather(Model model) {
-	 
+
 		model.addAttribute("weather",DBservice.getWeather()); 
-	
-		
-//		String weather = (String) DBservice.getWeather().get("weather");
-//		
-//		log.info("33333"+weather);
-//		
-//		if(weather.equals("Clear")) {
-//			weather = "맑음";
-//		}
-//		else if(weather.equals("Rain")) {
-//			weather = "비";
-//		}
-//		else if(weather.equals("Clouds")) {
-//			weather = "흐림";
-//		}
-//		else {
-//			weather = "흐림";
-//		}
+
+
+
 		return DBservice.getWeather();
-		
+
 	}
-	
+
 	@GetMapping("/recipe/{cooknum}")
 	@ResponseBody
 	public MRecipeVO detail(@PathVariable int cooknum) {
 		return service.recipeDetail(cooknum);
 	}
-	
+
 	@GetMapping("/recipe/like/{cooknum}")
 	@ResponseBody
 	public int getLike(@PathVariable int cooknum) {
 
 		return service.getLike(cooknum);
 	}
-	
+
 	@PutMapping("/recipe/like/{cooknum}")
 	@ResponseBody
 	public LikeVO updateLike(@PathVariable int cooknum, @RequestBody LikeVO vo) {
 		return service.updateLike(cooknum, vo);
 	}
-	
-	
+
+
 }

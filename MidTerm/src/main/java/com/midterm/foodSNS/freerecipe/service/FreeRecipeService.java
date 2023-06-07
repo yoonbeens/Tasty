@@ -55,4 +55,9 @@ public class FreeRecipeService implements IFreeRecipeService {
 		
 	}
 
+	@Override
+	public List<MfreeboardVO> searchUserRecipe(String query) {
+		 return mapper.searchUserRecipe(query);
+	}
+
 }

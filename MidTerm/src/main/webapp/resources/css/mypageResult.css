@@ -597,8 +597,8 @@ h5 {
 }
 
 #hiddenMan{
-
 	height: 1px;
+	display: hidden;
 }
 #userRecipe{
 	display: block;

@@ -1486,21 +1486,21 @@ button {
 				<form action="${pageContext.request.contextPath}/result/mainResult" id='reRc' method="POST">
 					<div class="selectWrapper">
 						<select name="weather" class="form-select optionbox" aria-label="Default select example">
-							<option value="날씨" selected>${searchCondition.weather}</option>
+							<option value="날씨" disabled selected>${searchCondition.weather}</option>
 							<option value="맑음">맑음</option>
 							<option value="흐림">흐림</option>
 							<option value="비">비</option>
 							<option id="todayWeather"></option>
 						</select> <select name="condition" class="form-select optionbox"
 							aria-label="Default select example">
-							<option value="상태" selected>${searchCondition.condition2}</option>
+							<option value="상태" disabled selected>${searchCondition.condition2}</option>
 							<option value="보통">보통</option>
 							<option value="다이어트중">다이어트중</option>
 							<option value="술마시고싶어요">술마시고싶어요</option>
 
 						</select> <select name="feeling" class="form-select optionbox"
 							aria-label="Default select example">
-							<option value="기분" selected>${searchCondition.feeling}</option>
+							<option value="기분" disabled selected>${searchCondition.feeling}</option>
 							<option value="신나요">신나요</option>
 							<option value="우울해요">우울해요</option>
 							<option value="피곤해요">피곤해요</option>
@@ -1913,6 +1913,7 @@ button {
 						</div>
 
 						<div id="urWeather">
+							<a class="urId"></a>
 							<!--검색 조건오는곳-->
 						</div>
 
@@ -2121,16 +2122,21 @@ button {
 					.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
 				document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
 					.nextElementSibling.nextElementSibling.textContent + ' / ');
-				document.getElementById('urWeather').insertAdjacentHTML('afterbegin', '작성자 : ' + e.target
+				document.querySelector(".urId").insertAdjacentHTML('afterbegin', '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp작성자 : ' + e.target
 					.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-					.nextElementSibling.nextElementSibling.textContent + '&nbsp&nbsp&nbsp&nbsp&nbsp');
+					.nextElementSibling.nextElementSibling.textContent);
+				document.querySelector(".urId").setAttribute("href","${pageContext.request.contextPath}/mypage/userResult/"+ e.target
+					.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+					.nextElementSibling.nextElementSibling.textContent);
 
 
 				document.getElementById('userRecipeModal').addEventListener('hidden.bs.modal', () => {
 					document.getElementById('urTitle').textContent = "";
 					document.getElementById('urContent').innerHTML = "";
 					document.getElementById('urWeather').textContent = "";
-
+					
+					document.getElementById('urWeather').append(document.createElement('a'));
+					document.querySelector('#urWeather a') .classList.add('urId');
 				});
 
 			}

@@ -181,11 +181,14 @@ public class UserController {
 	}
 	
 	
-	//로그인 요청
+	//로그인 요청 +비번검증해야함
 	@PostMapping("/userLogin")
-	public void login(String userId, String userPw, Model model) {
+	public  void login(String userId, String userPw, Model model) {
 		log.info("UserController의 로그인 요청!");
-		model.addAttribute("user", service.userInfo(userId));
+		 
+		MusersVO vo = service.userInfo(service.login(userId,userPw));
+		model.addAttribute("user",vo);
+		
 	}
 	
 	//로그아웃 요청
@@ -239,19 +242,6 @@ public class UserController {
 	@GetMapping("/getArticle/{userId}")
 	public MusersVO getArticle(@PathVariable String userId){
 		return service.userInfo(userId);		
-	}
-	
-	@GetMapping("/test")
-	public void move(){	
-		
-		
-	}
-	@PostMapping("/test")
-	public void move(String content){
-		
-		log.info(content);
-		
-		
 	}
 	
 	
