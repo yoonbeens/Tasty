@@ -46,6 +46,7 @@ public class ReplyController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list); //댓글 목록
 		map.put("total", total); //댓글의 총 개수
+	
 		return map;
 	}
 

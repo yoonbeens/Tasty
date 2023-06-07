@@ -102,7 +102,58 @@ public class MyPageController {
 		
 		HttpSession session = request.getSession();
 		MusersVO vo = new MusersVO();
-		vo = (MusersVO) session.getAttribute("login");	
+		vo = (MusersVO) session.getAttribute("login");
+		
+		if(userId.equals(vo.getUserId())) {
+			MusersVO user = new MusersVO();
+			user=userService.userInfo(userId);		
+			List<MfreeboardArticleVO> articleList = new ArrayList<>();	
+			articleList = service.getArticleList(userId);		
+			List<MfreeboardImgVO> imgList = new ArrayList<>();		
+			imgList = service.getImgList(userId);	
+			
+			map.put("userId", vo.getUserId()); 
+			map.put("targetId", userId);		
+			
+			
+			List<MusersVO> countFollower =new ArrayList<>();
+			countFollower =service.countFollower(userId);
+			
+			List<MusersVO> countFollowing =new ArrayList<>();
+			countFollowing =service.countFollowing(userId);
+			
+			List<MfreeboardVO> recipeList = new ArrayList<>();		
+			recipeList = recipeService.getRecipeList(userId);
+			
+			int k = (int)((Math.random()*498)+1);
+			
+			MRecipeVO randomRecipe = service.randomRecipe(k);
+			
+			
+			for(int i=0; i<countFollower.size();i++) {
+				countFollower.get(i).setFileLoca(userService.userInfo(countFollower.get(i).getUserId()).getFileLoca());
+				countFollower.get(i).setFileName(userService.userInfo(countFollower.get(i).getUserId()).getFileName());
+				countFollower.get(i).setMessage(userService.userInfo(countFollower.get(i).getUserId()).getMessage());	
+			}
+			
+			for(int i=0; i<countFollowing.size();i++) {
+				countFollowing.get(i).setFileLoca(userService.userInfo(countFollowing.get(i).getUserId()).getFileLoca());
+				countFollowing.get(i).setFileName(userService.userInfo(countFollowing.get(i).getUserId()).getFileName());
+				countFollowing.get(i).setMessage(userService.userInfo(countFollowing.get(i).getUserId()).getMessage());	
+			}
+			
+			model.addAttribute("recipe",recipeList);
+			model.addAttribute("user",user);		
+			model.addAttribute("article",articleList);
+			model.addAttribute("img",imgList);
+			model.addAttribute("countFollower", countFollower);
+			model.addAttribute("countFollowing", countFollowing);
+			model.addAttribute("followCheck",service.checkFollowing(map));
+			model.addAttribute("random", randomRecipe);
+			
+			return "mypage/mypageResult";
+			
+		}else {
 		
 		MusersVO user = new MusersVO();
 		user=userService.userInfo(userId);		
@@ -147,6 +198,7 @@ public class MyPageController {
 		
 		
 		return "mypage/userResult";
+		}
 		
 	}
 	

@@ -32,6 +32,17 @@ public class FreeBoardController {
 	@Autowired
 	private IFreeBoardService service;
 	
+	@GetMapping("/test")
+	public String test() {
+		return "freeboard/test";	
+	}
+	@GetMapping("/test2")
+	public String test(@RequestParam("file")List<MultipartFile> file,MfreeboardImgVO ivo) {
+		service.registImg(ivo,file);
+		
+		return "freeboard/test2";	
+	}
+	
 	//등록페이지이동
 	@GetMapping("/regist")
 	public String regist() {

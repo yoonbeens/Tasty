@@ -27,4 +27,6 @@ public interface IFreeRecipeService {
 
 	void modiUploadRecipe(MfreeboardVO vo);
 
+	List<MfreeboardVO> searchUserRecipe(String query);
+
 }

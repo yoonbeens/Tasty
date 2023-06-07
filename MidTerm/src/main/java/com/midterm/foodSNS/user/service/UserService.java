@@ -46,9 +46,12 @@ public class UserService implements IUserService {
 	@Override
 	public String login(String id, String pw) {
 		String dbPw = mapper.login(id);
+		log.info(dbPw);
+		log.info(pw);
 		
 		if(dbPw != null) {
-			if(encoder.matches(pw, dbPw)) return id;
+			if(encoder.matches(pw, dbPw)) 
+				return id;
 		}		
 		return null;
 	}

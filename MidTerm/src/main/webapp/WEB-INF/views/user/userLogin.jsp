@@ -87,7 +87,7 @@ h2 {
 	width: 320px;
 	height: 40px;
 	font-size: 16px;
-	color: lightgray;
+	color: black;
 	padding: 0 5px;
 	background: transparent;
 	border: none;
@@ -110,7 +110,7 @@ h2 {
 }
 
 .remember label {
-	color: lightgray;
+	color: black;
 	font-size: 14px;
 }
 
@@ -301,19 +301,19 @@ h2 {
 					<label for="">Password</label>
 				</div>
 				
-				<div class="remember">
+			<!-- 	<div class="remember">
 					<label><input type="checkbox" id="remember">Remember me</label>
-				</div>
+				</div> -->
 				<button type="submit" id="loginBtn">Sign In</button>
 				
 				
 				<div class="signUp-link">
 					<div class="col-lg-12 text-center mt-3">
-						<button type="button" id="kakaoBtn"
+						<%-- <button type="button" id="kakaoBtn"
 							onclick="location.href='${urlKakao}'">
 							<img alt="카카오로그인"
 								src="${pageContext.request.contextPath}/img/kakao_login_medium_wide.png">
-						</button>
+						</button> --%>
 						<br>
 					</div>
 					<p>

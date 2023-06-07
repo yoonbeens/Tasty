@@ -29,16 +29,21 @@ public class UserLoginSuccessHandler implements HandlerInterceptor{
 			ModelAndView modelAndView) throws Exception {
 		if(request.getMethod().equals("POST")) {
 			ModelMap map = modelAndView.getModelMap(); //모델 객체 꺼내기
-			MusersVO vo = (MusersVO) map.get("user");
-			log.info("인터셉터 내부에서 user 확인: " + vo.toString());
+			String id = (String) map.get("user"); //모델 내에 user라는 이름의 데이터 꺼내기
+			//log.info("인터셉터 내부에서 user 확인: " + vo.toString());
 			
+
+			ModelMap map2 = modelAndView.getModelMap(); 
+			MusersVO voUser= (MusersVO) map2.get("vo");
 			
-			if(vo.getUserId() != null) { //로그인 성공
-				//로그인 성공한 회원에게 세션 데이터를 생성해서 로그인 유지를 하게 해 줌.				
+			if(id != null) { //로그인 성공
+				log.info("로그인 성공 로직이 동작합니다!");
+				//로그인 성공한 회원에게 세션 데이터를 생성해서 로그인 유지를 하게 해 줌.
+
 				HttpSession session = request.getSession();
-				//session.setAttribute("login", vo.getUserId());
-				session.setAttribute("login", vo);
-				response.sendRedirect(request.getContextPath() + "/"); //
+				
+				session.setAttribute("login", voUser);
+				response.sendRedirect(request.getContextPath() + "/");
 				
 			} else { //vo == null -> 로그인 실패
 				modelAndView.addObject("msg", "loginFail");

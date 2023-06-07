@@ -6,16 +6,16 @@
 
 	<sql id="num">
 		<if test="bno != 0">
-			(bno, reply, user_id, user_nick)
-			VALUES(#{bno}, #{reply}, #{userId}, #{userNick})
+			(bno, reply, user_id, user_nick,file_loca,file_name,upload_path,file_real_name)
+			VALUES(#{bno}, #{reply}, #{userId}, #{userNick},#{fileLoca},#{fileName},#{uploadPath},#{fileRealName})
 		</if>
 		<if test="faNum != 0">
-			(faNum, reply, user_id, user_nick)
-			VALUES(#{faNum}, #{reply}, #{userId}, #{userNick})
+			(faNum, reply, user_id, user_nick,file_loca,file_name,upload_path,file_real_name)
+			VALUES(#{faNum}, #{reply}, #{userId}, #{userNick},#{fileLoca},#{fileName},#{uploadPath},#{fileRealName})
 		</if>
 		<if test="cooknum != 0">
-			(cooknum, reply, user_id, user_nick)
-			VALUES(#{cooknum}, #{reply}, #{userId}, #{userNick})
+			(cooknum, reply, user_id, user_nick,file_loca,file_name,upload_path,file_real_name)
+			VALUES(#{cooknum}, #{reply}, #{userId}, #{userNick},#{fileLoca},#{fileName},#{uploadPath},#{fileRealName})
 		</if>
 	</sql>
 	

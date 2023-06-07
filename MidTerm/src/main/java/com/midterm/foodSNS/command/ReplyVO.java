@@ -43,6 +43,10 @@ public class ReplyVO {
 	private String reply;
 	private String userId;
 	private String userNick;
+	private String uploadPath;
+	private String fileLoca;
+	private String fileName;
+	private String fileRealName;
 	private LocalDateTime replyDate;
 	private LocalDateTime updateDate;
 
