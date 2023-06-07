@@ -606,3 +606,24 @@ h5 {
 a{
 	text-decoration:  none;
 }
+
+#shoVid{
+	box-sizing: border-box;
+	width: 100%;
+	height: 80vh;
+	text-align: left;
+	padding: 10px;
+
+
+}
+
+#shortIntro{
+	box-sizing: border-box;
+	width: 100%;
+	height: 5vh;
+	padding: 10px;
+	font-size: 20px;
+	line-height: 5vh;
+	border-bottom: 1px solid gainsboro;
+	text-align: center;
+}

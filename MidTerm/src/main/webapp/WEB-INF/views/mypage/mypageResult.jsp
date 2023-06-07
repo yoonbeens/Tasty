@@ -21,38 +21,31 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<title>Bootstrap demo</title>
-<link href="${pageContext.request.contextPath}/css/mypageResult.css"
-	rel="stylesheet">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<title>Bootstrap demo</title>
+	<link href="${pageContext.request.contextPath}/css/mypageResult.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
 
-<style>
-@import
-	url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap')
-	;
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
 
-/* .ml-auto {
+		/* .ml-auto {
 	position: absolute;
 	left: 960px;
 	width: 250px;
 	bottom: 1px;
 }
  */
-.container-fluid {
-	position: relative;
-}
-</style>
+		.container-fluid {
+			position: relative;
+		}
+	</style>
 
 
 
@@ -61,10 +54,8 @@
 </head>
 
 <body>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 
 	</script>
 	<div id="main-con">
@@ -79,10 +70,10 @@
 		recipes = (ArrayList<MfreeboardVO>) request.getAttribute("recipe");
 		%>
 		<div id="main-left">
-			<div class="left" id="mystory" data-alength="<%=articles.size()%>"
-				data-rlength="${fn:length(recipe)}">My Story</div>
-			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>"
-				data-rlength="${fn:length(recipe)}">My Recipe</div>
+			<div class="left" id="mystory" data-alength="<%=articles.size()%>" data-rlength="${fn:length(recipe)}">My
+				Story</div>
+			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>" data-rlength="${fn:length(recipe)}">My
+				Recipe</div>
 
 
 			<div id="random" class="shadow p-3 mb-5 bg-body rounded">
@@ -91,11 +82,9 @@
 					이런 <span class="strong">레시피</span> 는 어떠신가요?
 				</div>
 
-				<form action="${pageContext.request.contextPath}/userrecipe/search"
-					id="ranform" method="POST">
-					<img id="randomImg" class="scale" src="${random.titleimg}"
-						alt="default" id="article-img"> <input type="hidden"
-						name="query" value="${random.foodname}">
+				<form action="${pageContext.request.contextPath}/userrecipe/search" id="ranform" method="POST">
+					<img id="randomImg" class="scale" src="${random.titleimg}" alt="default" id="article-img"> <input
+						type="hidden" name="query" value="${random.foodname}">
 				</form>
 				<div id="ranCondition">
 					${random.weather} /${random.condition2}/${random.feeling} <br>
@@ -121,12 +110,9 @@
 				imgcon.add(imgs.get(j));
 			%>
 
-			<div class="boxbox scale mystorybox" data-bs-toggle="modal"
-				data-bs-target="#myModal">
-				<img
-					src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
-				/<%=imgcon.get(0).getFileName()%>"
-					alt="default" id="article-img" data-userid="${login.userId}"
+			<div class="boxbox scale mystorybox" data-bs-toggle="modal" data-bs-target="#myModal">
+				<img src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
+				/<%=imgcon.get(0).getFileName()%>" alt="default" id="article-img" data-userid="${login.userId}"
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
@@ -141,11 +127,9 @@
 			}
 			%>
 			<c:forEach var="recipe" items="${recipe}">
-				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal"
-					data-bs-target="#recipe">
-					<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
-						alt="default" id="article-img" data-reuserid="${recipe.writer}"
-						data-rebno="${recipe.bno}" />
+				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal" data-bs-target="#recipe">
+					<img src="${pageContext.request.contextPath}/css/TastyFriend.png" alt="default" id="article-img"
+						data-reuserid="${recipe.writer}" data-rebno="${recipe.bno}" />
 					<div id="rtitle" name="title">${recipe.title}</div>
 					<div id="rcon" name="title">${recipe.content}</div>
 					<div id="rweather" name="title" style="display: none">${recipe.weather}</div>
@@ -161,55 +145,51 @@
 
 		</div>
 		<div id="main-right">
-			<div id="profile-img-con">
-				<img
-					src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
-					alt="default" id="profile-img" data-bs-toggle="modal" data-bs-target="#short">
+			<div id="profile-img-con" data-bs-toggle="modal" data-bs-target="#short">
+				<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+					alt="default" id="profile-img" >
 			</div>
 			<div class="profileWrapper">
 				<div id="simpleProfile">
 					<h1>${login.userId}</h1>
-					<a href="${pageContext.request.contextPath}/user/userProfileModify"
-						id="promodify" >프로필수정</a>
+					<a href="${pageContext.request.contextPath}/user/userProfileModify" id="promodify">프로필수정</a>
 					<h3>${login.userNick}</h3>
 					<h5>${login.message}</h5>
 				</div>
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
+					<li class="nav-item"><a class="nav-link active" aria-current="page"
+							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="${pageContext.request.contextPath}/freeboard/shortRegist/${user.userId}">Shorts</a>
+					<li class="nav-item"><a class="nav-link active" aria-current="page"
+							href="${pageContext.request.contextPath}/freeboard/shortRegist/${user.userId}">Shorts</a>
 					</li>
 
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page"
-						href="${pageContext.request.contextPath}/mypage/mypageResult">My
+					<li class="nav-item"><a class="nav-link active" aria-current="page"
+							href="${pageContext.request.contextPath}/mypage/mypageResult">My
 							Page</a></li>
 
-					<li class="nav-item"><a class="nav-link" href="#"
-						data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
+					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+							data-bs-target="#FollowerModal">Follower
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"
-						data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
+					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+							data-bs-target="#FollowingModal">Following
 							Chief</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add
+							href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add
 							My Recipe</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="${pageContext.request.contextPath}/freeboard/regist">Add
+							href="${pageContext.request.contextPath}/freeboard/regist">Add
 							My Story</a></li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item"
-								href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
-							<hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item"
-						href="${pageContext.request.contextPath}/user/userLogout"
-						style="color: red">Logout</a></li>
+									href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
+							<hr class="dropdown-divider">
+					</li>
+					<li><a class="dropdown-item" href="${pageContext.request.contextPath}/user/userLogout"
+							style="color: red">Logout</a></li>
 				</ul>
 
 
@@ -225,16 +205,13 @@
 
 	<nav class="navbar bg-success fixed-top ">
 		<div class="container-fluid">
-			<a class="navbar-brand text-light"
-				href="${pageContext.request.contextPath}/">Tasty Friend</a>
+			<a class="navbar-brand text-light" href="${pageContext.request.contextPath}/">Tasty Friend</a>
 
 			<div class="ml-auto">
-				<form class="form-inline ml-auto"
-					action="${pageContext.request.contextPath}/userrecipe/search"
+				<form class="form-inline ml-auto" action="${pageContext.request.contextPath}/userrecipe/search"
 					method="POST">
 					<div class="input-group">
-						<input type="text" class="form-control" name="query"
-							placeholder="검색어를 입력하세요">
+						<input type="text" class="form-control" name="query" placeholder="검색어를 입력하세요">
 						<button type="submit" class="btn btn-outline-light">검색</button>
 					</div>
 				</form>
@@ -242,8 +219,8 @@
 
 
 
-			<div class="offcanvas offcanvas-end" tabindex="-1"
-				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
 				<div class="offcanvas-header"></div>
 
 			</div>
@@ -253,36 +230,25 @@
 </body>
 
 
-<!-- Short Modal -->
-<div class="modal fade" id="short" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-scrollable modal-sm">
-		<div class="modal-content">
-		
-			
-		</div>
-	</div>
-</div>
+
+
 
 
 
 <!-- Follower Modal -->
-<div class="modal fade" id="FollowerModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followerM">
 
 				<c:forEach var="follower" items="${countFollower}">
 
 					<div id="followerdiv">
-						<img
-							src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+						<img src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
 					</div>
@@ -301,22 +267,19 @@
 
 
 <!-- Following Modal -->
-<div class="modal fade" id="FollowingModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followingM">
 
 				<c:forEach var="following" items="${countFollowing}">
 
 					<div id="followerdiv">
-						<img
-							src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+						<img src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
 					</div>
@@ -330,8 +293,7 @@
 </div>
 
 <!-- Modal uesrRecipe-->
-<div class="modal fade" id="recipe" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-body" id="userRecipe">
@@ -351,13 +313,12 @@
 				</div>
 
 				<div class="dropdown" id="dbtnR">
-					<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
-						type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+					<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem" type="button"
+						data-bs-toggle="dropdown" aria-expanded="false"></i>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" id="modifyR">Modify</a></li>
 						<hr>
-						<li><a class=" dropdown-item" id="deleteR" href="#"
-							style="color: red">Delete</a></li>
+						<li><a class=" dropdown-item" id="deleteR" href="#" style="color: red">Delete</a></li>
 					</ul>
 				</div>
 
@@ -369,20 +330,28 @@
 	</div>
 </div>
 
-
-
+<!-- Short Modal -->
+<div class="modal fade" id="short" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog  ">
+		<div class="modal-content">
+		<div id= "shortIntro">
+			${user.userNick} 님의 하루 요리기록!				
+			</div>
+			<div class="modal-body" id="shortBody">
+			
+		</div>
+	</div>
+</div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="modal-img">
 
-					<div id="carouselExampleIndicators"
-						class="carousel slide carousel-dark" data-bs-ride="true">
+					<div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="true">
 						<div class="carousel-indicators" id="carouselbtn">
 
 							<!--여기 게시물별 버튼 들어감-->
@@ -392,13 +361,13 @@
 							<!--여기 게시물별 이미지 들어감-->
 						</div>
 
-						<button class="carousel-control-prev" type="button"
-							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Previous</span>
 						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+							data-bs-slide="next">
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
@@ -409,20 +378,18 @@
 				</div>
 				<div class="modal-text">
 					<div id="freeuserimg">
-						<img
-							src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+						<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
 							alt="default" id="profile-img2">
 
 						<div id="freeuserid"></div>
 						<div class="dropdown" id="dbtn">
 
-							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
-								type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+							<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem" type="button"
+								data-bs-toggle="dropdown" aria-expanded="false"></i>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item" id="modify" href="#"">Modify</a></li>
 								<hr>
-								<li><a class=" dropdown-item" id="delete" href="#"
-									style="color: red">Delete</a></li>
+								<li><a class=" dropdown-item" id="delete" href="#" style="color: red">Delete</a></li>
 							</ul>
 						</div>
 
@@ -450,8 +417,7 @@
 								<div class="row" id="rebox">
 									<div class="col-xs-12 col-md-9 write-wrap" id="rrr">
 										<!-- 댓글 영역 -->
-										<form class="reply-wrap"
-											action="${pageContext.request.contextPath}">
+										<form class="reply-wrap" action="${pageContext.request.contextPath}">
 											<div class="reply-image">
 												<img id="replyImg"
 													src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
@@ -487,35 +453,85 @@
 			</div>
 		</div>
 
+
+
 		<Script>
-			
+			let shortVideo='';
+			let shortVbtn='';
 			document.getElementById('profile-img-con').addEventListener('click', e => {
 				const userId = '${user.userId}';
-				console.log(userId+"클릭했다!!!");
+				console.log(userId + "클릭했다!!!");
 
-				fetch('${pageContext.request.contextPath}/freeboard/shortGet/'+userId).then(res => res.json())
-						.then(data => {
+				fetch('${pageContext.request.contextPath}/freeboard/shortGet/' + userId).then(res => res.json())
+					.then(data => {
 
-							console.log("성공??");
-							console.log(data);
-						
+						console.log("성공??");
+						console.log(data);
+
+						while (document.getElementById('shortBody').firstChild) {
+								document.getElementById('shortBody').firstChild.remove();
+							}
+							// while (document.getElementById('shortCon').firstChild) {
+							// 	document.getElementById('shortCon').firstChild.remove();
+
+							// }
+							shortVideo += `<video id="shoVid" src="${pageContext.request.contextPath}/user/display/` + data[0].fileLoca + `/` + data[0].fileName + `" type="video/mp4" autoplay
+							 		style="height: 80vh; width: 100%;"></video>`;
+
+						// for (var i = 0; i < data.length; i++) {
+							
+							// if (i === 0) {
+							// 	shortVideo += `<div class="carousel-item active"><video id="shoVid" src="${pageContext.request.contextPath}/user/display/` + data[i].fileLoca + `/` + data[i].fileName + `" type="video/mp4" autoplay
+							// 		style="height: 80vh; width: 100%;"></video></div>`;
+
+							// 		shortVbtn += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="` + i + `" class="active" aria-current="true"
+							// 	aria-label="Slide ` + (i + 1) + `"></button>`;
+
+
+
+							// } else {
+							// 	shortVideo += `<div class="carousel-item"><video src="${pageContext.request.contextPath}/user/display/` + data[i].fileLoca + `/` + data[i].fileName + `" type="video/mp4"  autoplay style="height: 80vh; width: 100%;"></video></div>`;
+
+							// 	shortVbtn += `<button type="button" data-bs-target="#carouselExampleIndicators" 
+							// 	data-bs-slide-to="` + i + `" class="active" aria-current="true" 
+							// 	aria-label="Slide ` + (i + 1) + `"></button>`;
+							// }
+
+							document.getElementById('shortBody').insertAdjacentHTML('afterbegin', shortVideo);
+							// document.getElementById('shortBtn').insertAdjacentHTML('afterbegin', shortVbtn);
+
+
+							// }
+
+
+					});
+					const shortModal = document.getElementById('short')
+
+					shortModal.addEventListener('hidden.bs.modal', () => {
+						console.log("모달닫힘");
+
+						location.reload();
+					})
+
+
+
 
 
 
 
 			});
-			
-	document.getElementById('randomImg').onclick = () => {
-		document.getElementById('ranform').submit();
-	}
-			(function recipbox() {
-				const recipebox = document.querySelectorAll('.myrecipebox');
 
-				for (var i = 0; i < recipebox.length; i++) {
-					const recipebox = document.querySelectorAll('.myrecipebox');
-					recipebox[i].style.display = "none";
+			document.getElementById('randomImg').onclick = () => {
+					document.getElementById('ranform').submit();
 				}
-			})();
+				(function recipbox() {
+					const recipebox = document.querySelectorAll('.myrecipebox');
+
+					for (var i = 0; i < recipebox.length; i++) {
+						const recipebox = document.querySelectorAll('.myrecipebox');
+						recipebox[i].style.display = "none";
+					}
+				})();
 			let strimg = '';
 			let strbtn = '';
 			let strmodi = '';
@@ -531,8 +547,8 @@
 
 
 					console.log("story 클릭");
-					console.log("스토리 누르고 스토리 수 : "+alength);
-					console.log("스토리 누르고 레시피 수 : "+rlength);
+					console.log("스토리 누르고 스토리 수 : " + alength);
+					console.log("스토리 누르고 레시피 수 : " + rlength);
 
 
 					for (var i = 0; i < alength; i++) {
@@ -553,8 +569,8 @@
 					const rlength = e.target.dataset.rlength;
 
 					console.log("recipe 클릭");
-					console.log("레시피 누르고 스토리 수 : "+alength);
-					console.log("레시피 누르고 레시피 수 : "+rlength);
+					console.log("레시피 누르고 스토리 수 : " + alength);
+					console.log("레시피 누르고 레시피 수 : " + rlength);
 
 
 
@@ -584,37 +600,37 @@
 					const rebno = e.target.dataset.rebno;
 					console.log(rebno);
 					document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.textContent);
-								document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.innerHTML);
-								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-									.textContent);
-								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
-								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.nextElementSibling.textContent + ' / ');
-								document.querySelector(".urId").insertAdjacentHTML('afterbegin',
-									'/작성자 : ' + e.target
-									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-									.nextElementSibling.nextElementSibling.textContent);
-								document.querySelector(".urId").setAttribute("href",
-									"${pageContext.request.contextPath}/mypage/userResult/" + e.target
-									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-									.nextElementSibling.nextElementSibling.textContent);
+						.nextElementSibling
+						.textContent);
+					document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target
+						.nextElementSibling
+						.nextElementSibling.innerHTML);
+					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+						.nextElementSibling
+						.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+						.textContent);
+					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+						.nextElementSibling
+						.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
+					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+						.nextElementSibling
+						.nextElementSibling.nextElementSibling.textContent + ' / ');
+					document.querySelector(".urId").insertAdjacentHTML('afterbegin',
+						'/작성자 : ' + e.target
+						.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+						.nextElementSibling.nextElementSibling.textContent);
+					document.querySelector(".urId").setAttribute("href",
+						"${pageContext.request.contextPath}/mypage/userResult/" + e.target
+						.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+						.nextElementSibling.nextElementSibling.textContent);
 
 					document.getElementById("recipe").addEventListener('hidden.bs.modal', () => {
 						document.getElementById('urTitle').textContent = "";
-									document.getElementById('urContent').innerHTML = "";
-									document.getElementById('urWeather').textContent = "";
+						document.getElementById('urContent').innerHTML = "";
+						document.getElementById('urWeather').textContent = "";
 
-									document.getElementById('urWeather').append(document.createElement('a'));
-									document.querySelector('#urWeather a').classList.add('urId');
+						document.getElementById('urWeather').append(document.createElement('a'));
+						document.querySelector('#urWeather a').classList.add('urId');
 
 					});
 
@@ -857,100 +873,101 @@
 
 				//요청에 관련된 정보 객체
 				const reqObj = {
-						method: 'post',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({ //제이슨 형태로 변환
-							'faNum': faNum,
-							'reply': reply,
-							'userId': '${login.userId}',
-							'userNick': '${login.userNick}',
-							'fileLoca': '${login.fileLoca}',
-							'fileName': '${login.fileName}',
-							'uploadPath': '${login.uploadPath}',
-							'fileRealName': '${login.fileRealName}'//작성자를 보여주기 위해 보내줌
-						})
-					};
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ //제이슨 형태로 변환
+						'faNum': faNum,
+						'reply': reply,
+						'userId': '${login.userId}',
+						'userNick': '${login.userNick}',
+						'fileLoca': '${login.fileLoca}',
+						'fileName': '${login.fileName}',
+						'uploadPath': '${login.uploadPath}',
+						'fileRealName': '${login.fileRealName}' //작성자를 보여주기 위해 보내줌
+					})
+				};
 
-					fetch('${pageContext.request.contextPath}/reply/regist', reqObj)
-						.then(res => res.text())
-						.then(data => {
-							console.log('통신 성공!: ' + data);
-							if (data === 'ok') {
-								alert('댓글이 등록되었습니다.');
-							} else {
-								alert('댓글등록 실패');
+				fetch('${pageContext.request.contextPath}/reply/regist', reqObj)
+					.then(res => res.text())
+					.then(data => {
+						console.log('통신 성공!: ' + data);
+						if (data === 'ok') {
+							alert('댓글이 등록되었습니다.');
+						} else {
+							alert('댓글등록 실패');
+						}
+						document.getElementById('reply').value = ''; //내용 비우기
+						//등록 완료 후 댓글 목록 함수를 호출해서 비동기식으로 목록 표현.
+						getList(1, true); //재 랜더링 false시 누적해서 가져오기
+					});
+			} // 댓글 등록 이벤트 끝.
+
+			//더보기 버튼 처리(클릭 시 전역 변수 page에 +1 한 값을 요청)
+			document.getElementById('moreList').onclick = () => {
+				getList(++page, false);
+			}
+
+
+			let page = 1; //첫 페이지 번호
+			let strAdd = ''; //댓글리스트에서 추가될 요소
+			const $replyList = document.getElementById('replyList');
+
+			//댓글 목록을 가져올 함수
+			function getList(pageNum, reset) {
+				strAdd = '';
+				const faNum = document.getElementById('likenum').dataset.faNum;
+
+				//get방식으로 댓글 목록을 요청(비동기)
+				fetch('${pageContext.request.contextPath}/reply/getList/faNum/' + faNum + '/' + pageNum)
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+
+						let total = data.total; //총 댓글 수
+						let replyList = data.list; //댓글 리스트
+
+
+
+						//insert, update, delete 작업 후에는
+						//댓글 내용 태그를 누적하고 있는 strAdd 변수를 초기화해서
+						//마치 화면이 리셋된 것처럼 보여줘야 합니다.
+						if (reset) {
+
+							while ($replyList.firstChild) {
+								$replyList.removeChild($replyList.firstChild);
 							}
-							document.getElementById('reply').value = ''; //내용 비우기
-							//등록 완료 후 댓글 목록 함수를 호출해서 비동기식으로 목록 표현.
-							getList(1, true); //재 랜더링 false시 누적해서 가져오기
-						});
-				} // 댓글 등록 이벤트 끝.
+							page = 1;
+						}
 
-				//더보기 버튼 처리(클릭 시 전역 변수 page에 +1 한 값을 요청)
-				document.getElementById('moreList').onclick = () => {
-					getList(++page, false);
-				}
+						//응답 데이터의 길이가 0과 같거나 더 작으면 함수를 종료.
+						console.log('리스트 길이: ' + replyList.length);
+						if (replyList.length <= 0) return;
 
+						//페이지번호 * 이번 요청으로 받은 댓글 수보다 전체 댓글 개수가 작다면 더보기 버튼은 없어도 된다.
+						console.log('현재 페이지: ' + page);
+						if (total <= page * 5) {
+							document.getElementById('moreList').style.display = 'none';
+						} else {
+							document.getElementById('moreList').style.display = 'block';
+						}
 
-				let page = 1; //첫 페이지 번호
-				let strAdd = ''; //댓글리스트에서 추가될 요소
-				const $replyList = document.getElementById('replyList');
+						//replyList의 개수만큼 태그를 문자열 형태로 직접 그림.
+						//중간에 들어갈 글쓴이, 날짜 , 댓글 내용은 목록에서 꺼내서 표현.
+						for (let i = 0; i < replyList.length; i++) {
+							console.log("deeeeeeeee: " + replyList[0].fileLoca);
 
-				//댓글 목록을 가져올 함수
-				function getList(pageNum, reset) {
-					strAdd = '';
-					const faNum = document.getElementById('likenum').dataset.faNum;
-
-					//get방식으로 댓글 목록을 요청(비동기)
-					fetch('${pageContext.request.contextPath}/reply/getList/faNum/' + faNum + '/' + pageNum)
-						.then(res => res.json())
-						.then(data => {
-							console.log(data);
-
-							let total = data.total; //총 댓글 수
-							let replyList = data.list; //댓글 리스트
-							
-							
-
-							//insert, update, delete 작업 후에는
-							//댓글 내용 태그를 누적하고 있는 strAdd 변수를 초기화해서
-							//마치 화면이 리셋된 것처럼 보여줘야 합니다.
-							if (reset) {
-
-								while ($replyList.firstChild) {
-									$replyList.removeChild($replyList.firstChild);
-								}
-								page = 1;
-							}
-
-							//응답 데이터의 길이가 0과 같거나 더 작으면 함수를 종료.
-							console.log('리스트 길이: ' + replyList.length);
-							if (replyList.length <= 0) return;
-
-							//페이지번호 * 이번 요청으로 받은 댓글 수보다 전체 댓글 개수가 작다면 더보기 버튼은 없어도 된다.
-							console.log('현재 페이지: ' + page);
-							if (total <= page * 5) {
-								document.getElementById('moreList').style.display = 'none';
-							} else {
-								document.getElementById('moreList').style.display = 'block';
-							}
-
-							//replyList의 개수만큼 태그를 문자열 형태로 직접 그림.
-							//중간에 들어갈 글쓴이, 날짜 , 댓글 내용은 목록에서 꺼내서 표현.
-							for (let i = 0; i < replyList.length; i++) {
-								console.log("deeeeeeeee: "+replyList[0].fileLoca);
-							
-								strAdd +=
-									`<div class='reply-wrap'>
+							strAdd +=
+								`<div class='reply-wrap'>
 	                            
 	                            <div class='reply-content'>
 	                                <div class='reply-group'>
-										<img src='${pageContext.request.contextPath}/user/display/`+replyList[i].fileLoca+`/`+replyList[i].fileName+`'>
+										<img src='${pageContext.request.contextPath}/user/display/` + replyList[i].fileLoca + `/` + replyList[i]
+								.fileName + `'>
 	                                    <strong class='left'>` + replyList[i].userNick + `</strong> 
 	                                    <small class='left'>` + (replyList[i].updateDate != null ? parseTime(replyList[i]
-										.updateDate) + '(수정됨)' : parseTime(replyList[i].replyDate)) + `</small>
+									.updateDate) + '(수정됨)' : parseTime(replyList[i].replyDate)) + `</small>
 	                                    <a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a> &nbsp
 	                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>   
 										<div id="hiddenMan" style = 'opacity:0'>` + replyList[i].userId + `</div>
@@ -963,7 +980,7 @@
 									</form>	
 	                            </div>
 	                        </div>`;
-							}
+						}
 
 						//id가 replyList라는 div 영역에 문자열 형식으로 모든 댓글을 추가.
 						document.getElementById('replyList').insertAdjacentHTML('beforeend', strAdd);
