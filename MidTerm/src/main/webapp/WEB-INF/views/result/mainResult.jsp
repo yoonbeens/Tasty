@@ -399,6 +399,36 @@
       border-radius: 1rem;
     }
 
+
+
+
+
+    .heart {
+    width: 100px;
+    height: 100px;
+    background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: background-position 1s steps(28);
+    transition-duration: 0s;
+    }
+
+    .heart.is-active {
+      transition-duration: 1s;
+      background-position: -2800px 0;
+    }
+    
+    .placement {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+
+
+
+
     @media (max-width: 850px) {
       .box {
         height: auto;
@@ -1324,6 +1354,11 @@ body {
                   <div class="modal-like">
                     <div id="likenum"></div>
                     <button type="button" id="likeBtn">좋아요</button>
+                    
+                    <div class="placement">
+                      <div class="heart"></div>
+                    </div>
+
                   </div>
 
 
@@ -1592,6 +1627,17 @@ body {
       //         document.getElementById('mainDiv').style.display = 'none';
       // 			  console.log('없어졌니');
       // }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      let heartElements = document.querySelectorAll(".heart");
+      
+      for (let i = 0; i < heartElements.length; i++) {
+        heartElements[i].addEventListener("click", function() {
+          this.classList.toggle("is-active");
+        });
+      }
+    });
+
 
 
 
