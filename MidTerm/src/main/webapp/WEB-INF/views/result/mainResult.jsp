@@ -1797,6 +1797,25 @@ button {
 							document.getElementById('tip').textContent = recipe.tip;
 							document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
 							document.getElementById('minutes').textContent = recipe.cookTime;
+							
+
+							var min = recipe.cookTime;
+
+							total =  min * 60;
+							forCount = total;
+							total = total + "s";
+							var realMin = min * 1;
+
+							if (total !== "0s") {
+								document.getElementById("minutes").innerHTML = realMin;
+								document.body.style.setProperty("--timerTime", total);
+							}
+
+							if (realMin === 1) {
+								document.getElementById("title").innerHTML = "1 minute";
+							} else {
+								document.getElementById("title").innerHTML = realMin + " minutes";
+							}
 
 							if (recipe.text1 !== '') {
 								document.getElementById(`text1`).textContent = recipe.text1;
