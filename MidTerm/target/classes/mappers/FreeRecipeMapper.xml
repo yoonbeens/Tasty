@@ -6,8 +6,8 @@
 
 	<insert id="uploadRecipe">
 		INSERT INTO Mfreeboard
-		(title, content, writer)
-		VALUES (#{title}, #{content}, #{writer})
+		(title, content, writer,weather,condition2,feeling)
+		VALUES (#{title}, #{content}, #{writer}, #{weather}, #{condition2}, #{feeling})
 	</insert>
 	
 	<select id="getRecipeList" resultType="board">
@@ -38,7 +38,7 @@
 
 	 <select id="searchRecipe" resultType="recipe">
         SELECT * FROM cookDB
-        WHERE ingredient LIKE CONCAT('%', #{query}, '%')
+        WHERE foodname LIKE CONCAT('%', #{query}, '%')
     </select>
 
  

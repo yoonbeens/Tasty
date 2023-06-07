@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
 import com.midterm.foodSNS.command.MfreeboardVO;
@@ -64,6 +65,10 @@ public class MyPageController {
 		List<MfreeboardVO> recipeList = new ArrayList<>();		
 		recipeList = recipeService.getRecipeList(vo.getUserId());
 		
+		int k = (int)((Math.random()*498)+1);
+		
+		MRecipeVO randomRecipe = service.randomRecipe(k);
+		
 		
 		
 		for(int i=0; i<countFollower.size();i++) {
@@ -83,8 +88,9 @@ public class MyPageController {
 		model.addAttribute("img",imgList);
 		model.addAttribute("countFollower", countFollower);
 		model.addAttribute("countFollowing", countFollowing);
+		model.addAttribute("random", randomRecipe);
 				
-		log.info("follower : " +countFollower.toString());
+	
 		
 		
 		return "mypage/mypageResult";	
@@ -108,11 +114,6 @@ public class MyPageController {
 		map.put("userId", vo.getUserId()); 
 		map.put("targetId", userId);		
 		
-		
-		log.info("회원정보:"+user.toString());	
-		log.info("회원게시물:"+articleList.toString());	
-		log.info("회원게시물 이미지:"+imgList.toString());
-		log.info("팔로우 여부:"+service.checkFollowing(map));
 		
 		List<MusersVO> countFollower =new ArrayList<>();
 		countFollower =service.countFollower(userId);
@@ -159,8 +160,7 @@ public class MyPageController {
 		vo.getUserId();		
 		map.put("userId", vo.getUserId()); 
 		map.put("targetId", targetId);	
-		log.info("타겟아이디 : "+targetId);
-		log.info("유저아이디 : "+vo.getUserId());
+	
 		if(service.checkFollowing(map)==0) {
 		service.addFollowing(map);
 		}else {
@@ -185,8 +185,7 @@ public class MyPageController {
 		vo.getUserId();		
 		map.put("userId", vo.getUserId()); 
 		map.put("targetId", targetId);		
-		log.info("타겟아이디 : "+targetId);
-		log.info("유저아이디 : "+vo.getUserId());
+
 		if(service.checkFollowing(map)==1) {
 		service.deleteFollowing(map);
 		}

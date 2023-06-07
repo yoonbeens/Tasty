@@ -65,7 +65,7 @@ public class UserController {
 	@GetMapping("/userMypage")
 	public void userMypage(HttpSession session, Model model) {
 		MusersVO vo = (MusersVO) session.getAttribute("login");
-		log.info(vo.toString());
+		
 		model.addAttribute("userInfo", service.userInfo(vo.getUserId()));
 	}
 
@@ -73,7 +73,7 @@ public class UserController {
 	// 탈퇴 페이지로 이동
 	@PostMapping("/userDelete")
 	public void userDelete(MusersVO vo) {
-		log.info(vo.toString());
+	
 		service.userDelete(vo);
 	}
 
@@ -88,12 +88,12 @@ public class UserController {
 	@PostMapping("/passChk")
 	@ResponseBody
 	public String delPasschk(@RequestBody String pwInput, HttpSession session) throws Exception {
-		log.info("패치오냐" + pwInput);
+	
 		MusersVO vo = (MusersVO) session.getAttribute("login");
-		log.info("비법너너너: "+vo.getUserPw());
+	
 		
 		int result = service.passChk(pwInput,vo);
-		log.info("리턴오냐" + result);	
+	
 		
 		if(result==1) {
 			return "1";
@@ -127,7 +127,7 @@ public class UserController {
 	@ResponseBody // 비동기
 	@PostMapping("/idCheck")
 	public String idCheck(@RequestBody String userId) {
-		log.info("아이디 중복체크: " + userId);
+	
 		if (service.idCheck(userId) == 1)
 			return "duplicated"; // 중복일 경우 "duplicated"를 전달
 		else
@@ -147,7 +147,7 @@ public class UserController {
 	@ResponseBody//비동기
 	@GetMapping("/mailCheck")
 	public String mailCheck(String email) {
-		log.info("메일 인증: " + email);
+
 		mailService.joinEmail(email);
 		return mailService.joinEmail(email);
 	}
@@ -157,15 +157,14 @@ public class UserController {
 	public void login(Model model, HttpSession session) {
 		/* 카카오 URL을 만들어서 userLogin.jsp로 보내야 합니다. */
 		String kakaoAuthUrl = kakaoService.getAuthorizationUrl(session);
-		log.info("카카오 로그인 url: {}", kakaoAuthUrl);
+	
 		model.addAttribute("urlKakao", kakaoAuthUrl);
 	}
 	
 	//로그인 성공시 콜백
 	@GetMapping("/kakao_callback")	
 	public String callbackKakao(String code, String state, HttpSession session, Model model) {
-		log.info("로그인 성공! callbackKakao 호출!");
-		log.info("인가 코드: {}", code);
+		
 		String accessToken = kakaoService.getAccessToken(session, code, state);
 		log.info("access 토큰값: {}", accessToken);
 		
@@ -216,8 +215,7 @@ public class UserController {
 	@GetMapping("/display/{fileLoca}/{fileName}")
 	public ResponseEntity<byte[]> getFile(@PathVariable String fileLoca,
 			@PathVariable String fileName){		
-		log.info("filename : " +fileName);
-		log.info("fileLoca : " +fileLoca);
+
 		File file = new File("C:/test/upload/"+fileLoca+"/"+fileName);
 		log.info(file.toString());		
 		//응다에 대한 여러가지 정보를 전달할 수 있는 객체 ResponseEntity

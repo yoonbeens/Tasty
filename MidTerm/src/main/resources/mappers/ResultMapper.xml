@@ -8,6 +8,10 @@
 	<select id="recommand" resultType="recipe">	
 	SELECT * FROM cookDB WHERE weather= #{weather} and condition2 = #{condition2} and feeling = #{feeling}	
 	</select>
+	
+	<select id="getuserRecipe" resultType="board">
+	SELECT * FROM Mfreeboard WHERE weather= #{weather} and condition2 = #{condition2} and feeling = #{feeling}	
+	</select>
 
 
 	<select id="recipeDetail" resultType="recipe">

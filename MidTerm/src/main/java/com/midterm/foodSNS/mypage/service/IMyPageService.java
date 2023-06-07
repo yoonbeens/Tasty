@@ -3,6 +3,7 @@ package com.midterm.foodSNS.mypage.service;
 import java.util.List;
 import java.util.Map;
 
+import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
 import com.midterm.foodSNS.command.MusersVO;
@@ -30,6 +31,8 @@ public interface IMyPageService {
 	int checkFollowing(Map<String, String> map);
 
 	int checkFollower(Map<String, String> map);
+
+	MRecipeVO randomRecipe(int k);
 
 	
 

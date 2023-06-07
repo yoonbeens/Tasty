@@ -3,6 +3,7 @@ package com.midterm.foodSNS.mypage.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
 import com.midterm.foodSNS.command.MusersVO;
@@ -28,4 +29,6 @@ public interface IMyPageMapper {
 	int checkFollower(Map<String, String> map);
 
 	void deleteFollower(Map<String, String> map);
+
+	MRecipeVO randomRecipe(int k);
 }

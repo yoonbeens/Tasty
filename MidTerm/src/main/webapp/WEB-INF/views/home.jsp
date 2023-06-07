@@ -45,6 +45,7 @@
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous">
 	</script>
+
 	<%-- 	<header>
 		<c:if test="${login == null}">
 			<div>
@@ -163,6 +164,7 @@
 
 		<form action="${pageContext.request.contextPath}/result/mainResult"
 			method="POST">
+
 			<div class="selectWrapper">
 				<select name="weather" class="form-select optionbox"
 					aria-label="Default select example">
@@ -170,9 +172,10 @@
 					<option value="맑음">맑음</option>
 					<option value="흐림">흐림</option>
 					<option value="비">비</option>
-					<!-- <option id="todayWeather"></option> -->
-				</select> <select name="condition" class="form-select optionbox"
-					aria-label="Default select example">
+
+					 <option id="todayWeather"></option> 
+				</select> <select name="condition" class="form-select optionbox" aria-label="Default select example">
+
 					<option value="상태" selected>상태</option>
 					<option value="보통">보통</option>
 					<option value="다이어트중">다이어트중</option>
@@ -198,16 +201,6 @@
 
 	</div>
 
-
-
-
-
-
-
-
-
-
-
 	<footer> copyright © TastyFriends. all rights reserved </footer>
 
 </body>
@@ -219,7 +212,7 @@
 
 
 	});
-	/* (
+	 (
 		function weather() {
 			const side =document.getElementById('side');
 		side.style.display = "none";
@@ -250,7 +243,7 @@
 
 				})
 
-		})(); */
+		})(); 
 
 	document.getElementById('logoutBtn').onclick = () => {
 		alert('로그아웃 되었습니다.');

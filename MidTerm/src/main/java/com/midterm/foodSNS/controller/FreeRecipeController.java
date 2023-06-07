@@ -37,10 +37,13 @@ public class FreeRecipeController {
 
 	//레시피 글 등록
 	@PostMapping("/uploadRecipe")
-	public String uploadRecipe(MfreeboardVO vo) {
-
+	public String uploadRecipe(String weather, String condition2, String feeling, MfreeboardVO vo) {
+		System.out.println("eeeeeeeeee"+weather);
+		vo.setWeather(weather);
+		vo.setCondition2(condition2);
+		vo.setFeeling(feeling);
 		service.uploadRecipe(vo);
-
+	
 		return "redirect:/mypage/mypageResult";
 	}
 

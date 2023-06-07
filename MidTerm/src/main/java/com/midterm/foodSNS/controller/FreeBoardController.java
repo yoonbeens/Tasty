@@ -79,9 +79,7 @@ public class FreeBoardController {
 	@ResponseBody
 	@PutMapping("/modify/{faNum}")
 	public String modify(@PathVariable int faNum, @RequestBody Map<String,String> map2){
-		log.info("번호 : "+ faNum);
-//		log.info("글내용 : "+moditext.toString());
-		log.info("글내용 : "+map2.get("moditext"));
+
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("faNum", faNum); 

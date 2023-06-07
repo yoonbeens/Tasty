@@ -22,6 +22,20 @@
           transition: all 0.2s ease;
 }
 
+
+footer {
+	box-sizing: border-box;
+	width: 100vw;
+	height: 5vh;
+	/* footer의 높이 */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	line-height: 5vh;
+	background : black;
+	color : white;
+}
 #main-con {
 	box-sizing: border-box;
 	width: 100%;
@@ -63,6 +77,8 @@
 #main::-webkit-scrollbar {
 	display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
+
+
 
 #main-right {
 	box-sizing: border-box;
@@ -162,9 +178,9 @@ aside {
 	height: 190px;
 	border-radius: 50%;
 	position: absolute;
-	top: 60%;
-	left: 60%;
-	transform: translate(-50%, -50%);
+	top: 17%;
+    left: 17%;
+    
 }
 
 .profileWrapper {
@@ -220,10 +236,8 @@ h5 {
 	box-sizing: border-box;
 	width: 100%;
 	height: 900px;
-
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
+	flex-wrap: wrap;	
 }
 
 .modal-img {
@@ -241,9 +255,9 @@ h5 {
 	box-sizing: border-box;
 	width: 30%;
 	height: 850px;
-	border: 1px solid green;
+
 	border-radius: 30px;
-	margin-left: 10px;
+	margin-left: 3%;
 }
 
 #profile-img2 {
@@ -260,7 +274,7 @@ h5 {
 	display: flex;
 	width: 100%;
 	height: 100px;
-	border-bottom: 1px solid gainsboro;
+	/* border-bottom: 1px solid gainsboro; */
 }
 
 #freeuserid {
@@ -275,8 +289,9 @@ h5 {
 	width: 100%;
 	height: 350px;
 	padding: 20px;
-	border: 1px solid green;
+	border: 1px solid gainsboro;
 }
+	
 .modibox{
 	display: none;
 	
@@ -287,8 +302,8 @@ h5 {
 	width: 100%;
 	box-sizing: border-box;
 	border-radius :30px;
-	width: 100%;
-	height: 60vh;
+
+	height: 30vh;
 	padding: 20px;	
 	resize: none;
 	margin-bottom: 10px;
@@ -311,13 +326,27 @@ h5 {
 .likeBox{
 	width: 100%;
 	height: 60px;
-	border: 1px solid blue;
+	border-bottom: 1px solid gainsboro;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+#likenum{
+	height: 40px;
+	line-height: 40px;
+	
 }
 
 .replyBox{
 	width: 100%;
 	height: 300px;
-	border: 1px solid red;
+	/* border: 1px solid red; */
+	overflow: scroll;
+}
+
+.replyBox::-webkit-scrollbar {
+	display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
 
 #unfollow{
@@ -390,6 +419,23 @@ h5 {
 	padding-left: 20px;
 	
 }
+#urWeather{
+	width: 100%;
+	height: 5vh;
+	border-bottom: 1px solid gainsboro;
+	font-size: 20px;
+	line-height: 5vh;
+	padding-left: 20px;
+	text-align: left;
+	
+}
+
+#urContent{
+	width: 100%;
+	padding: 30px;
+	font-size : 20px;
+
+}
 
 #rtitle{
 
@@ -403,11 +449,141 @@ h5 {
 }
 
 #userRecipe{
-	position: relative;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 #dbtnR{
 	position: absolute;
 	top: 6%;
 	left: 92%;
+}
+#random{
+	width: 20vw;
+	height: 50vh;
+	border: 1px solid green;
+	border-radius: 15px;
+	margin-top: 30%;
+	margin-left: 10%;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	
+}	
+#randomImg{
+	
+	width: 90%;
+	margin-left: 5%;
+	height: 20vh;
+	border-radius: 15px;
+	
+}
+
+#ranCom{
+	width: 20vw;
+	height: 10vh;
+	font-size :20px;
+	text-align: center;
+	font-family: 800;
+	line-height: 10vh;
+	
+	
+	
+}
+
+.strong{
+	font-size :40px;
+	
+}
+
+#ranCondition{
+	margin-top: 20px;
+	font-size :30px;
+	text-align: center;
+	width: 100%;
+	padding: 10px;
+	
+
+}
+
+.reply-image{
+	box-sizing: border-box;
+	padding: 5px;
+	/* border: 1px solid skyblue; */
+	border-radius: 20px;
+}
+
+#replyImg{
+	width: 2vw;
+	height: 5vh;
+	border-radius: 50%;	
+}
+
+.reply-image img{
+
+	width: 2vw;
+	height: 5vh;
+	border-radius: 50%;	
+
+}
+
+.reply-group{
+	box-sizing: border-box;
+	padding: 5px;
+	font-size: 15px;
+	
+	
+}
+.reply-group img{
+
+	width: 2vw;
+	height: 5vh;
+	border-radius: 50%;	
+
+}
+.reply-group strong{
+	
+	font-size: 15px;
+}
+
+.reply-group small{
+	
+	font-size: 15px;
+}
+#rebox{
+	width: 100%;
+	margin-right: 0px;
+	margin: 0 auto;
+}
+#reply{
+	width: 100%;
+	
+}
+#rrr{
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#aaa{
+	
+	padding: 3%;
+}
+
+
+#replyRegist{
+	width: 100%;
+}
+
+.clearfix{
+	box-sizing: border-box;
+	margin-bottom: 0px;
+	font-size: 20px;
+	padding-left: 15%;
+	border-bottom: 1px solid gainsboro;
+	padding-bottom: 10px;
+	
+}
+
+#hiddenMan{
+
+	height: 1px;
 }

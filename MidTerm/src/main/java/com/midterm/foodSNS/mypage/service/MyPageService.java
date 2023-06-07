@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.midterm.foodSNS.command.MRecipeVO;
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
 import com.midterm.foodSNS.command.MusersVO;
@@ -81,6 +82,11 @@ public class MyPageService implements IMyPageService {
 	@Override
 	public List<MusersVO> countFollowing(String userId) {
 		return mapper.countFollowing(userId);
+	}
+	@Override
+	public MRecipeVO randomRecipe(int k) {
+		
+		return mapper.randomRecipe(k);
 	}
 
 	
