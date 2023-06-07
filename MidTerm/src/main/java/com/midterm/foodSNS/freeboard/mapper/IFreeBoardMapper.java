@@ -26,6 +26,10 @@ public interface IFreeBoardMapper {
 	void deleteimg(int iNum);
 
 	void update(Map<String, Object> map);
+
+	void registVideo(MfreeboardImgVO ivo);
+
+	MfreeboardImgVO getVideo(int i);
 	
 	
 

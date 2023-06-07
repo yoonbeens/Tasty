@@ -131,8 +131,6 @@
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
 
-
-
 			<%
 			break;
 			}
@@ -503,6 +501,8 @@
 
 
 					console.log("story 클릭");
+					console.log("스토리 누르고 스토리 수 : "+alength);
+					console.log("스토리 누르고 레시피 수 : "+rlength);
 
 
 					for (var i = 0; i < alength; i++) {
@@ -523,6 +523,8 @@
 					const rlength = e.target.dataset.rlength;
 
 					console.log("recipe 클릭");
+					console.log("레시피 누르고 스토리 수 : "+alength);
+					console.log("레시피 누르고 레시피 수 : "+rlength);
 
 
 

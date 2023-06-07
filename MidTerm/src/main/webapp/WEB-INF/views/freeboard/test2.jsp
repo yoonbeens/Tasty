@@ -21,8 +21,7 @@
 
 
     <div class="container">
-	<video src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
-					alt="default"></video>
+	<video src="${pageContext.request.contextPath}/user/display/${video.fileLoca}/${video.fileName}" type="video/mp4" controls autoplay></video>
        
     </div>
 </body>

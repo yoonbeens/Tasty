@@ -192,7 +192,7 @@ font-family: 'Gowun Dodum', sans-serif;
 			<div class="selectWrapper">
 				<select name="weather" class="form-select optionbox"
 					aria-label="Default select example">
-					<option value="날씨" selected>날씨</option>
+					<option value="날씨" disabled selected>날씨</option>
 					<option value="맑음">맑음</option>
 					<option value="흐림">흐림</option>
 					<option value="비">비</option>
@@ -201,14 +201,14 @@ font-family: 'Gowun Dodum', sans-serif;
 				</select> <select name="condition" class="form-select optionbox"
 					aria-label="Default select example">
 
-					<option value="상태" selected>상태</option>
+					<option value="상태" disabled selected>상태</option>
 					<option value="보통">보통</option>
 					<option value="다이어트중">다이어트중</option>
 					<option value="술마시고싶어요">술마시고싶어요</option>
 
 				</select> <select name="feeling" class="form-select optionbox"
 					aria-label="Default select example">
-					<option value="기분" selected>기분</option>
+					<option value="기분" disabled selected>기분</option>
 					<option value="신나요">신나요</option>
 					<option value="우울해요">우울해요</option>
 					<option value="피곤해요">피곤해요</option>

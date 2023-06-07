@@ -60,7 +60,7 @@
             </div>
             <div class="actual-form">
               <span>이미지 업로드 <small>(최대 4개까지)</small></span>
-                    <input type="file" name="file" id="file" multiple>
+                    <input type="file" name="file" id="file" multiple="multiple">
               <div class="input-wrap"></div>
               
           

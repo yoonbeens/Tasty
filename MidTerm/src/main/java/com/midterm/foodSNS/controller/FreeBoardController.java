@@ -36,9 +36,18 @@ public class FreeBoardController {
 	public String test() {
 		return "freeboard/test";	
 	}
+	
 	@GetMapping("/test2")
 	public String test(@RequestParam("file")List<MultipartFile> file,MfreeboardImgVO ivo) {
-		service.registImg(ivo,file);
+		service.registVideo(ivo,file);
+		
+		return "freeboard/test2";	
+	}
+	@PostMapping("/test2")
+	public String test2(MfreeboardImgVO ivo,Model model) {
+		int i=1;
+		ivo= service.getVideo(i);
+		model.addAttribute("video",ivo);
 		
 		return "freeboard/test2";	
 	}

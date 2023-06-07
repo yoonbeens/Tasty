@@ -29,6 +29,18 @@
 		delete from FreeboardArticle where freeboard_article_number =#{faNum}
 	</delete>
 	
+	<insert id="registVideo">
+	INSERT INTO video
+	(upload_path,file_loca,file_name,file_real_name)
+	VALUES(#{uploadPath},#{fileLoca},#{fileName},#{fileRealName})
+	</insert>
+	
+	<select id="getVideo" resultType="articleImg">
+	select * from video
+	</select>
+	
+	
+	
 
 	
 	

@@ -30,6 +30,10 @@ public interface IFreeBoardService {
 
 	List<MfreeboardImgVO> getCarousel(int faNum );
 
+	void registVideo(MfreeboardImgVO ivo, List<MultipartFile> file);
+
+	MfreeboardImgVO getVideo(int i);
+
 	
 
 	

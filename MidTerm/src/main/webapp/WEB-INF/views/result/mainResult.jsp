@@ -1936,7 +1936,7 @@
 									.nextElementSibling
 									.nextElementSibling.nextElementSibling.textContent + ' / ');
 								document.querySelector(".urId").insertAdjacentHTML('afterbegin',
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp작성자 : ' + e.target
+									'/작성자 : ' + e.target
 									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
 									.nextElementSibling.nextElementSibling.textContent);
 								document.querySelector(".urId").setAttribute("href",

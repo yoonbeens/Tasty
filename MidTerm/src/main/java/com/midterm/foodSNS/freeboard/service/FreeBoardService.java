@@ -121,6 +121,69 @@ public class FreeBoardService implements IFreeBoardService {
 	}
 
 
+	@Override
+	public void registVideo(MfreeboardImgVO ivo, List<MultipartFile> file) {
+		// 날짜별로 폴더를 생성해서 관리할 예정입니다.
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String fileLoca = now.format(dtf);
+
+        // 기본 경로는 C:/test/upload 로 사용하겠습니다.
+        String uploadPath = "C:/test/upload/";
+
+        // 폴더 없으면 새롭게 생성해 주시라
+        File folder = new File(uploadPath + fileLoca);
+        if(!folder.exists()) folder.mkdirs();
+        // 저장된 파일명은 UUID를 이용한 파일명으로 저장합니다.
+        // UUID가 제공하는 랜덤 문자열에 -을 제거해서 전부 사용하겠습니다
+        for(MultipartFile mf : file)
+        {
+        	String fileRealName = mf.getOriginalFilename();  
+
+            UUID uuid = UUID.randomUUID();
+            String uuids = uuid.toString().replaceAll("-", "");
+
+            // 확장자 추출.
+            String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."));
+
+            log.info("저장할 폴더 경로: " + uploadPath);
+            log.info("실제 파일명: " + fileRealName);
+            log.info("폴더명: " + fileLoca);
+            log.info("확장자 : " + fileExtension);
+            log.info("고유랜덤문자: " + uuids);
+
+            String fileName = uuids + fileExtension;
+            log.info("변경해서 저장할 파일명: " + fileName);
+
+            // 업로드한 파일을 저장한 로컬 경로로 전송
+            File saveFile = new File(uploadPath + fileLoca + "/" + fileName);
+            try {
+            	mf.transferTo(saveFile);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            ivo.setUploadPath(uploadPath);
+            ivo.setFileLoca(fileLoca);
+            ivo.setFileName(fileName);
+            ivo.setFileRealName(fileRealName);
+            mapper.registVideo(ivo);
+            
+        
+        }
+		
+	}
+
+
+	@Override
+	public MfreeboardImgVO getVideo(int i) {
+		MfreeboardImgVO vo=mapper.getVideo(i);
+		return vo;
+		
+		
+	}
+
+
 
 
 
