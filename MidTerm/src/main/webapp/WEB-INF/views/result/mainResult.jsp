@@ -24,10 +24,14 @@
 	crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/css/mainResult.css"
 	rel="stylesheet">
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');	
+	</style>
 
 
 
 	<style type="text/css">
+	
     
     *{
 	font-family: 'Gowun Dodum', sans-serif;
@@ -1352,11 +1356,11 @@
 
 			</div>
 		</div>
-		<nav class="navbar bg-success fixed-top">
-			<div class="container-fluid">
-				<a class="navbar-brand text-light" href="#">Tasty Friend</a>
-
-				<div class="ml-auto">
+		<nav class="navbar bg-success fixed-top ">
+		<div class="container-fluid">
+			<a class="navbar-brand text-light"
+				href="${pageContext.request.contextPath}/">Tasty Friend</a>
+				<%-- <div class="ml-auto">
 							<form class="form-inline ml-auto"
 								action="${pageContext.request.contextPath}/userrecipe/search"
 								method="POST">
@@ -1364,11 +1368,19 @@
 									<input type="text" class="form-control" name="query"
 										placeholder="검색어를 입력하세요">
 									<button type="submit" class="btn btn-outline-light">검색</button>
-								</div>
+								</div>	
 							</form>
-						</div>
+						</div> --%>
+
+			<div class="offcanvas offcanvas-end" tabindex="-1"
+				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<aside></aside>
+				</div>
+
 			</div>
-		</nav>
+		</div>
+	</nav> 
 		<div id="mainDiv">
 			<main id="mainClose">
 				<div class="box" id="modalBox">

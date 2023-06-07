@@ -147,7 +147,36 @@
                 }
                 imageLoader(f);
             }
-        } //첨부된 이미지들을 배열에 넣고 미리보기 구현
+        } 
+         //탐색기에서 드래그앤 드롭 사용
+
+                //드래그로 들어올 때는 이벤트 발생 못하게
+                $area.addEventListener('dragenter', function(e) {
+                    e.preventDefault(); //고유 기능 중지
+                    e.stopPropagation(); //이벤트 전파 중지
+                }, false);
+
+                //드래그 하는 도중에도 이벤트 발생 못하게
+                $area.addEventListener('dragover', function(e) {
+                    e.preventDefault(); //고유 기능 중지
+                    e.stopPropagation(); //이벤트 전파 중지
+                }, false);
+
+                //드롭 했을 때에만 이벤트가 발생될 수 있도록
+                $area.addEventListener('drop', function(e) {
+                    let files = {};
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dt = e.dataTransfer;
+                    files = dt.files;
+                    for(let f of files) {
+                        imageLoader(f);
+                        console.log(f);
+                    }
+                });
+        
+        
+        //첨부된 이미지들을 배열에 넣고 미리보기 구현
 
         const maxFiles = 4;
 

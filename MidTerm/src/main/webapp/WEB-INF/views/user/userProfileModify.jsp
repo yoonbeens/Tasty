@@ -124,7 +124,7 @@
     let divStyle = 'display:inline-block;position:relative;' +
       'width:600px;height:480px;margin:5px;border:1px solid #fff;z-index:1';
     // 미리보기 이미지 속성 (원하는 대로 고쳐 쓰세여)
-    let imgStyle = 'width:100%;height:100%;z-index:none';
+    let imgStyle = 'margin-top:41px;width:86%;height:100%;z-index:none';
     // 이미지안에 표시되는 체크박스의 속성 (원하는 대로 고쳐 쓰세여)
     let chkStyle = 'width:30px;height:30px;position:absolute;font-size:17px;' +
       'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);border:red;border-radius:10px';

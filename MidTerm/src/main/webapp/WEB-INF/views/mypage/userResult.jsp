@@ -26,6 +26,9 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');	
+	</style>
 
 <body>
 	<script
@@ -85,12 +88,16 @@
 
 			<c:forEach var="recipe" items="${recipe}">
 				<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal"
-					data-bs-target="#recipe">
+					data-bs-target="#userRecipeModal">
 					<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
 						alt="default" id="article-img" data-reuserid="${recipe.writer}"
 						data-rebno="${recipe.bno}" />
-					<div id="rtitle" name="title">${recipe.title}</div>
-					<div id="rcon" name="title">${recipe.content}</div>
+						<div id="rtitle" name="title">${recipe.title}</div>
+						<div id="rcon" name="title">${recipe.content}</div>
+						<div id="rweather" name="title" style="display: none">${recipe.weather}</div>
+						<div id="rcondition" name="title" style="display: none">${recipe.condition2}</div>
+						<div id="rfeeling" name="title" style="display: none">${recipe.feeling}</div>
+						<div id="rWriter" name="title" style="display: none">${recipe.writer}</div>
 				</div>
 			</c:forEach>
 
@@ -166,7 +173,17 @@
 		<div class="container-fluid">
 			<a class="navbar-brand text-light"
 				href="${pageContext.request.contextPath}/">Tasty Friend</a>
-
+				<div class="ml-auto">
+							<form class="form-inline ml-auto"
+								action="${pageContext.request.contextPath}/userrecipe/search"
+								method="POST">
+								<div class="input-group">
+									<input type="text" class="form-control" name="query"
+										placeholder="검색어를 입력하세요">
+									<button type="submit" class="btn btn-outline-light">검색</button>
+								</div>
+							</form>
+						</div>
 
 			<div class="offcanvas offcanvas-end" tabindex="-1"
 				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -243,45 +260,35 @@
 </div>
 
 <!-- Modal uesrRecipe-->
-<div class="modal fade" id="recipe" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-xl modal-dialog-scrollable">
-		<div class="modal-content">
-			<div class="modal-body" id="userRecipe">
-				<div id="urTitle">
+<div class="modal fade" id="userRecipeModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-					<!--유저레시피 제목오는곳-->
+			<div class="modal-dialog modal-xl modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-body" id="userRecipe">
+						<div id="urTitle">
+
+							<!--유저레시피 제목오는곳-->
+						</div>
+
+						<div id="urWeather">
+							<a class="urId"></a>
+							<!--검색 조건오는곳-->
+						</div>
+
+						<div id="urContent">
+							<!--유저레시피 내용오는곳-->
+
+						</div>
+
+					</div>
+
 
 
 				</div>
-				<div id="urWeather">
-					<!--검색 조건오는곳-->
-				</div>
-				<div id="urContent">
-
-					<!--유저레시피 내용오는곳-->
-
-				</div>
-
-				<div class="dropdown" id="dbtnR">
-					<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
-						type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" id="modifyR">Modify</a></li>
-						<hr>
-						<li><a class=" dropdown-item" id="deleteR" href="#"
-							style="color: red">Delete</a></li>
-					</ul>
-				</div>
-
-
-
-
 			</div>
 		</div>
 	</div>
-</div>
-
 
 
 
@@ -506,27 +513,37 @@
 
 					const rebno = e.target.dataset.rebno;
 					console.log(rebno);
-					document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
-						.textContent);
-					document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
-						.nextElementSibling.innerHTML);
-					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
-						.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent);
-					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
-						.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
-					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
-						.nextElementSibling.nextElementSibling.textContent + ' / ');
-					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', '작성자 : ' + e.target
-						.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-						.nextElementSibling.nextElementSibling.textContent + '&nbsp&nbsp&nbsp&nbsp&nbsp');
-					document.getElementById('modifyR').setAttribute("href",
-						'${pageContext.request.contextPath}/userrecipe/modifyRecipe/' + rebno + '');
+					document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target
+									.nextElementSibling
+									.textContent);
+								document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target
+									.nextElementSibling
+									.nextElementSibling.innerHTML);
+								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+									.nextElementSibling
+									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+									.textContent);
+								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+									.nextElementSibling
+									.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
+								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+									.nextElementSibling
+									.nextElementSibling.nextElementSibling.textContent + ' / ');
+								document.querySelector(".urId").insertAdjacentHTML('afterbegin',
+									'/작성자 : ' + e.target
+									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+									.nextElementSibling.nextElementSibling.textContent);
+								document.querySelector(".urId").setAttribute("href",
+									"${pageContext.request.contextPath}/mypage/userResult/" + e.target
+									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+									.nextElementSibling.nextElementSibling.textContent);
 
-					document.getElementById("recipe").addEventListener('hidden.bs.modal', () => {
+					document.getElementById("userRecipeModal").addEventListener('hidden.bs.modal', () => {
 						document.getElementById('urTitle').textContent = "";
-						document.getElementById('urContent').innerHTML = "";
-						document.getElementById('urWeather').textContent = "";
-
+									document.getElementById('urContent').innerHTML = "";
+									document.getElementById('urWeather').textContent = "";
+									document.getElementById('urWeather').append(document.createElement('a'));
+									document.querySelector('#urWeather a').classList.add('urId');
 					});
 
 				
