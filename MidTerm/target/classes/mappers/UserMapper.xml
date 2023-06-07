@@ -38,8 +38,7 @@
 
 	<select id="login" resultType="string">
 		SELECT user_pw FROM Musers
-		WHERE
-		user_id = #{id}
+		WHERE user_id = #{id}
 	</select>
 
 	<select id="getInfo" resultMap="userMap">

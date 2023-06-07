@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 
+
+
+
+
 header {
 	box-sizing: border-box;
 	width: 100%;
@@ -31,7 +35,6 @@ footer {
 	box-sizing: border-box;
 	width: 100vw;
 	height: 10vh;
-	/* footer의 높이 */
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -76,6 +79,15 @@ body{
 
 
 }
+
+
+
+* {
+	 font-family: 'Gowun Dodum', sans-serif;
+}
+
+
+
 
 .mainbox{
 	width: 30vw;
@@ -140,5 +152,4 @@ body{
 #try{
 	margin : 20px;
 }
-
 

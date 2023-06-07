@@ -40,6 +40,11 @@
         SELECT * FROM cookDB
         WHERE foodname LIKE CONCAT('%', #{query}, '%')
     </select>
+    
+    <select id="searchUserRecipe" resultType="board">
+        SELECT * FROM Mfreeboard
+        WHERE title LIKE CONCAT('%', #{query}, '%')
+    </select>
 
  
 

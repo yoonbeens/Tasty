@@ -11,43 +11,50 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-	<title>Bootstrap demo</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-	<link href="${pageContext.request.contextPath}/css/mypageResult.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<title>Bootstrap demo</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+<link href="${pageContext.request.contextPath}/css/mypageResult.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous">
 
 	</script>
 	<div id="main-con">
 		<div id="main-left">
-		<%
+			<%
 			MusersVO user = new MusersVO();
-			user = (MusersVO)request.getAttribute("user");			
+			user = (MusersVO) request.getAttribute("user");
 			ArrayList<MfreeboardArticleVO> articles = new ArrayList<>();
 			articles = (ArrayList<MfreeboardArticleVO>) request.getAttribute("article");
 			ArrayList<MfreeboardImgVO> imgs = new ArrayList<>();
 			imgs = (ArrayList<MfreeboardImgVO>) request.getAttribute("img");
-			
-			int followCheck = (int)request.getAttribute("followCheck");%>
-		<div class="left" id="mystory" data-alength="<%=articles.size()%>"
-			data-rlength="${fn:length(recipe)}">My Story</div>
-		<div class="left" id="myrecipe" data-alength="<%=articles.size()%>"
-			data-rlength="${fn:length(recipe)}">My Recipe</div>
+
+			int followCheck = (int) request.getAttribute("followCheck");
+			%>
+			<div class="left" id="mystory" data-alength="<%=articles.size()%>"
+				data-rlength="${fn:length(recipe)}">My Story</div>
+			<div class="left" id="myrecipe" data-alength="<%=articles.size()%>"
+				data-rlength="${fn:length(recipe)}">My Recipe</div>
 
 
 		</div>
 		<div id="main">
-			<% 
-
+			<%
 			for (int i = 0; i < articles.size(); i++) {
 				ArrayList<MfreeboardImgVO> imgcon = new ArrayList<>();
 				for (int j = 0; j < imgs.size(); j++) {
@@ -56,16 +63,19 @@
 				imgcon.add(imgs.get(j));
 			%>
 
-			<div class="boxbox scale mystorybox" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
-				/<%=imgcon.get(0).getFileName()%>" alt="default" id="article-img" data-userid="<%=user.getUserId()%>"
+			<div class="boxbox scale mystorybox" data-bs-toggle="modal"
+				data-bs-target="#myModal">
+				<img
+					src="${pageContext.request.contextPath}/user/display/<%=imgcon.get(0).getFileLoca()%>
+				/<%=imgcon.get(0).getFileName()%>"
+					alt="default" id="article-img" data-userid="<%=user.getUserId()%>"
 					data-fanum="<%=articles.get(i).getFreeboardArticleNumber()%>"
 					data-content="<%=articles.get(i).getContent()%>">
 			</div>
 
 			<%
 			break;
-					}
+			}
 			}
 			%>
 
@@ -89,7 +99,8 @@
 		<div id="main-right">
 
 			<div id="profile-img-con">
-				<img src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
+				<img
+					src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
 					alt="default" id="profile-img">
 			</div>
 			<div class="profileWrapper">
@@ -97,33 +108,44 @@
 				<div id="simpleProfile">
 					<h1><%=user.getUserId()%></h1>
 
-					<%if(followCheck==0) {%>
+					<%
+					if (followCheck == 0) {
+					%>
 					<button id="follow" data-followerid="${login.userId}"
 						data-targetid="<%=user.getUserId()%>">Follow</button>
 
-					<button id="unfollow" data-followerid="${login.userId}" data-targetid="<%=user.getUserId()%>"
-						style="display: none;">UnFollow</button>
-					<%}else if(followCheck==1){ %>
+					<button id="unfollow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>" style="display: none;">UnFollow</button>
+					<%
+					} else if (followCheck == 1) {
+					%>
 
-					<button id="follow" data-followerid="${login.userId}" data-targetid="<%=user.getUserId()%>"
-						style="display: none;">Follow</button>
+					<button id="follow" data-followerid="${login.userId}"
+						data-targetid="<%=user.getUserId()%>" style="display: none;">Follow</button>
 
 					<button id="unfollow" data-followerid="${login.userId}"
 						data-targetid="<%=user.getUserId()%>">UnFollow</button>
-					<%} %>
+					<%
+					}
+					%>
 
 					<h3><%=user.getUserNick()%></h3>
 					<h5><%=user.getMessage()%></h5>
 				</div>
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-					<li class="nav-item"><a class="nav-link active" aria-current="page"
-							href="${pageContext.request.contextPath}/">Home</a>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
-							data-bs-target="#FollowerModal">Follower
+
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page"
+						href="${pageContext.request.contextPath}/mypage/mypageResult">My
+							Page</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
 							Chief</a></li>
-					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
-							data-bs-target="#FollowingModal">Following
+					<li class="nav-item"><a class="nav-link" href="#"
+						data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
 							Chief</a></li>
 
 
@@ -142,11 +164,12 @@
 
 	<nav class="navbar bg-success fixed-top ">
 		<div class="container-fluid">
-			<a class="navbar-brand text-light" href="${pageContext.request.contextPath}/">Tasty Friend</a>
-			
-		
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-				aria-labelledby="offcanvasNavbarLabel">
+			<a class="navbar-brand text-light"
+				href="${pageContext.request.contextPath}/">Tasty Friend</a>
+
+
+			<div class="offcanvas offcanvas-end" tabindex="-1"
+				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 				<div class="offcanvas-header">
 					<aside></aside>
 				</div>
@@ -159,19 +182,22 @@
 
 
 <!-- Follower Modal -->
-<div class="modal fade" id="FollowerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowerModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followerM">
 
 				<c:forEach var="follower" items="${countFollower}">
 
 					<div id="followerdiv">
-						<img src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+						<img
+							src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
 					</div>
@@ -188,19 +214,22 @@
 
 
 <!-- Following Modal -->
-<div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="FollowingModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-scrollable modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
 			</div>
 			<div class="fmodal-body" id="followingM">
 
 				<c:forEach var="following" items="${countFollowing}">
 
 					<div id="followerdiv">
-						<img src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+						<img
+							src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
 							alt="default" id="fprofile-img"> <a
 							href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
 					</div>
@@ -214,21 +243,39 @@
 </div>
 
 <!-- Modal uesrRecipe-->
-<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="recipe" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-body" id="userRecipe">
 				<div id="urTitle">
 
 					<!--유저레시피 제목오는곳-->
-				</div>
-				
-				</div>
 
+
+				</div>
+				<div id="urWeather">
+					<!--검색 조건오는곳-->
+				</div>
 				<div id="urContent">
+
 					<!--유저레시피 내용오는곳-->
 
 				</div>
+
+				<div class="dropdown" id="dbtnR">
+					<i class="bi bi-three-dots-vertical" style="font-size: 1.5rem"
+						type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" id="modifyR">Modify</a></li>
+						<hr>
+						<li><a class=" dropdown-item" id="deleteR" href="#"
+							style="color: red">Delete</a></li>
+					</ul>
+				</div>
+
+
+
 
 			</div>
 		</div>
@@ -239,16 +286,15 @@
 
 
 
-
-
-
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
 				<div class="modal-img">
-					<div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="true">
+					<div id="carouselExampleIndicators"
+						class="carousel slide carousel-dark" data-bs-ride="true">
 						<div class="carousel-indicators" id="carouselbtn">
 
 							<!--여기 게시물별 버튼 들어감-->
@@ -258,13 +304,13 @@
 							<!--여기 게시물별 이미지 들어감-->
 						</div>
 
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide="prev">
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Previous</span>
 						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide="next">
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Next</span>
 						</button>
@@ -274,7 +320,8 @@
 				</div>
 				<div class="modal-text">
 					<div id="freeuserimg">
-						<img src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
+						<img
+							src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
 							alt="default" id="profile-img2">
 
 						<div id="freeuserid"></div>
@@ -313,14 +360,16 @@
 
 						<!-- 댓글 영역 시작부분 -->
 						<section>
-							<div class="container">
-								<div class="row">
-									<div class="col-xs-12 col-md-9 write-wrap">
+							<div class="container" id="aaa">
+								<div class="row" id="rebox">
+									<div class="col-xs-12 col-md-9 write-wrap" id="rrr">
 										<!-- 댓글 영역 -->
-										<form class="reply-wrap" action="${pageContext.request.contextPath}">
+										<form class="reply-wrap"
+											action="${pageContext.request.contextPath}">
 											<div class="reply-image">
-												<img
+												<img id="replyImg"
 													src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}">
+												${login.userNick}
 											</div>
 
 											<div class="reply-content">
@@ -338,24 +387,7 @@
 												</div>
 											</div>
 										</form>
-										<div id="replyList">
-											<!-- 자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.
-				<div class='reply-wrap'>
-					<div class='reply-image'>
-						<img src='../resources/img/profile.png'>
-					</div>
-					<div class='reply-content'>
-						<div class='reply-group'>
-							<strong class='left'>honggildong</strong>
-							<small class='left'>2019/12/10</small>
-							<a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a>
-							<a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
-						</div>
-						<p class='clearfix'>여기는 댓글영역</p>
-					</div>
-				</div>
-				 -->
-										</div>
+										<div id="replyList"></div>
 										<button type="button" class="form-control" id="moreList"
 											style="display: none;">더보기</button>
 									</div>
@@ -478,14 +510,24 @@
 						.textContent);
 					document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
 						.nextElementSibling.innerHTML);
-
-				
+					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
+						.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.textContent);
+					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
+						.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
+					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target.nextElementSibling
+						.nextElementSibling.nextElementSibling.textContent + ' / ');
+					document.getElementById('urWeather').insertAdjacentHTML('afterbegin', '작성자 : ' + e.target
+						.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+						.nextElementSibling.nextElementSibling.textContent + '&nbsp&nbsp&nbsp&nbsp&nbsp');
+					document.getElementById('modifyR').setAttribute("href",
+						'${pageContext.request.contextPath}/userrecipe/modifyRecipe/' + rebno + '');
 
 					document.getElementById("recipe").addEventListener('hidden.bs.modal', () => {
 						document.getElementById('urTitle').textContent = "";
 						document.getElementById('urContent').innerHTML = "";
+						document.getElementById('urWeather').textContent = "";
 
-					})
+					});
 
 				
 
@@ -583,12 +625,7 @@
 
 
 						});
-					document.getElementById('modify').addEventListener('click', e => {
-
-						document.getElementById('freecontent').style.display = "none";
-						document.querySelector('.modibox').style.display = "block";
-						document.getElementById('modifyTextBox').textContent = content;
-					});
+				
 
 					document.getElementById('modifyTextbtn').addEventListener('click', e => {
 						const moditext = document.querySelector('.modibox textarea').value;
@@ -714,7 +751,11 @@
 						'faNum': faNum,
 						'reply': reply,
 						'userId': '${login.userId}',
-						'userNick': '${login.userNick}' //작성자를 보여주기 위해 보내줌
+						'userNick': '${login.userNick}',
+						'fileLoca': '${login.fileLoca}',
+						'fileName': '${login.fileName}',
+						'uploadPath': '${login.uploadPath}',
+						'fileRealName': '${login.fileRealName}'//작성자를 보여주기 위해 보내줌
 					})
 				};
 
@@ -756,6 +797,8 @@
 
 						let total = data.total; //총 댓글 수
 						let replyList = data.list; //댓글 리스트
+						
+						
 
 						//insert, update, delete 작업 후에는
 						//댓글 내용 태그를 누적하고 있는 strAdd 변수를 초기화해서
@@ -783,21 +826,23 @@
 						//replyList의 개수만큼 태그를 문자열 형태로 직접 그림.
 						//중간에 들어갈 글쓴이, 날짜 , 댓글 내용은 목록에서 꺼내서 표현.
 						for (let i = 0; i < replyList.length; i++) {
+							console.log("deeeeeeeee: "+replyList[0].fileLoca);
+						
 							strAdd +=
 								`<div class='reply-wrap'>
-                            <div class='reply-image'>
-                                <img src=''>
-                            </div>
+                            
                             <div class='reply-content'>
                                 <div class='reply-group'>
+									<img src='${pageContext.request.contextPath}/user/display/`+replyList[i].fileLoca+`/`+replyList[i].fileName+`'>
                                     <strong class='left'>` + replyList[i].userNick + `</strong> 
                                     <small class='left'>` + (replyList[i].updateDate != null ? parseTime(replyList[i]
 									.updateDate) + '(수정됨)' : parseTime(replyList[i].replyDate)) + `</small>
                                     <a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a> &nbsp
-                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>
-                                    <div style = 'opacity:0'>` + replyList[i].userId + `</div>
+                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>   
+									<div id="hiddenMan" style = 'opacity:0'>` + replyList[i].userId + `</div>
+									                                	
                                 </div>
-                                <p class='clearfix'>` + replyList[i].reply + `</p>
+								<p class='clearfix'>` + replyList[i].reply + `</p> 
                                 <form class='reply-modify' style='display:none'>
 									<input type="text" class='modtext' '>
 									<a href="" class="right modModBtn">수정하기</a>

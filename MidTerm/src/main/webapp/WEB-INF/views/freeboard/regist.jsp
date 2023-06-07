@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+
     <link href="${pageContext.request.contextPath}/css/userProfileModify.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
@@ -24,11 +24,16 @@
     </style>
 
 
+    <link href="${pageContext.request.contextPath}/css/regist.css" rel="stylesheet">
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 </head>
 
 
 
 <body>
+
 
 	  <nav class="navbar bg-success fixed-top ">
     <div class="container-fluid">
@@ -206,6 +211,7 @@
                 for (let f in selectFiles) {
                     const file = selectFiles[f];
                     dt.items.add(file);
+
                 }
                 $btnAttr.files = dt.files;
 
@@ -222,6 +228,7 @@
 
 
 
+
         document.getElementById('reginsBtn').addEventListener('click', e => {
             console.log('잡혀?');
             console.log(document.getElementById('attr_area').childElementCount);
@@ -229,11 +236,13 @@
 
                 if (document.getElementById('attr_area').childElementCount == 0) {
                     alert("1개이상의 이미지를 등록해야합니다.");
+
                     return;
                 } else {
                     alert("게시물이 등록되었습니다.");
                     document.getElementById('form').submit();
                 }
+
             } else {
                 return;
             }
@@ -242,3 +251,4 @@
 </script>
 
 </html>
+

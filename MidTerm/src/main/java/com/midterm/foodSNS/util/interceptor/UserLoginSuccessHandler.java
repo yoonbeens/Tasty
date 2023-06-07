@@ -40,7 +40,8 @@ public class UserLoginSuccessHandler implements HandlerInterceptor{
 				response.sendRedirect(request.getContextPath() + "/"); //
 				
 			} else { //vo == null -> 로그인 실패
-				modelAndView.addObject("msg", "loginFail");
+				response.sendRedirect(request.getContextPath() + "/");
+				
 			}
 			
 		}

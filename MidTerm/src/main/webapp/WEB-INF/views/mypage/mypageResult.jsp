@@ -17,7 +17,6 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +30,18 @@
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');	
+	
+	 	
+	</style>
+
+
+
+
+
 </head>
 
 <body>
@@ -56,7 +67,7 @@
 				Recipe</div>
 				
 				
-			<div id="random">
+			<div id="random" class="shadow p-3 mb-5 bg-body rounded">
 			
 			<div id="ranCom">
 			이런 <span class="strong">레시피</span> 는 어떠신가요?
@@ -142,8 +153,7 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}//result/mainResult">Find Recipe</a></li>
+					
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/mypage/mypageResult">My Page</a>
 					</li>
@@ -386,7 +396,7 @@
 													name="reply"></textarea>
 												<div class="reply-group">
 													<div class="reply-input">
-														<%-- <div class="reply-nick">${login.userNick}</div> --%>
+														<div class="reply-nick">${login.userNick}</div>
 														<input type="hidden" class="form-control" id="replyId"
 															placeholder="${login.userId}">
 													</div>
@@ -749,105 +759,113 @@
 
 				//요청에 관련된 정보 객체
 				const reqObj = {
-					method: 'post',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({ //제이슨 형태로 변환
-						'faNum': faNum,
-						'reply': reply,
-						'userId': '${login.userId}',
-						'userNick': '${login.userNick}' //작성자를 보여주기 위해 보내줌
-					})
-				};
+						method: 'post',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ //제이슨 형태로 변환
+							'faNum': faNum,
+							'reply': reply,
+							'userId': '${login.userId}',
+							'userNick': '${login.userNick}',
+							'fileLoca': '${login.fileLoca}',
+							'fileName': '${login.fileName}',
+							'uploadPath': '${login.uploadPath}',
+							'fileRealName': '${login.fileRealName}'//작성자를 보여주기 위해 보내줌
+						})
+					};
 
-				fetch('${pageContext.request.contextPath}/reply/regist', reqObj)
-					.then(res => res.text())
-					.then(data => {
-						console.log('통신 성공!: ' + data);
-						if (data === 'ok') {
-							alert('댓글이 등록되었습니다.');
-						} else {
-							alert('댓글등록 실패');
-						}
-						document.getElementById('reply').value = ''; //내용 비우기
-						//등록 완료 후 댓글 목록 함수를 호출해서 비동기식으로 목록 표현.
-						getList(1, true); //재 랜더링 false시 누적해서 가져오기
-					});
-			} // 댓글 등록 이벤트 끝.
-
-			//더보기 버튼 처리(클릭 시 전역 변수 page에 +1 한 값을 요청)
-			document.getElementById('moreList').onclick = () => {
-				getList(++page, false);
-			}
-
-
-			let page = 1; //첫 페이지 번호
-			let strAdd = ''; //댓글리스트에서 추가될 요소
-			const $replyList = document.getElementById('replyList');
-
-			//댓글 목록을 가져올 함수
-			function getList(pageNum, reset) {
-				strAdd = '';
-				const faNum = document.getElementById('likenum').dataset.faNum;
-
-				//get방식으로 댓글 목록을 요청(비동기)
-				fetch('${pageContext.request.contextPath}/reply/getList/faNum/' + faNum + '/' + pageNum)
-					.then(res => res.json())
-					.then(data => {
-						console.log(data);
-
-						let total = data.total; //총 댓글 수
-						let replyList = data.list; //댓글 리스트
-
-						//insert, update, delete 작업 후에는
-						//댓글 내용 태그를 누적하고 있는 strAdd 변수를 초기화해서
-						//마치 화면이 리셋된 것처럼 보여줘야 합니다.
-						if (reset) {
-
-							while ($replyList.firstChild) {
-								$replyList.removeChild($replyList.firstChild);
+					fetch('${pageContext.request.contextPath}/reply/regist', reqObj)
+						.then(res => res.text())
+						.then(data => {
+							console.log('통신 성공!: ' + data);
+							if (data === 'ok') {
+								alert('댓글이 등록되었습니다.');
+							} else {
+								alert('댓글등록 실패');
 							}
-							page = 1;
-						}
+							document.getElementById('reply').value = ''; //내용 비우기
+							//등록 완료 후 댓글 목록 함수를 호출해서 비동기식으로 목록 표현.
+							getList(1, true); //재 랜더링 false시 누적해서 가져오기
+						});
+				} // 댓글 등록 이벤트 끝.
 
-						//응답 데이터의 길이가 0과 같거나 더 작으면 함수를 종료.
-						console.log('리스트 길이: ' + replyList.length);
-						if (replyList.length <= 0) return;
+				//더보기 버튼 처리(클릭 시 전역 변수 page에 +1 한 값을 요청)
+				document.getElementById('moreList').onclick = () => {
+					getList(++page, false);
+				}
 
-						//페이지번호 * 이번 요청으로 받은 댓글 수보다 전체 댓글 개수가 작다면 더보기 버튼은 없어도 된다.
-						console.log('현재 페이지: ' + page);
-						if (total <= page * 5) {
-							document.getElementById('moreList').style.display = 'none';
-						} else {
-							document.getElementById('moreList').style.display = 'block';
-						}
 
-						//replyList의 개수만큼 태그를 문자열 형태로 직접 그림.
-						//중간에 들어갈 글쓴이, 날짜 , 댓글 내용은 목록에서 꺼내서 표현.
-						for (let i = 0; i < replyList.length; i++) {
-							strAdd +=
-								`<div class='reply-wrap'>
-                            
-                            <div class='reply-content'>
-                                <div class='reply-group'>
-									<img src='${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}'>
-                                    <strong class='left'>` + replyList[i].userNick + `</strong> 
-                                    <small class='left'>` + (replyList[i].updateDate != null ? parseTime(replyList[i]
-									.updateDate) + '(수정됨)' : parseTime(replyList[i].replyDate)) + `</small>
-                                    <a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a> &nbsp
-                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>   
-									<div id="hiddenMan" style = 'opacity:0'>` + replyList[i].userId + `</div>
-									                                
-                                </div>
-								<p class='clearfix'>` + replyList[i].reply + `</p> 
-                                <form class='reply-modify' style='display:none'>
-									<input type="text" class='modtext' '>
-									<a href="" class="right modModBtn">수정하기</a>
-								</form>	
-                            </div>
-                        </div>`;
-						}
+				let page = 1; //첫 페이지 번호
+				let strAdd = ''; //댓글리스트에서 추가될 요소
+				const $replyList = document.getElementById('replyList');
+
+				//댓글 목록을 가져올 함수
+				function getList(pageNum, reset) {
+					strAdd = '';
+					const faNum = document.getElementById('likenum').dataset.faNum;
+
+					//get방식으로 댓글 목록을 요청(비동기)
+					fetch('${pageContext.request.contextPath}/reply/getList/faNum/' + faNum + '/' + pageNum)
+						.then(res => res.json())
+						.then(data => {
+							console.log(data);
+
+							let total = data.total; //총 댓글 수
+							let replyList = data.list; //댓글 리스트
+							
+							
+
+							//insert, update, delete 작업 후에는
+							//댓글 내용 태그를 누적하고 있는 strAdd 변수를 초기화해서
+							//마치 화면이 리셋된 것처럼 보여줘야 합니다.
+							if (reset) {
+
+								while ($replyList.firstChild) {
+									$replyList.removeChild($replyList.firstChild);
+								}
+								page = 1;
+							}
+
+							//응답 데이터의 길이가 0과 같거나 더 작으면 함수를 종료.
+							console.log('리스트 길이: ' + replyList.length);
+							if (replyList.length <= 0) return;
+
+							//페이지번호 * 이번 요청으로 받은 댓글 수보다 전체 댓글 개수가 작다면 더보기 버튼은 없어도 된다.
+							console.log('현재 페이지: ' + page);
+							if (total <= page * 5) {
+								document.getElementById('moreList').style.display = 'none';
+							} else {
+								document.getElementById('moreList').style.display = 'block';
+							}
+
+							//replyList의 개수만큼 태그를 문자열 형태로 직접 그림.
+							//중간에 들어갈 글쓴이, 날짜 , 댓글 내용은 목록에서 꺼내서 표현.
+							for (let i = 0; i < replyList.length; i++) {
+								console.log("deeeeeeeee: "+replyList[0].fileLoca);
+							
+								strAdd +=
+									`<div class='reply-wrap'>
+	                            
+	                            <div class='reply-content'>
+	                                <div class='reply-group'>
+										<img src='${pageContext.request.contextPath}/user/display/`+replyList[i].fileLoca+`/`+replyList[i].fileName+`'>
+	                                    <strong class='left'>` + replyList[i].userNick + `</strong> 
+	                                    <small class='left'>` + (replyList[i].updateDate != null ? parseTime(replyList[i]
+										.updateDate) + '(수정됨)' : parseTime(replyList[i].replyDate)) + `</small>
+	                                    <a href='` + replyList[i].rno + `' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a> &nbsp
+	                                    <a href='` + replyList[i].rno + `' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>   
+										<div id="hiddenMan" style = 'opacity:0'>` + replyList[i].userId + `</div>
+										                                	
+	                                </div>
+									<p class='clearfix'>` + replyList[i].reply + `</p> 
+	                                <form class='reply-modify' style='display:none'>
+										<input type="text" class='modtext' '>
+										<a href="" class="right modModBtn">수정하기</a>
+									</form>	
+	                            </div>
+	                        </div>`;
+							}
 
 						//id가 replyList라는 div 영역에 문자열 형식으로 모든 댓글을 추가.
 						document.getElementById('replyList').insertAdjacentHTML('beforeend', strAdd);
@@ -991,4 +1009,4 @@
 
 				return time;
 			}
-		</Script>
+		</Script> 
