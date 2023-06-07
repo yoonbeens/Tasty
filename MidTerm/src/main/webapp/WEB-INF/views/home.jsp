@@ -10,8 +10,8 @@
 <title>시작화면</title>
 
 <!-- reset.css -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+<!-- <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"> -->
 
 <link href="${pageContext.request.contextPath}/css/home.css"
 	rel="stylesheet">
@@ -33,13 +33,19 @@
  */
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
 
+
+*{
+font-family: 'Gowun Dodum', sans-serif;
+}
+
+
 #navbarSupportedContent{
 	position: relative;
 }
 
 .ml-auto{
 	position: absolute;
-	right: 80px;
+	right: 110px;
 	width: 250px;
 }
 

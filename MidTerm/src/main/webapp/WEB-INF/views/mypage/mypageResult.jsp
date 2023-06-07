@@ -35,6 +35,17 @@
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');	
 	
+	.ml-auto{
+		position: absolute;
+		left: 960px;	
+		width: 250px;
+		bottom: 1px;
+	}
+		
+	.container-fluid{
+		position: relative;
+	}
+	
 	 	
 	</style>
 
@@ -196,6 +207,20 @@
 	<nav class="navbar bg-success fixed-top ">
 		<div class="container-fluid">
 			<a class="navbar-brand text-light" href="${pageContext.request.contextPath}/">Tasty Friend</a>
+
+
+			<div class="ml-auto">
+					<form class="form-inline ml-auto"
+						action="${pageContext.request.contextPath}/userrecipe/search"
+						method="POST">
+						<div class="input-group">
+							<input type="text" class="form-control" name="query"
+								placeholder="검색어를 입력하세요">
+							<button type="submit" class="btn btn-outline-light">검색</button>
+						</div>
+					</form>
+				</div>
+
 
 
 			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"

@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 #main-con{
    box-sizing: border-box;
    width: 100%;
@@ -279,6 +281,9 @@ button {
 	font-family: 'Gowun Dodum', sans-serif;
 } 
 
+.btn {
+	left: -50px;	
+}
 
 
 
@@ -474,6 +479,22 @@ form.sign-up-form {
   height: 37px;
   margin-bottom: 2rem;
 }
+
+
+/* .container-fluid{
+	position: relative;
+}
+
+.input-group{
+	position: absolute;
+	right: 30px;
+} */
+
+
+
+
+
+
 
 .input-field {
   position: absolute;

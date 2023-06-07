@@ -25,7 +25,13 @@
 <link href="${pageContext.request.contextPath}/css/mainResult.css"
 	rel="stylesheet">
 
+
+
 	<style type="text/css">
+    
+    *{
+	font-family: 'Gowun Dodum', sans-serif;
+}
 		@import
 			url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap")
 			;
@@ -587,8 +593,7 @@
 		)
 		;
 		
-		
-		
+
 					
 		}
 		}

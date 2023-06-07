@@ -5,6 +5,16 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
+
+*{
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
+
+
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -12,6 +22,7 @@ html {
 }
 body {
   margin: 0;
+  
 }
 article,
 aside,
@@ -115,7 +126,7 @@ optgroup,
 select,
 textarea {
   margin: 0;
-  font: inherit;
+  /* font: inherit; */
   color: inherit;
 }
 button {
@@ -1084,7 +1095,7 @@ input,
 button,
 select,
 textarea {
-  font-family: inherit;
+  /* font-family: inherit; */
   font-size: inherit;
   line-height: inherit;
 }
@@ -3648,12 +3659,12 @@ legend + * {
 }
 
 ::-webkit-file-upload-button {
-  font: inherit;
+  /* font: inherit; */
   -webkit-appearance: button;
 }
 
 ::file-selector-button {
-  font: inherit;
+  /* font: inherit; */
   -webkit-appearance: button;
 }
 
@@ -5728,7 +5739,15 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
+  
 }
+
+*{
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
+
+
 .input-group > .form-control,
 .input-group > .form-select,
 .input-group > .form-floating {
@@ -6911,6 +6930,8 @@ textarea.form-control-lg {
   position: relative;
   display: table;
   border-collapse: separate;
+  
+  
 }
 .input-group[class*="col-"] {
   float: none;
@@ -10147,7 +10168,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 12px;
   font-weight: normal;
   line-height: 1.4;
@@ -10255,7 +10276,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -11299,7 +11320,7 @@ button.close {
   display: block;
   padding: var(--bs-tooltip-arrow-height);
   margin: var(--bs-tooltip-margin);
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -11409,7 +11430,7 @@ button.close {
   z-index: var(--bs-popover-zindex);
   display: block;
   max-width: var(--bs-popover-max-width);
-  font-family: var(--bs-font-sans-serif);
+  /* font-family: var(--bs-font-sans-serif); */
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -11696,7 +11717,7 @@ button.close {
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  font-family: serif;
+  /* font-family: serif; */
   line-height: 1;
 }
 .carousel-control .icon-prev:before {
@@ -14197,7 +14218,7 @@ button.close {
 }
 
 .font-monospace {
-  font-family: var(--bs-font-monospace) !important;
+  /* font-family: var(--bs-font-monospace) !important; */
 }
 
 .fs-1 {
