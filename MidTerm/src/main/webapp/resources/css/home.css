@@ -1,7 +1,9 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
 
-
-
+*{
+	font-family: 'Gowun Dodum', sans-serif;	
+}
 
 
 

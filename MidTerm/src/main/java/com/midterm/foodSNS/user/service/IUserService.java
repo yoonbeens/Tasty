@@ -41,5 +41,13 @@ public interface IUserService {
 		void profilemodify(MusersVO vo, MultipartFile file);
 		
 		MusersVO userInfo(@Param("id")String id);
+
+		
+		
+		
+
+		
+		
+		
 	
 }

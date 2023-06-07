@@ -23,9 +23,6 @@ public interface IUserMapper {
 	//회원 정보 얻어오기
 	MusersVO getInfo(MusersVO vo);
 	
-	
-	
-	
 	//회원 정보 탈퇴
 	void userDelete(MusersVO vo);
 	

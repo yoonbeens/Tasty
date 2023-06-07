@@ -32,6 +32,7 @@ public class UserLoginSuccessHandler implements HandlerInterceptor{
 			MusersVO vo = (MusersVO) map.get("user");
 			log.info("인터셉터 내부에서 user 확인: " + vo.toString());
 			
+			
 			if(vo.getUserId() != null) { //로그인 성공
 				//로그인 성공한 회원에게 세션 데이터를 생성해서 로그인 유지를 하게 해 줌.				
 				HttpSession session = request.getSession();
@@ -42,7 +43,14 @@ public class UserLoginSuccessHandler implements HandlerInterceptor{
 			} else { //vo == null -> 로그인 실패
 				modelAndView.addObject("msg", "loginFail");
 			}
-			
+			 
 		}
 	}
 }
+
+
+
+
+
+
+

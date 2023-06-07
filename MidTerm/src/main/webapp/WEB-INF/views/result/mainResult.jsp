@@ -25,7 +25,6 @@
 <link href="${pageContext.request.contextPath}/css/mainResult.css"
 	rel="stylesheet">
 
-<style type="text/css"> 
 
 <style type="text/css"> 
 
@@ -33,7 +32,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
 
 
-
+*{
+	font-family: 'Gowun Dodum', sans-serif;
+}
  
 @font-face {
 /* 	font-family: 'LINESeedKR-Bd';
@@ -60,17 +61,25 @@ body, input {
 
 .ml-auto{
 	position: absolute;
-	right: 80px;
+	right: 170px;
 	width: 1000px;
 }
 
 .form-control{
 	height: 38px;
 	position: absolute;
+	width: 200px;
 	top: 10px;
+	left: -50px;
 }
 
 
+
+
+.btn-outline-light{
+	position: absolute;
+	left: -50px;
+}
 
 
 
@@ -264,6 +273,11 @@ label {
 	margin-bottom: 2rem;
 	transition: 0.3s;
 }
+
+
+
+
+
 
 .sign-btn:hover {
 	background-color: #8371fd;

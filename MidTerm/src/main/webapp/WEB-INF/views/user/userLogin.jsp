@@ -94,9 +94,16 @@ h2 {
 	outline: none;
 }
 
-.input-group input:focus ~label, .input-group input:valid ~label {
+ .input-group input:focus ~label, .input-group input:valid ~label {
 	top: -5px;
-}
+	transition: top 0.3s ease-in-out;
+} 
+
+
+
+
+
+
 
 .remember {
 	margin: -5px 0 15px 5px;
@@ -282,7 +289,7 @@ h2 {
 	<!-- 로그인 -->
 	<div class="wrapper">
 		<div class="form-wrapper sign-in">
-			<form name="LoginForm" method="post">
+			<form name="LoginForm" method="post" action="${pageContext.request.contextPath}/user/userLogin">
 				<h2>Sign In</h2>
 				<div class="input-group">
 					<input type="text" id="email" name="userId" required> <label
@@ -298,6 +305,8 @@ h2 {
 					<label><input type="checkbox" id="remember">Remember me</label>
 				</div>
 				<button type="submit" id="loginBtn">Sign In</button>
+				
+				
 				<div class="signUp-link">
 					<div class="col-lg-12 text-center mt-3">
 						<button type="button" id="kakaoBtn"
