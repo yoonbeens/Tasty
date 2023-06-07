@@ -2037,7 +2037,80 @@ button {
 		// document.getElementById('main').addEventListener('click', e => {
 		// 	if (e.target.matches('.boxbox2 img')) {
 
-				
+
+			document.getElementById('main-con').addEventListener('click', e => {
+				console.log('클릭됐니?')
+				if (e.target.matches('.boxbox img')) {
+					/* const faNum = e.target.dataset.fanum; */
+					const userId = e.target.dataset.userid;
+					const cooknum = e.target.dataset.cooknum;
+
+					/* console.log(faNum); */
+					console.log(userId);
+					console.log(cooknum);
+
+
+
+					//레시피 상세정보 불러오기
+					fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
+						.then(res => res.json())
+						.then(recipe => {
+							console.log(recipe);
+							document.getElementById('foodname').textContent = recipe.foodname;
+							document.getElementById('ingredient').textContent = recipe.ingredient;
+							document.getElementById('tip').textContent = recipe.tip;
+							document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
+							document.getElementById('minutes').textContent = recipe.cookTime;
+							
+
+							var min = recipe.cookTime;
+
+							total =  min * 60;
+							forCount = total;
+							total = total + "s";
+							var realMin = min * 1;
+
+							if (total !== "0s") {
+								document.getElementById("minutes").innerHTML = realMin;
+								document.body.style.setProperty("--timerTime", total);
+							}
+
+							if (realMin === 1) {
+								document.getElementById("title").innerHTML = "1 minute";
+							} else {
+								document.getElementById("title").innerHTML = realMin + " minutes";
+							}
+
+							if (recipe.text1 !== '') {
+								document.getElementById(`text1`).textContent = recipe.text1;
+							}
+							if (recipe.img1 !== '') {
+								document.getElementById(`img1`).setAttribute('src', recipe.img1);
+							}
+							if (recipe.text2 !== '') {
+								document.getElementById(`text2`).textContent = recipe.text2;
+							}
+							if (recipe.img2 !== '') {
+								document.getElementById(`img2`).setAttribute('src', recipe.img2);
+							}
+							if (recipe.text3 !== '') {
+								document.getElementById(`text3`).textContent = recipe.text3;
+							}
+							if (recipe.img3 !== '') {
+								document.getElementById(`img3`).setAttribute('src', recipe.img3);
+							}
+							if (recipe.text4 !== '') {
+								document.getElementById(`text4`).textContent = recipe.text4;
+							}
+							if (recipe.img4 !== '') {
+								document.getElementById(`img4`).setAttribute('src', recipe.img4);
+							}
+							document.getElementById('likenum').dataset.cooknum = recipe.cooknum; // like에 레시피 번호 저장
+						});
+
+					document.getElementById('mainDiv').style.display = 'block';
+					getlike(cooknum);
+
 
 
 

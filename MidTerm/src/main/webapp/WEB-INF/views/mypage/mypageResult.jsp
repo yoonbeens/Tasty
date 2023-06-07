@@ -370,8 +370,10 @@
 						<button id="modifyTextbtn" type="button" class="btn btn-success">Modify</button>
 					</div>
 					<div class="likeBox">
+						<div class="placement">
+					        <div class="heart" id="likeBtn"></div>
+					  	</div>
 						<div id="likenum"></div>
-						<button type="button" id="likeBtn">좋아요</button>
 					</div>
 
 					<div class="replyBox">
@@ -712,7 +714,7 @@
 					.then(res => res.json())
 					.then(like => {
 						console.log(like);
-						document.getElementById('likenum').textContent = '이 게시글을 ' + like + '명이 좋아합니다';
+						document.getElementById('likenum').textContent = '이 게시글을 ' + like + '명이 좋아합니다.';
 					});
 			}
 			//좋아요 버튼 클릭
@@ -738,9 +740,9 @@
 						document.getElementById('likenum').textContent = data.likenum;
 						console.log(data.userId);
 						if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
-							document.getElementById('likeBtn').style.backgroundColor = 'blue';
+							document.querySelector('.heart').classList.add("is-active");
 						} else {
-							document.getElementById('likeBtn').style.backgroundColor = '#fff';
+							document.querySelector('.heart').classList.remove("is-active");
 						}
 						getlike(faNum);
 					});

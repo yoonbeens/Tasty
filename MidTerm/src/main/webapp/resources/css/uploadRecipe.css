@@ -1,0 +1,23 @@
+.margin-top.container{
+    margin-top: 5%;
+}
+
+#submitBtn {
+	border-radius: 5px;
+	border-color: #2ebc4f;
+    background-color: #2ebc4f;
+    color: #fff;
+    height: 2.5em;
+    box-shadow: none;
+}
+
+label.title-style {
+    font-size: 1.5em;
+    color: #02330e;
+}
+
+label.content-style {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #02330e;
+}

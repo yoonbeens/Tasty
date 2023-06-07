@@ -349,9 +349,12 @@
 					</textarea>
 						<button id="modifyTextbtn" type="button" class="btn btn-success">Modify</button>
 					</div>
-					<div class="likeBox"></div>
-					<div id="likenum"></div>
-					<button type="button" id="likeBtn">좋아요</button>
+					<div class="likeBox">
+						<div class="placement">
+					        <div class="heart" id="likeBtn"></div>
+					  	</div>
+						<div id="likenum"></div>
+					</div>
 					<div class="replyBox">
 
 
@@ -721,9 +724,9 @@
 						document.getElementById('likenum').textContent = data.likenum;
 						console.log(data.userId);
 						if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
-							document.getElementById('likeBtn').style.backgroundColor = 'blue';
+							document.querySelector('.heart').classList.add("is-active");
 						} else {
-							document.getElementById('likeBtn').style.backgroundColor = '#fff';
+							document.querySelector('.heart').classList.remove("is-active");
 						}
 						getlike(faNum);
 					});
