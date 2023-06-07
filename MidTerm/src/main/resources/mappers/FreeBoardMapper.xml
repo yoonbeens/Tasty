@@ -31,12 +31,12 @@
 	
 	<insert id="registVideo">
 	INSERT INTO video
-	(upload_path,file_loca,file_name,file_real_name)
-	VALUES(#{uploadPath},#{fileLoca},#{fileName},#{fileRealName})
+	(user_id,upload_path,file_loca,file_name,file_real_name)
+	VALUES(#{userId},#{uploadPath},#{fileLoca},#{fileName},#{fileRealName})
 	</insert>
 	
-	<select id="getVideo" resultType="articleImg">
-	select * from video
+	<select id="getVideo" resultType="shorts">
+	select * from video where user_id = #{userId};
 	</select>
 	
 	

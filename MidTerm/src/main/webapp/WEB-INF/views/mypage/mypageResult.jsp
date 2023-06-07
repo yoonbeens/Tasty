@@ -164,19 +164,22 @@
 			<div id="profile-img-con">
 				<img
 					src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
-					alt="default" id="profile-img">
+					alt="default" id="profile-img" data-bs-toggle="modal" data-bs-target="#short">
 			</div>
 			<div class="profileWrapper">
 				<div id="simpleProfile">
 					<h1>${login.userId}</h1>
 					<a href="${pageContext.request.contextPath}/user/userProfileModify"
-						id="promodify">프로필수정</a>
+						id="promodify" >프로필수정</a>
 					<h3>${login.userNick}</h3>
 					<h5>${login.message}</h5>
 				</div>
 				<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
+					</li>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="${pageContext.request.contextPath}/freeboard/shortRegist/${user.userId}">Shorts</a>
 					</li>
 
 					<li class="nav-item"><a class="nav-link active"
@@ -248,6 +251,18 @@
 	</nav>
 	<footer> copyright © TastyFriends. all rights reserved </footer>
 </body>
+
+
+<!-- Short Modal -->
+<div class="modal fade" id="short" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-sm">
+		<div class="modal-content">
+		
+			
+		</div>
+	</div>
+</div>
 
 
 
@@ -473,7 +488,22 @@
 		</div>
 
 		<Script>
+			
+			document.getElementById('profile-img-con').addEventListener('click', e => {
+				const userId = '${user.userId}';
+				console.log(userId+"클릭했다!!!");
 
+				fetch('${pageContext.request.contextPath}/freeboard/shortGet/'+userId).then(res => res.json())
+						.then(data => {
+
+							console.log("성공??");
+							console.log(data);
+						
+
+
+
+
+			});
 			
 	document.getElementById('randomImg').onclick = () => {
 		document.getElementById('ranform').submit();

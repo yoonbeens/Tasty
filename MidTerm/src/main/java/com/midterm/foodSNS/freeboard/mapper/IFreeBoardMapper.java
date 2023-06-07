@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
+import com.midterm.foodSNS.command.MshortsVO;
 
 public interface IFreeBoardMapper {
 	
@@ -27,9 +28,9 @@ public interface IFreeBoardMapper {
 
 	void update(Map<String, Object> map);
 
-	void registVideo(MfreeboardImgVO ivo);
+	void registVideo(MshortsVO ivo);
 
-	MfreeboardImgVO getVideo(int i);
+	List<MshortsVO> getVideo(String userId);
 	
 	
 

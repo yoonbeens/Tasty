@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
+import com.midterm.foodSNS.command.MshortsVO;
 import com.midterm.foodSNS.util.PageVO;
 
 public interface IFreeBoardService {
@@ -30,9 +31,9 @@ public interface IFreeBoardService {
 
 	List<MfreeboardImgVO> getCarousel(int faNum );
 
-	void registVideo(MfreeboardImgVO ivo, List<MultipartFile> file);
+	void registVideo(MshortsVO ivo, List<MultipartFile> file);
 
-	MfreeboardImgVO getVideo(int i);
+	List<MshortsVO> getVideo(String userId);
 
 	
 

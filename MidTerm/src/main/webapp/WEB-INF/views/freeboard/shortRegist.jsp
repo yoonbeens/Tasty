@@ -22,13 +22,13 @@
 
     <div class="container">
 
-        <form action="${pageContext.request.contextPath}/freeboard/test2" method="post" id="form"
+        <form action="${pageContext.request.contextPath}/freeboard/shortRegist2" method="post" id="form"
             enctype="multipart/form-data">
 
             <div id="attr_area" data-placeholder=""></div>
             <label for="file">이미지업로드</label>
             <input multiple="multiple" type="file" name="file" id="file">
-            <input type="hidden" name="userId" value="${login.userId}">
+            <input type="hidden" name="userId" value="${user}">
             <table class="table">
                 <tbody class="t-control">
                     <tr>
@@ -157,7 +157,7 @@
                         alert("1개이상의 이미지를 등록해야합니다.");
                         return;
                     } else {
-                        alert("게시물이 등록되었습니다.");
+                        alert("영상이 등록되었습니다.");
                         document.getElementById('form').submit();
                     }
                 } else {

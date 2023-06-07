@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
+import com.midterm.foodSNS.command.MshortsVO;
 import com.midterm.foodSNS.freeboard.mapper.IFreeBoardMapper;
 import com.midterm.foodSNS.util.PageVO;
 
@@ -122,7 +123,7 @@ public class FreeBoardService implements IFreeBoardService {
 
 
 	@Override
-	public void registVideo(MfreeboardImgVO ivo, List<MultipartFile> file) {
+	public void registVideo(MshortsVO ivo, List<MultipartFile> file) {
 		// 날짜별로 폴더를 생성해서 관리할 예정입니다.
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -176,9 +177,9 @@ public class FreeBoardService implements IFreeBoardService {
 
 
 	@Override
-	public MfreeboardImgVO getVideo(int i) {
-		MfreeboardImgVO vo=mapper.getVideo(i);
-		return vo;
+	public List<MshortsVO> getVideo(String userId) {
+		
+		return mapper.getVideo(userId);
 		
 		
 	}

@@ -1,5 +1,6 @@
 package com.midterm.foodSNS.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.midterm.foodSNS.command.MfreeboardArticleVO;
 import com.midterm.foodSNS.command.MfreeboardImgVO;
+import com.midterm.foodSNS.command.MshortsVO;
 import com.midterm.foodSNS.freeboard.service.IFreeBoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,24 +34,28 @@ public class FreeBoardController {
 	@Autowired
 	private IFreeBoardService service;
 	
-	@GetMapping("/test")
-	public String test() {
-		return "freeboard/test";	
+	@GetMapping("/shortRegist/{userId}")
+	public String shortRegist(@PathVariable String userId,Model model) {
+		log.info(userId);
+		model.addAttribute("user",userId);
+		return "freeboard/shortRegist";	
 	}
 	
-	@GetMapping("/test2")
-	public String test(@RequestParam("file")List<MultipartFile> file,MfreeboardImgVO ivo) {
+	//쇼츠처리
+	@PostMapping("/shortRegist2")
+	public String shortRegist2(@RequestParam("file")List<MultipartFile> file,String userId,MshortsVO ivo) {
+		ivo.setUserId(userId);
 		service.registVideo(ivo,file);
-		
-		return "freeboard/test2";	
+		return "redirect:/mypage/mypageResult";	
 	}
-	@PostMapping("/test2")
-	public String test2(MfreeboardImgVO ivo,Model model) {
-		int i=1;
-		ivo= service.getVideo(i);
-		model.addAttribute("video",ivo);
+	
+	@ResponseBody
+	@GetMapping("/shortGet/{userId}")
+	public List<MshortsVO>  shortGet(@PathVariable String userId, MshortsVO svo,Model model) {
+		List<MshortsVO> listSvo = new ArrayList<>();
+		listSvo= service.getVideo(userId);	
 		
-		return "freeboard/test2";	
+		return listSvo;	
 	}
 	
 	//등록페이지이동

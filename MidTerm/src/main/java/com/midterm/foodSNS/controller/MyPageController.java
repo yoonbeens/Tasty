@@ -50,6 +50,9 @@ public class MyPageController {
 		MusersVO vo = new MusersVO();
 		vo = (MusersVO) session.getAttribute("login");
 		
+		MusersVO user = new MusersVO();
+		user=userService.userInfo(vo.getUserId());	
+		
 		List<MfreeboardArticleVO> articleList = new ArrayList<>();		
 		articleList = service.getArticleList(vo.getUserId());
 		
@@ -89,6 +92,7 @@ public class MyPageController {
 		model.addAttribute("countFollower", countFollower);
 		model.addAttribute("countFollowing", countFollowing);
 		model.addAttribute("random", randomRecipe);
+		model.addAttribute("user",user);
 				
 	
 		
