@@ -24,14 +24,17 @@
 <link href="${pageContext.request.contextPath}/css/mainResult.css"
 	rel="stylesheet">
 
-<style type="text/css">
-@import
-	url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap")
-	;
+<style type="text/css"> 
 
+
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
+
+
+
+ 
 @font-face {
-	font-family: 'LINESeedKR-Bd';
-	src:
+/* 	font-family: 'LINESeedKR-Bd';
+ */	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2')
 		format('woff2');
 	font-weight: 700;
@@ -45,8 +48,32 @@
 }
 
 body, input {
-	font-family: "Poppins", sans-serif;
+/* 	font-family: "Poppins", sans-serif;
+ */}
+
+.container-fluid {
+	position: relative;
 }
+
+.ml-auto{
+	position: absolute;
+	right: 80px;
+	width: 1000px;
+}
+
+.form-control{
+	height: 38px;
+	position: absolute;
+	top: 10px;
+}
+
+
+
+
+
+
+
+
 
 #superCon {
 	position: relative;
@@ -122,7 +149,7 @@ main {
 }
 
 form {
-	max-width: 260px;
+	max-width: 250px;
 	width: 100%;
 	margin: 0 auto;
 	height: 100%;
@@ -366,8 +393,8 @@ main.sign-up-mode .carousel {
 	transition: 0.5s;
 	text-indent: 30px;
 	padding: 50px;
-	font-family: 'LINESeedKR-Bd';
-	color: #4a4a4a;
+/* 	font-family: 'LINESeedKR-Bd';
+ */	color: #4a4a4a;
 	position: absolute;
 	top: 50%;
 	left: 1%;
@@ -543,8 +570,8 @@ body {
 	justify-content: center;
 	transform: scale(1);
 	transition-duration: 0.5s;
-	font-family: "ROKAFSlabSerifBold";
-	font-size: 20pt;
+/* 	font-family: "ROKAFSlabSerifBold";
+ */	font-size: 20pt;
 	color: darkgrey;
 	/* margin-bottom: 30px; */
 	animation-name: text;
@@ -571,27 +598,55 @@ keyframes text { 0% {
 }
 
 100
+
+
  
+
+
 %
 {
 color
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 var
+
+
  
+
+
 (
+
+
+
+
 -
+
+
  
+
+
 -clockColor
+
+
+
+
 )
+
+
+
+
 ;
-
-
-
-			
 }
 }
 
@@ -662,25 +717,49 @@ keyframes time { 0% {
 }
 
 100
+
+
  
+
+
 %
 {
 transform
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 rotate
+
+
  
+
+
 (
+
+
+
+
 360deg
+
+
+
+
 )
+
+
+
+
 ;
-
-
-
-			
 }
 }
 @
@@ -691,118 +770,250 @@ keyframes mask { 0% {
 }
 
 50
+
+
  
+
+
 %
 {
 background
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 #eee
+
+
+
+
 ;
 /* Background colour */
-
-
-
-				
 transform
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 rotate
+
+
  
+
+
 (
+
+
+
+
 -180deg
+
+
+
+
 )
+
+
+
+
 ;
-
-
-
-			
 }
 50
+
+
  
+
+
 .01
+
+
  
+
+
 %
 {
 background
+
+
+
+
 :
 
 
+
+
 					
+
+
 var
+
+
  
+
+
 (
+
+
+
+
 -
+
+
  
+
+
 -clockColor
+
+
+
+
 )
+
+
+
+
 ;
 /* Foreground colour */
-
-
-
-				
 transform
+
+
+
+
 :
 
 
+
+
 					
+
+
 rotate
+
+
  
+
+
 (
+
+
+
+
 0deg
+
+
+
+
 )
+
+
+
+
 ;
-
-
-
-			
 }
 100
+
+
  
+
+
 %
 {
 background
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 var
+
+
  
+
+
 (
+
+
+
+
 -
+
+
  
+
+
 -clockColor
+
+
+
+
 )
+
+
+
+
 ;
 /* Foreground colour */
-
-
-
-				
 transform
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 rotate
+
+
  
+
+
 (
+
+
+
+
 -180deg
+
+
+
+
 )
+
+
+
+
 ;
-
-
-
-			
 }
 }
 
@@ -891,8 +1102,8 @@ input[type="color"] {
 	border: none;
 	display: inline-block;
 	border-radius: 15px;
-	font-family: "paybooc-Light", sans-serif;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/* 	font-family: "paybooc-Light", sans-serif;
+ */	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
@@ -984,26 +1195,38 @@ keyframes shake { 0% {
 }
 
 100
+
+
  
+
+
 %
 {
 margin-top
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 20px
+
+
+
+
 ;
-
-
-
-			
 }
 }
 #speech {
-	font-family: Cafe24Ohsquareair;
-	position: absolute;
+/* 	font-family: Cafe24Ohsquareair;
+ */	position: absolute;
 	margin-bottom: 600px;
 	visibility: visible;
 	animation: shake;
@@ -1019,17 +1242,33 @@ keyframes showToast { 20% {
 }
 
 90
+
+
  
+
+
 %
 {
 opacity
+
+
+
+
 :
 
 
 
+
+
 					
+
+
 0
+
+
  
+
+
 %;
 }
 }
@@ -1045,8 +1284,8 @@ opacity
 	z-index: 9999;
 	background-color: #383838;
 	color: #f0f0f0;
-	font-family: Calibri;
-	font-size: 15px;
+/* 	font-family: Calibri;
+ */	font-size: 15px;
 	padding: 10px;
 	text-align: center;
 	border-radius: 5px;
@@ -1070,8 +1309,8 @@ button {
 	display: none;
 	padding: 15px 30px;
 	border-radius: 15px;
-	font-family: "paybooc-Light", sans-serif;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/* 	font-family: "paybooc-Light", sans-serif;
+ */	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
@@ -1091,8 +1330,8 @@ button {
 	display: inline-block;
 	padding: 15px 30px;
 	border-radius: 15px;
-	font-family: "paybooc-Light", sans-serif;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/* 	font-family: "paybooc-Light", sans-serif;
+ */	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
@@ -1116,8 +1355,8 @@ button {
 	border: none;
 	display: inline-block;
 	border-radius: 15px;
-	font-family: "paybooc-Light", sans-serif;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/* 	font-family: "paybooc-Light", sans-serif;
+ */	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
@@ -1165,8 +1404,8 @@ button {
 }
 
 .popupText {
-	font-family: "Cafe24Ohsquareair";
-}
+/* 	font-family: "Cafe24Ohsquareair";
+ */}
 
 /* 반응형 미디어쿼리 */
 @media ( max-width : 520px) {
@@ -1267,15 +1506,16 @@ button {
 						<button type="submit" id="recipe" class="btn btn-success">레시피
 							다시 추천!</button>
 					</div>
-					</form>
-						<img id='reImg' src="${pageContext.request.contextPath}/css/TastyFriend.png"
-						alt="로고">
-					
+				</form>
+				<img id='reImg'
+					src="${pageContext.request.contextPath}/css/TastyFriend.png"
+					alt="로고">
+
 			</div>
 
 
-			
-		
+
+
 			<div id="main">
 				<%
 				ArrayList<MRecipeVO> recipes = new ArrayList<>();
@@ -1373,7 +1613,7 @@ button {
 
 
 
-		<nav class="navbar bg-success fixed-top ">
+		<!--원본 <nav class="navbar bg-success fixed-top ">
 			<div class="container-fluid">
 				<a class="navbar-brand text-light" href="#">Tasty Friend</a>
 
@@ -1385,7 +1625,38 @@ button {
 
 				</div>
 			</div>
+		</nav> -->
+
+
+		<nav class="navbar bg-success fixed-top">
+			<div class="container-fluid">
+				<a class="navbar-brand text-light" href="#">Tasty Friend</a>
+
+				<div class="ml-auto">
+					<form class="form-inline ml-auto"
+						action="${pageContext.request.contextPath}/userrecipe/search"
+						method="POST">
+						<div class="input-group">
+							<input type="text" class="form-control" name="query"
+								placeholder="검색어를 입력하세요">
+							<button type="submit" class="btn btn-outline-light">검색</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
 		</nav>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1409,7 +1680,7 @@ button {
 
 								<div class="actual-form">
 									<div class="input-wrap">
-				
+
 										<label>재료 소개</label> <br> <br>
 										<div id="ingredient"></div>
 
@@ -1642,34 +1913,35 @@ button {
 		</div>
 
 
-<!-- Modal uesrRecipe-->
-<div class="modal fade" id="recipe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-xl modal-dialog-scrollable">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div id="urTitle">
+		<!-- Modal uesrRecipe-->
+		<div class="modal fade" id="recipe" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div id="urTitle">
 
-					<!--유저레시피 제목오는곳-->
-				</div>
-				
-				<div id="urWeather">
-					<!--검색 조건오는곳-->
-				</div>
-				
-				</div>
+							<!--유저레시피 제목오는곳-->
+						</div>
 
-				<div id="urContent">
-					<!--유저레시피 내용오는곳-->
+						<div id="urWeather">
+							<!--검색 조건오는곳-->
+						</div>
+
+					</div>
+
+					<div id="urContent">
+						<!--유저레시피 내용오는곳-->
+
+					</div>
 
 				</div>
-
 			</div>
 		</div>
 	</div>
-</div>
 
 
-		<Script>
+	<Script>
 	 (function recipbox() {
 		 	const recipebox = document.querySelectorAll('.myrecipebox');
 
@@ -2121,7 +2393,7 @@ button {
 		</Script>
 
 
-		<!-- superCon end-->
+	<!-- superCon end-->
 	</div>
 	<footer> copyright © TastyFriends. all rights reserved </footer>
 </body>

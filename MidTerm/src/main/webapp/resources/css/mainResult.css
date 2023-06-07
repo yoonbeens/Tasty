@@ -267,7 +267,23 @@ button {
    margin-top: -30px; */
 }
 
+
+
+ 
+*{
+	font-family: 'Gowun Dodum', sans-serif;
+} 
+
+
+
+
+
+
+
+
+
 #category {
+	
    width: 700px;
    height: 60px;
    position: absolute;
@@ -291,10 +307,10 @@ a {
 
 }
 
-   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-    @font-face {
-    font-family: 'LINESeedKR-Bd';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+/*    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+ */    @font-face {
+/*     font-family: 'LINESeedKR-Bd';
+ */    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
 }
@@ -310,8 +326,8 @@ a {
 
 body,
 input {
-  font-family: "Poppins", sans-serif;
-}
+/*   font-family: "Poppins", sans-serif;
+ */}
 
 #superCon {
   position: relative;
@@ -622,8 +638,8 @@ main.sign-up-mode .carousel {
   transition: 0.5s;
   text-indent: 30px;
   padding: 50px;
-  font-family: 'LINESeedKR-Bd';
-/*   position:  absolute;
+/*   font-family: 'LINESeedKR-Bd';
+ *//*   position:  absolute;
   top: 20%;
   left: 30%; */
   
@@ -818,8 +834,8 @@ body {
   transform: scale(1);
   transition-duration: 0.5s;
 
-  font-family: "ROKAFSlabSerifBold";
-  font-size: 20pt;
+/*   font-family: "ROKAFSlabSerifBold";
+ */  font-size: 20pt;
   color: darkgrey;
   /* margin-bottom: 30px; */
 
@@ -1029,8 +1045,8 @@ input[type="color"] {
   border: none;
   display: inline-block;
   border-radius: 15px;
-  font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/*   font-family: "paybooc-Light", sans-serif;
+ */  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   font-weight: 600;
   transition: 0.25s;
@@ -1130,8 +1146,8 @@ input::placeholder {
 }
 
 #speech {
-  font-family: Cafe24Ohsquareair;
-  position: absolute;
+/*   font-family: Cafe24Ohsquareair;
+ */  position: absolute;
 
   margin-bottom: 600px;
 
@@ -1166,8 +1182,8 @@ input::placeholder {
   z-index: 9999;
   background-color: #383838;
   color: #f0f0f0;
-  font-family: Calibri;
-  font-size: 15px;
+/*   font-family: Calibri;
+ */  font-size: 15px;
   padding: 10px;
   text-align: center;
   border-radius: 5px;
@@ -1194,8 +1210,8 @@ button {
   display: none;
   padding: 15px 30px;
   border-radius: 15px;
-  font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/*   font-family: "paybooc-Light", sans-serif;
+ */  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   font-weight: 600;
   transition: 0.25s;
@@ -1217,8 +1233,8 @@ button {
   display: inline-block;
   padding: 15px 30px;
   border-radius: 15px;
-  font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/*   font-family: "paybooc-Light", sans-serif;
+ */  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   font-weight: 600;
   transition: 0.25s;
@@ -1246,8 +1262,8 @@ button {
   border: none;
   display: inline-block;
   border-radius: 15px;
-  font-family: "paybooc-Light", sans-serif;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+/*   font-family: "paybooc-Light", sans-serif;
+ */  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   font-weight: 600;
   transition: 0.25s;
@@ -1297,8 +1313,8 @@ button {
 }
 
 .popupText {
-  font-family: "Cafe24Ohsquareair";
-}
+/*   font-family: "Cafe24Ohsquareair";
+ */}
 
 
 /* 반응형 미디어쿼리 */
