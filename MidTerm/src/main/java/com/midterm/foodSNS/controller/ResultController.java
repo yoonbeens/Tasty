@@ -77,18 +77,11 @@ public class ResultController {
 		}
 		
 		MSearchConditionVO vo = new MSearchConditionVO();
-//		if(weather.equals("Clear")) {
-//			weather = "맑음";
-//		}
-//		else if(weather.equals("Rain")) {
-//			weather = "비";
-//		}
-//		else if(weather.equals("Clouds")) {
-//			weather = "흐림";
-//		}
-//		else {
-//			weather = "흐림";
-//		} 
+		/*
+		 * if(weather.equals("Clear")) { weather = "맑음"; } else
+		 * if(weather.equals("Rain")) { weather = "비"; } else
+		 * if(weather.equals("Clouds")) { weather = "흐림"; } else { weather = "흐림"; }
+		 */
 		
 		
 		vo.setWeather(weather);
@@ -117,6 +110,7 @@ public class ResultController {
 		HttpSession session = request.getSession();
 		MusersVO uvo = new MusersVO();
 		uvo = (MusersVO) session.getAttribute("login");
+		
 		List<MusersVO> countFollower =new ArrayList<>();
 		countFollower =myservice.countFollower(uvo.getUserId());
 		

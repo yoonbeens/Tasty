@@ -52,6 +52,7 @@ footer {
 	border-right: 1px solid gainsboro;
 	padding: 20px;
 	padding-top: 40px;
+	position: relative;
 }
 
 
@@ -461,13 +462,15 @@ h5 {
 #random{
 	width: 20vw;
 	height: 50vh;
-	border: 1px solid green;
-	border-radius: 15px;
-	margin-top: 30%;
-	margin-left: 10%;
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	
-}	
+	border-radius: 15px;
+	position: absolute;
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	top: 27%;
+    right: 4%;
+}
+	
+
 #randomImg{
 	
 	width: 90%;
@@ -586,4 +589,7 @@ h5 {
 #hiddenMan{
 
 	height: 1px;
+}
+#userRecipe{
+	display: block;
 }

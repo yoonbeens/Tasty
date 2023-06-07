@@ -241,7 +241,7 @@
 					document.getElementById('todayWeather').textContent = "오늘의 날씨 : " +weather1 + "/" + ctemp.toFixed(2) + "°C";
 
 
-				})
+				});
 
 		})(); 
 
