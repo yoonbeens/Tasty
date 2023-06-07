@@ -17,7 +17,6 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,6 +30,18 @@
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');	
+	
+	 	
+	</style>
+
+
+
+
+
 </head>
 
 <body>
@@ -383,7 +394,7 @@
 													name="reply"></textarea>
 												<div class="reply-group">
 													<div class="reply-input">
-														<%-- <div class="reply-nick">${login.userNick}</div> --%>
+														<div class="reply-nick">${login.userNick}</div>
 														<input type="hidden" class="form-control" id="replyId"
 															placeholder="${login.userId}">
 													</div>
@@ -988,4 +999,4 @@
 
 				return time;
 			}
-		</Script>
+		</Script> 

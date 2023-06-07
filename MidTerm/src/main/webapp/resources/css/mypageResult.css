@@ -233,6 +233,14 @@ h5 {
 	color: darkgrey;
 }
 
+
+* {
+	 font-family: 'Gowun Dodum', sans-serif;
+}
+
+
+
+
 .modal-body {
 	box-sizing: border-box;
 	width: 100%;
@@ -464,12 +472,14 @@ h5 {
 	height: 50vh;
 	
 	border-radius: 15px;
+
 	position: absolute;
 	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	top: 27%;
     right: 4%;
 }
 	
+
 
 #randomImg{
 	

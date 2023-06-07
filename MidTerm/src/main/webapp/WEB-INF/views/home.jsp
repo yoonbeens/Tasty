@@ -27,6 +27,29 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+
+<style>
+/* @import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Geologica:wght@500&family=Noto+Sans+KR:wght@900&family=Open+Sans:ital,wght@1,300;1,500&family=Playfair:ital,wght@1,600&family=Rubik+Iso&family=Single+Day&display=swap');
+ */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
+
+#navbarSupportedContent{
+	position: relative;
+}
+
+.ml-auto{
+	position: absolute;
+	right: 80px;
+	width: 250px;
+}
+
+.form-control{
+	width: 1000px;
+}
+
+</style>
+
+
 </head>
 
 
@@ -118,9 +141,8 @@
 							href="${pageContext.request.contextPath}/user/userLogout"
 							id="logoutBtn">LogOut</a></li>
 
-
-						<li class="nav-item">
-							<form class="form-inline"
+						<div class="ml-auto">
+							<form class="form-inline ml-auto"
 								action="${pageContext.request.contextPath}/userrecipe/search"
 								method="POST">
 								<div class="input-group">
@@ -129,16 +151,12 @@
 									<button type="submit" class="btn btn-outline-light">검색</button>
 								</div>
 							</form>
-						</li>
+						</div>
 					</c:if>
 				</ul>
 			</div>
 		</div>
 	</nav>
-
-
-
-
 
 
 
@@ -173,8 +191,9 @@
 					<option value="흐림">흐림</option>
 					<option value="비">비</option>
 
-					 <option id="todayWeather"></option> 
-				</select> <select name="condition" class="form-select optionbox" aria-label="Default select example">
+					<option id="todayWeather"></option>
+				</select> <select name="condition" class="form-select optionbox"
+					aria-label="Default select example">
 
 					<option value="상태" selected>상태</option>
 					<option value="보통">보통</option>
