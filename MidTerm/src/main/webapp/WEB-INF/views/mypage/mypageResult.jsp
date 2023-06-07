@@ -67,7 +67,7 @@
 				Recipe</div>
 				
 				
-			<div id="random">
+			<div id="random" class="shadow p-3 mb-5 bg-body rounded">
 			
 			<div id="ranCom">
 			이런 <span class="strong">레시피</span> 는 어떠신가요?
@@ -153,8 +153,7 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}//result/mainResult">Find Recipe</a></li>
+					
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/mypage/mypageResult">My Page</a>
 					</li>
