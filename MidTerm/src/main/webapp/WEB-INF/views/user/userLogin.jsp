@@ -366,7 +366,7 @@ h2 {
 				<div class="input-group">
 					<input type="text" name="userId" class="form-control" id="userId"
 						required> 
-					<label for="id">아이디</label>
+					<label for="userId" id="idLabel">아이디</label>
 					
 				    <div class="input-group-addon">
 						<button type="button" id="idCheckBtn" class="w-btn-outline w-btn-indigo-outline">아이디중복체크</button>
@@ -487,6 +487,8 @@ h2 {
 					document.getElementById('userId').setAttribute('readonly', true);
 					document.getElementById('idCheckBtn').setAttribute('disabled', true);
 					document.getElementById('msgId').textContent = '사용 가능한 아이디 입니다.';
+					const label = document.getElementById('idLabel');
+					label.parentNode.removeChild(label);
 				} else { 
 					document.getElementById('msgId').textContent = '중복 된 아이디 입니다.';
 				}
