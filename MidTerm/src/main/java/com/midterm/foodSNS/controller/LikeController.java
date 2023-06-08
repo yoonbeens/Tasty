@@ -35,6 +35,7 @@ public class LikeController {
 	@ResponseBody
 	public LikeVO updateLike(@PathVariable int cooknum, @RequestBody LikeVO vo) {
 		service.updateLike(cooknum, vo);
+		log.info("유저 좋아요?:" + vo.getUserId());
 		return vo;
 	}
 	

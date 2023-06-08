@@ -13,56 +13,51 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<title>Bootstrap demo</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-<link href="${pageContext.request.contextPath}/css/mainResult.css"
-	rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<title>Bootstrap demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link href="${pageContext.request.contextPath}/css/mainResult.css" rel="stylesheet">
 	<style>
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');	
+		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
 	</style>
 
 
 
 	<style type="text/css">
-	
-    
-    *{
-	font-family: 'Gowun Dodum', sans-serif;
-}
-		@import
-			url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap")
-			;
-		
+		* {
+			font-family: 'Gowun Dodum', sans-serif;
+		}
+
+		@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
 		@font-face {
 			font-family: 'LINESeedKR-Bd';
 			src:
-				url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2')
-				format('woff2');
+				url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
 			font-weight: 700;
 			font-style: normal;
 		}
-		
-		*, *::before, *::after {
+
+		*,
+		*::before,
+		*::after {
 			padding: 0;
 			margin: 0;
 			box-sizing: border-box;
 		}
-		
-		body, input {
+
+		body,
+		input {
 			font-family: "Poppins", sans-serif;
 		}
-		
+
 		#superCon {
 			position: relative;
 		}
-		
+
 		#mainDiv {
 			width: 100%;
 			display: none;
@@ -72,7 +67,7 @@
 			transform: translate(-50%, -50%);
 			/* z-index: 9999; */
 		}
-		
+
 		main {
 			width: 100%;
 			min-height: 100vh;
@@ -83,7 +78,7 @@
 			align-items: center;
 			justify-content: center;
 		}
-		
+
 		#ingredient {
 			/* font-family: 'LINESeedKR-Bd'; */
 			font-weight: 100;
@@ -93,14 +88,14 @@
 			line-height: 2;
 			word-spacing: 5px;
 		}
-		
+
 		.blank {
 			width: auto;
 			height: 800px;
 			margin: 200px;
 			padding: 300px;
 		}
-		
+
 		.box {
 			position: relative;
 			width: 100%;
@@ -110,7 +105,7 @@
 			border-radius: 3.3rem;
 			box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
 		}
-		
+
 		.inner-box {
 			position: absolute;
 			width: calc(100% - 4.1rem);
@@ -119,7 +114,7 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
-		
+
 		.forms-wrap {
 			position: absolute;
 			height: 100%;
@@ -131,7 +126,7 @@
 			grid-template-rows: 1fr;
 			transition: 0.8s ease-in-out;
 		}
-		
+
 		form {
 			max-width: 260px;
 			width: 100%;
@@ -144,42 +139,42 @@
 			grid-row: 1/2;
 			transition: opacity 0.02s 0.4s;
 		}
-		
+
 		form.sign-up-form {
 			opacity: 0;
 			pointer-events: none;
 		}
-		
+
 		.logo {
 			display: flex;
 			align-items: center;
 		}
-		
+
 		.logo img {
 			width: 27px;
 			margin-right: 0.3rem;
 		}
-		
+
 		.logo h4 {
 			font-size: 1.1rem;
 			margin-top: -9px;
 			letter-spacing: -0.5px;
 			color: #151111;
 		}
-		
+
 		.heading h2 {
 			font-size: 2.1rem;
 			font-weight: 600;
 			color: #151111;
 		}
-		
+
 		.heading h6 {
 			color: #9f9f9f;
 			font-weight: 400;
 			font-size: 1rem;
 			display: inline;
 		}
-		
+
 		.toggle {
 			color: #151111;
 			text-decoration: none;
@@ -187,17 +182,17 @@
 			font-weight: 500;
 			transition: 0.3s;
 		}
-		
+
 		.toggle:hover {
 			color: #8371fd;
 		}
-		
+
 		.input-wrap {
 			position: relative;
 			height: 37px;
 			/* margin-bottom: 2rem; */
 		}
-		
+
 		.input-field {
 			position: absolute;
 			width: 100%;
@@ -211,7 +206,7 @@
 			color: #151111;
 			transition: 0.4s;
 		}
-		
+
 		label {
 			position: absolute;
 			left: 0;
@@ -222,16 +217,16 @@
 			pointer-events: none;
 			transition: 0.4s;
 		}
-		
+
 		.input-field.active {
 			border-bottom-color: #151111;
 		}
-		
+
 		.input-field.active+label {
 			font-size: 0.75rem;
 			top: -2px;
 		}
-		
+
 		.sign-btn {
 			display: inline-block;
 			width: 100%;
@@ -245,43 +240,43 @@
 			margin-bottom: 2rem;
 			transition: 0.3s;
 		}
-		
+
 		.sign-btn:hover {
 			background-color: #8371fd;
 		}
-		
+
 		.text {
 			color: black;
 			font-size: 0.7rem;
 		}
-		
+
 		.text a {
 			color: #bbb;
 			transition: 0.3s;
 		}
-		
+
 		.text a:hover {
 			color: #8371fd;
 		}
-		
+
 		main.sign-up-mode form.sign-in-form {
 			opacity: 0;
 			pointer-events: none;
 		}
-		
+
 		main.sign-up-mode form.sign-up-form {
 			opacity: 1;
 			pointer-events: all;
 		}
-		
+
 		main.sign-up-mode .forms-wrap {
 			left: 55%;
 		}
-		
+
 		main.sign-up-mode .carousel {
 			left: 0%;
 		}
-		
+
 		.carousel {
 			position: absolute;
 			height: 100%;
@@ -296,7 +291,7 @@
 			overflow: hidden;
 			transition: 0.8s ease-in-out;
 		}
-		
+
 		.images-wrapper {
 			display: grid;
 			grid-template-columns: 1fr;
@@ -306,11 +301,11 @@
 			/* width: auto; */
 			/* height: 300px; */
 		}
-		
+
 		.images-wrapper img {
 			height: 300px;
 		}
-		
+
 		.image {
 			width: 100%;
 			grid-column: 1/2;
@@ -318,7 +313,7 @@
 			opacity: 0;
 			transition: opacity 0.3s, transform 0.5s;
 		}
-		
+
 		.text {
 			width: 100%;
 			grid-column: 1/2;
@@ -326,35 +321,35 @@
 			display: none;
 			transition: opacity 0.3s, transform 0.5s;
 		}
-		
+
 		.img-1 {
 			/* transform: translate(0, -50px); */
 			transform: scale(0.4, 0.5);
 		}
-		
+
 		.img-2 {
 			transform: scale(0.4, 0.5);
 		}
-		
+
 		.img-3 {
 			/* transform: scale(0.3) rotate(-20deg); */
 			transform: scale(0.4, 0.5);
 		}
-		
+
 		.img-4 {
 			transform: scale(0.4, 0.5);
 		}
-		
+
 		.image.show {
 			opacity: 1;
 			transform: none;
 		}
-		
+
 		.text.show {
 			display: block;
 			transform: none;
 		}
-		
+
 		.text-slider {
 			display: flex;
 			align-items: center;
@@ -362,13 +357,13 @@
 			flex-direction: column;
 			/* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6); */
 		}
-		
+
 		.text-wrap {
 			max-height: 6.6rem;
 			overflow: hidden;
 			margin-bottom: 2.5rem;
 		}
-		
+
 		.text-group {
 			display: flex;
 			flex-direction: column;
@@ -384,19 +379,19 @@
 			left: 1%;
 			letter-spacing: 0.2rem;
 		}
-		
+
 		.text-group h2 {
 			line-height: 2.2rem;
 			font-weight: normal;
 			font-size: 1.5rem;
 		}
-		
+
 		#fixedText h2 {
 			font-size: 2rem;
 			color: black;
 			z-index: 10000;
 		}
-		
+
 		.bullets {
 			display: flex;
 			align-items: center;
@@ -404,7 +399,7 @@
 			z-index: 100;
 			margin-top: 38%;
 		}
-		
+
 		.bullets span {
 			display: block;
 			width: 1rem;
@@ -415,19 +410,20 @@
 			cursor: pointer;
 			transition: 0.3s;
 		}
-		
+
 		.bullets span.active {
 			width: 2.1rem;
 			background-color: #151111;
 			border-radius: 1rem;
 		}
-		
-		@media ( max-width : 850px) {
+
+		@media (max-width : 850px) {
 			.box {
 				height: auto;
 				max-width: 550px;
 				overflow: hidden;
 			}
+
 			.inner-box {
 				position: static;
 				transform: none;
@@ -435,28 +431,35 @@
 				height: revert;
 				padding: 2rem;
 			}
+
 			.forms-wrap {
 				position: revert;
 				width: 100%;
 				height: auto;
 			}
+
 			form {
 				max-width: revert;
 				padding: 1.5rem 2.5rem 2rem;
 				transition: transform 0.8s ease-in-out, opacity 0.45s linear;
 			}
+
 			.heading {
 				margin: 2rem 0;
 			}
+
 			form.sign-up-form {
 				transform: translateX(100%);
 			}
+
 			main.sign-up-mode form.sign-in-form {
 				transform: translateX(-100%);
 			}
+
 			main.sign-up-mode form.sign-up-form {
 				transform: translateX(0%);
 			}
+
 			.carousel {
 				position: revert;
 				height: auto;
@@ -465,55 +468,63 @@
 				display: flex;
 				position: relative;
 			}
+
 			.images-wrapper {
 				display: none;
 			}
+
 			.text-slider {
 				width: 100%;
 			}
 		}
-		
-		@media ( max-width : 530px) {
+
+		@media (max-width : 530px) {
 			main {
 				padding: 1rem;
 			}
+
 			.box {
 				border-radius: 2rem;
 			}
+
 			.inner-box {
 				padding: 1rem;
 			}
+
 			.carousel {
 				padding: 1.5rem 1rem;
 				border-radius: 1.6rem;
 			}
+
 			.text-wrap {
 				margin-bottom: 1rem;
 			}
+
 			.text-group h2 {
 				font-size: 1.2rem;
 			}
+
 			form {
 				padding: 1rem 2rem 1.5rem;
 			}
 		}
-		
+
 		/* timer */
-		:root { 
+		:root {
 			-clockColor: #ff6e6e;
-			/* --bgColor: #c5e1ff; */ 
-			-timerTime: 180s; 
+			/* --bgColor: #c5e1ff; */
+			-timerTime: 180s;
 			-grPercent: 47.5%;
 		}
-		
+
 		#content {
 			display: flex;
 			align-items: center;
 			/* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
 		}
-		
+
 		/*폰트 인클루드*/
-		
+
 		/* @font-face {
 		  font-family: "ROKAFSlabSerifBold";
 		  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSlabSerifBold.woff")
@@ -565,43 +576,35 @@
 			animation-fill-mode: forwards;
 			cursor: pointer;
 		}
-		
+
 		#text:hover {
 			transition-duration: 0.5s;
 			transform: scale(1.2);
 		}
-		
+
 		#speechBubble {
 			animation: shake 0.3s linear 0s infinite alternate;
 			margin-top: 0;
 		}
-		
-		@keyframes text { 0% {
-			color: darkgrey;
-		}
-		
-		100%
-		{
-		color
-		:
-		
-		
-		
-							
-		var
-		 
-		(
-		-
-		 
-		-clockColor
-		)
-		;
-		
 
-					
+		@keyframes text {
+			0% {
+				color: darkgrey;
+			}
+
+			100% {
+				color:
+
+
+
+
+					var (- -clockColor);
+
+
+
+			}
 		}
-		}
-		
+
 		/* .clockBox {
 		  margin-top: 10px;
 		  margin-bottom: 50px;
@@ -623,8 +626,7 @@
 		  border: 1.5px solid rgba(255, 255, 255, 0.18);
 		} */
 		#timer {
-			background: -webkit-linear-gradient(left, var(- -clockColor)
-				var(- -grPercent), #eee 50%);
+			background: -webkit-linear-gradient(left, var(- -clockColor) var(- -grPercent), #eee 50%);
 			/* Foreground color, Background colour */
 			border-radius: 100%;
 			height: 100px;
@@ -640,13 +642,13 @@
 			animation-fill-mode: forwards;
 			cursor: pointer;
 		}
-		
+
 		#timer:hover {
 			width: 110px;
 			height: 110px;
 			transition: 0.3s;
 		}
-		
+
 		#mask {
 			border-radius: 100% 0 0 100%/50% 0 0 50%;
 			height: 100%;
@@ -662,145 +664,102 @@
 			animation-fill-mode: forwards;
 			transform-origin: 100% 50%;
 		}
-		
-		@keyframes time { 0% {
-			
+
+		@keyframes time {
+			0% {}
+
+			100% {
+				transform:
+
+
+
+
+					rotate (360deg);
+
+
+
+
+			}
 		}
-		
-		100%
-		{
-		transform
-		:
-		
-		
-		
-							
-		rotate
-		 
-		(
-		360deg
-		)
-		;
-		
-		
-		
-					
+
+		@keyframes mask {
+			0% {
+				background: #eee;
+				/* Background colour */
+				transform: rotate(0deg);
+			}
+
+			50% {
+				background:
+
+
+
+
+					#eee;
+				/* Background colour */
+
+
+
+
+				transform:
+
+
+
+
+					rotate (-180deg);
+
+
+
+
+			}
+
+			50.01% {
+				background:
+
+
+
+					var (- -clockColor);
+				/* Foreground colour */
+
+
+
+
+				transform:
+
+
+
+					rotate (0deg);
+
+
+
+
+			}
+
+			100% {
+				background:
+
+
+
+
+					var (- -clockColor);
+				/* Foreground colour */
+
+
+
+
+				transform:
+
+
+
+
+					rotate (-180deg);
+
+
+
+
+			}
 		}
-		}
-		@keyframes mask { 0% {
-			background: #eee;
-			/* Background colour */
-			transform: rotate(0deg);
-		}
-		
-		50%
-		{
-		background
-		:
-		
-		
-		
-							
-		#eee
-		;
-		/* Background colour */
-		
-		
-		
-						
-		transform
-		:
-		
-		
-		
-							
-		rotate
-		 
-		(
-		-180deg
-		)
-		;
-		
-		
-		
-					
-		}
-		50.01%
-		{
-		background
-		:
-		
-		
-							
-		var
-		 
-		(
-		-
-		 
-		-clockColor
-		)
-		;
-		/* Foreground colour */
-		
-		
-		
-						
-		transform
-		:
-		
-		
-							
-		rotate
-		 
-		(
-		0deg
-		)
-		;
-		
-		
-		
-					
-		}
-		100%
-		{
-		background
-		:
-		
-		
-		
-							
-		var
-		 
-		(
-		-
-		 
-		-clockColor
-		)
-		;
-		/* Foreground colour */
-		
-		
-		
-						
-		transform
-		:
-		
-		
-		
-							
-		rotate
-		 
-		(
-		-180deg
-		)
-		;
-		
-		
-		
-					
-		}
-		}
-		
+
 		/* modal css */
 		.background {
 			position: fixed;
@@ -813,13 +772,13 @@
 			z-index: -1;
 			opacity: 0;
 		}
-		
+
 		.show {
 			opacity: 1;
 			/* z-index: 10; */
 			transition: all 0.5s;
 		}
-		
+
 		.window {
 			position: relative;
 			width: 100%;
@@ -827,7 +786,7 @@
 			/* z-index: 1000; */
 			opacity: 0;
 		}
-		
+
 		.popup {
 			position: absolute;
 			top: 50%;
@@ -845,14 +804,14 @@
 			/* z-index: 1000; */
 			opacity: 0;
 		}
-		
+
 		.show .popup {
 			transform: translate(-50%, -50%);
 			transition: all 0.5s;
 			/* z-index: 1000; */
 			opacity: 0;
 		}
-		
+
 		input[type="color"] {
 			padding: 0;
 			width: 150%;
@@ -861,7 +820,7 @@
 			cursor: pointer;
 			opacity: 0;
 		}
-		
+
 		.cp_wrapper {
 			overflow: hidden;
 			width: 2em;
@@ -871,14 +830,14 @@
 			box-shadow: 1px 1px 3px 0px grey;
 			margin: 1em;
 		}
-		
+
 		.wrapper {
 			margin-top: 40%;
 			display: flex;
 			justify-content: center;
 			align-content: center;
 		}
-		
+
 		#submit {
 			width: 100px;
 			height: 30px;
@@ -894,19 +853,19 @@
 			background-color: #408080;
 			color: #e9ded8;
 		}
-		
+
 		#submit:hover {
 			background-color: #2f5f5f;
 			color: #f6f4f4;
 		}
-		
+
 		.select {
 			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
 			align-content: center;
 		}
-		
+
 		input[type="number"] {
 			width: 100px;
 			height: 30px;
@@ -917,34 +876,35 @@
 			-moz-appearance: textfield;
 			text-align: center;
 		}
-		
+
 		#hour:focus {
 			border: 2px solid #408080;
 		}
-		
+
 		#min:focus {
 			border: 2px solid #408080;
 		}
-		
+
 		#sec:focus {
 			border: 2px solid #408080;
 		}
-		
-		input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
 			-webkit-appearance: none;
 			margin: 0;
 		}
-		
+
 		input::placeholder {
 			text-align: center;
 		}
-		
+
 		.balloon {
 			position: relative;
 			display: inline-block;
 			margin-bottom: 15px;
 		}
-		
+
 		.balloon span {
 			display: inline-block;
 			padding: 10px;
@@ -956,7 +916,7 @@
 			-webkit-backdrop-filter: blur(6.4px);
 			border: 1px solid rgba(61, 61, 61, 0.38);
 		}
-		
+
 		.balloon:after {
 			content: "";
 			position: absolute;
@@ -964,7 +924,7 @@
 			height: 0;
 			border-style: solid;
 		}
-		
+
 		.balloon.top:after {
 			border-color: rgba(61, 61, 61, 0.87) transparent transparent transparent;
 			bottom: -25px;
@@ -972,27 +932,26 @@
 			left: 50%;
 			margin-left: -10px;
 		}
-		
-		@keyframes shake { 0% {
-			margin-top: 0px;
+
+		@keyframes shake {
+			0% {
+				margin-top: 0px;
+			}
+
+			100% {
+				margin-top:
+
+
+
+
+					20px;
+
+
+
+
+			}
 		}
-		
-		100%
-		{
-		margin-top
-		:
-		
-		
-		
-							
-		20px
-		;
-		
-		
-		
-					
-		}
-		}
+
 		#speech {
 			font-family: Cafe24Ohsquareair;
 			position: absolute;
@@ -1004,22 +963,22 @@
 			animation-direction: alternate;
 			animation-delay: 1s;
 		}
-		
-		@keyframes showToast { 20% {
-			opacity: 100%;
+
+		@keyframes showToast {
+			20% {
+				opacity: 100%;
+			}
+
+			90% {
+				opacity:
+
+
+
+
+					0%;
+			}
 		}
-		
-		90%
-		{
-		opacity
-		:
-		
-		
-		
-							
-		0%;
-		}
-		}
+
 		.toast {
 			opacity: 0%;
 			width: 250px;
@@ -1045,11 +1004,11 @@
 			animation-duration: 4s;
 			animation-play-state: paused;
 		}
-		
+
 		button {
 			margin: 10px;
 		}
-		
+
 		#reset {
 			margin-bottom: 5px;
 			position: relative;
@@ -1066,11 +1025,11 @@
 			color: #ffeee4;
 			cursor: pointer;
 		}
-		
+
 		#reset:hover {
 			transform: scale(1.02);
 		}
-		
+
 		#fullButton {
 			margin-bottom: 5px;
 			position: relative;
@@ -1087,14 +1046,14 @@
 			color: #ffeee4;
 			cursor: pointer;
 		}
-		
+
 		#buttons {
 			display: flex;
 			flex-direction: column;
 			align-content: center;
 			margin-top: 40px;
 		}
-		
+
 		#formReset {
 			width: 100px;
 			height: 30px;
@@ -1111,31 +1070,31 @@
 			background-color: #f6f4f4;
 			color: #408080;
 		}
-		
+
 		#formReset:hover {
 			background-color: #2f5f5f;
 			color: #f6f4f4;
 		}
-		
+
 		#colorBox {
 			display: flex;
 			justify-content: center;
 		}
-		
+
 		#clColor {
 			margin-right: 30px;
 		}
-		
+
 		#bgColor {
 			margin-left: 30px;
 		}
-		
+
 		#content {
 			display: flex;
 			flex-direction: column;
 			background-color: var(- -bgColor);
 		}
-		
+
 		#close {
 			/* New added property */
 			width: 20px;
@@ -1145,35 +1104,36 @@
 			background-color: var(- -clockColor);
 			color: var(- -clockColor);
 		}
-		
+
 		#close:hover {
 			color: white;
 			background-color: #e56262;
 		}
-		
+
 		.popupText {
 			font-family: "Cafe24Ohsquareair";
 		}
-		
+
 		/* 반응형 미디어쿼리 */
-		@media ( max-width : 520px) {
+		@media (max-width : 520px) {
 			.popup {
 				/* width: 500px; */
 				width: 350px;
 			}
+
 			#sec {
 				width: 220px;
 			}
 		}
-		
-		@media ( max-width : 430px) {
+
+		@media (max-width : 430px) {
 			.clockBox {
 				width: 350px;
 				height: 350px;
 			}
 		}
-		
-		@media ( max-width : 400px) {
+
+		@media (max-width : 400px) {
 			#buttons {
 				/* flex-direction: column; */
 				/* align-content: center; */
@@ -1183,25 +1143,28 @@
 				margin-top: 40px;
 				margin-bottom: 20px;
 			}
-		
+
 			/* #timerButton {
 			width: 150px;
 		  } */
 			#reset {
 				width: 150px;
 			}
+
 			.popup {
 				/* width: 500px; */
 				width: 350px;
 			}
+
 			#speech {
 				margin-bottom: 570px;
 			}
+
 			#sec {
 				width: 220px;
 			}
 		}
-		</style>
+	</style>
 
 
 
@@ -1213,10 +1176,8 @@
 
 	<div id="superCon">
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-			crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 
 		</script>
 		<div id="main-con">
@@ -1230,11 +1191,9 @@
 					data-rlength="${fn:length(userRecipe)}">User Recipe</div>
 
 
-				<form action="${pageContext.request.contextPath}/result/mainResult"
-					id='reRc' method="POST">
+				<form action="${pageContext.request.contextPath}/result/mainResult" id='reRc' method="POST">
 					<div class="selectWrapper">
-						<select name="weather" class="form-select optionbox"
-							aria-label="Default select example">
+						<select name="weather" class="form-select optionbox" aria-label="Default select example">
 							<option value="날씨" disabled selected>${searchCondition.weather}</option>
 							<option value="맑음">맑음</option>
 							<option value="흐림">흐림</option>
@@ -1260,9 +1219,7 @@
 					</div>
 				</form>
 
-				<img id='reImg'
-					src="${pageContext.request.contextPath}/css/TastyFriend.png"
-					alt="로고">
+				<img id='reImg' src="${pageContext.request.contextPath}/css/TastyFriend.png" alt="로고">
 
 			</div>
 
@@ -1277,18 +1234,15 @@
 				%>
 				<div class="boxbox mystorybox scale">
 					<img class="titleimg" alt="결과이미지" data-userid="${login.userId}"
-						data-cooknum=<%=recipes.get(i).getCooknum()%>
-						src="<%=recipes.get(i).getTitleimg()%>">
+						data-cooknum=<%=recipes.get(i).getCooknum()%> src="<%=recipes.get(i).getTitleimg()%>">
 				</div>
 				<%
 				}
 				%>
 				<c:forEach var="recipe" items="${userRecipe}">
-					<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal"
-						data-bs-target="#userRecipeModal">
-						<img src="${pageContext.request.contextPath}/css/TastyFriend.png"
-							alt="default" id="article-img" data-reuserid="${recipe.writer}"
-							data-rebno="${recipe.bno}" />
+					<div class="boxbox2 scale myrecipebox" data-bs-toggle="modal" data-bs-target="#userRecipeModal">
+						<img src="${pageContext.request.contextPath}/css/TastyFriend.png" alt="default" id="article-img"
+							data-reuserid="${recipe.writer}" data-rebno="${recipe.bno}" />
 						<div id="rtitle" name="title">${recipe.title}</div>
 						<div id="rcon" name="title">${recipe.content}</div>
 						<div id="rweather" name="title" style="display: none">${recipe.weather}</div>
@@ -1302,51 +1256,46 @@
 
 			<div id="main-right">
 				<div id="profile-img-con">
-					<img
-						src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
+					<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
 						alt="default" id="profile-img">
 				</div>
 				<div class="profileWrapper">
 					<div id="simpleProfile">
 						<h1>${login.userId}</h1>
-						<a
-							href="${pageContext.request.contextPath}/user/userProfileModify"
-							id="promodify">프로필수정</a>
+						<a href="${pageContext.request.contextPath}/user/userProfileModify" id="promodify">프로필수정</a>
 						<h3>${login.userNick}</h3>
 						<h5>${login.message}</h5>
 					</div>
 					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="${pageContext.request.contextPath}/">Home</a>
+						<li class="nav-item"><a class="nav-link active" aria-current="page"
+								href="${pageContext.request.contextPath}/">Home</a>
 						</li>
 
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page"
-							href="${pageContext.request.contextPath}/mypage/mypageResult">My
+						<li class="nav-item"><a class="nav-link active" aria-current="page"
+								href="${pageContext.request.contextPath}/mypage/mypageResult">My
 								Page</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"
-							data-bs-toggle="modal" data-bs-target="#FollowerModal">Follower
+						<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+								data-bs-target="#FollowerModal">Follower
 								Chief</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"
-							data-bs-toggle="modal" data-bs-target="#FollowingModal">Following
+						<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
+								data-bs-target="#FollowingModal">Following
 								Chief</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add
+								href="${pageContext.request.contextPath}/userrecipe/uploadRecipe">Add
 								My Recipe</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/freeboard/regist">Add
+								href="${pageContext.request.contextPath}/freeboard/regist">Add
 								My Story</a></li>
 
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
+						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false"> Option </a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
-								<hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item"
-							href="${pageContext.request.contextPath}/user/userLogout"
-							style="color: red">Logout</a></li>
+										href="${pageContext.request.contextPath}/user/userUpdate">회원정보수정</a></li>
+								<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item" href="${pageContext.request.contextPath}/user/userLogout"
+								style="color: red">Logout</a></li>
 					</ul>
 
 
@@ -1357,9 +1306,8 @@
 			</div>
 		</div>
 		<nav class="navbar bg-success fixed-top ">
-		<div class="container-fluid">
-			<a class="navbar-brand text-light"
-				href="${pageContext.request.contextPath}/">Tasty Friend</a>
+			<div class="container-fluid">
+				<a class="navbar-brand text-light" href="${pageContext.request.contextPath}/">Tasty Friend</a>
 				<%-- <div class="ml-auto">
 							<form class="form-inline ml-auto"
 								action="${pageContext.request.contextPath}/userrecipe/search"
@@ -1372,15 +1320,15 @@
 							</form>
 						</div> --%>
 
-			<div class="offcanvas offcanvas-end" tabindex="-1"
-				id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-				<div class="offcanvas-header">
-					<aside></aside>
-				</div>
+				<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+					aria-labelledby="offcanvasNavbarLabel">
+					<div class="offcanvas-header">
+						<aside></aside>
+					</div>
 
+				</div>
 			</div>
-		</div>
-	</nav> 
+		</nav>
 		<div id="mainDiv">
 			<main id="mainClose">
 				<div class="box" id="modalBox">
@@ -1416,17 +1364,14 @@
 								</div>
 							</form>
 
-							<form
-								action="${pageContext.request.contextPath}/freeboard/regist"
-								autocomplete="off" class="sign-up-form">
+							<form action="${pageContext.request.contextPath}/freeboard/regist" autocomplete="off"
+								class="sign-up-form">
 								<div class="logo">
 									<!-- <img src="./img/logo.png" alt="easyclass" /> -->
-									<div class="modal-like">
-										<div id="likenum"></div>
-										<button type="button" id="likeBtn">좋아요</button>
+									<div class="placement">
+										<div class="heart" id="likeBtn"></div>
 									</div>
-
-
+									<div id="likenum"></div>
 								</div>
 
 								<div class="heading">
@@ -1465,7 +1410,8 @@
 															<div id="clColor">
 																<span class="popupText">시계 색상</span>
 																<div class="cp_wrapper">
-																	<input id="clockColor" type="color" value="#ff6e6e" />
+																	<input id="clockColor" type="color"
+																		value="#ff6e6e" />
 																</div>
 																<!--end cp_wrapper-->
 															</div>
@@ -1473,7 +1419,8 @@
 															<div id="bgColor">
 																<span class="popupText">배경 색상</span>
 																<div class="cp_wrapper">
-																	<input id="backColor" type="color" value="#c5e1ff" />
+																	<input id="backColor" type="color"
+																		value="#c5e1ff" />
 																</div>
 																<!--end cp_wrapper-->
 															</div>
@@ -1536,11 +1483,10 @@
 
 						<div class="carousel">
 							<div class="images-wrapper">
-								<img src="" class="image img-1 show" alt="" id="titleimg" /> <img
-									src="" class="image img-2" alt="img1" id="img1" /> <img src=""
-									class="image img-3" alt="img2" id="img2" /> <img src=""
-									class="image img-4" alt="img3" id="img3" /> <img src=""
-									class="image img-5" alt="img4" id="img4" />
+								<img src="" class="image img-1 show" alt="" id="titleimg" /> <img src=""
+									class="image img-2" alt="img1" id="img1" /> <img src="" class="image img-3"
+									alt="img2" id="img2" /> <img src="" class="image img-4" alt="img3" id="img3" /> <img
+									src="" class="image img-5" alt="img4" id="img4" />
 							</div>
 
 							<div class="text-slider">
@@ -1555,9 +1501,8 @@
 								</div>
 
 								<div class="bullets">
-									<span class="active" data-value="1"></span> <span
-										data-value="2"></span> <span data-value="3"></span> <span
-										data-value="4"></span> <span data-value="5"></span>
+									<span class="active" data-value="1"></span> <span data-value="2"></span> <span
+										data-value="3"></span> <span data-value="4"></span> <span data-value="5"></span>
 								</div>
 
 							</div>
@@ -1570,22 +1515,19 @@
 		</div>
 
 		<!-- Follower Modal -->
-		<div class="modal fade" id="FollowerModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="FollowerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-scrollable modal-sm">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h1 class="modal-title fs-5" id="exampleModalLabel">Follower</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="fmodal-body" id="followerM">
 
 						<c:forEach var="follower" items="${countFollower}">
 
 							<div id="followerdiv">
-								<img
-									src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
+								<img src="${pageContext.request.contextPath}/user/display/${follower.fileLoca}/${follower.fileName}"
 									alt="default" id="fprofile-img"> <a
 									href="${pageContext.request.contextPath}/mypage/userResult/${follower.userId}">${follower.userId}</a>&nbsp&nbsp<span>${follower.message}</span>
 							</div>
@@ -1604,22 +1546,20 @@
 
 
 		<!-- Following Modal -->
-		<div class="modal fade" id="FollowingModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
 			<div class="modal-dialog modal-dialog-scrollable modal-sm">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h1 class="modal-title fs-5" id="exampleModalLabel">Following</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="fmodal-body" id="followingM">
 
 						<c:forEach var="following" items="${countFollowing}">
 
 							<div id="followerdiv">
-								<img
-									src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
+								<img src="${pageContext.request.contextPath}/user/display/${following.fileLoca}/${following.fileName}"
 									alt="default" id="fprofile-img"> <a
 									href="${pageContext.request.contextPath}/mypage/userResult/${following.userId}">${following.userId}</a>&nbsp&nbsp<span>${following.message}</span>
 							</div>
@@ -1636,8 +1576,8 @@
 		<!-- Modal uesrRecipe-->
 
 
-		<div class="modal fade" id="userRecipeModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="userRecipeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
 
 			<div class="modal-dialog modal-xl modal-dialog-scrollable">
 				<div class="modal-content">
@@ -1668,27 +1608,27 @@
 
 
 	<Script>
-		(	function recipbox() {
+		(function recipbox() {
 
 
+			const recipebox = document.querySelectorAll('.myrecipebox');
+
+			for (var i = 0; i < recipebox.length; i++) {
 				const recipebox = document.querySelectorAll('.myrecipebox');
+				recipebox[i].style.display = "none";
+			}
+		})();
 
-				for (var i = 0; i < recipebox.length; i++) {
-					const recipebox = document.querySelectorAll('.myrecipebox');
-					recipebox[i].style.display = "none";
-				}
-			})();
-		
-			let strimg = '';
-			let strbtn = '';
-			let strmodi = '';
-			let rtitle = '';
-			let rcon = '';
+		let strimg = '';
+		let strbtn = '';
+		let strmodi = '';
+		let rtitle = '';
+		let rcon = '';
 
 
-			console.log("날씨시도");
+		console.log("날씨시도");
 
-			fetch('${pageContext.request.contextPath}/result/getWeather')
+		fetch('${pageContext.request.contextPath}/result/getWeather')
 			.then(res => res.json())
 			.then(data => {
 				console.log("날씨성공");
@@ -1708,11 +1648,12 @@
 				}
 
 				document.getElementById('todayWeather').setAttribute("value", data.weather);
-				document.getElementById('todayWeather').textContent = "오늘의 날씨 : " + weather1 + "/" + ctemp.toFixed(2) +"°C";
+				document.getElementById('todayWeather').textContent = "오늘의 날씨 : " + weather1 + "/" + ctemp.toFixed(2) +
+					"°C";
 
 
-			}); 
-			
+			});
+
 
 		document.getElementById('main-left').addEventListener('click', e => {
 			console.log("left click");
@@ -1772,474 +1713,476 @@
 
 
 		document.getElementById('main-con').addEventListener('click', e => {
-					console.log('클릭됐니?')
-					if (e.target.matches('.boxbox img')) {
-						/* const faNum = e.target.dataset.fanum; */
-						const userId = e.target.dataset.userid;
-						const cooknum = e.target.dataset.cooknum;
+			console.log('클릭됐니?')
+			if (e.target.matches('.boxbox img')) {
+				/* const faNum = e.target.dataset.fanum; */
+				const userId = e.target.dataset.userid;
+				const cooknum = e.target.dataset.cooknum;
 
-						/* console.log(faNum); */
-						console.log(userId);
-						console.log(cooknum);
+				/* console.log(faNum); */
+				console.log(userId);
+				console.log(cooknum);
 
+				getlike(cooknum); //좋아요 불러오기
+				document.getElementById('likenum').dataset.cooknum = cooknum; //like에 레시피 번호 저장
 
-
-						//레시피 상세정보 불러오기
-						fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
-							.then(res => res.json())
-							.then(recipe => {
-								console.log(recipe);
-								document.getElementById('foodname').textContent = recipe.foodname;
-								document.getElementById('ingredient').textContent = recipe.ingredient;
-								document.getElementById('tip').textContent = recipe.tip;
-								document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
-								document.getElementById('minutes').textContent = recipe.cookTime;
-
-
-								var min = recipe.cookTime;
-
-								total = min * 60;
-								forCount = total;
-								total = total + "s";
-								var realMin = min * 1;
-
-								if (total !== "0s") {
-									document.getElementById("minutes").innerHTML = realMin;
-									document.body.style.setProperty("--timerTime", total);
-								}
-
-								if (realMin === 1) {
-									document.getElementById("title").innerHTML = "1 minute";
-								} else {
-									document.getElementById("title").innerHTML = realMin + " minutes";
-								}
-
-								if (recipe.text1 !== '') {
-									document.getElementById(`text1`).textContent = recipe.text1;
-								}
-								if (recipe.img1 !== '') {
-									document.getElementById(`img1`).setAttribute('src', recipe.img1);
-								}
-								if (recipe.text2 !== '') {
-									document.getElementById(`text2`).textContent = recipe.text2;
-								}
-								if (recipe.img2 !== '') {
-									document.getElementById(`img2`).setAttribute('src', recipe.img2);
-								}
-								if (recipe.text3 !== '') {
-									document.getElementById(`text3`).textContent = recipe.text3;
-								}
-								if (recipe.img3 !== '') {
-									document.getElementById(`img3`).setAttribute('src', recipe.img3);
-								}
-								if (recipe.text4 !== '') {
-									document.getElementById(`text4`).textContent = recipe.text4;
-								}
-								if (recipe.img4 !== '') {
-									document.getElementById(`img4`).setAttribute('src', recipe.img4);
-								}
-								document.getElementById('likenum').dataset.cooknum = recipe.cooknum; // like에 레시피 번호 저장
-							});
-
-						document.getElementById('mainDiv').style.display = 'block';
-						getlike(cooknum);
+				//레시피 상세정보 불러오기
+				fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
+					.then(res => res.json())
+					.then(recipe => {
+						console.log(recipe);
+						document.getElementById('foodname').textContent = recipe.foodname;
+						document.getElementById('ingredient').textContent = recipe.ingredient;
+						document.getElementById('tip').textContent = recipe.tip;
+						document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
+						document.getElementById('minutes').textContent = recipe.cookTime;
 
 
+						var min = recipe.cookTime;
 
+						total = min * 60;
+						forCount = total;
+						total = total + "s";
+						var realMin = min * 1;
 
-
-
-
-							}
-						 });
-
-
-
-
-						document.getElementById('main-con').addEventListener('click', e => {
-							console.log('클릭됐니?')
-							if (e.target.matches('.boxbox img')) {
-								/* const faNum = e.target.dataset.fanum; */
-								const userId = e.target.dataset.userid;
-								const cooknum = e.target.dataset.cooknum;
-
-								/* console.log(faNum); */
-								console.log(userId);
-								console.log(cooknum);
-
-
-
-								//레시피 상세정보 불러오기
-								fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
-									.then(res => res.json())
-									.then(recipe => {
-										console.log(recipe);
-										document.getElementById('foodname').textContent = recipe.foodname;
-										document.getElementById('ingredient').textContent = recipe.ingredient;
-										document.getElementById('tip').textContent = recipe.tip;
-										document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
-										document.getElementById('minutes').textContent = recipe.cookTime;
-
-										if (recipe.text1 !== '') {
-											document.getElementById(`text1`).textContent = recipe.text1;
-										}
-										if (recipe.img1 !== '') {
-											document.getElementById(`img1`).setAttribute('src', recipe.img1);
-										}
-										if (recipe.text2 !== '') {
-											document.getElementById(`text2`).textContent = recipe.text2;
-										}
-										if (recipe.img2 !== '') {
-											document.getElementById(`img2`).setAttribute('src', recipe.img2);
-										}
-										if (recipe.text3 !== '') {
-											document.getElementById(`text3`).textContent = recipe.text3;
-										}
-										if (recipe.img3 !== '') {
-											document.getElementById(`img3`).setAttribute('src', recipe.img3);
-										}
-										if (recipe.text4 !== '') {
-											document.getElementById(`text4`).textContent = recipe.text4;
-										}
-										if (recipe.img4 !== '') {
-											document.getElementById(`img4`).setAttribute('src', recipe.img4);
-										}
-										document.getElementById('likenum').dataset.cooknum = recipe
-										.cooknum; // like에 레시피 번호 저장
-									});
-
-								document.getElementById('mainDiv').style.display = 'block';
-								getlike(cooknum);
-
-
-								/* 				document.getElementById('main-con').style.display = 'none'; */
-
-								console.log('Div보여줘');
-
-							} else if (e.target.matches('.boxbox2 img')) {
-								console.log('main 내 boxbox2 클릭');
-
-								document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.textContent);
-								document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.innerHTML);
-								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-									.textContent);
-								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
-								document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
-									.nextElementSibling
-									.nextElementSibling.nextElementSibling.textContent + ' / ');
-								document.querySelector(".urId").insertAdjacentHTML('afterbegin',
-									'/작성자 : ' + e.target
-									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-									.nextElementSibling.nextElementSibling.textContent);
-								document.querySelector(".urId").setAttribute("href",
-									"${pageContext.request.contextPath}/mypage/userResult/" + e.target
-									.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
-									.nextElementSibling.nextElementSibling.textContent);
-
-
-								document.getElementById('userRecipeModal').addEventListener('hidden.bs.modal', () => {
-									document.getElementById('urTitle').textContent = "";
-									document.getElementById('urContent').innerHTML = "";
-									document.getElementById('urWeather').textContent = "";
-
-									document.getElementById('urWeather').append(document.createElement('a'));
-									document.querySelector('#urWeather a').classList.add('urId');
-								});
-
-							}
-
-						});
-
-
-						document.getElementById('mainDiv').addEventListener('click', e => {
-							if (e.target.matches('#mainClose')) { //!e.target.matches('#mainDiv')
-								console.log('여기는 이벤트 대상이 아님');
-								// document.getElementById('mainDiv').style.display = 'none';
-								// console.log('없어졌니');
-								document.getElementById('mainDiv').style.display = 'none';
-								console.log('없어졌니');
-								/* 			document.getElementById('main-con').style.display = 'block'; */
-
-							}
-						});
-
-						// if(!e.target.matches('.boxbox img') || !e.target.matches('#modalBox')) {
-						//         document.getElementById('mainDiv').style.display = 'none';
-						// 			  console.log('없어졌니');
-						// }
-
-
-
-						//좋아요 개수 불러오기
-						function getlike(cooknum) {
-							fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum)
-								.then(res => res.json())
-								.then(like => {
-									console.log(like);
-									document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다';
-								});
-						}
-						//좋아요 버튼 클릭
-						document.getElementById('likeBtn').addEventListener('click', e => {
-							e.preventDefault();
-							const cooknum = document.getElementById('likenum').dataset.cooknum;
-							console.log(cooknum);
-
-							const reqObj = {
-								method: 'put',
-								headers: {
-									'Content-Type': 'application/json'
-								},
-								body: JSON.stringify({
-									'userId': '${login.userId}'
-								})
-							}
-							fetch('${pageContext.request.contextPath}/result/recipe/like/' + cooknum, reqObj)
-								.then(res => res.json())
-								.then(data => {
-									console.log(data);
-									console.log(data.likenum);
-									document.getElementById('likenum').textContent = data.likenum;
-									console.log(data.userId);
-									if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
-										document.getElementById('likeBtn').style.backgroundColor = 'blue';
-									} else {
-										document.getElementById('likeBtn').style.backgroundColor = '#fff';
-									}
-									getlike(cooknum);
-								});
-						});
-
-						const inputs = document.querySelectorAll(".input-field");
-						const toggle_btn = document.querySelectorAll(".toggle");
-						const main = document.querySelector("main");
-						const bullets = document.querySelectorAll(".bullets span");
-						const images = document.querySelectorAll(".image");
-						const texts = document.querySelectorAll('.text');
-
-						inputs.forEach((inp) => {
-							inp.addEventListener("focus", () => {
-								inp.classList.add("active");
-							});
-							inp.addEventListener("blur", () => {
-								if (inp.value != "") return;
-								inp.classList.remove("active");
-							});
-						});
-
-						toggle_btn.forEach((btn) => {
-							btn.addEventListener("click", () => {
-								main.classList.toggle("sign-up-mode");
-							});
-						});
-
-						function moveSlider() {
-							let index = this.dataset.value;
-							console.log('bullet index: ' + index);
-							const imgClassName = '.img-' + index;
-							const textClassName = '.text-' + index;
-
-							let currentImage = document.querySelector(imgClassName);
-							images.forEach((img) => img.classList.remove("show"));
-							currentImage.classList.add("show");
-
-							let currentText = document.querySelector(textClassName);
-							texts.forEach((text) => text.classList.remove("show"));
-							currentText.classList.add("show");
-
-
-							// const textSlider = document.querySelector(".text-group");
-							// textSlider.style.transform = `translateY(` + (-(index - 1) * 6.6) + `rem)`;
-
-
-
-
-							bullets.forEach((bull) => bull.classList.remove("active"));
-							this.classList.add("active");
-
+						if (total !== "0s") {
+							document.getElementById("minutes").innerHTML = realMin;
+							document.body.style.setProperty("--timerTime", total);
 						}
 
-						// let fixedText = document.getElementById('fixedText');
-						// console.log(fixedText.firstElementChild);
-						// console.log(typeof fixedText.firstElementChild);
-						// let textGroup = document.querySelector('.text-group');
+/* 						if (realMin === 1) {
+							document.getElementById("title").innerHTML = "1 minute";
+						} else {
+							document.getElementById("title").innerHTML = realMin + " minutes";
+						} */
 
-						bullets.forEach((bullet) => {
-							bullet.addEventListener("click", moveSlider);
-						});
-
-						// bullets.forEach((bullet) => {
-						//   bullet.addEventListener("click", e => {
-						//     console.log('이벤트 동작 확인');
-						//     console.log('[0]: ' +  bullets[0]);
-						//     console.log('result: ' + (bullets[0] === bullet));
-						//     console.log('first: ' + fixedText.firstElementChild);
-						//     if (bullets[0] === bullet) {
-						//       fixedText.firstElementChild.setAttribute("class", "tip");
-						//     } else if (bullets[1] === bullet) {
-						//       fixedText.firstElementChild.setAttribute("class", "text1");
-						//     } else if (bullets[2] === bullet) {
-						//       fixedText.firstElementChild.setAttribute("class", "text2");
-						//     } else if (bullets[3] === bullet) {
-						//       fixedText.firstElementChild.setAttribute("class", "text3");
-						//     } else if (bullets[4] === bullet) {
-						//       fixedText.firstElementChild.setAttribute("class", "text4");
-						//     }
-
-						//   });
-						// });
-
-
-						//타이머
-
-
-						function toast(msg) {
-							document.querySelector(".toast").innerHTML = msg;
-							document.querySelector(".toast").style.animationPlayState = "running";
+						if (recipe.text1 !== '') {
+							document.getElementById(`text1`).textContent = recipe.text1;
 						}
-
-						//modal function
-						function show() {
-							document.querySelector(".background").className = "background backShow";
+						if (recipe.img1 !== '') {
+							document.getElementById(`img1`).setAttribute('src', recipe.img1);
 						}
-
-						function close() {
-							document.querySelector(".background").className = "background";
+						if (recipe.text2 !== '') {
+							document.getElementById(`text2`).textContent = recipe.text2;
 						}
-
-						document.querySelector("#f5Text").addEventListener("click", show);
-						document.querySelector("#close").addEventListener("click", close);
-						//end modal function
-
-						var total;
-						var forCount;
-
-						function setTime() {
-							var hour = document.getElementById("hour").value;
-							var min = document.getElementById("min").value;
-							var sec = document.getElementById("sec").value;
-
-							total = hour * 3600 + min * 60 + sec * 1;
-							forCount = total;
-							total = total + "s";
-							var realMin = hour * 60 + min * 1;
-
-							if (total !== "0s") {
-								document.getElementById("minutes").innerHTML = realMin;
-								document.body.style.setProperty("--timerTime", total);
-							} else {
-								toast("시간을 설정하세요");
-							}
-
-							if (realMin === 1) {
-								document.getElementById("title").innerHTML = "1 minute";
-							} else {
-								document.getElementById("title").innerHTML = realMin + " minutes";
-							}
+						if (recipe.img2 !== '') {
+							document.getElementById(`img2`).setAttribute('src', recipe.img2);
 						}
-
-						document.getElementById("submit").addEventListener("click", close);
-
-						// function setColor() {
-						//   var clColor = document.getElementById("clockColor").value;
-						//   var bgColor = document.getElementById("backColor").value;
-
-						//   document.body.style.setProperty("--bgColor", bgColor);
-						//   document.body.style.setProperty("--clockColor", clColor);
-						// }
-
-						function hide() {
-							document.getElementById("speech").style.visibility = "hidden";
+						if (recipe.text3 !== '') {
+							document.getElementById(`text3`).textContent = recipe.text3;
 						}
-
-						document.getElementById("f5Text").addEventListener("click", hide);
-						document.getElementById("submit").addEventListener("click", setTime);
-						// document.getElementById("submit").addEventListener("click", setColor);
-
-						var condition = "paused";
-
-						function start() {
-							if (condition === "paused") {
-								startTimer();
-							} else {
-								stopTimer();
-							}
+						if (recipe.img3 !== '') {
+							document.getElementById(`img3`).setAttribute('src', recipe.img3);
 						}
-
-						//[f5] div 만 새로고침 fn
-						function f5() {
-							stopTimer();
-							document.getElementById("f5").innerHTML = document.getElementById(
-								"f5"
-							).innerHTML;
+						if (recipe.text4 !== '') {
+							document.getElementById(`text4`).textContent = recipe.text4;
 						}
-
-
-						function f5Text() {
-							document.getElementById("f5Text").innerHTML = document.getElementById(
-								"f5Text"
-							).innerHTML;
+						if (recipe.img4 !== '') {
+							document.getElementById(`img4`).setAttribute('src', recipe.img4);
 						}
+						document.getElementById('likenum').dataset.cooknum = recipe.cooknum; // like에 레시피 번호 저장
+					});
 
-						document.querySelector("#reset").addEventListener("click", f5);
-						document.querySelector("#reset").addEventListener("click", f5Text);
-
-						document.querySelector("#timer").addEventListener("click", start);
-
-						document.querySelector("#text").addEventListener("animationiteration", function () {
-							Swal.fire({
-								title: '시간 초과',
-								showDenyButton: false,
-								showCancelButton: false,
-								confirmButtonText: '확인',
-								icon: "warning"
-							}).then((result) => {
-								/* Read more about isConfirmed, isDenied below */
-								if (result.isConfirmed) {
-									reset();
-								}
-							});
-
-							f5();
-							f5Text();
-						});
+				document.getElementById('mainDiv').style.display = 'block';
+				getlike(cooknum);
 
 
-						function reset() {
-							window.location.reload();
+
+
+
+
+
+			}
+		});
+
+
+
+
+		document.getElementById('main-con').addEventListener('click', e => {
+			console.log('클릭됐니?')
+			if (e.target.matches('.boxbox img')) {
+				/* const faNum = e.target.dataset.fanum; */
+				const userId = e.target.dataset.userid;
+				const cooknum = e.target.dataset.cooknum;
+
+				/* console.log(faNum); */
+				console.log(userId);
+				console.log(cooknum);
+
+				getlike(cooknum); //좋아요 불러오기
+				document.getElementById('likenum').dataset.cooknum = cooknum; //like에 레시피 번호 저장
+
+				//레시피 상세정보 불러오기
+				fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
+					.then(res => res.json())
+					.then(recipe => {
+						console.log(recipe);
+						document.getElementById('foodname').textContent = recipe.foodname;
+						document.getElementById('ingredient').textContent = recipe.ingredient;
+						document.getElementById('tip').textContent = recipe.tip;
+						document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
+						document.getElementById('minutes').textContent = recipe.cookTime;
+
+						if (recipe.text1 !== '') {
+							document.getElementById(`text1`).textContent = recipe.text1;
 						}
-
-						function startTimer() {
-
-							document.getElementById("timer").className = "stop";
-							// document.getElementById("timerButton").innerHTML = "정지";
-							document.getElementById("timer").style.animationPlayState = "running";
-							document.getElementById("mask").style.animationPlayState = "running";
-							document.getElementById("text").style.animationPlayState = "running";
-							condition = "running";
-
-							document.body.style.setProperty("--grPercent", "50%");
+						if (recipe.img1 !== '') {
+							document.getElementById(`img1`).setAttribute('src', recipe.img1);
 						}
-
-						function stopTimer() {
-
-							document.getElementById("timer").className = "start";
-							// document.getElementById("timerButton").innerHTML = "시작";
-							document.getElementById("timer").style.animationPlayState = "paused";
-							document.getElementById("mask").style.animationPlayState = "paused";
-							document.getElementById("text").style.animationPlayState = "paused";
-							condition = "paused";
-
-							document.body.style.setProperty("--grPercent", "50%");
+						if (recipe.text2 !== '') {
+							document.getElementById(`text2`).textContent = recipe.text2;
 						}
+						if (recipe.img2 !== '') {
+							document.getElementById(`img2`).setAttribute('src', recipe.img2);
+						}
+						if (recipe.text3 !== '') {
+							document.getElementById(`text3`).textContent = recipe.text3;
+						}
+						if (recipe.img3 !== '') {
+							document.getElementById(`img3`).setAttribute('src', recipe.img3);
+						}
+						if (recipe.text4 !== '') {
+							document.getElementById(`text4`).textContent = recipe.text4;
+						}
+						if (recipe.img4 !== '') {
+							document.getElementById(`img4`).setAttribute('src', recipe.img4);
+						}
+						document.getElementById('likenum').dataset.cooknum = recipe
+							.cooknum; // like에 레시피 번호 저장
+					});
+
+				document.getElementById('mainDiv').style.display = 'block';
+				getlike(cooknum);
+
+
+				/* 				document.getElementById('main-con').style.display = 'none'; */
+
+				console.log('Div보여줘');
+
+			} else if (e.target.matches('.boxbox2 img')) {
+				console.log('main 내 boxbox2 클릭');
+
+				document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target
+					.nextElementSibling
+					.textContent);
+				document.getElementById('urContent').insertAdjacentHTML('afterbegin', e.target
+					.nextElementSibling
+					.nextElementSibling.innerHTML);
+				document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+					.nextElementSibling
+					.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+					.textContent);
+				document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+					.nextElementSibling
+					.nextElementSibling.nextElementSibling.nextElementSibling.textContent + ' / ');
+				document.getElementById('urWeather').insertAdjacentHTML('afterbegin', e.target
+					.nextElementSibling
+					.nextElementSibling.nextElementSibling.textContent + ' / ');
+				document.querySelector(".urId").insertAdjacentHTML('afterbegin',
+					'/작성자 : ' + e.target
+					.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+					.nextElementSibling.nextElementSibling.textContent);
+				document.querySelector(".urId").setAttribute("href",
+					"${pageContext.request.contextPath}/mypage/userResult/" + e.target
+					.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling
+					.nextElementSibling.nextElementSibling.textContent);
+
+
+				document.getElementById('userRecipeModal').addEventListener('hidden.bs.modal', () => {
+					document.getElementById('urTitle').textContent = "";
+					document.getElementById('urContent').innerHTML = "";
+					document.getElementById('urWeather').textContent = "";
+
+					document.getElementById('urWeather').append(document.createElement('a'));
+					document.querySelector('#urWeather a').classList.add('urId');
+				});
+
+			}
+
+		});
+
+
+		document.getElementById('mainDiv').addEventListener('click', e => {
+			if (e.target.matches('#mainClose')) { //!e.target.matches('#mainDiv')
+				console.log('여기는 이벤트 대상이 아님');
+				// document.getElementById('mainDiv').style.display = 'none';
+				// console.log('없어졌니');
+				document.getElementById('mainDiv').style.display = 'none';
+				console.log('없어졌니');
+				/* 			document.getElementById('main-con').style.display = 'block'; */
+
+			}
+		});
+
+		// if(!e.target.matches('.boxbox img') || !e.target.matches('#modalBox')) {
+		//         document.getElementById('mainDiv').style.display = 'none';
+		// 			  console.log('없어졌니');
+		// }
+
+
+
+		//좋아요 개수 불러오기
+		function getlike(cooknum) {
+			fetch('${pageContext.request.contextPath}/like/recipe/' + cooknum)
+				.then(res => res.json())
+				.then(like => {
+					console.log(like);
+					document.getElementById('likenum').textContent = '이 레시피를 ' + like + '명이 좋아합니다.';
+				});
+		}
+		//좋아요 버튼 클릭
+		document.getElementById('likeBtn').addEventListener('click', e => {
+			e.preventDefault();
+			const cooknum = document.getElementById('likenum').dataset.cooknum;
+			console.log(cooknum);
+
+			const reqObj = {
+				method: 'put',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					'userId': '${login.userId}'
+				})
+			}
+			fetch('${pageContext.request.contextPath}/like/recipe/' + cooknum, reqObj)
+				.then(res => res.json())
+				.then(data => {
+					console.log(data);
+					console.log(data.likenum);
+					document.getElementById('likenum').textContent = data.likenum;
+					console.log(data.userId);
+					if (data.userId == 0) { //좋아요 클릭 하지 않은 상태일때
+						document.querySelector('.heart').classList.add("is-active");
+					} else {
+						document.querySelector('.heart').classList.remove("is-active");
+					}
+					getlike(cooknum);
+				});
+		});
+
+		const inputs = document.querySelectorAll(".input-field");
+		const toggle_btn = document.querySelectorAll(".toggle");
+		const main = document.querySelector("main");
+		const bullets = document.querySelectorAll(".bullets span");
+		const images = document.querySelectorAll(".image");
+		const texts = document.querySelectorAll('.text');
+
+		inputs.forEach((inp) => {
+			inp.addEventListener("focus", () => {
+				inp.classList.add("active");
+			});
+			inp.addEventListener("blur", () => {
+				if (inp.value != "") return;
+				inp.classList.remove("active");
+			});
+		});
+
+		toggle_btn.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				main.classList.toggle("sign-up-mode");
+			});
+		});
+
+		function moveSlider() {
+			let index = this.dataset.value;
+			console.log('bullet index: ' + index);
+			const imgClassName = '.img-' + index;
+			const textClassName = '.text-' + index;
+
+			let currentImage = document.querySelector(imgClassName);
+			images.forEach((img) => img.classList.remove("show"));
+			currentImage.classList.add("show");
+
+			let currentText = document.querySelector(textClassName);
+			texts.forEach((text) => text.classList.remove("show"));
+			currentText.classList.add("show");
+
+
+			// const textSlider = document.querySelector(".text-group");
+			// textSlider.style.transform = `translateY(` + (-(index - 1) * 6.6) + `rem)`;
+
+
+
+
+			bullets.forEach((bull) => bull.classList.remove("active"));
+			this.classList.add("active");
+
+		}
+
+		// let fixedText = document.getElementById('fixedText');
+		// console.log(fixedText.firstElementChild);
+		// console.log(typeof fixedText.firstElementChild);
+		// let textGroup = document.querySelector('.text-group');
+
+		bullets.forEach((bullet) => {
+			bullet.addEventListener("click", moveSlider);
+		});
+
+		// bullets.forEach((bullet) => {
+		//   bullet.addEventListener("click", e => {
+		//     console.log('이벤트 동작 확인');
+		//     console.log('[0]: ' +  bullets[0]);
+		//     console.log('result: ' + (bullets[0] === bullet));
+		//     console.log('first: ' + fixedText.firstElementChild);
+		//     if (bullets[0] === bullet) {
+		//       fixedText.firstElementChild.setAttribute("class", "tip");
+		//     } else if (bullets[1] === bullet) {
+		//       fixedText.firstElementChild.setAttribute("class", "text1");
+		//     } else if (bullets[2] === bullet) {
+		//       fixedText.firstElementChild.setAttribute("class", "text2");
+		//     } else if (bullets[3] === bullet) {
+		//       fixedText.firstElementChild.setAttribute("class", "text3");
+		//     } else if (bullets[4] === bullet) {
+		//       fixedText.firstElementChild.setAttribute("class", "text4");
+		//     }
+
+		//   });
+		// });
+
+
+		//타이머
+
+
+		function toast(msg) {
+			document.querySelector(".toast").innerHTML = msg;
+			document.querySelector(".toast").style.animationPlayState = "running";
+		}
+
+		//modal function
+		function show() {
+			document.querySelector(".background").className = "background backShow";
+		}
+
+		function close() {
+			document.querySelector(".background").className = "background";
+		}
+
+		document.querySelector("#f5Text").addEventListener("click", show);
+		document.querySelector("#close").addEventListener("click", close);
+		//end modal function
+
+		var total;
+		var forCount;
+
+		function setTime() {
+			var hour = document.getElementById("hour").value;
+			var min = document.getElementById("min").value;
+			var sec = document.getElementById("sec").value;
+
+			total = hour * 3600 + min * 60 + sec * 1;
+			forCount = total;
+			total = total + "s";
+			var realMin = hour * 60 + min * 1;
+
+			if (total !== "0s") {
+				document.getElementById("minutes").innerHTML = realMin;
+				document.body.style.setProperty("--timerTime", total);
+			} else {
+				toast("시간을 설정하세요");
+			}
+
+			if (realMin === 1) {
+				document.getElementById("title").innerHTML = "1 minute";
+			} else {
+				document.getElementById("title").innerHTML = realMin + " minutes";
+			}
+		}
+
+		document.getElementById("submit").addEventListener("click", close);
+
+		// function setColor() {
+		//   var clColor = document.getElementById("clockColor").value;
+		//   var bgColor = document.getElementById("backColor").value;
+
+		//   document.body.style.setProperty("--bgColor", bgColor);
+		//   document.body.style.setProperty("--clockColor", clColor);
+		// }
+
+		function hide() {
+			document.getElementById("speech").style.visibility = "hidden";
+		}
+
+		document.getElementById("f5Text").addEventListener("click", hide);
+		document.getElementById("submit").addEventListener("click", setTime);
+		// document.getElementById("submit").addEventListener("click", setColor);
+
+		var condition = "paused";
+
+		function start() {
+			if (condition === "paused") {
+				startTimer();
+			} else {
+				stopTimer();
+			}
+		}
+
+		//[f5] div 만 새로고침 fn
+		function f5() {
+			stopTimer();
+			document.getElementById("f5").innerHTML = document.getElementById(
+				"f5"
+			).innerHTML;
+		}
+
+
+		function f5Text() {
+			document.getElementById("f5Text").innerHTML = document.getElementById(
+				"f5Text"
+			).innerHTML;
+		}
+
+		document.querySelector("#reset").addEventListener("click", f5);
+		document.querySelector("#reset").addEventListener("click", f5Text);
+
+		document.querySelector("#timer").addEventListener("click", start);
+
+		document.querySelector("#text").addEventListener("animationiteration", function () {
+			Swal.fire({
+				title: '시간 초과',
+				showDenyButton: false,
+				showCancelButton: false,
+				confirmButtonText: '확인',
+				icon: "warning"
+			}).then((result) => {
+				/* Read more about isConfirmed, isDenied below */
+				if (result.isConfirmed) {
+					reset();
+				}
+			});
+
+			f5();
+			f5Text();
+		});
+
+
+		function reset() {
+			window.location.reload();
+		}
+
+		function startTimer() {
+
+			document.getElementById("timer").className = "stop";
+			// document.getElementById("timerButton").innerHTML = "정지";
+			document.getElementById("timer").style.animationPlayState = "running";
+			document.getElementById("mask").style.animationPlayState = "running";
+			document.getElementById("text").style.animationPlayState = "running";
+			condition = "running";
+
+			document.body.style.setProperty("--grPercent", "50%");
+		}
+
+		function stopTimer() {
+
+			document.getElementById("timer").className = "start";
+			// document.getElementById("timerButton").innerHTML = "시작";
+			document.getElementById("timer").style.animationPlayState = "paused";
+			document.getElementById("mask").style.animationPlayState = "paused";
+			document.getElementById("text").style.animationPlayState = "paused";
+			condition = "paused";
+
+			document.body.style.setProperty("--grPercent", "50%");
+		}
 	</Script>
 
 
@@ -2247,4 +2190,5 @@
 	</div>
 	<footer> copyright © TastyFriends. all rights reserved </footer>
 </body>
+
 </html>
