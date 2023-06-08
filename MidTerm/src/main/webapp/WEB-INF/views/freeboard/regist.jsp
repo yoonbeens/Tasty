@@ -5,11 +5,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    
 
     <link href="${pageContext.request.contextPath}/css/userProfileModify.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
+    <title>Tasty Friends</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
 
     <style>
      footer {

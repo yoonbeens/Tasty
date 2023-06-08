@@ -15,6 +15,8 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <title>회원수정</title>
 
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 <style type="text/css">
@@ -79,8 +81,8 @@ body {
 
 h2 {
 	font-size: 30px;
-	color: #000;
 	text-align: center;
+	color: #22df64;
 }
 
 .input-group {
@@ -311,7 +313,6 @@ div.region2 {
 }
 
 h2 {
-	color: skyblue;
 	margin-left: 220px;
 	margin-top: -50px;
 }
@@ -332,25 +333,33 @@ h2 {
 	
 }   */
 #regior { /*주소찾기버튼*/
-	height: 30px;
 	width: 150px;
 	position: absolute;
 	bottom: 20px;
 	left: 20px;
+	height: 35px;
+	background: #22df64;
+	color: white;
+	
+	
 }
 
 #cancleBtn { /*취소버튼*/
 	width: 100px;
-	height: 30px;
 	position: absolute;
 	left: 180px;
+	height: 35px;
+	background: #22df64;
+	color: white;
 }
 
 #submit { /*수정버튼*/
-	height: 30px;
 	width: 100px;
 	position: absolute;
-	right: 70px;
+	right: 70px;height: 35px;
+	background: #22df64;
+	color: white;
+	
 }
 
 #input-over {
@@ -376,7 +385,7 @@ h2 {
 					method="post">
 
 
-					<h2>Edit information</h2>
+					<h2>회원 정보 수정</h2>
 
 
 					<div class="regionon">

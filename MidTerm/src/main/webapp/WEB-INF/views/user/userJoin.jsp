@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Tasty Friends</title>
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
 </head>
 <body>
 
@@ -374,7 +376,7 @@
 			document.getElementById("pwConfirm").style.borderColor = "red";
 			document.getElementById("msgPw-c").innerHTML = "비밀번호 확인란을 확인하세요";
 		}
-	}			
+	}	 	
 				
 	</script>
 

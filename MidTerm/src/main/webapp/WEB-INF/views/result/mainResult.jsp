@@ -13,13 +13,21 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<title>Bootstrap demo</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-	<link href="${pageContext.request.contextPath}/css/mainResult.css" rel="stylesheet">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>Tasty Friends</title>
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+<link href="${pageContext.request.contextPath}/css/mainResult.css"
+	rel="stylesheet">
+
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
 	</style>
@@ -283,7 +291,7 @@
 			width: 55%;
 			left: 45%;
 			top: 0;
-			background-color: #ffe0d2;
+			background-color: floralwhite;
 			border-radius: 2rem;
 			display: grid;
 			grid-template-rows: auto 1fr;
@@ -381,9 +389,9 @@
 		}
 
 		.text-group h2 {
-			line-height: 2.2rem;
+			line-height: 1.8rem;
 			font-weight: normal;
-			font-size: 1.5rem;
+			font-size: 1.3rem;
 		}
 
 		#fixedText h2 {
@@ -1308,8 +1316,10 @@
 			</div>
 		</div>
 		<nav class="navbar bg-success fixed-top ">
+
 			<div class="container-fluid">
 				<a class="navbar-brand text-light" href="${pageContext.request.contextPath}/">Tasty Friend</a>
+
 				<%-- <div class="ml-auto">
 							<form class="form-inline ml-auto"
 								action="${pageContext.request.contextPath}/userrecipe/search"
@@ -1339,7 +1349,7 @@
 							<form action="index.html" autocomplete="off" class="sign-in-form">
 								<div class="logo">
 									<!-- <img src="./img/logo.png" alt="easyclass" /> -->
-									<h4>SOUP</h4>
+									<h4>오늘의 요리</h4>
 								</div>
 
 								<div class="heading">

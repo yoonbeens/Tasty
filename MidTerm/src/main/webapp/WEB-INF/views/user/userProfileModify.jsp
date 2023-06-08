@@ -6,6 +6,9 @@
 <head>
   <meta charset="UTF-8">
   <title>프로필 수정</title>
+
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
   <link href="${pageContext.request.contextPath}/css/userProfileModify.css" rel="stylesheet">
   <style>
     /* sns파일 업로드시 미리보기  */

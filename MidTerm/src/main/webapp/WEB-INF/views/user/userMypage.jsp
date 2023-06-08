@@ -6,6 +6,8 @@
 <head>
 
 <title>회원정보</title>
+
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
@@ -15,10 +17,11 @@
 	;
 
 * {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
+	
 }
 
 body {
@@ -32,7 +35,7 @@ body {
 
 .wrapper {
 	position: relative;
-	width: 400px;
+	width: 500px;
 	height: 750px;
 	background: rgba(255, 255, 255, .2);
 	border-radius: 20px;
@@ -65,7 +68,7 @@ body {
 h2 {
 	font-size: 30px;
 	/* color: #000; */
-	color: skyblue;
+	color: #22df64;
 	text-align: center;
 }
 
@@ -286,7 +289,9 @@ h2 {
 	left: 50px;
 	top: -5px;
 	width: 80px;
-	height: 30px;
+	height: 35px;
+	background: #22df64;
+	color: white;
 }
 
 .commit3 .class-over{ /*삭제버튼*/
@@ -294,7 +299,9 @@ h2 {
 	left: 155px;
 	top: -5px;
 	width: 80px;
-	height: 30px;
+	height: 35px;
+	background: #22df64;
+	color: white;
 }
 
 .commit4 .class-over{
@@ -302,7 +309,9 @@ h2 {
 	left: 250px;
 	top: -5px;
 	width: 80px;
-	height: 30px;
+	height: 35px;
+	background: #22df64;
+	color: white;
 }
 
 
@@ -323,7 +332,7 @@ h2 {
 		<div class="form-wrapper sign-in">
 			<section id="container">
 				<form action="/user/userDelete" method="post">
-					<h2>edit profile</h2>
+					<h2>회원 정보</h2>
 					<div class="input-group">
 						<div class="form-group has-feedback">
 							<input class="form-control" type="text" id="userId" name="userId"
