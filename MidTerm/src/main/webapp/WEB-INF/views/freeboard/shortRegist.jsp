@@ -41,6 +41,7 @@
 	background: black;
 	color: white;
 }
+</style>
 
 
 
@@ -89,6 +90,7 @@
                   </div>
               <span>쇼츠 업로드 <small></small></span>
                     <input type="file" name="file" id="file" multiple="multiple">
+                    <input type="hidden" name="userId" value="${user}">
               <div class="input-wrap">(쇼츠는 하루 한개만 등록 가능합니다!)</div> 
               <button class="sign-btn" id="reginsBtn" type="button">등록</button>
               <button type="button" id="cancleBtn" class="sign-btn">취소하기</button>
@@ -117,10 +119,10 @@
 
 
 <script>
-    // /* $("#file").on('change', function() {
-	//     var fileName = $(this).val().split("\\").pop();
-	//     $(".upload-name").val(fileName);
-	// }); */
+     /* $("#file").on('change', function() {
+	     var fileName = $(this).val().split("\\").pop();
+	     $(".upload-name").val(fileName);
+	 }); */
 
 
 
@@ -283,18 +285,12 @@
 
 
         document.getElementById('reginsBtn').addEventListener('click', e => {
-            console.log('잡혀?');
-            console.log(document.getElementById('attr_area').childElementCount);
+        
             if (confirm("게시물을 게시하시겠습니까?")) {
 
-                if (document.getElementById('attr_area').childElementCount == 0) {
-                    alert("1개이상의 이미지를 등록해야합니다.");
-
-                    return;
-                } else {
-                    alert("게시물이 등록되었습니다.");
+                             alert("쇼츠가 등록되었습니다.");
                     document.getElementById('form').submit();
-                }
+                
 
             } else {
                 return;

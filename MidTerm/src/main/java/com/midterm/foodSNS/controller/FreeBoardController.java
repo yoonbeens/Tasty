@@ -53,8 +53,7 @@ public class FreeBoardController {
 	@GetMapping("/shortGet/{userId}")
 	public List<MshortsVO>  shortGet(@PathVariable String userId, MshortsVO svo,Model model) {
 		List<MshortsVO> listSvo = new ArrayList<>();
-		listSvo= service.getVideo(userId);	
-		
+		listSvo= service.getVideo(userId);			
 		return listSvo;	
 	}
 	

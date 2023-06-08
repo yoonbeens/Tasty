@@ -434,6 +434,7 @@
 
 				if(data.length==0){
 					 shortVideo += `오늘 등록된 쇼츠가 없습니다!`;
+					 document.getElementById('shortBody').insertAdjacentHTML('afterbegin', shortVideo);
 
 				}else{
 				shortVideo += `<video id="shoVid" src="${pageContext.request.contextPath}/user/display/` +
