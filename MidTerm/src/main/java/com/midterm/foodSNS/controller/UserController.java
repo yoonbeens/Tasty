@@ -59,18 +59,21 @@ public class UserController {
 		model.addAttribute("userInfo", service.userInfo(vo.getUserId()));
 	}
 
-	// 탈퇴 페이지로 이동
+	// 회원 탈퇴 요청
 	@PostMapping("/userDelete")
-	public void userDelete(MusersVO vo) {
+	public String userDelete(MusersVO vo) {
 
 		service.userDelete(vo);
+		return "redirect:/";
+		
 	}
 
-	// 회원 탈퇴 요청
+// 탈퇴 페이지로 이동
 	@GetMapping("/userDelete")
-	public void delete(HttpSession session, Model model) {
+	public  void delete(HttpSession session, Model model) {
 		MusersVO vo = (MusersVO) session.getAttribute("login");
 		model.addAttribute("userInfo", service.userInfo(vo.getUserId()));
+		
 	}
 
 	// 탈퇴를 위한 비밀번호 체크
