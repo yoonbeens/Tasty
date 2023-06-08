@@ -140,6 +140,10 @@ font-family: 'Gowun Dodum', sans-serif;
 
 					<c:if test="${login != null}">
 						<li class="nav-item text-light"><a class="nav-link"
+							href="${pageContext.request.contextPath}/mypage/mypageResult">My Page</a>
+
+						</li>
+						<li class="nav-item text-light"><a class="nav-link"
 							href="${pageContext.request.contextPath}/user/userMypage">회원정보수정</a>
 
 						</li>

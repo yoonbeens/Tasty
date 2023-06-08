@@ -147,7 +147,7 @@
 		<div id="main-right">
 			<div id="profile-img-con" data-bs-toggle="modal" data-bs-target="#short">
 				<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
-					alt="default" id="profile-img">
+					alt="default" id="profile-img" class="scale">
 			</div>
 			<div class="profileWrapper">
 				<div id="simpleProfile">
@@ -609,8 +609,11 @@
 		if (e.target.matches('.boxbox2 img')) {
 
 
-			const rebno = e.target.dataset.rebno;
-			console.log(rebno);
+			const bno = e.target.dataset.rebno;
+		
+			
+			document.getElementById('modifyR').setAttribute("href","${pageContext.request.contextPath}/userrecipe//modifyRecipe/"+bno);
+
 			document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target
 				.nextElementSibling
 				.textContent);
@@ -652,7 +655,7 @@
 			document.getElementById('deleteR').addEventListener('click', e => {
 				if (confirm("정말 삭제하시겠습니까?")) {
 
-					fetch('${pageContext.request.contextPath}/userrecipe/deleteR/' + rebno, {
+					fetch('${pageContext.request.contextPath}/userrecipe/deleteR/' + bno, {
 						method: 'delete'
 					}).then(res => {
 						if (res.status == 200) {
