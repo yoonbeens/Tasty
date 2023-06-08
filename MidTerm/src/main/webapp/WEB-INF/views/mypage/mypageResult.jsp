@@ -21,13 +21,13 @@
 <html lang="en">
 
 <head>
-	
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<title>Tasty Friends</title>
 	<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
-	
+
 	<link href="${pageContext.request.contextPath}/css/mypageResult.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -166,10 +166,6 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/freeboard/shortRegist/${user.userId}">Shorts</a>
 					</li>
-
-					<li class="nav-item"><a class="nav-link active" aria-current="page"
-							href="${pageContext.request.contextPath}/mypage/mypageResult">My
-							Page</a></li>
 
 					<li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal"
 							data-bs-target="#FollowerModal">Follower
@@ -475,15 +471,13 @@
 	document.getElementById('profile-img-con').addEventListener('click', e => {
 		const userId = '${user.userId}';
 		console.log(userId + "클릭했다!!!");
-	
+		
 
 		fetch('${pageContext.request.contextPath}/freeboard/shortGet/' + userId).then(res => res.json())
 			.then(data => {
 
 				console.log("성공??");
-				console.log(data);
-
-				
+				console.log(data.length);
 
 				while (document.getElementById('shortBody').firstChild) {
 					document.getElementById('shortBody').firstChild.remove();
@@ -492,12 +486,12 @@
 				// 	document.getElementById('shortCon').firstChild.remove();
 
 				// }
+
 				if(data.length==0){
 					 shortVideo += `오늘 등록된 쇼츠가 없습니다!`;
 					 document.getElementById('shortBody').insertAdjacentHTML('afterbegin', shortVideo);
 
 				}else{
-
 				shortVideo += `<video id="shoVid" src="${pageContext.request.contextPath}/user/display/` +
 					data[0].fileLoca + `/` + data[0].fileName + `" type="video/mp4" autoplay loop
 							 		style="height: 80vh; width: 100%;"></video>`;
@@ -526,7 +520,7 @@
 
 
 				// }
-			}
+				}
 
 			});
 		const shortModal = document.getElementById('short')
@@ -537,25 +531,17 @@
 			location.reload();
 		})
 
-
-
-
-
-
-
 	});
 
-	document.getElementById('randomImg').onclick = () => {
-			document.getElementById('ranform').submit();
-		}
-		(function recipbox() {
-			const recipebox = document.querySelectorAll('.myrecipebox');
+	(function recipbox() {
+		const recipebox = document.querySelectorAll('.myrecipebox');
 
-			for (var i = 0; i < recipebox.length; i++) {
-				const recipebox = document.querySelectorAll('.myrecipebox');
-				recipebox[i].style.display = "none";
-			}
-		})();
+		for (var i = 0; i < recipebox.length; i++) {
+			const recipebox = document.querySelectorAll('.myrecipebox');
+			recipebox[i].style.display = "none";
+		}
+	})();
+
 	let strimg = '';
 	let strbtn = '';
 	let strmodi = '';
@@ -571,8 +557,6 @@
 
 
 			console.log("story 클릭");
-			console.log("스토리 누르고 스토리 수 : " + alength);
-			console.log("스토리 누르고 레시피 수 : " + rlength);
 
 
 			for (var i = 0; i < alength; i++) {
@@ -593,8 +577,6 @@
 			const rlength = e.target.dataset.rlength;
 
 			console.log("recipe 클릭");
-			console.log("레시피 누르고 스토리 수 : " + alength);
-			console.log("레시피 누르고 레시피 수 : " + rlength);
 
 
 
@@ -616,15 +598,15 @@
 
 	});
 
-
 	document.getElementById('main').addEventListener('click', e => {
 		if (e.target.matches('.boxbox2 img')) {
 
 
 			const bno = e.target.dataset.rebno;
-		
-			
-			document.getElementById('modifyR').setAttribute("href","${pageContext.request.contextPath}/userrecipe//modifyRecipe/"+bno);
+
+
+			document.getElementById('modifyR').setAttribute("href",
+				"${pageContext.request.contextPath}/userrecipe//modifyRecipe/" + bno);
 
 			document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target
 				.nextElementSibling
