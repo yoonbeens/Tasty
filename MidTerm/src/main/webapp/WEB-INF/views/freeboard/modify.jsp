@@ -8,9 +8,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>Tasty Friends</title>
     <link href="${pageContext.request.contextPath}/css/regist.css" rel="stylesheet">
+	<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+	
 </head>
+
 
 
 

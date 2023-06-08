@@ -140,23 +140,6 @@ aside {
    position: relative;
 }
 
-#promodify {   
-   width: 100px;
-   height: 30px;
-   font-size: 15px;
-   text-align: center;
-   line-height: 30px;
-
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
-   border-radius:5px;
-   background: gainsboro;
-   box-sizing: border-box;
-   position:absolute;
-   top:55px;
-   left: 200px;
-}
 
 h5{
    color: darkgrey;
@@ -1577,7 +1560,6 @@ aside {
    font-size: 15px;
    text-align: center;
    line-height: 30px;
-   color: black;
    text-decoration: none;
    cursor: pointer;
    border-radius: 5px;
@@ -1586,6 +1568,10 @@ aside {
    position: absolute;
    top: 55px;
    left: 200px;
+   
+   
+	background: #22df64;
+	color: white;
 }
 
 #follow {

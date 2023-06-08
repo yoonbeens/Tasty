@@ -15,7 +15,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<title>Bootstrap demo</title>
+<title>Tasty Friends</title>
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"

@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Tasty Friends</title>
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
 <!-- reset.css -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">

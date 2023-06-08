@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Tasty Friends</title>
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 <style type="text/css">
@@ -46,6 +48,9 @@ body {
 	transition: 1s ease-in-out;
 }
 
+
+
+
 .wrapper.active .form-wrapper.sign-in {
 	transform: scale(0) translate(-300px, 500px);
 }
@@ -58,7 +63,16 @@ body {
 
 .wrapper.active .form-wrapper.sign-up {
 	transform: scale(1) translate(0, 0);
-}
+} 
+
+
+
+
+
+
+
+
+
 
 h2 {
 	font-size: 30px;
@@ -92,6 +106,7 @@ h2 {
 	background: transparent;
 	border: none;
 	outline: none;
+	position: relative;
 }
 
  .input-group input:focus ~label, .input-group input:valid ~label {
@@ -247,10 +262,11 @@ h2 {
    /*  padding: 15px 30px; */
     border-radius: 15px;
     font-family: "paybooc-Light", sans-serif;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
     text-decoration: none;
     font-weight: 600;
     transition: 0.25s;
+    background-color: FFE6EB;
 }
 
 .w-btn-indigo {
@@ -270,8 +286,17 @@ h2 {
 
 .w-btn-outline.w-btn-indigo-outline{
 	margin: 0 -40px;
-	float: right;
 	bottom: 70px;
+	right: 10px;
+	width: 120px;
+	height: 30px;
+	background: #22df64;
+	color: white;	
+	position: absolute;
+	bottom: 30px;
+	left: 245px;
+	
+	
 }
 
 

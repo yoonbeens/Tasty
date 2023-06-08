@@ -16,6 +16,10 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <title>회원탈퇴</title>
 
+
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 <style type="text/css">
@@ -73,10 +77,10 @@ body {
 
 h2 {
 	font-size: 30px;
-	color: skyblue;
 	text-align: center;
 	margin-left: 30px;
 	padding-top: 80px;
+	color: #22df64;
 }
 
 .input-group {
@@ -284,6 +288,11 @@ h2 {
 	margin: 0 -40px;
 	float: right;
 	bottom: 70px;
+	height: 35px;
+	background: #22df64;
+	color: white;
+	
+	
 }
 
 .btn-success {
@@ -342,7 +351,7 @@ h2 {
 			<section id="container">
 				<form action="${pageContext.request.contextPath}/user/userDelete"
 					method="POST" id="delForm">
-					<h2>edit delete</h2>
+					<h2>회원 탈퇴</h2>
 
 
 
