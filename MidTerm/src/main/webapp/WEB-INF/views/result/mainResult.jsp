@@ -1,4 +1,4 @@
-<%@page import="com.midterm.foodSNS.command.MRecipeVO"%>
+</html><%@page import="com.midterm.foodSNS.command.MRecipeVO"%>
 <%@page import="java.io.Console"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -13,55 +13,53 @@
 
 <head>
 
-
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<title>Tasty Friends</title>
-	<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-	<link href="${pageContext.request.contextPath}/css/mainResult.css" rel="stylesheet">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>Bootstrap demo</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+<link href="${pageContext.request.contextPath}/css/mainResult.css"
+	rel="stylesheet">
 	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');	
 	</style>
 
 
 
 	<style type="text/css">
-		* {
-			font-family: 'Gowun Dodum', sans-serif;
-		}
-
-		@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-
+	
+    
+    *{
+	font-family: 'Gowun Dodum', sans-serif;
+}
+		@import
+			url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+		
 		@font-face {
 			font-family: 'LINESeedKR-Bd';
-			src:
-				url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2')format('woff2');
 			font-weight: 700;
 			font-style: normal;
 		}
-
-		*,
-		*::before,
-		*::after {
+		
+		*, *::before, *::after {
 			padding: 0;
 			margin: 0;
 			box-sizing: border-box;
 		}
-
-		body,
-		input {
+		
+		body, input {
 			font-family: "Poppins", sans-serif;
 		}
-
+		
 		#superCon {
 			position: relative;
 		}
-
+		
 		#mainDiv {
 			width: 100%;
 			display: none;
@@ -71,7 +69,7 @@
 			transform: translate(-50%, -50%);
 			/* z-index: 9999; */
 		}
-
+		
 		main {
 			width: 100%;
 			min-height: 100vh;
@@ -82,7 +80,7 @@
 			align-items: center;
 			justify-content: center;
 		}
-
+		
 		#ingredient {
 			/* font-family: 'LINESeedKR-Bd'; */
 			font-weight: 100;
@@ -92,14 +90,14 @@
 			line-height: 2;
 			word-spacing: 5px;
 		}
-
+		
 		.blank {
 			width: auto;
 			height: 800px;
 			margin: 200px;
 			padding: 300px;
 		}
-
+		
 		.box {
 			position: relative;
 			width: 100%;
@@ -109,7 +107,7 @@
 			border-radius: 3.3rem;
 			box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
 		}
-
+		
 		.inner-box {
 			position: absolute;
 			width: calc(100% - 4.1rem);
@@ -118,7 +116,7 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
-
+		
 		.forms-wrap {
 			position: absolute;
 			height: 100%;
@@ -130,7 +128,7 @@
 			grid-template-rows: 1fr;
 			transition: 0.8s ease-in-out;
 		}
-
+		
 		form {
 			max-width: 260px;
 			width: 100%;
@@ -143,42 +141,42 @@
 			grid-row: 1/2;
 			transition: opacity 0.02s 0.4s;
 		}
-
+		
 		form.sign-up-form {
 			opacity: 0;
 			pointer-events: none;
 		}
-
+		
 		.logo {
 			display: flex;
 			align-items: center;
 		}
-
+		
 		.logo img {
 			width: 27px;
 			margin-right: 0.3rem;
 		}
-
+		
 		.logo h4 {
 			font-size: 1.1rem;
 			margin-top: -9px;
 			letter-spacing: -0.5px;
 			color: #151111;
 		}
-
+		
 		.heading h2 {
 			font-size: 2.1rem;
 			font-weight: 600;
 			color: #151111;
 		}
-
+		
 		.heading h6 {
 			color: #9f9f9f;
 			font-weight: 400;
 			font-size: 1rem;
 			display: inline;
 		}
-
+		
 		.toggle {
 			color: #151111;
 			text-decoration: none;
@@ -186,17 +184,17 @@
 			font-weight: 500;
 			transition: 0.3s;
 		}
-
+		
 		.toggle:hover {
 			color: #8371fd;
 		}
-
+		
 		.input-wrap {
 			position: relative;
 			height: 37px;
 			/* margin-bottom: 2rem; */
 		}
-
+		
 		.input-field {
 			position: absolute;
 			width: 100%;
@@ -210,7 +208,7 @@
 			color: #151111;
 			transition: 0.4s;
 		}
-
+		
 		label {
 			position: absolute;
 			left: 0;
@@ -221,16 +219,16 @@
 			pointer-events: none;
 			transition: 0.4s;
 		}
-
+		
 		.input-field.active {
 			border-bottom-color: #151111;
 		}
-
+		
 		.input-field.active+label {
 			font-size: 0.75rem;
 			top: -2px;
 		}
-
+		
 		.sign-btn {
 			display: inline-block;
 			width: 100%;
@@ -244,50 +242,50 @@
 			margin-bottom: 2rem;
 			transition: 0.3s;
 		}
-
+		
 		.sign-btn:hover {
 			background-color: #8371fd;
 		}
-
+		
 		.text {
 			color: black;
 			font-size: 0.7rem;
 		}
-
+		
 		.text a {
 			color: #bbb;
 			transition: 0.3s;
 		}
-
+		
 		.text a:hover {
 			color: #8371fd;
 		}
-
+		
 		main.sign-up-mode form.sign-in-form {
 			opacity: 0;
 			pointer-events: none;
 		}
-
+		
 		main.sign-up-mode form.sign-up-form {
 			opacity: 1;
 			pointer-events: all;
 		}
-
+		
 		main.sign-up-mode .forms-wrap {
 			left: 55%;
 		}
-
+		
 		main.sign-up-mode .carousel {
 			left: 0%;
 		}
-
+		
 		.carousel {
 			position: absolute;
 			height: 100%;
 			width: 55%;
 			left: 45%;
 			top: 0;
-			background-color: floralwhite;
+			background-color: #ffe0d2;
 			border-radius: 2rem;
 			display: grid;
 			grid-template-rows: auto 1fr;
@@ -295,7 +293,7 @@
 			overflow: hidden;
 			transition: 0.8s ease-in-out;
 		}
-
+		
 		.images-wrapper {
 			display: grid;
 			grid-template-columns: 1fr;
@@ -305,11 +303,11 @@
 			/* width: auto; */
 			/* height: 300px; */
 		}
-
+		
 		.images-wrapper img {
 			height: 300px;
 		}
-
+		
 		.image {
 			width: 100%;
 			grid-column: 1/2;
@@ -317,7 +315,7 @@
 			opacity: 0;
 			transition: opacity 0.3s, transform 0.5s;
 		}
-
+		
 		.text {
 			width: 100%;
 			grid-column: 1/2;
@@ -325,35 +323,35 @@
 			display: none;
 			transition: opacity 0.3s, transform 0.5s;
 		}
-
+		
 		.img-1 {
 			/* transform: translate(0, -50px); */
 			transform: scale(0.4, 0.5);
 		}
-
+		
 		.img-2 {
 			transform: scale(0.4, 0.5);
 		}
-
+		
 		.img-3 {
 			/* transform: scale(0.3) rotate(-20deg); */
 			transform: scale(0.4, 0.5);
 		}
-
+		
 		.img-4 {
 			transform: scale(0.4, 0.5);
 		}
-
+		
 		.image.show {
 			opacity: 1;
 			transform: none;
 		}
-
+		
 		.text.show {
 			display: block;
 			transform: none;
 		}
-
+		
 		.text-slider {
 			display: flex;
 			align-items: center;
@@ -361,13 +359,13 @@
 			flex-direction: column;
 			/* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6); */
 		}
-
+		
 		.text-wrap {
 			max-height: 6.6rem;
 			overflow: hidden;
 			margin-bottom: 2.5rem;
 		}
-
+		
 		.text-group {
 			display: flex;
 			flex-direction: column;
@@ -383,19 +381,19 @@
 			left: 1%;
 			letter-spacing: 0.2rem;
 		}
-
+		
 		.text-group h2 {
-			line-height: 1.8rem;
+			line-height: 2.2rem;
 			font-weight: normal;
-			font-size: 1.3rem;
+			font-size: 1.5rem;
 		}
-
+		
 		#fixedText h2 {
 			font-size: 2rem;
 			color: black;
 			z-index: 10000;
 		}
-
+		
 		.bullets {
 			display: flex;
 			align-items: center;
@@ -403,7 +401,7 @@
 			z-index: 100;
 			margin-top: 38%;
 		}
-
+		
 		.bullets span {
 			display: block;
 			width: 1rem;
@@ -414,20 +412,19 @@
 			cursor: pointer;
 			transition: 0.3s;
 		}
-
+		
 		.bullets span.active {
 			width: 2.1rem;
 			background-color: #151111;
 			border-radius: 1rem;
 		}
-
-		@media (max-width : 850px) {
+		
+		@media ( max-width : 850px) {
 			.box {
 				height: auto;
 				max-width: 550px;
 				overflow: hidden;
 			}
-
 			.inner-box {
 				position: static;
 				transform: none;
@@ -435,35 +432,28 @@
 				height: revert;
 				padding: 2rem;
 			}
-
 			.forms-wrap {
 				position: revert;
 				width: 100%;
 				height: auto;
 			}
-
 			form {
 				max-width: revert;
 				padding: 1.5rem 2.5rem 2rem;
 				transition: transform 0.8s ease-in-out, opacity 0.45s linear;
 			}
-
 			.heading {
 				margin: 2rem 0;
 			}
-
 			form.sign-up-form {
 				transform: translateX(100%);
 			}
-
 			main.sign-up-mode form.sign-in-form {
 				transform: translateX(-100%);
 			}
-
 			main.sign-up-mode form.sign-up-form {
 				transform: translateX(0%);
 			}
-
 			.carousel {
 				position: revert;
 				height: auto;
@@ -472,63 +462,55 @@
 				display: flex;
 				position: relative;
 			}
-
 			.images-wrapper {
 				display: none;
 			}
-
 			.text-slider {
 				width: 100%;
 			}
 		}
-
-		@media (max-width : 530px) {
+		
+		@media ( max-width : 530px) {
 			main {
 				padding: 1rem;
 			}
-
 			.box {
 				border-radius: 2rem;
 			}
-
 			.inner-box {
 				padding: 1rem;
 			}
-
 			.carousel {
 				padding: 1.5rem 1rem;
 				border-radius: 1.6rem;
 			}
-
 			.text-wrap {
 				margin-bottom: 1rem;
 			}
-
 			.text-group h2 {
 				font-size: 1.2rem;
 			}
-
 			form {
 				padding: 1rem 2rem 1.5rem;
 			}
 		}
-
+		
 		/* timer */
-		:root {
+		:root { 
 			-clockColor: #ff6e6e;
-			/* --bgColor: #c5e1ff; */
-			-timerTime: 180s;
+			/* --bgColor: #c5e1ff; */ 
+			-timerTime: 180s; 
 			-grPercent: 47.5%;
 		}
-
+		
 		#content {
 			display: flex;
 			align-items: center;
 			/* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
 		}
-
+		
 		/*폰트 인클루드*/
-
+		
 		/* @font-face {
 		  font-family: "ROKAFSlabSerifBold";
 		  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSlabSerifBold.woff")
@@ -574,34 +556,32 @@
 			color: darkgrey;
 			/* margin-bottom: 30px; */
 			animation-name: text;
-			animation-duration: var(- -timerTime);
+			animation-duration: var(--timerTime);
 			animation-play-state: paused;
 			animation-iteration-count: infinite;
 			animation-fill-mode: forwards;
 			cursor: pointer;
 		}
-
+		
 		#text:hover {
 			transition-duration: 0.5s;
 			transform: scale(1.2);
 		}
-
+		
 		#speechBubble {
 			animation: shake 0.3s linear 0s infinite alternate;
 			margin-top: 0;
 		}
-
-		@keyframes text {
-			0% {
-				color: darkgrey;
-			}
-
-			100% {
-				color:
-					var (- -clockColor);
-			}
+		
+		@keyframes text { 
+		0% {
+			color: darkgrey;
 		}
-
+		100% {
+			color: var(--clockColor);				
+		}
+		}
+		
 		/* .clockBox {
 		  margin-top: 10px;
 		  margin-bottom: 50px;
@@ -623,7 +603,7 @@
 		  border: 1.5px solid rgba(255, 255, 255, 0.18);
 		} */
 		#timer {
-			background: -webkit-linear-gradient(left, var(- -clockColor) var(- -grPercent), #eee 50%);
+			background: -webkit-linear-gradient(left, var(--clockColor)	var(- -grPercent), #eee 50%);
 			/* Foreground color, Background colour */
 			border-radius: 100%;
 			height: 100px;
@@ -632,75 +612,66 @@
 			width: 100px;
 			/* Height and width */
 			animation-name: time;
-			animation-duration: var(- -timerTime);
+			animation-duration: var(--timerTime);
 			animation-timing-function: linear;
 			animation-play-state: paused;
 			animation-iteration-count: infinite;
 			animation-fill-mode: forwards;
 			cursor: pointer;
 		}
-
+		
 		#timer:hover {
 			width: 110px;
 			height: 110px;
 			transition: 0.3s;
 		}
-
+		
 		#mask {
-			border-radius: 100% 0 0 100%/50% 0 0 50%;
+			border-radius: 100% 0 0 100% / 50% 0 0 50%;
 			height: 100%;
 			left: 0;
 			position: absolute;
 			top: 0;
 			width: 50%;
 			animation-name: mask;
-			animation-duration: var(- -timerTime);
+			animation-duration: var(--timerTime);
 			animation-timing-function: linear;
 			animation-play-state: paused;
 			animation-iteration-count: infinite;
 			animation-fill-mode: forwards;
 			transform-origin: 100% 50%;
 		}
-
-		@keyframes time {
-			0% {}
-
-			100% {
-				transform:
-					rotate (360deg);
-			}
+		
+		@keyframes time { 
+		0% {
 		}
-
-		@keyframes mask {
-			0% {
-				background: #eee;
-				/* Background colour */
-				transform: rotate(0deg);
-			}
-
-			50% {
-				background:
-					#eee;
-				/* Background colour */
-				transform:
-					rotate (-180deg);
-			}
-
-			50.01% {
-				background: var(- -clockColor);
-				/* Foreground colour */
-				transform: rotate(0deg);
-			}
-
-			100% {
-				background:
-					var (- -clockColor);
-				/* Foreground colour */
-				transform:
-					rotate (-180deg);
-			}
+		100% {
+			transform: rotate(360deg);					
 		}
-
+		}
+		@keyframes mask { 
+		0% {
+			background: #eee;
+			/* Background colour */
+			transform: rotate(0deg);
+		}
+		50%	{
+			background:	#eee;
+			/* Background colour */
+			transform: rotate(-180deg);					
+		}
+		50.01% {
+			background:	var(--clockColor);
+			/* Foreground colour */				
+			transform: rotate(0deg);				
+		}
+		100%{
+			background:	var(--clockColor);
+			/* Foreground colour */			
+			transform: rotate(-180deg);		
+		}
+		}
+		
 		/* modal css */
 		.background {
 			position: fixed;
@@ -713,13 +684,13 @@
 			z-index: -1;
 			opacity: 0;
 		}
-
+		
 		.show {
 			opacity: 1;
 			/* z-index: 10; */
 			transition: all 0.5s;
 		}
-
+		
 		.window {
 			position: relative;
 			width: 100%;
@@ -727,7 +698,7 @@
 			/* z-index: 1000; */
 			opacity: 0;
 		}
-
+		
 		.popup {
 			position: absolute;
 			top: 50%;
@@ -745,14 +716,14 @@
 			/* z-index: 1000; */
 			opacity: 0;
 		}
-
+		
 		.show .popup {
 			transform: translate(-50%, -50%);
 			transition: all 0.5s;
 			/* z-index: 1000; */
 			opacity: 0;
 		}
-
+		
 		input[type="color"] {
 			padding: 0;
 			width: 150%;
@@ -761,7 +732,7 @@
 			cursor: pointer;
 			opacity: 0;
 		}
-
+		
 		.cp_wrapper {
 			overflow: hidden;
 			width: 2em;
@@ -771,14 +742,14 @@
 			box-shadow: 1px 1px 3px 0px grey;
 			margin: 1em;
 		}
-
+		
 		.wrapper {
 			margin-top: 40%;
 			display: flex;
 			justify-content: center;
 			align-content: center;
 		}
-
+		
 		#submit {
 			width: 100px;
 			height: 30px;
@@ -794,19 +765,19 @@
 			background-color: #408080;
 			color: #e9ded8;
 		}
-
+		
 		#submit:hover {
 			background-color: #2f5f5f;
 			color: #f6f4f4;
 		}
-
+		
 		.select {
 			display: flex;
 			justify-content: center;
 			flex-wrap: wrap;
 			align-content: center;
 		}
-
+		
 		input[type="number"] {
 			width: 100px;
 			height: 30px;
@@ -817,35 +788,34 @@
 			-moz-appearance: textfield;
 			text-align: center;
 		}
-
+		
 		#hour:focus {
 			border: 2px solid #408080;
 		}
-
+		
 		#min:focus {
 			border: 2px solid #408080;
 		}
-
+		
 		#sec:focus {
 			border: 2px solid #408080;
 		}
-
-		input::-webkit-outer-spin-button,
-		input::-webkit-inner-spin-button {
+		
+		input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			-webkit-appearance: none;
 			margin: 0;
 		}
-
+		
 		input::placeholder {
 			text-align: center;
 		}
-
+		
 		.balloon {
 			position: relative;
 			display: inline-block;
 			margin-bottom: 15px;
 		}
-
+		
 		.balloon span {
 			display: inline-block;
 			padding: 10px;
@@ -857,7 +827,7 @@
 			-webkit-backdrop-filter: blur(6.4px);
 			border: 1px solid rgba(61, 61, 61, 0.38);
 		}
-
+		
 		.balloon:after {
 			content: "";
 			position: absolute;
@@ -865,7 +835,7 @@
 			height: 0;
 			border-style: solid;
 		}
-
+		
 		.balloon.top:after {
 			border-color: rgba(61, 61, 61, 0.87) transparent transparent transparent;
 			bottom: -25px;
@@ -873,18 +843,16 @@
 			left: 50%;
 			margin-left: -10px;
 		}
-
-		@keyframes shake {
-			0% {
-				margin-top: 0px;
-			}
-
-			100% {
-				margin-top:
-					20px;
-			}
+		
+		@keyframes shake { 
+		0% {
+			margin-top: 0px;
 		}
-
+		100% {
+			margin-top:	20px;					
+		}
+		}
+		
 		#speech {
 			font-family: Cafe24Ohsquareair;
 			position: absolute;
@@ -896,18 +864,15 @@
 			animation-direction: alternate;
 			animation-delay: 1s;
 		}
-
-		@keyframes showToast {
-			20% {
-				opacity: 100%;
-			}
-
-			90% {
-				opacity:
-					0%;
-			}
+		
+		@keyframes showToast { 
+		20% {
+			opacity: 100%;
 		}
-
+		90%	{
+			opacity: 0%;
+		}
+		}
 		.toast {
 			opacity: 0%;
 			width: 250px;
@@ -933,11 +898,11 @@
 			animation-duration: 4s;
 			animation-play-state: paused;
 		}
-
+		
 		button {
 			margin: 10px;
 		}
-
+		
 		#reset {
 			margin-bottom: 5px;
 			position: relative;
@@ -954,11 +919,11 @@
 			color: #ffeee4;
 			cursor: pointer;
 		}
-
+		
 		#reset:hover {
 			transform: scale(1.02);
 		}
-
+		
 		#fullButton {
 			margin-bottom: 5px;
 			position: relative;
@@ -975,14 +940,14 @@
 			color: #ffeee4;
 			cursor: pointer;
 		}
-
+		
 		#buttons {
 			display: flex;
 			flex-direction: column;
 			align-content: center;
 			margin-top: 40px;
 		}
-
+		
 		#formReset {
 			width: 100px;
 			height: 30px;
@@ -999,70 +964,69 @@
 			background-color: #f6f4f4;
 			color: #408080;
 		}
-
+		
 		#formReset:hover {
 			background-color: #2f5f5f;
 			color: #f6f4f4;
 		}
-
+		
 		#colorBox {
 			display: flex;
 			justify-content: center;
 		}
-
+		
 		#clColor {
 			margin-right: 30px;
 		}
-
+		
 		#bgColor {
 			margin-left: 30px;
 		}
-
+		
 		#content {
 			display: flex;
 			flex-direction: column;
-			background-color: var(- -bgColor);
+			background-color: var(--bgColor);
 		}
-
+		
 		#close {
 			/* New added property */
 			width: 20px;
 			height: 20px;
 			border: none;
 			border-radius: 10px;
-			background-color: var(- -clockColor);
-			color: var(- -clockColor);
+			background-color: var(--clockColor);
+			color: var(--clockColor);
 		}
-
+		
 		#close:hover {
 			color: white;
 			background-color: #e56262;
 		}
-
+		
 		.popupText {
 			font-family: "Cafe24Ohsquareair";
 		}
-
+		
 		/* 반응형 미디어쿼리 */
-		@media (max-width : 520px) {
+		@media ( max-width : 520px) {
 			.popup {
 				/* width: 500px; */
 				width: 350px;
 			}
-
 			#sec {
 				width: 220px;
 			}
 		}
-
-		@media (max-width : 430px) {
+		
+		@media ( max-width : 430px) {
 			.clockBox {
 				width: 350px;
 				height: 350px;
 			}
 		}
-
-		@media (max-width : 400px) {
+		
+		@media ( max-width : 400px) {
 			#buttons {
 				/* flex-direction: column; */
 				/* align-content: center; */
@@ -1072,32 +1036,25 @@
 				margin-top: 40px;
 				margin-bottom: 20px;
 			}
-
+		
 			/* #timerButton {
 			width: 150px;
 		  } */
 			#reset {
 				width: 150px;
 			}
-
 			.popup {
 				/* width: 500px; */
 				width: 350px;
 			}
-
 			#speech {
 				margin-bottom: 570px;
 			}
-
 			#sec {
 				width: 220px;
 			}
 		}
-	</style>
-
-
-
-
+		</style>
 
 </head>
 
