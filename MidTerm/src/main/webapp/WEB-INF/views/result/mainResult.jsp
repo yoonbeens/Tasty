@@ -1256,8 +1256,10 @@
 
 			<div id="main-right">
 				<div id="profile-img-con">
+
 					<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
-						alt="default" id="profile-img">
+						alt="default" id="profile-img" >
+
 				</div>
 				<div class="profileWrapper">
 					<div id="simpleProfile">

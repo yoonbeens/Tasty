@@ -22,6 +22,22 @@
 	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 	<link href="${pageContext.request.contextPath}/css/uploadRecipe.css" rel="stylesheet">
 </head>
+<style>
+	     footer {
+	box-sizing: border-box;
+	width: 100vw;
+	height: 5vh;
+	/* footer의 높이 */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	line-height: 5vh;
+	background: black;
+	color: white;
+}
+
+</style>
 
 <body>
 
@@ -84,6 +100,8 @@
 			height: 400
 		});
 	</script>
+	  <footer> copyright © TastyFriends. all rights reserved </footer>
+
 </body>
 
 </html>

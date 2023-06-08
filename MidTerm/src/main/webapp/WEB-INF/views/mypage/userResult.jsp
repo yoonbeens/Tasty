@@ -93,9 +93,9 @@
 		</div>
 		<div id="main-right">
 
-			<div id="profile-img-con">
-				<img src="${pageContext.request.contextPath}/user/display/<%=user.getFileLoca()%>/<%=user.getFileName()%>"
-					alt="default" id="profile-img">
+			<div id="profile-img-con" data-bs-toggle="modal" data-bs-target="#short">
+				<img src="${pageContext.request.contextPath}/user/display/${user.fileLoca}/${user.fileName}"
+					alt="default" id="profile-img" class="scale">
 			</div>
 			<div class="profileWrapper">
 
@@ -130,9 +130,6 @@
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link active" aria-current="page"
-						href="${pageContext.request.contextPath}/freeboard/shortRegist/${user.userId}">Shorts</a>
-				</li>
 
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
 							href="${pageContext.request.contextPath}/mypage/mypageResult">My
@@ -405,6 +402,71 @@
 
 
 <Script>
+	let shortVideo = '';
+	let shortVbtn = '';
+	document.getElementById('profile-img-con').addEventListener('click', e => {
+		const userId = '${user.userId}';
+		console.log(userId + "클릭했다!!!");
+
+		fetch('${pageContext.request.contextPath}/freeboard/shortGet/' + userId).then(res => res.json())
+			.then(data => {
+
+				console.log("성공??");
+				console.log(data);
+
+				while (document.getElementById('shortBody').firstChild) {
+					document.getElementById('shortBody').firstChild.remove();
+				}
+				// while (document.getElementById('shortCon').firstChild) {
+				// 	document.getElementById('shortCon').firstChild.remove();
+
+				// }
+				shortVideo += `<video id="shoVid" src="${pageContext.request.contextPath}/user/display/` +
+					data[0].fileLoca + `/` + data[0].fileName + `" type="video/mp4" autoplay loop
+							 		style="height: 80vh; width: 100%;"></video>`;
+
+				// for (var i = 0; i < data.length; i++) {
+
+				// if (i === 0) {
+				// 	shortVideo += `<div class="carousel-item active"><video id="shoVid" src="${pageContext.request.contextPath}/user/display/` + data[i].fileLoca + `/` + data[i].fileName + `" type="video/mp4" autoplay loop
+				// 		style="height: 80vh; width: 100%;"></video></div>`;
+
+				// 		shortVbtn += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="` + i + `" class="active" aria-current="true"
+				// 	aria-label="Slide ` + (i + 1) + `"></button>`;
+
+
+
+				// } else {
+				// 	shortVideo += `<div class="carousel-item"><video src="${pageContext.request.contextPath}/user/display/` + data[i].fileLoca + `/` + data[i].fileName + `" type="video/mp4"  autoplay style="height: 80vh; width: 100%;"></video></div>`;
+
+				// 	shortVbtn += `<button type="button" data-bs-target="#carouselExampleIndicators" 
+				// 	data-bs-slide-to="` + i + `" class="active" aria-current="true" 
+				// 	aria-label="Slide ` + (i + 1) + `"></button>`;
+				// }
+
+				document.getElementById('shortBody').insertAdjacentHTML('afterbegin', shortVideo);
+				// document.getElementById('shortBtn').insertAdjacentHTML('afterbegin', shortVbtn);
+
+
+				// }
+
+
+			});
+		const shortModal = document.getElementById('short')
+
+		shortModal.addEventListener('hidden.bs.modal', () => {
+			console.log("모달닫힘");
+
+			location.reload();
+		})
+
+
+
+
+
+
+
+	});
 	(function recipbox() {
 		const recipebox = document.querySelectorAll('.myrecipebox');
 
