@@ -18,11 +18,16 @@ public class LikeService implements ILikeService {
 	}
 	
 	@Override
-	public void updateLike(int cooknum, LikeVO vo) {
+	public LikeVO updateLike(int cooknum, LikeVO vo) {
+		vo.setCooknum(cooknum);
 		if(mapper.chkLike(vo) == 1) {
-			mapper.insertLike(vo); 
+			mapper.deleteLike(vo);
+			vo.setUserId("1");
+			return vo;
 		} else {
-			mapper.deleteLike(vo); 
+			mapper.insertLike(vo); 
+			vo.setUserId("0");
+			return vo;
 		}
 	}
 

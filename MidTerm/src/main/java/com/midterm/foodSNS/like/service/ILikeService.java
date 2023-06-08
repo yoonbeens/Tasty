@@ -8,7 +8,7 @@ public interface ILikeService {
 	int getLike(int cooknum);
 
 	//좋아요 수 업데이트
-	void updateLike(int cooknum, LikeVO vo);
+	LikeVO updateLike(int cooknum, LikeVO vo);
 
 	//게시판 좋아요수
 	int faLike(int faNum);

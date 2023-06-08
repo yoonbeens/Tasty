@@ -185,18 +185,4 @@ public class ResultController {
 		return service.recipeDetail(cooknum);
 	}
 
-	@GetMapping("/recipe/like/{cooknum}")
-	@ResponseBody
-	public int getLike(@PathVariable int cooknum) {
-
-		return service.getLike(cooknum);
-	}
-
-	@PutMapping("/recipe/like/{cooknum}")
-	@ResponseBody
-	public LikeVO updateLike(@PathVariable int cooknum, @RequestBody LikeVO vo) {
-		return service.updateLike(cooknum, vo);
-	}
-
-
 }
