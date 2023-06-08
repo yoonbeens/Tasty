@@ -14,19 +14,15 @@
 <head>
 
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<title>Tasty Friends</title>
-<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<title>Tasty Friends</title>
+	<link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-<link href="${pageContext.request.contextPath}/css/mainResult.css"
-	rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link href="${pageContext.request.contextPath}/css/mainResult.css" rel="stylesheet">
 
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Playfair:ital,wght@1,600&display=swap');
@@ -602,14 +598,7 @@
 
 			100% {
 				color:
-
-
-
-
 					var (- -clockColor);
-
-
-
 			}
 		}
 
@@ -678,15 +667,7 @@
 
 			100% {
 				transform:
-
-
-
-
 					rotate (360deg);
-
-
-
-
 			}
 		}
 
@@ -699,72 +680,24 @@
 
 			50% {
 				background:
-
-
-
-
 					#eee;
 				/* Background colour */
-
-
-
-
 				transform:
-
-
-
-
 					rotate (-180deg);
-
-
-
-
 			}
 
 			50.01% {
-				background:
-
-
-
-					var (- -clockColor);
+				background: var(- -clockColor);
 				/* Foreground colour */
-
-
-
-
-				transform:
-
-
-
-					rotate (0deg);
-
-
-
-
+				transform: rotate(0deg);
 			}
 
 			100% {
 				background:
-
-
-
-
 					var (- -clockColor);
 				/* Foreground colour */
-
-
-
-
 				transform:
-
-
-
-
 					rotate (-180deg);
-
-
-
-
 			}
 		}
 
@@ -948,15 +881,7 @@
 
 			100% {
 				margin-top:
-
-
-
-
 					20px;
-
-
-
-
 			}
 		}
 
@@ -979,10 +904,6 @@
 
 			90% {
 				opacity:
-
-
-
-
 					0%;
 			}
 		}
@@ -1266,7 +1187,7 @@
 				<div id="profile-img-con">
 
 					<img src="${pageContext.request.contextPath}/user/display/${login.fileLoca}/${login.fileName}"
-						alt="default" id="profile-img" >
+						alt="default" id="profile-img">
 
 				</div>
 				<div class="profileWrapper">
@@ -1713,10 +1634,6 @@
 				}
 			}
 
-
-
-
-
 		});
 
 
@@ -1748,9 +1665,22 @@
 						document.getElementById('tip').textContent = recipe.tip;
 						document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
 						document.getElementById('minutes').textContent = recipe.cookTime;
-
-
+						//불릿 처음으로
+						const bullets = document.querySelectorAll(".bullets span");
+						bullets.forEach((bull) => bull.classList.remove("active"));
+						bullets[0].classList.add("active");
+						//이미지 처음으로
+						const images = document.querySelectorAll(".image");
+						images.forEach((img) => img.classList.remove("show"));
+						document.getElementById('titleimg').classList.add("show");
 						var min = recipe.cookTime;
+						//텍스트 처음으로
+						texts.forEach((text) => text.classList.remove("show"));
+						document.getElementById('tip').classList.add("show");
+						//메인메뉴 처음으로
+						document.getElementById('mainClose').classList.remove("sign-up-mode");
+						//좋아요 처음으로
+						document.querySelector('.heart').classList.remove("is-active");			
 
 						total = min * 60;
 						forCount = total;
@@ -1762,34 +1692,38 @@
 							document.body.style.setProperty("--timerTime", total);
 						}
 
-/* 						if (realMin === 1) {
-							document.getElementById("title").innerHTML = "1 minute";
-						} else {
-							document.getElementById("title").innerHTML = realMin + " minutes";
-						} */
+						/* 						if (realMin === 1) {
+													document.getElementById("title").innerHTML = "1 minute";
+												} else {
+													document.getElementById("title").innerHTML = realMin + " minutes";
+												} */
 
-						if (recipe.text1 !== '') {
+						if (recipe.text1 !== '' || recipe.text1 !== null) {
 							document.getElementById(`text1`).textContent = recipe.text1;
 						}
-						if (recipe.img1 !== '') {
+						if (recipe.img1 !== '' || recipe.img1 !== null) {
 							document.getElementById(`img1`).setAttribute('src', recipe.img1);
 						}
-						if (recipe.text2 !== '') {
+						if (recipe.text2 !== '' || recipe.text2 !== null) {
 							document.getElementById(`text2`).textContent = recipe.text2;
 						}
-						if (recipe.img2 !== '') {
+						if (recipe.img2 !== '' || recipe.img2 !== null) {
 							document.getElementById(`img2`).setAttribute('src', recipe.img2);
 						}
-						if (recipe.text3 !== '') {
+						if (recipe.text3 !== '' || recipe.text3 !== null) {
 							document.getElementById(`text3`).textContent = recipe.text3;
 						}
-						if (recipe.img3 !== '') {
+						if (recipe.img3 !== '' || recipe.img3 !== null) {
 							document.getElementById(`img3`).setAttribute('src', recipe.img3);
 						}
-						if (recipe.text4 !== '') {
+						if (recipe.text4 != '' || recipe.text4 != null) {
 							document.getElementById(`text4`).textContent = recipe.text4;
+							bullets[4].style.display = 'block';
+							console.log(bullets[4]);
+						} else {
+							bullets[4].style.display = 'none';
 						}
-						if (recipe.img4 !== '') {
+						if (recipe.img4 !== '' || recipe.img4 !== null) {
 							document.getElementById(`img4`).setAttribute('src', recipe.img4);
 						}
 						document.getElementById('likenum').dataset.cooknum = recipe.cooknum; // like에 레시피 번호 저장
@@ -1798,80 +1732,7 @@
 				document.getElementById('mainDiv').style.display = 'block';
 				getlike(cooknum);
 
-
-
-
-
-
-
-			}
-		});
-
-
-
-
-		document.getElementById('main-con').addEventListener('click', e => {
-			console.log('클릭됐니?')
-			if (e.target.matches('.boxbox img')) {
-				/* const faNum = e.target.dataset.fanum; */
-				const userId = e.target.dataset.userid;
-				const cooknum = e.target.dataset.cooknum;
-
-				/* console.log(faNum); */
-				console.log(userId);
-				console.log(cooknum);
-
-				getlike(cooknum); //좋아요 불러오기
-				document.getElementById('likenum').dataset.cooknum = cooknum; //like에 레시피 번호 저장
-
-				//레시피 상세정보 불러오기
-				fetch('${pageContext.request.contextPath}/result/recipe/' + cooknum)
-					.then(res => res.json())
-					.then(recipe => {
-						console.log(recipe);
-						document.getElementById('foodname').textContent = recipe.foodname;
-						document.getElementById('ingredient').textContent = recipe.ingredient;
-						document.getElementById('tip').textContent = recipe.tip;
-						document.getElementById('titleimg').setAttribute('src', recipe.titleimg);
-						document.getElementById('minutes').textContent = recipe.cookTime;
-
-						if (recipe.text1 !== '') {
-							document.getElementById(`text1`).textContent = recipe.text1;
-						}
-						if (recipe.img1 !== '') {
-							document.getElementById(`img1`).setAttribute('src', recipe.img1);
-						}
-						if (recipe.text2 !== '') {
-							document.getElementById(`text2`).textContent = recipe.text2;
-						}
-						if (recipe.img2 !== '') {
-							document.getElementById(`img2`).setAttribute('src', recipe.img2);
-						}
-						if (recipe.text3 !== '') {
-							document.getElementById(`text3`).textContent = recipe.text3;
-						}
-						if (recipe.img3 !== '') {
-							document.getElementById(`img3`).setAttribute('src', recipe.img3);
-						}
-						if (recipe.text4 !== '') {
-							document.getElementById(`text4`).textContent = recipe.text4;
-						}
-						if (recipe.img4 !== '') {
-							document.getElementById(`img4`).setAttribute('src', recipe.img4);
-						}
-						document.getElementById('likenum').dataset.cooknum = recipe
-							.cooknum; // like에 레시피 번호 저장
-					});
-
-				document.getElementById('mainDiv').style.display = 'block';
-				getlike(cooknum);
-
-
-				/* 				document.getElementById('main-con').style.display = 'none'; */
-
-				console.log('Div보여줘');
-
-			} else if (e.target.matches('.boxbox2 img')) {
+			}  else if (e.target.matches('.boxbox2 img')) {
 				console.log('main 내 boxbox2 클릭');
 
 				document.getElementById('urTitle').insertAdjacentHTML('afterbegin', e.target
@@ -1910,9 +1771,7 @@
 				});
 
 			}
-
 		});
-
 
 		document.getElementById('mainDiv').addEventListener('click', e => {
 			if (e.target.matches('#mainClose')) { //!e.target.matches('#mainDiv')
