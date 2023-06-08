@@ -407,6 +407,7 @@
 	document.getElementById('profile-img-con').addEventListener('click', e => {
 		const userId = '${user.userId}';
 		console.log(userId + "클릭했다!!!");
+		
 
 		fetch('${pageContext.request.contextPath}/freeboard/shortGet/' + userId).then(res => res.json())
 			.then(data => {
@@ -421,6 +422,11 @@
 				// 	document.getElementById('shortCon').firstChild.remove();
 
 				// }
+
+				if(data.length==0){
+					 shortVideo += `오늘 등록된 쇼츠가 없습니다!`;
+
+				}else{
 				shortVideo += `<video id="shoVid" src="${pageContext.request.contextPath}/user/display/` +
 					data[0].fileLoca + `/` + data[0].fileName + `" type="video/mp4" autoplay loop
 							 		style="height: 80vh; width: 100%;"></video>`;
@@ -449,7 +455,7 @@
 
 
 				// }
-
+				}
 
 			});
 		const shortModal = document.getElementById('short')
