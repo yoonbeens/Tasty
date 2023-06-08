@@ -14,6 +14,22 @@
 	
 </head>
 
+<style>
+         footer {
+	box-sizing: border-box;
+	width: 100vw;
+	height: 5vh;
+	/* footer의 높이 */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	line-height: 5vh;
+	background: black;
+	color: white;
+}
+</style>
+
 
 
 
@@ -50,7 +66,9 @@
             </div>
         </form>
     </div>
+    <footer> copyright © TastyFriends. all rights reserved </footer>
 </body>
+
 
 </html>
 

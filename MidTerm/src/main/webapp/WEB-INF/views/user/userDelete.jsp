@@ -445,14 +445,14 @@ document.getElementById('cancleBtn').addEventListener('click', e => {
 			.then(res => res.text())
 			.then(data => {	
 
-				console.log(data);
-			
+				console.log(data);	
 				if(data==='0'){
 					alert('패스워드가 틀렸습니다.');
 					return;
 				}else if(data==='1'){
 					if(confirm("회원탈퇴하시겠습니까?")){
-						$("#delForm").submit();
+						alert('탈퇴 되었습니다! 이용해주셔서 감사합니다!');
+						document.getElementById('delForm').submit();				
 						
 					}
 				}

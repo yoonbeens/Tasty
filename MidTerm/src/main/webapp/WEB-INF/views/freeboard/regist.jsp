@@ -14,14 +14,19 @@
     <link rel="icon" href="${pageContext.request.contextPath}/img/favicon-32x32.png">
 
     <style>
-        /* input[type=file]::file-selector-button {
-	width: 150px;
-	height: 30px;
-	background: #fff;
-	border: 1px solid rgb(77, 77, 77);
-	cursor: pointer; &: hover { background : rgb( 77, 77, 77);
-	color: #fff;
-} */
+     footer {
+	box-sizing: border-box;
+	width: 100vw;
+	height: 5vh;
+	/* footer의 높이 */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	line-height: 5vh;
+	background: black;
+	color: white;
+}
     </style>
 
 
@@ -89,7 +94,7 @@
       </div>
     </div>
   </main>
-
+  <footer> copyright © TastyFriends. all rights reserved </footer>
 </body>
 
 
